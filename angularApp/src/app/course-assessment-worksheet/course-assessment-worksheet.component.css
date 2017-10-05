@@ -1,0 +1,33 @@
+.courseAssessment{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.courseInfoForAssessmentWorksheet{
+    color: #FFFFFF!important;
+    background-color: #ae211f!important;
+    border-left: 6px solid #ccc!important;
+    padding: 0.01em 16px;
+    margin: 20px;
+    border-color: #831917!important;
+    display: inline-block;
+}
+
+.courseInfoForAssessmentWorksheetContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.courseInfoForAssessmentWorksheetLabel{
+    font-weight: bold;
+    margin-left: 40px;
+}
+
+.courseInfoForAssessmentWorksheetSelector{
+    font-weight: bold;
+    margin-left: 10px;
+    background: #AC5A5A;
+    border: 5px solid #000000;
+}
+

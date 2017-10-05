@@ -1,0 +1,21 @@
+.tab-header-text{
+	font-weight: bold;
+	font-size: 16px;
+  color: #FFFFFF;
+  height: 50px;
+  line-height: 25px;
+  background-color: #000000;
+}
+
+.nav-tabs > li.active > a {
+  font-weight: bold;
+  font-size: 16px;
+  color: #FFFFFF;
+  height: 50px;
+  line-height: 25px;
+  background-color: #831917;
+  }
+
+ .tab-header-text:hover {
+   background-color: #AC3634;
+   }

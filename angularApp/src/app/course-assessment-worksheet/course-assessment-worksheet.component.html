@@ -1,0 +1,31 @@
+<div class="courseAssessment">
+  <div class="courseInfoForAssessmentWorksheet">
+    <div class="courseInfoForAssessmentWorksheetContainer">
+      <h2>Course Assessment Worksheet</h2>
+    </div>
+    <div class="courseInfoForAssessmentWorksheetContainer">
+      <div>
+        <span class="courseInfoForAssessmentWorksheetLabel">Course # / Sec:</span>
+        <select class="courseInfoForAssessmentWorksheetSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
+          <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value= {{courseAndSection.id}}>
+            {{courseAndSection.name}}
+          </option>
+        </select>
+      </div>
+      <div class="courseInfoForAssessmentWorksheetRow">
+        <span class="courseInfoForAssessmentWorksheetLabel">Course Title:</span>
+        <span>{{courseAndSection.courseTitle}}</span>
+      </div>
+    </div>
+    <div class="courseInfoForAssessmentWorksheetContainer">
+      <div>
+        <span class="courseInfoForAssessmentWorksheetLabel">Semester:</span>
+        <span>{{courseAndSection.semester}}</span>
+      </div>
+      <div class="courseInfoForAssessmentWorksheetRow">
+        <span class="courseInfoForAssessmentWorksheetLabel">Instructor:</span>
+        <span>{{courseAndSection.instructor}}</span>
+      </div>
+    </div>
+  </div>
+</div>
