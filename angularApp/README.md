@@ -1,12 +1,16 @@
-# LaRocheChemAssessment
+## Required Software
+1. Install node -> https://nodejs.org/en/download/
+* Node let's us install libraries and software packages
+* Some we use to work with the project, some are libraries used by the code.
+2. Navigate to the LaRocheChemAssessment/angularApp (master) folder. Run these commands:
+* npm install
+* npm install -g @angular/cli
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
-
-## Development server
+## Run the development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Create a new component 
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
