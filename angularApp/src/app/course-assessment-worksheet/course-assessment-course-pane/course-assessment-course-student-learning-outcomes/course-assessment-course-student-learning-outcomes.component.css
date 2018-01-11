@@ -1,0 +1,30 @@
+.sloForAssessmentWorksheet {
+  color: #ffffff !important;
+  background-color: #ae211f !important;
+  border-left: 6px solid #ccc !important;
+  padding: 0.01em 16px;
+  margin: 20px;
+  border-color: #831917 !important;
+}
+
+.sloForAssessmentWorksheetContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sloInfoForAssessmentWorksheetLabel {
+  font-weight: bold;
+  margin-left: 40px;
+}
+
+.sloInfoForAssessmentWorksheetSelector {
+  font-weight: bold;
+  margin-left: 10px;
+  background: #ac5a5a;
+  border: 5px solid #000000;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+}

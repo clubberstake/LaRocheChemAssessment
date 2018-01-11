@@ -1,33 +1,30 @@
-.courseAssessment{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
+.courseAssessment {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
-.courseInfoForAssessmentWorksheet{
-    color: #FFFFFF!important;
-    background-color: #ae211f!important;
-    border-left: 6px solid #ccc!important;
-    padding: 0.01em 16px;
-    margin: 20px;
-    border-color: #831917!important;
-    display: inline-block;
+.saveButton {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
+  height: 50px;
+  line-height: 25px;
+  background-color: #831917;
+  border: 3px solid #000;
+  margin-left: 5px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
-.courseInfoForAssessmentWorksheetContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.saveButton:hover {
+  background-color: #ac3634;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-
-.courseInfoForAssessmentWorksheetLabel{
-    font-weight: bold;
-    margin-left: 40px;
-}
-
-.courseInfoForAssessmentWorksheetSelector{
-    font-weight: bold;
-    margin-left: 10px;
-    background: #AC5A5A;
-    border: 5px solid #000000;
-}
-

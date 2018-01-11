@@ -1,0 +1,26 @@
+.courseInfoForAssessmentWorksheet {
+  color: #ffffff !important;
+  background-color: #ae211f !important;
+  border-left: 6px solid #ccc !important;
+  padding: 0.01em 16px;
+  margin: 20px;
+  border-color: #831917 !important;
+}
+
+.courseInfoForAssessmentWorksheetContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.courseInfoForAssessmentWorksheetLabel {
+  font-weight: bold;
+  margin-left: 40px;
+}
+
+.courseInfoForAssessmentWorksheetSelector {
+  font-weight: bold;
+  margin-left: 10px;
+  background: #ac5a5a;
+  border: 5px solid #000000;
+}
