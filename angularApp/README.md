@@ -1,5 +1,7 @@
 ## Required Software
-1. Install node -> https://nodejs.org/en/download/
+1. Install node: 
+* If you are on windows or Mac, follow installer from here -> https://nodejs.org/en/download/
+* If you are on Ubuntu, follow this instructions here -> https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04. Specifically, the section titled, "How To Install Using a PPA".
 * Node let's us install libraries and software packages
 * Some we use to work with the project, some are libraries used by the code.
 2. Navigate to the LaRocheChemAssessment/angularApp (master) folder. Run these commands:
