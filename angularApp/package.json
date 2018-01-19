@@ -29,11 +29,11 @@
     "rxjs": "^5.4.2",
     "typescript": "^2.6.2",
     "zone.js": "^0.8.14",
-    "jquery":"3.2.1",
+    "jquery": "3.2.1",
     "popper.js": "1.12.9"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.4",
+    "@angular/cli": "^1.6.5",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.4",

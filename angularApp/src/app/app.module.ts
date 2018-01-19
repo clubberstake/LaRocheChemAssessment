@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
+import { CourseInformationService } from './services/course-information-service.service'
 import { AppComponent } from './app.component';
 import { CourseAssessmentWorksheetComponent } from './course-assessment-worksheet/course-assessment-worksheet.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -30,9 +32,10 @@ import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksh
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [CourseInformationService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
