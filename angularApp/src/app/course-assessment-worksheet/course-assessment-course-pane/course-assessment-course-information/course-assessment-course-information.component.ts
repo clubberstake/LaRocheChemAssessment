@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CourseInfoForAssessment } from '../../courseInfoForAssessment';
 import { CourseInformationService } from '../../../services/course-information-service.service';
 import { CourseInformationObject } from '../../course-information-object';
+import { NotesInfoForMiscNotesTab } from '../../../individual-learning-record/notesInfoForMiscNotesTab';
+import { NotesInfoForMiscNotesTabService } from '../../../services/notes-info-for-misc-notes-tab.service';
 
 @Component({
   selector: 'app-course-assessment-course-information',
@@ -18,14 +20,14 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     );
   }
 
-  constructor(private courseInfoService: CourseInformationService) {
+  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService) {
   }
 
   ngOnInit() {
     this.courseInfoService.getCourseInfo().subscribe((courses: CourseInfoForAssessment[]) => {
       this.courseAndSections = courses;
+      console.log(this.courseAndSections);
       this.courseAndSection = this.courseAndSections[0];
     });
   }
 }
-

@@ -17,11 +17,13 @@ import laroche.chem.assessment.responseObjects.CourseInfoForAssessmentWorksheet;
 @RestController
 public class CourseController {
 
+	// Dependency Injection: @Autowired
 	@Autowired
 	private CourseRepository courseRepository;
 	@Autowired
 	private InstructorRepository instructorRepository;
 
+	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/courseInfoForAssessmentWorksheet")
 	public ArrayList<CourseInfoForAssessmentWorksheet> getCourseInfoForAssessmentWorksheet() {

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
-import { CourseInformationService } from './services/course-information-service.service'
 import { AppComponent } from './app.component';
 import { CourseAssessmentWorksheetComponent } from './course-assessment-worksheet/course-assessment-worksheet.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -15,6 +14,9 @@ import { CourseAssessmentCoursePaneComponent } from './course-assessment-workshe
 import { CourseAssessmentCourseInformationComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-information/course-assessment-course-information.component';
 import { CourseAssessmentCourseStudentLearningOutcomesComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-student-learning-outcomes/course-assessment-course-student-learning-outcomes.component';
 import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksheet/course-assessment-student-pane/course-assessment-student-pane.component';
+import { NotesInfoForMiscNotesTabService } from './services/notes-info-for-misc-notes-tab.service';
+import { StudentInfoForBioAndAdmissionsPlacementTabService } from './services/student-info-for-bio-and-admissions-placement-tab.service';
+import { CourseInformationService } from './services/course-information-service.service'
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksh
     HttpClientModule,
     HttpModule
   ],
-  providers: [CourseInformationService, HttpClientModule],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
