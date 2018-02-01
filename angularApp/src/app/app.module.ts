@@ -13,6 +13,7 @@ import { CourseAssessmentCoursePaneComponent } from './course-assessment-workshe
 import { CourseAssessmentCourseInformationComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-information/course-assessment-course-information.component';
 import { CourseAssessmentCourseStudentLearningOutcomesComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-student-learning-outcomes/course-assessment-course-student-learning-outcomes.component';
 import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksheet/course-assessment-student-pane/course-assessment-student-pane.component';
+import { ComponentNameComponent } from './component-name/component-name.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksh
     CourseAssessmentCoursePaneComponent,
     CourseAssessmentCourseInformationComponent,
     CourseAssessmentCourseStudentLearningOutcomesComponent,
-    CourseAssessmentStudentPaneComponent
+    CourseAssessmentStudentPaneComponent,
+    ComponentNameComponent
   ],
   imports: [
     BrowserModule,
