@@ -11,6 +11,7 @@ public class CourseAssessmentFormSection1 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private String cafs1id;
 	private byte[] newSLOs;
 	private byte[] upgrades;
 	private byte[] enhancements;
@@ -19,7 +20,7 @@ public class CourseAssessmentFormSection1 {
 	
 	public CourseAssessmentFormSection1() {}
 	
-	public CourseAssessmentFormSection1(byte[] newSLOs, byte[] upgrades, byte[] enhancements, byte[] modifications,
+	public CourseAssessmentFormSection1(String cafs1id, byte[] newSLOs, byte[] upgrades, byte[] enhancements, byte[] modifications,
 			byte[] other) {
 		this.newSLOs = newSLOs;
 		this.upgrades = upgrades;
@@ -34,6 +35,16 @@ public class CourseAssessmentFormSection1 {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getCafs1id()
+	{
+		return cafs1id;
+	}
+	
+	public void setCafs1id(String cafs1id)
+	{
+		this.cafs1id = cafs1id;
 	}
 	
 	public byte[] getNewSLOs() {
