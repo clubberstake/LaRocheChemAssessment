@@ -8,8 +8,8 @@ import { CourseAssessmentWorksheetComponent } from './course-assessment-workshee
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
 import { IndividualLearningRecordComponent } from './individual-learning-record/individual-learning-record.component';
-import { StudentPaneComponent } from './student-pane/student-pane.component';
-import { RecordPaneComponent } from './record-pane/record-pane.component';
+import { StudentPaneComponent } from './individual-learning-record/student-pane/student-pane.component';
+import { RecordPaneComponent } from './individual-learning-record/record-pane/record-pane.component';
 import { CourseAssessmentCoursePaneComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-pane.component';
 import { CourseAssessmentCourseInformationComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-information/course-assessment-course-information.component';
 import { CourseAssessmentCourseStudentLearningOutcomesComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-student-learning-outcomes/course-assessment-course-student-learning-outcomes.component';
