@@ -18,4 +18,8 @@ export class StudentPaneComponent implements OnInit {
   ngOnInit() {
   }
 
+  onUpdateStudent() {
+    console.log('This will update current student.');
+  }
+
 }

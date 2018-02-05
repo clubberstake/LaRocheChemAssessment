@@ -17,6 +17,10 @@ export class StudentInfoForBioAndAdmissionsPlacementTabService {
     return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab>('http://localhost:8080/student/studentInfoForBioAndAdmissionsPlacementTab/studentId=' + studentId)
   }
 
+  public getStudentInfoByName(studentName: string): Observable<StudentInfoForBioAndAdmissionsPlacementTab> {
+    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab>('http://localhost:8080/studentInfoForBioAndAdmissionsPlacementTab/studentName=' + studentName)
+  }
+
   public addNewStudent(student: any) {
     return this.http.post<Response>('http://localhost:8080/student/addStudent', student).subscribe(res => console.log(res));
   }
