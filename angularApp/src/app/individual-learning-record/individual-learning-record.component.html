@@ -2,8 +2,9 @@
   <div class="studentIdSearchBoxLable">Search for a student!</div>
     <input #studentIdSearchBox studentIdSearchBox.value=''>
     <button (click)="onSearch(studentIdSearchBox.value)">Search</button>
+    {{student.studentName}}
 </div>
 <div class="ilrBase">
-  <app-student-pane [studentNameInput]="studentName" [studentIdInput]="studentId" [studentYearInput]="studentYear" [studentMajorInput]="studentMajor" [studentSemesterInput]="studentSemester" [studentHonorsInput]="studentHonors" [studentHousingInput]="studentHousingStatus" [studentInternationalInput]="studentInternational" [studentAthleticsInput]="studentAthletics" [studentMathGradeInput]="studentMathGrade" [studentPhotoInput]="studentPhoto" [studentTimeInput]="studentTime"></app-student-pane>
+  <app-student-pane [studentsInput]="student" [studentIdInput]="studentId"></app-student-pane>
   <app-record-pane></app-record-pane>
 </div>
