@@ -8,7 +8,11 @@ export class StudentInfoForBioAndAdmissionsPlacementTabService {
 
   constructor(private http: HttpClient) { }
 
-  public getStudentInfo(): Observable<StudentInfoForBioAndAdmissionsPlacementTab[]>{
+  public getStudentInfo(): Observable<StudentInfoForBioAndAdmissionsPlacementTab[]> {
     return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab[]>('http://localhost:8080/studentInfoForBioAndAdmissionsPlacementTab')
+  }
+
+  public getStudentInfoById(studentId: number): Observable<StudentInfoForBioAndAdmissionsPlacementTab> {
+    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab>('http://localhost:8080/studentInfoForBioAndAdmissionsPlacementTab/studentId=' + studentId)
   }
 }
