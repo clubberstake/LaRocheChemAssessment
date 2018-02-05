@@ -9,20 +9,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBio
 export class StudentPaneComponent implements OnInit {
 
   @Input() studentIdInput: any;
-  @Input() studentNameInput: any;
-  @Input() studentMajorInput: any;
-  @Input() studentSemesterInput: any;
-  @Input() studentYearInput: any;
-  @Input() studentAthleticsInput: any;
-  @Input() studentTimeInput: any;
-  @Input() studentHousingInput: any;
-  @Input() studentInternationalInput: any;
-  @Input() studentHonorsInput: any;
-  @Input() studentPhotoInput: any;
-  @Input() studentMathGradeInput: any;
-
-
-
+  @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
 
   constructor() {
 
