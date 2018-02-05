@@ -11,13 +11,27 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/s
 })
 export class IndividualLearningRecordComponent implements OnInit {
 
+  studentId: any;
+  studentName: string;
+  studentMajor: string;
+  studentYear: string;
+  studentSemester: string;
+  studentMathGrade: string;
+  studentAthletics: string;
+  studentHousingStatus: string;
+  studentHonors: string;
+  studentInternational: string;
+  studentPhoto: string;
+  studentTime: string;
+
+  student: StudentInfoForBioAndAdmissionsPlacementTab;
+  students: StudentInfoForBioAndAdmissionsPlacementTab[];
+
   miscNote: NotesInfoForMiscNotesTab;
   miscNotes: NotesInfoForMiscNotesTab[] = [];
 
-  student: StudentInfoForBioAndAdmissionsPlacementTab;
-  students: StudentInfoForBioAndAdmissionsPlacementTab[] = [];
-
-  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) { }
+  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
+  }
 
   ngOnInit() {
     this.notesService.getMiscNoteInfo().subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
@@ -25,13 +39,25 @@ export class IndividualLearningRecordComponent implements OnInit {
       console.log(this.miscNotes);
       this.miscNote = this.miscNotes[0];
     });
+  }
 
+  onSearch(studentId: any) {
     this.studentsService.getStudentInfo().subscribe((students: StudentInfoForBioAndAdmissionsPlacementTab[]) => {
       this.students = students;
-      console.log(this.students);
-      this.student = students[0];
+      this.studentName = students[0].studentName;
+      this.studentMajor = students[0].studentMajor;
+      this.studentYear = students[0].studentYear;
+      this.studentSemester = students[0].studentSemester;
+      this.studentMathGrade = students[0].studentMathGrade;
+      this.studentAthletics = students[0].studentAthletics;
+      this.studentHousingStatus = students[0].studentHousingStatus;
+      this.studentHonors = students[0].studentHonors;
+      this.studentInternational = students[0].internationalStudent;
+      this.studentPhoto = students[0].studentPhoto;
+      this.studentTime = students[0].time;
     });
-
+    this.studentId = studentId;
+    console.log(this.studentId);
   }
 
 }

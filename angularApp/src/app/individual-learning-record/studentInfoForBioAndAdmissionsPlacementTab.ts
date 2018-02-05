@@ -1,3 +1,3 @@
 export class StudentInfoForBioAndAdmissionsPlacementTab {
-  constructor(private studentName: string, private studentMajor: string, private studentYear: string, private studentSemester: string, private studentMathGrade: string, private studentAthletics: string, private studentHousingStatus: string, private studentHonors: string, private internationalStudent: string, private studentPhoto: string, private time: string){}
+  constructor(public studentName: string, public studentMajor: string, public studentYear: string, public studentSemester: string, public studentMathGrade: string, public studentAthletics: string, public studentHousingStatus: string, public studentHonors: string, public internationalStudent: string, public studentPhoto: string, public time: string){}
 }

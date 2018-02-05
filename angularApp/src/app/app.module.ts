@@ -17,7 +17,7 @@ import { CourseAssessmentStudentPaneComponent } from './course-assessment-worksh
 import { ComponentNameComponent } from './component-name/component-name.component';
 import { NotesInfoForMiscNotesTabService } from './services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from './services/student-info-for-bio-and-admissions-placement-tab.service';
-import { CourseInformationService } from './services/course-information-service.service'
+import { CourseInformationService } from './services/course-information-service.service';
 
 @NgModule({
   declarations: [
