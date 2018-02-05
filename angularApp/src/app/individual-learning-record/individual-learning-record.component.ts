@@ -3,6 +3,7 @@ import { NotesInfoForMiscNotesTab } from './notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTab } from './studentInfoForBioAndAdmissionsPlacementTab';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/student-info-for-bio-and-admissions-placement-tab.service';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'app-individual-learning-record',
@@ -40,6 +41,17 @@ export class IndividualLearningRecordComponent implements OnInit {
 
     this.studentId = studentId;
     console.log(this.studentId);
+  }
+
+  onAddStudent() {
+    var addStudent = {
+      studentName: 'asdf',
+      studentMajor: 'Math',
+      studentYear: '2018',
+      studentSemester: 'Spring'
+    };
+
+    this.studentsService.addNewStudent(addStudent);
   }
 
 }

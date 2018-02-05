@@ -2,11 +2,18 @@ package laroche.chem.assessment.restApp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,19 +23,19 @@ import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPla
 import laroche.chem.assessment.entities.Student;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value = "/student")
 public class StudentController {
 
 	@Autowired
 	private StudentRepository studentRepository;
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping("/studentInfoForBioAndAdmissionsPlacementTab")
+	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab")
 	public ArrayList<StudentInfoForBioAndAdmissionsPlacementTab> getMiscNotesInfo() {
 		return generateFakeBioAndAdmissionsPlacementTabData();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(method = RequestMethod.GET, value = "/studentInfoForBioAndAdmissionsPlacementTab/studentId={studentId}")
+	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentId={studentId}")
 	public StudentInfoForBioAndAdmissionsPlacementTab getMiscNotesInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
 		return new StudentInfoForBioAndAdmissionsPlacementTab(student.getStudentName(), student.getStudentMajor(),
@@ -36,9 +43,8 @@ public class StudentController {
 				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
 				student.getInternationalStudent(), student.getStudentPhoto(), student.getTime());
 	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(method = RequestMethod.GET, value = "/studentInfoForBioAndAdmissionsPlacementTab/studentName={studentName}")
+
+	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentName={studentName}")
 	public StudentInfoForBioAndAdmissionsPlacementTab getMiscNotesInfo(@PathVariable String studentName) {
 		List<Student> students = studentRepository.findByStudentName(studentName);
 		Student student = students.get(0);
@@ -46,6 +52,19 @@ public class StudentController {
 				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
 				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
 				student.getInternationalStudent(), student.getStudentPhoto(), student.getTime());
+	}
+
+	@PostMapping("/addStudent")
+	public ResponseEntity<Void> addStudent(@RequestBody Student student) {
+		studentRepository.save(student);
+		try {
+			System.out.println(student.getId());
+			return ResponseEntity.created(new URI("/user/" + student.getId())).build();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
 	}
 
 	private ArrayList<StudentInfoForBioAndAdmissionsPlacementTab> generateFakeBioAndAdmissionsPlacementTabData() {
