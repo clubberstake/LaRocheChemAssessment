@@ -39,7 +39,7 @@
       Year:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentYear}}">
+      <input #studentYearBox type="text" value="{{studentsInput.studentYear}}">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -47,7 +47,7 @@
       Semester:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentSemester}}">
+      <input #studentSemesterBox type="text" value="{{studentsInput.studentSemester}}">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -91,6 +91,6 @@
     </div>
   </div>
   <div>
-    <button (click)="onUpdateStudent()">Update Student</button>
+    <button (click)="onUpdateStudent(studentSemesterBox.value, studentYearBox.value)">Update Student</button>
   </div>
 </div>

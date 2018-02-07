@@ -18,8 +18,11 @@ export class StudentPaneComponent implements OnInit {
   ngOnInit() {
   }
 
-  onUpdateStudent() {
+  onUpdateStudent(semester: string, year: string) {
+    this.studentsInput.studentSemester = semester;
+    this.studentsInput.studentYear = year;
     console.log('This will update current student.');
+    console.log(this.studentsInput);
   }
 
 }
