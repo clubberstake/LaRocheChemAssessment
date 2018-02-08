@@ -48,7 +48,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       id: 1,
       studentName: 'asdf',
       studentMajor: 'Math',
-      studentYear: '2020',
+      studentYear: '9999',
       studentSemester: 'Summer'
     };
 

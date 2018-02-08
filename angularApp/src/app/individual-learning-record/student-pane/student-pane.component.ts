@@ -10,6 +10,7 @@ export class StudentPaneComponent implements OnInit {
 
   @Input() studentIdInput: any;
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  blah: string;
 
   constructor() {
 
@@ -18,9 +19,7 @@ export class StudentPaneComponent implements OnInit {
   ngOnInit() {
   }
 
-  onUpdateStudent(semester: string, year: string) {
-    this.studentsInput.studentSemester = semester;
-    this.studentsInput.studentYear = year;
+  onUpdateStudent() {
     console.log('This will update current student.');
     console.log(this.studentsInput);
   }
