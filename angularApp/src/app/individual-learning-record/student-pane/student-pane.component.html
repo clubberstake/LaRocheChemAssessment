@@ -4,10 +4,10 @@
   </div>
   <div class="ilrStudentRow">
     <div class="ilrStudentLabel">
-      Name:
+      Name
     </div>
     <div>
-      <input type="text" value="blah">
+      <input type="text" value="{{studentsInput.studentName}}">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -15,7 +15,7 @@
       ID #:
     </div>
     <div>
-      <input type="text" value="blah">
+      <input type="text" value="{{studentIdInput}}">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -23,7 +23,7 @@
       Create Date:
     </div>
     <div>
-      <input type="text" value="blah">
+      <input type="text" value="{{studentsInput.time}}">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -31,7 +31,66 @@
       Major:
     </div>
     <div>
-      <input type="text" value="blah">
+      <input type="text" value="{{studentsInput.studentMajor}}">
     </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Year:
+    </div>
+    <div>
+      <input [(ngModel)]="studentsInput.studentYear" type="text">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Semester:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.studentSemester}}">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Math Placement:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.studentMathGrade}}">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Athletics:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.studentAthletics}}">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Housing Status:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.studentHousingStatus}}">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      Honors Status:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.studentHonors}}">
+    </div>
+  </div>
+  <div class="ilrStudentRow">
+    <div class="ilrStudentLabel">
+      International Status:
+    </div>
+    <div>
+      <input type="text" value="{{studentsInput.internationalStudent}}">
+    </div>
+  </div>
+  <div>
+    <button (click)="onUpdateStudent()">Update Student</button>
   </div>
 </div>

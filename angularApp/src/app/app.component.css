@@ -1,5 +1,5 @@
 .tab-main{
-    position: absolute;
+  position: absolute;
 	width: 100%;
 	height: 95%;
 	background-color: #c0deed;
@@ -9,13 +9,13 @@
 .logoDiv{
 	margin-bottom: 10px;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	/* justify-content:center; */
 }
 
 .headerTitle{
 	font-family: "Open Sans", sans-serif;
-	font-size: 50px;
+	font-size: 30px;
 	/* margin-left: 15%;  */
 	flex-grow: 1;
 	text-align: center;
@@ -24,4 +24,17 @@
 .larocheLogo{
 	position: absolute;
 	float: left;
+  height: 50px;
+  padding-bottom: 16px;
+}
+
+.studentSearchBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.pageMargin {
+  margin-left: 10px;
+  margin-right: 10px;
+
 }

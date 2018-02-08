@@ -3,6 +3,7 @@ import { NotesInfoForMiscNotesTab } from './notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTab } from './studentInfoForBioAndAdmissionsPlacementTab';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/student-info-for-bio-and-admissions-placement-tab.service';
+import { Response } from '@angular/http/src/static_response';
 
 @Component({
   selector: 'app-individual-learning-record',
@@ -11,13 +12,15 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/s
 })
 export class IndividualLearningRecordComponent implements OnInit {
 
+  studentId: any;
+  student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
+  students: StudentInfoForBioAndAdmissionsPlacementTab[];
+
   miscNote: NotesInfoForMiscNotesTab;
   miscNotes: NotesInfoForMiscNotesTab[] = [];
 
-  student: StudentInfoForBioAndAdmissionsPlacementTab;
-  students: StudentInfoForBioAndAdmissionsPlacementTab[] = [];
-
-  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) { }
+  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
+  }
 
   ngOnInit() {
     this.notesService.getMiscNoteInfo().subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
@@ -25,13 +28,31 @@ export class IndividualLearningRecordComponent implements OnInit {
       console.log(this.miscNotes);
       this.miscNote = this.miscNotes[0];
     });
+  }
 
-    this.studentsService.getStudentInfo().subscribe((students: StudentInfoForBioAndAdmissionsPlacementTab[]) => {
-      this.students = students;
-      console.log(this.students);
-      this.student = students[0];
+  onSearch(studentId: any) {
+    // this.studentsService.getStudentInfo().subscribe((students: StudentInfoForBioAndAdmissionsPlacementTab[]) => {
+    //   this.student = students[0]
+    // });
+
+    this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
+      this.student = student;
     });
 
+    this.studentId = studentId;
+    console.log(this.studentId);
+  }
+
+  onAddStudent() {
+    var addStudent = {
+      id: 1,
+      studentName: 'asdf',
+      studentMajor: 'Math',
+      studentYear: '9999',
+      studentSemester: 'Summer'
+    };
+
+    this.studentsService.addNewStudent(addStudent);
   }
 
 }

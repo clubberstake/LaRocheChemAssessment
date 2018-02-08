@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBioAndAdmissionsPlacementTab';
 
 @Component({
   selector: 'app-student-pane',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentPaneComponent implements OnInit {
 
-  constructor() { }
+  @Input() studentIdInput: any;
+  @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  blah: string;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
+  }
+
+  onUpdateStudent() {
+    console.log('This will update current student.');
+    console.log(this.studentsInput);
   }
 
 }
