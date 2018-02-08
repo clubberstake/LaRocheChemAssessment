@@ -56,9 +56,15 @@ public class StudentController {
 
 	@PostMapping("/addStudent")
 	public ResponseEntity<Void> addStudent(@RequestBody Student student) {
-		studentRepository.save(student);
+		System.out.println(student.getId());
+//		if (studentRepository.exists(student.getId())) {
+//			Student updateStudent = studentRepository.findOne(student.getId());
+//			updateStudent.setStudentYear(student.getStudentYear());
+//			studentRepository.save(updateStudent);
+//		} else {
+			studentRepository.save(student);
+//		}
 		try {
-			System.out.println(student.getId());
 			return ResponseEntity.created(new URI("/user/" + student.getId())).build();
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

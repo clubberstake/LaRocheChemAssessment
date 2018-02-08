@@ -45,10 +45,11 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   onAddStudent() {
     var addStudent = {
+      id: 1,
       studentName: 'asdf',
       studentMajor: 'Math',
-      studentYear: '2018',
-      studentSemester: 'Spring'
+      studentYear: '2020',
+      studentSemester: 'Summer'
     };
 
     this.studentsService.addNewStudent(addStudent);
