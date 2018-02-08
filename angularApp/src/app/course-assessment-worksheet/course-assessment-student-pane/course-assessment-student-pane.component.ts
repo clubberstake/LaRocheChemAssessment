@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-assessment-student-pane.component.css']
 })
 export class CourseAssessmentStudentPaneComponent implements OnInit {
+  show: boolean = true;
 
   constructor() { }
 
