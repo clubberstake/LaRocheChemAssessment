@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseAssessmentStudentPaneComponent implements OnInit {
 
+  displayDate: any
   constructor() { }
 
   ngOnInit() {
+    this.displayDate = new Date().toLocaleDateString();
   }
 
 }
