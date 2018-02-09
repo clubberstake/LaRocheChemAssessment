@@ -7,7 +7,7 @@
       Name
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentName}}">
+      <input name="studentNameBox" type="text" [(ngModel)]="studentsInput.studentName" required>
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -15,7 +15,7 @@
       ID #:
     </div>
     <div>
-      <input type="text" value="{{studentIdInput}}">
+      <input name="studentIdBox" type="text" [(ngModel)]="studentIdInput">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -23,7 +23,7 @@
       Create Date:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.time}}">
+      <input name="studentDateBox" type="text" [(ngModel)]="studentsInput.time">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -31,7 +31,7 @@
       Major:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentMajor}}">
+      <input name="studentMajorBox" type="text" [(ngModel)]="studentsInput.studentMajor">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -39,7 +39,7 @@
       Year:
     </div>
     <div>
-      <input [(ngModel)]="studentsInput.studentYear" type="text">
+      <input name="studentYearBox" [(ngModel)]="studentsInput.studentYear" type="text">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -47,7 +47,7 @@
       Semester:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentSemester}}">
+      <input name="studentSemesterBox" type="text" [(ngModel)]="studentsInput.studentSemester">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -55,7 +55,7 @@
       Math Placement:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentMathGrade}}">
+      <input name="studentMathBox" type="text" [(ngModel)]="studentsInput.studentMathGrade">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -63,7 +63,7 @@
       Athletics:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentAthletics}}">
+      <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -71,7 +71,7 @@
       Housing Status:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentHousingStatus}}">
+      <input name="studentHousingBox" type="text" [(ngModel)]="studentsInput.studentHousingStatus">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -79,7 +79,7 @@
       Honors Status:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.studentHonors}}">
+      <input name="studentHonorsBox" type="text" [(ngModel)]="studentsInput.studentHonors">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -87,7 +87,7 @@
       International Status:
     </div>
     <div>
-      <input type="text" value="{{studentsInput.internationalStudent}}">
+      <input name="studentInternationalBox" type="text" [(ngModel)]="studentsInput.internationalStudent">
     </div>
   </div>
   <div>
