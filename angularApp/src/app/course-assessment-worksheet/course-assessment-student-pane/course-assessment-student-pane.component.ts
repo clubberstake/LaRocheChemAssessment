@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class CourseAssessmentStudentPaneComponent implements OnInit {
   show: boolean = true;
 
+  displayDate: any
   constructor() { }
 
   ngOnInit() {
+    this.displayDate = new Date().toLocaleDateString();
   }
 
 }

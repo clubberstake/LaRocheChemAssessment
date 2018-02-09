@@ -11,13 +11,30 @@ import { CourseInformationObject } from "./course-information-object";
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
 
+  newClicked: boolean = false;
+  evalClicked: boolean = true;
+
   constructor() {
     this.courseInformationObj = new CourseInformationObject();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {    }
 
   onSave() {
     console.log(this.courseInformationObj.studentLearningOutcomes);
   }
+
+  showNew()
+  {
+      this.evalClicked = false;
+      this.newClicked = true;
+  }
+
+  showEval()
+  {
+      this.newClicked = false;
+      this.evalClicked = true;
+  }
+
+
 }
