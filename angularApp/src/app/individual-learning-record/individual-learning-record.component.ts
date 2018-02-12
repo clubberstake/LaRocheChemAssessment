@@ -23,11 +23,6 @@ export class IndividualLearningRecordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notesService.getMiscNoteInfo().subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-      this.miscNotes = miscNotes;
-      console.log(this.miscNotes);
-      this.miscNote = this.miscNotes[0];
-    });
   }
 
   onSearch(studentId: any) {
