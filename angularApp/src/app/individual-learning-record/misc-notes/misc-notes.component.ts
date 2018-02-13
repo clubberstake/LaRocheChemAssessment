@@ -14,12 +14,16 @@ export class MiscNotesComponent implements OnInit {
   miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('','','','');
   miscNotes: NotesInfoForMiscNotesTab[] = [];
 
-  @Input() studentId: any;
+  @Input() studentIdInput: any;
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
   
-  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) { }
+  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) { 
+  }
 
   ngOnInit() {
+  }
+
+  getMiscNotes(){
     this.notesService.getMiscNoteInfo().subscribe((miscNotes: NotesInfoForMiscNotesTab[])=>{
       this.miscNotes = this.miscNotes;
       this.miscNote = this.miscNotes[0];

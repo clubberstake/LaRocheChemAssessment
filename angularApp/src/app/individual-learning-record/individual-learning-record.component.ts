@@ -16,9 +16,6 @@ export class IndividualLearningRecordComponent implements OnInit {
   student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
   students: StudentInfoForBioAndAdmissionsPlacementTab[];
 
-  miscNote: NotesInfoForMiscNotesTab;
-  miscNotes: NotesInfoForMiscNotesTab[] = [];
-
   constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
   }
 
