@@ -3,13 +3,10 @@
   <div class = "notesAuthor">
     Notes by: (when we make users)  on {{studentsInput.studentName}}.
   </div>
-  <div class = "notes">
+<!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
+  <div class = "notes" *ngFor = "let note of miscNotes">
     Notes:
-    <input type="text" name = "studentNotes" value = "">
-    <div class = "printNotes" *ngFor = "let name of miscNotes">
-      <p>{{name.notes}}</p>
-    </div>
-    <button (click) = "getMiscNotes()">GetNotes</button>
-    
+      <p>{{note.notes}}</p>
   </div>
+  <button (click) = "getMiscNotes()">GetNotes</button>
 </div>
