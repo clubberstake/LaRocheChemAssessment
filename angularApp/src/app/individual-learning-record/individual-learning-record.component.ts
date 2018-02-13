@@ -16,17 +16,13 @@ export class IndividualLearningRecordComponent implements OnInit {
   student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
   students: StudentInfoForBioAndAdmissionsPlacementTab[];
 
-  constructor(private notesService: NotesInfoForMiscNotesTabService, private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
+  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
   }
 
   ngOnInit() {
   }
 
   onSearch(studentId: any) {
-    // this.studentsService.getStudentInfo().subscribe((students: StudentInfoForBioAndAdmissionsPlacementTab[]) => {
-    //   this.student = students[0]
-    // });
-
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
       this.student = student;
     });
@@ -35,7 +31,7 @@ export class IndividualLearningRecordComponent implements OnInit {
     console.log(this.studentId);
   }
 
-  onAddStudent() {
+  /*onAddStudent() {
     var addStudent = {
       id: 1,
       studentName: 'asdf',
@@ -45,6 +41,6 @@ export class IndividualLearningRecordComponent implements OnInit {
     };
 
     this.studentsService.addNewStudent(addStudent);
-  }
+  }*/
 
 }

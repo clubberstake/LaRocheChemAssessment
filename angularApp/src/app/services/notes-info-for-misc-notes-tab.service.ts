@@ -10,7 +10,10 @@ export class NotesInfoForMiscNotesTabService {
 
   public getMiscNoteInfo(): Observable<NotesInfoForMiscNotesTab[]> {
     console.log('Made it to Misc Notes service');
-    return this.http.get<NotesInfoForMiscNotesTab[]>("http://localhost:8080/notesInfoForMiscNotesTab");
+    return this.http.get<NotesInfoForMiscNotesTab[]>("http://localhost:8080/notes/notesInfoForMiscNotesTab");
   }
 
+  public getMiscNoteInfoByStudentId(studentId: number): Observable<NotesInfoForMiscNotesTab[]> {
+    return this.http.get<NotesInfoForMiscNotesTab[]>("http://localhost:8080/notes/notesInfoForMiscNotesTab/studentId=" + studentId);
+  }
 }
