@@ -11,7 +11,7 @@ import { StudentPaneComponent } from '../student-pane/student-pane.component';
   styleUrls: ['./record-pane.component.css']
 })
 export class RecordPaneComponent implements OnInit {
-  paneComponent = new StudentPaneComponent(null);
+  paneComponent = new StudentPaneComponent();
   studentId: any;
   notesResults: NotesInfoForMiscNotesTab[];
   miscNotes: any;

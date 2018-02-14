@@ -2,6 +2,7 @@ package laroche.chem.assessment.restApp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +16,6 @@ import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
 import laroche.chem.assessment.responseObjects.ClassInfo;
-import laroche.chem.assessment.responseObjects.CourseInfoForAssessmentWorksheet;
 
 @RestController
 public class CurrentClassController {
@@ -29,7 +29,7 @@ public class CurrentClassController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/currentClasses")
-	public ArrayList<ClassInfo> getClassInfo() {
+	public ArrayList<ClassInfo> getCurrentClassInfo() {
 		return generateFakeData();
 	}
 
@@ -39,11 +39,11 @@ public class CurrentClassController {
 
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes("CHEM2016", null, "SPR 2017"));
-			classRepository.save(new Classes("CHEM2016", null, "FAL 2016"));
-			classRepository.save(new Classes("MATH2050", null, "SPR 2017"));
-			classRepository.save(new Classes("CSCI4098", null, "SPR 2017"));
-			classRepository.save(new Classes("MATH1040", null, "SPR 2017"));
+			classRepository.save(new Classes(1, null, "SPR 2017", "01", 1));
+			classRepository.save(new Classes(1, null, "FAL 2016", "01", 1));
+			classRepository.save(new Classes(3, null, "SPR 2017", "01", 1));
+			classRepository.save(new Classes(2, null, "SPR 2017", "01", 2));
+			classRepository.save(new Classes(4, null, "SPR 2017", "01", 4));
 			classes = classRepository.findAll();
 		}
 		
@@ -66,12 +66,28 @@ public class CurrentClassController {
 		}
 
 		ArrayList<ClassInfo> data = new ArrayList<ClassInfo>();
+		Calendar now = Calendar.getInstance();
+		int year = now.get(Calendar.YEAR);
+		int month = now.get(Calendar.MONTH) + 1;
+		String semester;
+		
+		if(month < 6)
+		{
+			semester = "SP" + year;
+		}
+		else if(month < 9)
+		{
+			semester = "SU" + year;
+		}
+		else
+		{
+			semester = "FA" + year;
+		}
 
 		for (Classes classs : classes) {
-			if(classs.getSemester().equals("SPR 2017"))
+			if(classs.getSemester().equals(semester))
 			{
-				data.add(new ClassInfo(classs.getCourseId(), classs.getSyllabus() , classs.getSemester(), getCourseTitle(courses, classs), getInstructorName(instructors, thiscourse)));
-		
+				data.add(new ClassInfo(classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), getInstructorId(instructors, thiscourse), getInstructorName(instructors, thiscourse)));		
 			}
 		}
 
@@ -80,7 +96,7 @@ public class CurrentClassController {
 	
 	private String getCourseTitle(List<Course> courses, Classes classs) {
 		for (Course course : courses) {
-			if (course.getCourseNumAndSection().equals(classs.getCourseId())) {
+			if (course.getId() == classs.getCourseId()) {
 				thiscourse = course;
 				return course.getCourseName();
 			}
@@ -97,6 +113,28 @@ public class CurrentClassController {
 		}
 
 		return "Bad Instructor Name";
+	}
+	
+	private String getCourseId(List<Course> courses, Classes classs) {
+		for (Course course : courses) {
+			if (course.getId() == classs.getCourseId()) {
+				thiscourse = course;
+				return course.getCourseNumAndSection();
+			}
+		}
+
+		return "Bad Course ID";
+	}
+	
+
+	private long getInstructorId(List<Instructor> instructors, Course course) {
+		for (Instructor instructor : instructors) {
+			if (instructor.getId() == course.getInstructorId()) {
+				return instructor.getId();
+			}
+		}
+
+		return 0;
 	}
 
 }

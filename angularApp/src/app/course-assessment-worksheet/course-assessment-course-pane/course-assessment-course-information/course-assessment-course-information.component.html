@@ -3,14 +3,14 @@
     <div>
       <span class="courseInfoForAssessmentWorksheetLabel">Course # / Sec:</span>
       <select class="courseInfoForAssessmentWorksheetSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
-        <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumAndSection}}>
-          {{courseAndSection.courseNumAndSection}}
+        <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseID}}>
+          {{courseAndSection.courseID}}
         </option>
       </select>
     </div>
     <div class="courseInfoForAssessmentWorksheetRow">
       <span class="courseInfoForAssessmentWorksheetLabel">Course Title:</span>
-      <span>{{courseAndSection.courseName}}</span>
+      <span>{{courseAndSection.courseTitle}}</span>
     </div>
   </div>
   <div class="courseInfoForAssessmentWorksheetContainer">
@@ -20,7 +20,7 @@
     </div>
     <div class="courseInfoForAssessmentWorksheetRow">
       <span class="courseInfoForAssessmentWorksheetLabel">Instructor:</span>
-      <span>{{courseAndSection.instructor}}</span>
+      <span>{{courseAndSection.instructorName}}</span>
     </div>
   </div>
 </div>

@@ -60,10 +60,10 @@ public class CourseSLOsController {
 		
 		List<CourseSLOs> slos = course_SLOsRepository.findAll();
 		if (!slos.iterator().hasNext()) {
-			course_SLOsRepository.save(new CourseSLOs("CHEM2016", "true", "true", "true", "true", "true"));
-			course_SLOsRepository.save(new CourseSLOs("CSCI4098", "true", "true", "true", "false", "false"));
-			course_SLOsRepository.save(new CourseSLOs("MATH2050", "true", "true", "false", "false", "true"));
-			course_SLOsRepository.save(new CourseSLOs("MATH1040", "true", "false", "true", "false", "true"));
+			course_SLOsRepository.save(new CourseSLOs(1, "false", "false", "false", "false", "false"));
+			course_SLOsRepository.save(new CourseSLOs(2, "false", "false", "false", "false", "false"));
+			course_SLOsRepository.save(new CourseSLOs(3, "false", "false", "false", "false", "false"));
+			course_SLOsRepository.save(new CourseSLOs(4, "false", "false", "false", "false", "false"));
 			instructors = instructorRepository.findAll();
 		}
 		
@@ -81,16 +81,16 @@ public class CourseSLOsController {
 		ArrayList<CourseSLOsInfo> data = new ArrayList<CourseSLOsInfo>();
 
 		for (CourseSLOs courseSLOs : slos) {
-			data.add(new CourseSLOsInfo(courseSLOs.getCourseId(), getCourseTitle(courses, courseSLOs.getCourseId()),
+			data.add(new CourseSLOsInfo(courseSLOs.getClassId(), getCourseTitle(courses, courseSLOs.getClassId()),
 					thiscourse.getSemester() + " " + thiscourse.getYear(), getInstructorName(instructors, thiscourse), getSLOName(slolist, 1) + ": " + courseSLOs.getSlo1(), getSLOName(slolist, 2) + ": " + courseSLOs.getSlo2(), getSLOName(slolist, 3) + ": " + courseSLOs.getSlo3(), getSLOName(slolist, 4) + ": " + courseSLOs.getSlo4(), getSLOName(slolist, 5) + ": " + courseSLOs.getSlo5()));
 		}
 
 		return data;
 	}
 
-	private String getCourseTitle(List<Course> courses, String courseID) {
+	private String getCourseTitle(List<Course> courses, long classID) {
 		for (Course course : courses) {
-			if (course.getCourseNumAndSection().equals(courseID)) {
+			if (course.getId() == classID) {
 				thiscourse = course;
 				return course.getCourseName();
 			}
