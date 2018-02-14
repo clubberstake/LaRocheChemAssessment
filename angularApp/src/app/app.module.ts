@@ -24,6 +24,7 @@ import {InstructorInformationService} from './services/instructor-service.servic
 import { CurrentClassInformationService } from './services/current-class-service';
 import { CourseAssessmentSection1Component } from './course-assessment-worksheet/course-assessment-section1/course-assessment-section1.component';
 import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc-notes.component';
+import { CourseSLOsInformationService } from './services/course-slo-service.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc
     HttpModule,
     FormsModule
   ],
-  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
