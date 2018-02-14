@@ -11,3 +11,8 @@
   padding: 5px;
   font-family: "Open Sans", sans-serif;
 }
+
+.miscNotesBase {
+  flex-grow: 1;
+}
+

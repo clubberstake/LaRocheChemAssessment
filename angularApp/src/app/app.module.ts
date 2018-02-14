@@ -10,7 +10,6 @@ import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
 import { IndividualLearningRecordComponent } from './individual-learning-record/individual-learning-record.component';
 import { StudentPaneComponent } from './individual-learning-record/student-pane/student-pane.component';
-import { RecordPaneComponent } from './individual-learning-record/record-pane/record-pane.component';
 import { CourseAssessmentCoursePaneComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-pane.component';
 import { CourseAssessmentCourseInformationComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-information/course-assessment-course-information.component';
 import { CourseAssessmentCourseStudentLearningOutcomesComponent } from './course-assessment-worksheet/course-assessment-course-pane/course-assessment-course-student-learning-outcomes/course-assessment-course-student-learning-outcomes.component';
@@ -24,6 +23,7 @@ import { ClassInformationService } from './services/class-service.service';
 import {InstructorInformationService} from './services/instructor-service.service';
 import { CurrentClassInformationService } from './services/current-class-service';
 import { CourseAssessmentSection1Component } from './course-assessment-worksheet/course-assessment-section1/course-assessment-section1.component';
+import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc-notes.component';
 
 
 @NgModule({
@@ -34,14 +34,14 @@ import { CourseAssessmentSection1Component } from './course-assessment-worksheet
     TabComponent,
     IndividualLearningRecordComponent,
     StudentPaneComponent,
-    RecordPaneComponent,
     CourseAssessmentCoursePaneComponent,
     CourseAssessmentCourseInformationComponent,
     CourseAssessmentCourseStudentLearningOutcomesComponent,
     CourseAssessmentStudentPaneComponent,
     ComponentNameComponent,
     CourseAssessmentNewCourseComponent,
-    CourseAssessmentSection1Component
+    CourseAssessmentSection1Component,
+    MiscNotesComponent,
   ],
   imports: [
     BrowserModule,

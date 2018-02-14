@@ -1,0 +1,12 @@
+<div class = "studentNotes">
+  <h1>Miscellaneous Notes</h1>
+  <div class = "notesAuthor">
+    Notes by: (when we make users)  on {{studentsInput.studentName}}.
+  </div>
+<!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
+  <div class = "notes" *ngFor = "let note of miscNotes">
+    Notes:
+      <p>{{note.notes}}</p>
+  </div>
+  <button (click) = "getMiscNotes()">GetNotes</button>
+</div>

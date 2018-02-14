@@ -1,11 +1,12 @@
 <div class="studentIdSearchBox">
-  <div class="studentIdSearchBoxLable">Search for a student!</div>
+  <div class="studentIdSearchBoxLabel">Search for a student!</div>
     <input #studentIdSearchBox studentIdSearchBox.value=''>
     <button (click)="onSearch(studentIdSearchBox.value)">Search</button>
-    {{student.studentName}}
 </div>
 <div class="ilrBase">
   <app-student-pane [studentsInput]="student" [studentIdInput]="studentId"></app-student-pane>
-  <app-record-pane></app-record-pane>
-  <button (click)="onAddStudent()">Add Student</button>
+  <div class = "miscNotesBase">
+      <app-misc-notes [studentsInput]="student" [studentIdInput]="studentId"></app-misc-notes>
+  </div>
+  <!--<button (click)="onAddStudent()">Add Student</button>-->
 </div>

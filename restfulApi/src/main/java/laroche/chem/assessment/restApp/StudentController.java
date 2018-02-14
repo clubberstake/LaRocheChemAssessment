@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,17 +58,31 @@ public class StudentController {
 	@PostMapping("/addStudent")
 	public ResponseEntity<Void> addStudent(@RequestBody Student student) {
 		System.out.println(student.getId());
-//		if (studentRepository.exists(student.getId())) {
-//			Student updateStudent = studentRepository.findOne(student.getId());
-//			updateStudent.setStudentYear(student.getStudentYear());
-//			studentRepository.save(updateStudent);
-//		} else {
-			studentRepository.save(student);
-//		}
+		studentRepository.save(student);
+
 		try {
 			return ResponseEntity.created(new URI("/user/" + student.getId())).build();
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+	
+	@PutMapping("/updateStudent")
+	public ResponseEntity<Void> updateStudent(@RequestBody Student student) {
+		// Data Test Prints:
+		System.out.println(student.getStudentSemester());
+		System.out.println(student.getId());
+		System.out.println(studentRepository.exists(student.getId()));
+		System.out.println(student.getStudentAthletics());
+		System.out.println(student.getStudentMajor());
+		
+		studentRepository.save(student);
+		try {
+			return ResponseEntity.created(new URI("/updated/" + student.getId())).build();
+		}
+		catch(URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}

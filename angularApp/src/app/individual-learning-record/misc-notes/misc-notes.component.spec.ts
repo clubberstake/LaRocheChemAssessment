@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordPaneComponent } from './record-pane.component';
+import { MiscNotesComponent } from './misc-notes.component';
 
-describe('RecordPaneComponent', () => {
-  let component: RecordPaneComponent;
-  let fixture: ComponentFixture<RecordPaneComponent>;
+describe('MiscNotesComponent', () => {
+  let component: MiscNotesComponent;
+  let fixture: ComponentFixture<MiscNotesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecordPaneComponent ]
+      declarations: [ MiscNotesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecordPaneComponent);
+    fixture = TestBed.createComponent(MiscNotesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
