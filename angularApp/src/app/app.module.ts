@@ -24,6 +24,7 @@ import {InstructorInformationService} from './services/instructor-service.servic
 import { CurrentClassInformationService } from './services/current-class-service';
 import { CourseAssessmentSection1Component } from './course-assessment-worksheet/course-assessment-section1/course-assessment-section1.component';
 import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc-notes.component';
+import { CourseSLOsInformationService } from './services/course-slo-service.service';
 import { ComponentCafs2Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs2/component-cafs2.component';
 
 
@@ -51,7 +52,7 @@ import { ComponentCafs2Component } from './course-assessment-worksheet/course-as
     HttpModule,
     FormsModule
   ],
-  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
