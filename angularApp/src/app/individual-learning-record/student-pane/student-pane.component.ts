@@ -13,7 +13,7 @@ export class StudentPaneComponent implements OnInit {
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
   
   majors = ['Chemistry', 'Biochemistry', 'Other'];
-  years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+  years = ['Sophomore','Junior','Senior'];
   semesters = ['Fall', 'Spring', 'Summer'];
   grades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
