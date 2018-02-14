@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +36,13 @@ public class ClassController {
 	public ArrayList<ClassInfo> getClassInfo() {
 		return generateFakeData();
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/addClass")
+ 	public ResponseEntity<Void> addClass(@RequestBody Classes classes) {
+ 		System.out.println(classes.getId());
+ 		classRepository.save(classes);
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
+	}
 
 		private Course thiscourse;
 		
@@ -39,11 +50,11 @@ public class ClassController {
 
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes("CHEM2016", null, "SPR 2017"));
-			classRepository.save(new Classes("CHEM2016", null, "FAL 2016"));
-			classRepository.save(new Classes("MATH2050", null, "SPR 2017"));
-			classRepository.save(new Classes("CSCI4098", null, "SPR 2017"));
-			classRepository.save(new Classes("MATH1040", null, "SPR 2017"));
+			classRepository.save(new Classes(1, null, "SPR 2017", "01", 1));
+			classRepository.save(new Classes(1, null, "FAL 2016", "01", 1));
+			classRepository.save(new Classes(3, null, "SPR 2017", "01", 1));
+			classRepository.save(new Classes(2, null, "SPR 2017", "01", 2));
+			classRepository.save(new Classes(4, null, "SPR 2017", "01", 4));
 			classes = classRepository.findAll();
 		}
 		
@@ -68,7 +79,7 @@ public class ClassController {
 		ArrayList<ClassInfo> data = new ArrayList<ClassInfo>();
 
 		for (Classes classs : classes) {
-			data.add(new ClassInfo(classs.getCourseId(), classs.getSyllabus() , classs.getSemester(), getCourseTitle(courses, classs), getInstructorName(instructors, thiscourse)));
+			data.add(new ClassInfo(classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), getInstructorId(instructors, thiscourse), getInstructorName(instructors, thiscourse)));
 		}
 
 		return data;
@@ -85,6 +96,17 @@ public class ClassController {
 		return "Bad Course Name";
 	}
 	
+	private String getCourseId(List<Course> courses, Classes classs) {
+		for (Course course : courses) {
+			if (course.getId() == classs.getCourseId()) {
+				thiscourse = course;
+				return course.getCourseNumAndSection();
+			}
+		}
+
+		return "Bad Course ID";
+	}
+	
 	private String getInstructorName(List<Instructor> instructors, Course course) {
 		for (Instructor instructor : instructors) {
 			if (instructor.getId() == course.getInstructorId()) {
@@ -93,6 +115,16 @@ public class ClassController {
 		}
 
 		return "Bad Instructor Name";
+	}
+	
+	private long getInstructorId(List<Instructor> instructors, Course course) {
+		for (Instructor instructor : instructors) {
+			if (instructor.getId() == course.getInstructorId()) {
+				return instructor.getId();
+			}
+		}
+
+		return 0;
 	}
 
 }

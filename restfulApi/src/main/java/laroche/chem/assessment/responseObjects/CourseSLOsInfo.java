@@ -2,9 +2,9 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseSLOsInfo {
 
-	public CourseSLOsInfo(String courseID, String courseTitle, String semester,
+	public CourseSLOsInfo(long classID, String courseTitle, String semester,
 			String instructor, String slo1, String slo2, String slo3, String slo4, String slo5) {
-		this.courseID = courseID;
+		this.classID = classID;
 		this.courseTitle = courseTitle;
 		this.semester = semester;
 		this.instructor = instructor;
@@ -15,7 +15,7 @@ public class CourseSLOsInfo {
 		this.slo5 = slo5;
 	}
 
-	private String courseID;
+	private long classID;
 	private String courseTitle;
 	private String semester;
 	private String instructor;
@@ -38,9 +38,9 @@ public class CourseSLOsInfo {
 		return instructor;
 	}
 	
-	public String getCourseID()
+	public long getClassID()
 	{
-		return courseID;
+		return classID;
 	}
 	
 	public String getSLO1()

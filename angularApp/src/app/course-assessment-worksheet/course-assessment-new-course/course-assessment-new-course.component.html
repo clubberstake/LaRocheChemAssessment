@@ -1,7 +1,41 @@
 <div>
-  Course ID: <input type="text" name="courseid"><br>
-  Course Section: <input type="text" name="coursesection"><br>
-  Semester: <input type="text" name="semester"><br>
-  Instructor: <input type="text" name="instructor"><br>
-  <input type="submit" value="Add">
+  Course ID: 
+  <select ng-model="mod" id="coursedd" class="courseInfoForAssessmentWorksheetSelector" #selectCourse (change)="setcourseAndSection(selectCourse.value)">
+    <option selected="selected">COURSE ID</option>
+    <option (click)="oldCourseDropDown()" class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumAndSection}}>
+      {{courseAndSection.courseNumAndSection}}
+    </option>
+    <option (click)="newCourseDropDown()" value="OTHER">OTHER</option>
+  </select><br>
+  <div *ngIf="other">
+    Course Name:<input type="text" id="courseName" [(ngModel)]="newCourse.courseName"><br>
+    Course Number:<input type="text" id="courseNumber" [(ngModel)]="newCourse.courseNumAndSection">
+  </div>
+  Course Section: <input type="text" name="coursesection" [(ngModel)]="newClass.section"><br>
+  <div class="semesterContainer">
+      FALL
+      <input #fallRadioBtn name="semester" value="FA" id="fallRadioBtn" type="radio" [(ngModel)]="semester">
+      SPRING
+      <input #springRadioBtn name="semester" value="SP" id="springRadioBtn" type="radio" [(ngModel)]="semester">
+      SUMMER
+      <input #summerRadioBtn name="semester" value="SU" id="summerRadioBtn" type="radio" [(ngModel)]="semester">
+  </div>
+  <div class="yearContainer">
+        {{thisYear}} 
+        <input #thisYearRadioBtn name="year" value="{{thisYear}}" id="thisYearRadioBtn" type="radio" [(ngModel)]="year">
+        {{nextYear}} 
+        <input #nextYearRadioBtn name="year" value="{{nextYear}}" id="nextYearRadioBtn" type="radio" [(ngModel)]="year">
+  </div>
+  Instructor: 
+  <select ng-model="mod" class="instructorInfoForAssessmentWorksheetSelector" #selectInstructor (change)="setInstructor(selectInstructor.value)">
+    <option selected="selected">Instructor</option>
+    <option (click)="instructorDropDown()" class="instructorInfoForAssessmentWorksheetSelector" *ngFor="let instructor of instructors" value={{instructor.name}}>
+      {{instructor.name}}
+    </option>
+    <option (click)="newInstructorDropDown()" value="OTHER">OTHER</option>
+  </select><br>
+  <div *ngIf="otherInstructor">
+    Instructor Name:<input type="text" name="instructorName" [(ngModel)]="newInstructor.name"><br>
+  </div>
+  <input type="submit" value="Add" (click)="addClass()">
 </div>

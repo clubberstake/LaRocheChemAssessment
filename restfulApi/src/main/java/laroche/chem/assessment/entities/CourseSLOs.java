@@ -12,7 +12,7 @@ public class CourseSLOs {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String courseId;
+	private long classId;
 	private String slo1;
 	private String slo2;
 	private String slo3;
@@ -21,8 +21,8 @@ public class CourseSLOs {
 	
 	public CourseSLOs() {}
 
-	public CourseSLOs(String courseId, String slo1, String slo2, String slo3, String slo4, String slo5) {
-		this.courseId = courseId;
+	public CourseSLOs(long classId, String slo1, String slo2, String slo3, String slo4, String slo5) {
+		this.classId = classId;
 		this.slo1 = slo1;
 		this.slo2 = slo2;
 		this.slo3 = slo3;
@@ -38,12 +38,12 @@ public class CourseSLOs {
 		this.id = id;
 	}
 
-	public String getCourseId() {
-		return courseId;
+	public long getClassId() {
+		return classId;
 	}
 
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
+	public void setClassId(long classId) {
+		this.classId = classId;
 	}
 
 	public String getSlo1() {

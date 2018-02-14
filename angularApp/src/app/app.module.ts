@@ -19,7 +19,12 @@ import { ComponentNameComponent } from './component-name/component-name.componen
 import { NotesInfoForMiscNotesTabService } from './services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from './services/student-info-for-bio-and-admissions-placement-tab.service';
 import { CourseInformationService } from './services/course-information-service.service';
-import { CourseAssessmentNewCourseComponent } from './course-assessment-worksheet/course-assessment-new-course/course-assessment-new-course.component'
+import { CourseAssessmentNewCourseComponent } from './course-assessment-worksheet/course-assessment-new-course/course-assessment-new-course.component';
+import { ClassInformationService } from './services/class-service.service';
+import {InstructorInformationService} from './services/instructor-service.service';
+import { CurrentClassInformationService } from './services/current-class-service';
+import { CourseAssessmentSection1Component } from './course-assessment-worksheet/course-assessment-section1/course-assessment-section1.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { CourseAssessmentNewCourseComponent } from './course-assessment-workshee
     CourseAssessmentCourseStudentLearningOutcomesComponent,
     CourseAssessmentStudentPaneComponent,
     ComponentNameComponent,
-    CourseAssessmentNewCourseComponent
+    CourseAssessmentNewCourseComponent,
+    CourseAssessmentSection1Component
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,7 @@ import { CourseAssessmentNewCourseComponent } from './course-assessment-workshee
     HttpModule,
     FormsModule
   ],
-  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

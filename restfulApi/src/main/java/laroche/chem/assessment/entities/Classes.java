@@ -10,20 +10,24 @@ public class Classes {
 	
 	public Classes() {}
 	
-	public Classes(String courseId, byte[] syllabus, String semester) {
+	public Classes(long courseId, byte[] syllabus, String semester, String section, int instructorId) {
 		this.courseId = courseId;
 		this.syllabus = syllabus;
 		this.semester = semester;
+		this.section = section;
+		this.instructorId = instructorId;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String courseId;
+	private long courseId;
 	// Array represents tinyblob
 	private byte[] syllabus;
 	private String semester;
+	private String section;
+	private int instructorId;
 	
 	public long getId() {
 		return id;
@@ -33,11 +37,11 @@ public class Classes {
 		this.id = id;
 	}
 	
-	public String getCourseId() {
+	public long getCourseId() {
 		return courseId;
 	}
 	
-	public void setCourseId(String courseId) {
+	public void setCourseId(int courseId) {
 		this.courseId = courseId;
 	}
 	
@@ -57,5 +61,23 @@ public class Classes {
 		this.semester = semester;
 	}
 	
+	public String getSection()
+	{
+		return section;
+	}
 	
+	public void setSection(String section)
+	{
+		this.section = section;
+	}
+	
+	public int getInstructorId()
+	{
+		return instructorId;
+	}
+	
+	public void setInstructorId(int instructorId)
+	{
+		this.instructorId = instructorId;
+	}
 }
