@@ -10,6 +10,7 @@
 <div id="main">
     <div id="sectionCourseEvaluation" class="tab-content" *ngIf="evalClicked">
         <app-course-assessment-course-pane [courseInformationObjInput]="courseInformationObj"></app-course-assessment-course-pane>
+        <app-component-cafs2></app-component-cafs2>
   <app-course-assessment-student-pane></app-course-assessment-student-pane>
   <button class="saveButton" (click)="onSave()">Save</button>
     </div>
