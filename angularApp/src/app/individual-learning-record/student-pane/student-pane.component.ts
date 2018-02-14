@@ -11,6 +11,12 @@ export class StudentPaneComponent implements OnInit {
 
   @Input() studentIdInput: any;
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  
+  majors = ['Chemistry', 'Biochemistry', 'Other'];
+  years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+  semesters = ['Fall', 'Spring', 'Summer'];
+  grades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
+
 
   constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) {
 
