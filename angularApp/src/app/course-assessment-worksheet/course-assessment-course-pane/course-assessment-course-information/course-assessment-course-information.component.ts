@@ -31,7 +31,9 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.currentClassInformationService.getCurrentClassInfo().subscribe((courses: CurrentClassInfo[]) => {
       this.courseAndSections = courses;
       console.log(this.courseAndSections);
-      this.courseAndSection = this.courseAndSections[0];
+      if (this.courseAndSections.length > 0) {
+        this.courseAndSection = this.courseAndSections[0];
+      }
     });
   }
 }
