@@ -6,8 +6,8 @@
     <button (click)="onSearchByName(studentNameSearchBox.value)">Search by Name</button>
 </div>
 <div class="ilrBase">
-  <app-student-pane [studentsInput]="student" [studentIdInput]="studentId"></app-student-pane>
+  <app-student-pane [studentObjectInput]="ilrStudentOject" [studentIdInput]="studentId"></app-student-pane>
   <div class = "miscNotesBase">
-      <app-misc-notes [studentsInput]="student" [studentIdInput]="studentId" [notes]="miscNotes" [dateInput]="date"></app-misc-notes>
+      <app-misc-notes [studentObjectInput]="ilrStudentOject" [studentIdInput]="studentId" [notes]="miscNotes" [dateInput]="date"></app-misc-notes>
   </div>
 </div>

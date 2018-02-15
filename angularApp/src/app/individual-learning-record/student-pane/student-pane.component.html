@@ -7,7 +7,7 @@
       Name
     </div>
     <div>
-      <input name="studentNameBox" type="text" [(ngModel)]="studentsInput.studentName" required>
+      <input name="studentNameBox" type="text" [(ngModel)]="studentObjectInput.student.studentName" required>
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -23,7 +23,7 @@
       Create Date:
     </div>
     <div>
-      <input name="studentDateBox" type="text" [(ngModel)]="studentsInput.time">
+      <input name="studentDateBox" type="text" [(ngModel)]="studentObjectInput.student.time">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -31,7 +31,7 @@
       Major:
     </div>
     <div>
-        <select name="studentMajorBox" required [(ngModel)]="studentsInput.studentMajor" #major="ngModel">
+        <select name="studentMajorBox" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
             <option *ngFor="let p of majors" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -41,7 +41,7 @@
       Year:
     </div>
     <div>
-        <select name="studentYearBox" required [(ngModel)]="studentsInput.studentYear" #year="ngModel">
+        <select name="studentYearBox" required [(ngModel)]="studentObjectInput.student.studentYear" #year="ngModel">
             <option *ngFor="let p of years" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -51,7 +51,7 @@
       Semester:
     </div>
     <div>
-        <select name="studentSemesterBox" required [(ngModel)]="studentsInput.studentSemester" #sememster="ngModel">
+        <select name="studentSemesterBox" required [(ngModel)]="studentObjectInput.student.studentSemester" #sememster="ngModel">
             <option *ngFor="let p of semesters" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -61,7 +61,7 @@
       Math Placement:
     </div>
     <div>
-        <select name="studentMathBox" required [(ngModel)]="studentsInput.studentMathGrade" #grade="ngModel">
+        <select name="studentMathBox" required [(ngModel)]="studentObjectInput.student.studentMathGrade" #grade="ngModel">
             <option *ngFor="let p of grades" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -71,7 +71,7 @@
       Athletics:
     </div>
     <div>
-      <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
+      <input name="studentAtleticsBox" type="text" [(ngModel)]="studentObjectInput.student.studentAthletics">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -79,7 +79,7 @@
       Housing Status:
     </div>
     <div>
-      <input name="studentHousingBox" type="text" [(ngModel)]="studentsInput.studentHousingStatus">
+      <input name="studentHousingBox" type="text" [(ngModel)]="studentObjectInput.student.studentHousingStatus">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -87,7 +87,7 @@
       Honors Status:
     </div>
     <div>
-      <input name="studentHonorsBox" type="text" [(ngModel)]="studentsInput.studentHonors">
+      <input name="studentHonorsBox" type="text" [(ngModel)]="studentObjectInput.student.studentHonors">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -95,7 +95,7 @@
       International Status:
     </div>
     <div>
-      <input name="studentInternationalBox" type="text" [(ngModel)]="studentsInput.internationalStudent">
+      <input name="studentInternationalBox" type="text" [(ngModel)]="studentObjectInput.student.internationalStudent">
     </div>
   </div>
   <div>

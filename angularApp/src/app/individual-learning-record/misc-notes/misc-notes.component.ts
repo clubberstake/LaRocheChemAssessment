@@ -3,6 +3,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../service
 import { NotesInfoForMiscNotesTab } from '../notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../../services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBioAndAdmissionsPlacementTab';
+import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 
 @Component({
   selector: 'app-misc-notes',
@@ -14,7 +15,7 @@ export class MiscNotesComponent implements OnInit {
   studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
 
   @Input() studentIdInput: any;
-  @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  @Input() studentObjectInput: IndividualLearningRecordObject;
   @Input() notes: NotesInfoForMiscNotesTab[];
   @Input() dateInput: string;
 
@@ -24,11 +25,19 @@ export class MiscNotesComponent implements OnInit {
   }
 
   postMiscNotes() {
-    this.studentNote.studentId = this.studentIdInput;
+    this.studentObjectInput.miscNote.studentId = this.studentIdInput;
+    this.studentObjectInput.miscNote.author = "placeholder@somewhere.com";
+    this.studentObjectInput.miscNote.time = this.dateInput;
+    if (this.studentObjectInput.miscNote.notes != "") {
+      this.notesService.addNewNote(this.studentObjectInput.miscNote);
+    }
+
+/*     this.studentNote.studentId = this.studentIdInput;
     this.studentNote.author = "placeholder@somewhere.com";
-    this.studentNote.time = this.dateInput;
+    this.studentNote.time = this.dateInput; 
     if (this.studentNote.notes != "") {
       this.notesService.addNewNote(this.studentNote);
-    }
+    }*/
+    
   }
 }
