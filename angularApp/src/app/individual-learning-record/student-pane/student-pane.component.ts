@@ -10,7 +10,6 @@ import { IndividualLearningRecordObject } from '../individual-learning-record-ob
 })
 export class StudentPaneComponent implements OnInit {
 
-  @Input() studentIdInput: any;
   @Input() studentObjectInput: IndividualLearningRecordObject;
 
   majors = ['Chemistry', 'Biochemistry', 'Other'];
@@ -24,7 +23,7 @@ export class StudentPaneComponent implements OnInit {
   }
 
   onUpdateStudent() {
-    this.studentObjectInput.student.id = this.studentIdInput;
+    this.studentObjectInput.student.id = this.studentObjectInput.studentId;
     console.log(this.studentObjectInput);
     this.studentService.updateStudent(this.studentObjectInput.student);
   }

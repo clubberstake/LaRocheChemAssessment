@@ -12,12 +12,13 @@ import { IndividualLearningRecordObject } from '../individual-learning-record-ob
 })
 export class MiscNotesComponent implements OnInit {
 
-  studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
+  //studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
 
-  @Input() studentIdInput: any;
+  //@Input() studentIdInput: any;
   @Input() studentObjectInput: IndividualLearningRecordObject;
-  @Input() notes: NotesInfoForMiscNotesTab[];
-  @Input() dateInput: string;
+  //@Input() notes: NotesInfoForMiscNotesTab[];
+  //@Input() dateInput: string;
+  time = new Date();
 
   constructor(private notesService: NotesInfoForMiscNotesTabService) {}
 
@@ -25,19 +26,11 @@ export class MiscNotesComponent implements OnInit {
   }
 
   postMiscNotes() {
-    this.studentObjectInput.miscNote.studentId = this.studentIdInput;
+    this.studentObjectInput.miscNote.studentId = this.studentObjectInput.studentId;
     this.studentObjectInput.miscNote.author = "placeholder@somewhere.com";
-    this.studentObjectInput.miscNote.time = this.dateInput;
+    this.studentObjectInput.miscNote.time = this.time.getMonth() + "/" + this.time.getDate() + "/" + this.time.getFullYear();
     if (this.studentObjectInput.miscNote.notes != "") {
       this.notesService.addNewNote(this.studentObjectInput.miscNote);
     }
-
-/*     this.studentNote.studentId = this.studentIdInput;
-    this.studentNote.author = "placeholder@somewhere.com";
-    this.studentNote.time = this.dateInput; 
-    if (this.studentNote.notes != "") {
-      this.notesService.addNewNote(this.studentNote);
-    }*/
-    
   }
 }

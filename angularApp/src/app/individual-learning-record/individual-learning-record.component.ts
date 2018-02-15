@@ -13,41 +13,28 @@ import { IndividualLearningRecordObject } from './individual-learning-record-obj
 })
 export class IndividualLearningRecordComponent implements OnInit {
 
-  studentId: any;
-  student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
-  students: StudentInfoForBioAndAdmissionsPlacementTab[];
-  miscNotes: NotesInfoForMiscNotesTab[] = [];
-  date: string;
   // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
-  ilrStudentOject: IndividualLearningRecordObject;
-
-  time = new Date();
+  ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
 
   constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService) {
-    this.ilrStudentOject = new IndividualLearningRecordObject();
   }
 
   ngOnInit() {
-    this.date = this.time.getMonth().toString() + "/" + this.time.getDate().toString() + "/" + this.time.getFullYear();
-    console.log(this.date);
   }
 
   onSearchById(studentId: any) {
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
-      this.student = student;
-      this.ilrStudentOject.student = student;
-      console.log(this.ilrStudentOject);
+      this.ilrStudentObject.student = student;
+      console.log(this.ilrStudentObject.student);
     });
 
     this.notesService.getMiscNoteInfoByStudentId(studentId).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-      this.miscNotes = miscNotes;
-     // this.ilrStudentOject.miscNote = miscNotes[0];
-      console.log(this.miscNotes);
-      console.log(this.ilrStudentOject);
+      this.ilrStudentObject.miscNotes = miscNotes;
+      console.log(this.ilrStudentObject.miscNotes);
     })
 
-    this.studentId = studentId;
-    console.log(this.studentId);
+    this.ilrStudentObject.studentId = studentId;
+    console.log(this.ilrStudentObject.studentId);
   }
 
   onSearchByName(studentName: any) {

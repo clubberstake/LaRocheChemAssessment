@@ -3,10 +3,10 @@
   <label>Comments:</label>
   <textarea name="studentNotesBox" type="text" [(ngModel)]="studentObjectInput.miscNote.notes"></textarea>
   <div class="notesAuthor">
-    Notes on {{studentObjectInput.miscNote.author}}
+    Notes on {{studentObjectInput.student.studentName}}
   </div>
 <!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
-  <div class="notes" *ngFor="let note of notes">
+  <div class="notes" *ngFor="let note of studentObjectInput.miscNotes">
     <strong>[Entry]</strong>
     <strong>Author:</strong> {{note.author}}
     <strong>Date:</strong> {{note.time}}
