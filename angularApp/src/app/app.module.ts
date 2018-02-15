@@ -25,6 +25,7 @@ import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc
 import { CourseSLOsInformationService } from './services/course-slo-service.service';
 import { ComponentCafs2Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs2/component-cafs2.component';
 import { CourseAssessmentCaf3 } from './course-assessment-worksheet/course-assessment-course-pane/caf-section-3/caf-section-3.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CourseAssessmentCaf3 } from './course-assessment-worksheet/course-asses
     MiscNotesComponent,
     ComponentCafs2Component,
     CourseAssessmentCaf3,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

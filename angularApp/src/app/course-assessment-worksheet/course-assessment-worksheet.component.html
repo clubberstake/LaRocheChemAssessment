@@ -1,11 +1,4 @@
 <div class="courseAssessment">
-    <div id="cafSidenav" class="sidenav">
-
-        <a (click)="showEval()" href="#sectionCourseEvaluation">Course Evaluation</a>
-        <a (click)="showNew()" href="#sectionAddCourse">Add new Courses</a>
-    </div>
-
-
     <div id="main">
         <div id="sectionCourseEvaluation" class="tab-content" *ngIf="evalClicked">
             <app-course-assessment-course-pane [courseInformationObjInput]="courseInformationObj"></app-course-assessment-course-pane>
@@ -13,8 +6,5 @@
             <app-component-cafs2></app-component-cafs2>
             <app-caf-section-3></app-caf-section-3>
             <button class="saveButton" (click)="onSave()">Save</button>
-        </div>
-        <div id="sectionAddCourse" class="tab-content" *ngIf="newClicked">
-            <app-course-assessment-new-course></app-course-assessment-new-course>
         </div>
     </div>
