@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CourseInfoForAssessment } from '../../courseInfoForAssessment';
 import { CourseInformationService } from '../../../services/course-information-service.service';
 import { CourseInformationObject } from '../../course-information-object';
@@ -15,11 +15,11 @@ import { CurrentClassInformationService } from '../../../services/current-class-
   styleUrls: ['./course-assessment-course-information.component.css']
 })
 export class CourseAssessmentCourseInformationComponent implements OnInit {
-  courseAndSection = new CurrentClassInfo('', null, '', '', ''); //console log is nasty without this.
+  @Input() courseInformationObjInput: CourseInformationObject;
   courseAndSections: CurrentClassInfo[] = [];
 
   setcourseAndSection(courseNumAndSection: any): void {
-    this.courseAndSection = this.courseAndSections.find(
+    this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
       value => value.courseID === courseNumAndSection
     );
   }
@@ -28,11 +28,13 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.courseInformationObjInput.CurrentClassInfo = new CurrentClassInfo('', null, '', '', ''); //console log is nasty without this.
+
     this.currentClassInformationService.getCurrentClassInfo().subscribe((courses: CurrentClassInfo[]) => {
       this.courseAndSections = courses;
       console.log(this.courseAndSections);
       if (this.courseAndSections.length > 0) {
-        this.courseAndSection = this.courseAndSections[0];
+        this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections[0];
       }
     });
   }
