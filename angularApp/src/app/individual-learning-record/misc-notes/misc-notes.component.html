@@ -1,12 +1,16 @@
-<div class = "studentNotes">
-  <h1>Miscellaneous Notes</h1>
-  <div class = "notesAuthor">
-    Notes by: (when we make users)  on {{studentsInput.studentName}}.
+<div class="studentNotes">
+  <h1>Student Notes</h1>
+  <label>Comments:</label>
+  <textarea name="studentNotesBox" type="text" [(ngModel)]="studentNote.notes"></textarea>
+  <div class="notesAuthor">
+    Notes on {{studentsInput.studentName}}
   </div>
 <!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
-  <div class = "notes" *ngFor = "let note of miscNotes">
-    Notes:
-      <p>{{note.notes}}</p>
+  <div class="notes" *ngFor="let note of notes">
+    <strong>[Entry]</strong>
+    <strong>Author:</strong> {{note.author}}
+    <strong>Date:</strong> {{note.time}}
+    <p>{{note.notes}}</p>
   </div>
-  <button (click) = "getMiscNotes()">GetNotes</button>
+  <button (click) = "postMiscNotes()">Post</button>
 </div>

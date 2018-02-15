@@ -11,29 +11,24 @@ import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBio
 })
 export class MiscNotesComponent implements OnInit {
 
-  miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('','','','');
-  miscNotes: NotesInfoForMiscNotesTab[] = [];
+  studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
 
   @Input() studentIdInput: any;
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  @Input() notes: NotesInfoForMiscNotesTab[];
+  @Input() dateInput: string;
 
-  constructor(private notesService: NotesInfoForMiscNotesTabService) {
-  }
+  constructor(private notesService: NotesInfoForMiscNotesTabService) {}
 
   ngOnInit() {
   }
 
-  getMiscNotes(){
-    this.notesService.getMiscNoteInfoByStudentId(this.studentIdInput).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-      this.miscNotes = miscNotes;
-      console.log(this.miscNotes)
-    })
+  postMiscNotes() {
+    this.studentNote.studentId = this.studentIdInput;
+    this.studentNote.author = "placeholder@somewhere.com";
+    this.studentNote.time = this.dateInput;
+    if (this.studentNote.notes != "") {
+      this.notesService.addNewNote(this.studentNote);
+    }
   }
-
-
-
-
-
-
-
 }

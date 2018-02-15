@@ -15,32 +15,34 @@ export class IndividualLearningRecordComponent implements OnInit {
   studentId: any;
   student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
   students: StudentInfoForBioAndAdmissionsPlacementTab[];
+  miscNotes: NotesInfoForMiscNotesTab[] = [];
+  date: string;
 
-  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService) {
+  time = new Date();
+
+  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService) {
   }
 
   ngOnInit() {
+    this.date = this.time.getMonth().toString() + "/" + this.time.getDate().toString() + "/" + this.time.getFullYear();
+    console.log(this.date);
   }
 
-  onSearch(studentId: any) {
+  onSearchById(studentId: any) {
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
       this.student = student;
     });
+
+    this.notesService.getMiscNoteInfoByStudentId(studentId).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
+      this.miscNotes = miscNotes;
+      console.log(this.miscNotes);
+    })
 
     this.studentId = studentId;
     console.log(this.studentId);
   }
 
-  /*onAddStudent() {
-    var addStudent = {
-      id: 1,
-      studentName: 'asdf',
-      studentMajor: 'Math',
-      studentYear: '9999',
-      studentSemester: 'Summer'
-    };
-
-    this.studentsService.addNewStudent(addStudent);
-  }*/
-
+  onSearchByName(studentName: any) {
+    console.log(studentName);
+  }
 }

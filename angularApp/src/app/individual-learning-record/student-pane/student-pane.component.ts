@@ -11,16 +11,13 @@ export class StudentPaneComponent implements OnInit {
 
   @Input() studentIdInput: any;
   @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
-  
+
   majors = ['Chemistry', 'Biochemistry', 'Other'];
   years = ['Sophomore','Junior','Senior'];
   semesters = ['Fall', 'Spring', 'Summer'];
   grades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
-
-  constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) {
-
-  }
+  constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) {}
 
   ngOnInit() {
   }
@@ -30,5 +27,4 @@ export class StudentPaneComponent implements OnInit {
     console.log(this.studentsInput);
     this.studentService.updateStudent(this.studentsInput);
   }
-
 }
