@@ -22,7 +22,7 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
   ngOnInit(): void {    }
 
   onSave() {
-    console.log(this.courseInformationObj.studentLearningOutcomes);
+    console.log(this.courseInformationObj);
   }
 
   showNew()

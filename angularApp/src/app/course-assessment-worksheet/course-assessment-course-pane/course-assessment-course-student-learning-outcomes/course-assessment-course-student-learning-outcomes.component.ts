@@ -28,27 +28,27 @@ export class CourseAssessmentCourseStudentLearningOutcomesComponent
   }
 
   knowledgeBaseChecked(value: boolean) {
-    this.studentLearningOutcomesInput.studentLearningOutcomes.knowledgeBaseValue = value;
+    this.studentLearningOutcomesInput.CafSLO.knowledgeBaseValue = value;
     console.log(this.studentLearningOutcomesInput);
   }
 
   labSkillsChecked(value: boolean) {
-    this.studentLearningOutcomesInput.studentLearningOutcomes.labSkillsValue = value;
+    this.studentLearningOutcomesInput.CafSLO.labSkillsValue = value;
     console.log(this.studentLearningOutcomesInput);
   }
 
   practiceChecked(value: boolean) {
-    this.studentLearningOutcomesInput.studentLearningOutcomes.practiceValue = value;
+    this.studentLearningOutcomesInput.CafSLO.practiceValue = value;
     console.log(this.studentLearningOutcomesInput);
   }
 
   societalConnectsChecked(value: boolean) {
-    this.studentLearningOutcomesInput.studentLearningOutcomes.societalConnectsValue = value;
+    this.studentLearningOutcomesInput.CafSLO.societalConnectsValue = value;
     console.log(this.studentLearningOutcomesInput);
   }
 
   capstoneChecked(value: boolean) {
-    this.studentLearningOutcomesInput.studentLearningOutcomes.capstoneValue = value;
+    this.studentLearningOutcomesInput.CafSLO.capstoneValue = value;
     console.log(this.studentLearningOutcomesInput);
   }
 }
