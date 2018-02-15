@@ -31,9 +31,13 @@
       Major:
     </div>
     <div>
-        <select name="studentMajorBox" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
+        <select name="studentMajorSel" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
             <option *ngFor="let p of majors" [value]="p">{{p}}</option>
         </select>
+        <!-- <div *ngif="value of majors == Other">
+            <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
+        </div>
+        <input ng-show="value of p == Other" type="text">  -->
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -41,7 +45,7 @@
       Year:
     </div>
     <div>
-        <select name="studentYearBox" required [(ngModel)]="studentObjectInput.student.studentYear" #year="ngModel">
+        <select name="studentYearSel" required [(ngModel)]="studentObjectInput.student.studentYear" #year="ngModel">
             <option *ngFor="let p of years" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -51,7 +55,7 @@
       Semester:
     </div>
     <div>
-        <select name="studentSemesterBox" required [(ngModel)]="studentObjectInput.student.studentSemester" #sememster="ngModel">
+        <select name="studentSemesterSel" required [(ngModel)]="studentObjectInput.student.studentSemester" #sememster="ngModel">
             <option *ngFor="let p of semesters" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -61,7 +65,7 @@
       Math Placement:
     </div>
     <div>
-        <select name="studentMathBox" required [(ngModel)]="studentObjectInput.student.studentMathGrade" #grade="ngModel">
+        <select name="studentMathSel" required [(ngModel)]="studentObjectInput.student.studentMathGrade" #grade="ngModel">
             <option *ngFor="let p of grades" [value]="p">{{p}}</option>
         </select>
     </div>
@@ -71,7 +75,8 @@
       Athletics:
     </div>
     <div>
-      <input name="studentAtleticsBox" type="text" [(ngModel)]="studentObjectInput.student.studentAthletics">
+        <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="Yes"> Yes
+        <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="No"> No
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -79,7 +84,8 @@
       Housing Status:
     </div>
     <div>
-      <input name="studentHousingBox" type="text" [(ngModel)]="studentObjectInput.student.studentHousingStatus">
+        <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Resident"> Resident
+        <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Commuter"> Commuter
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -87,7 +93,8 @@
       Honors Status:
     </div>
     <div>
-      <input name="studentHonorsBox" type="text" [(ngModel)]="studentObjectInput.student.studentHonors">
+        <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="Yes"> Yes
+        <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="No"> No
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -95,10 +102,19 @@
       International Status:
     </div>
     <div>
-      <input name="studentInternationalBox" type="text" [(ngModel)]="studentObjectInput.student.internationalStudent">
+        <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="Yes"> Yes
+        <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="No"> No
     </div>
-  </div>
-  <div>
+    </div>
+     <!-- <div ng-switch="studentsInput.internationalStudent">
+        <div ng-switch-when="No">
+           <p>No!</p>
+        </div>
+        <div ng-switch-when="Yes">
+            <p>Yes!</p>
+         </div>
+    </div> -->
+  <div> 
     <button (click)="onUpdateStudent()">Update Student</button>
   </div>
 </div>
