@@ -98,6 +98,8 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     else
     {
       this.newClass.instructorId = this.instructor.id;
+      console.log(this.newClass.instructorId);
+      console.log(this.instructor.id)
     }
     this.newClass.semester = this.semester + "" + this.year;
     console.log(this.newClass.courseId, this.newClass.section, this.newClass.semester, this.newClass.instructorId);

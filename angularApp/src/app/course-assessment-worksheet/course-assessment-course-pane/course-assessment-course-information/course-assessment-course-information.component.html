@@ -3,8 +3,9 @@
     <div>
       <span class="courseInfoForAssessmentWorksheetLabel">Course # / Sec:</span>
       <select class="courseInfoForAssessmentWorksheetSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
-        <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseID}}>
-          {{courseAndSection.courseID}}
+          <option selected="selected">COURSE ID/SEC</option>
+          <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.classId}}>
+          {{courseAndSection.courseID}} / {{courseAndSection.section}}
         </option>
       </select>
     </div>

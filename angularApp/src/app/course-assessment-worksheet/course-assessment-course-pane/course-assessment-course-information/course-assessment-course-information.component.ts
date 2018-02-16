@@ -20,7 +20,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
-      value => value.courseID === courseNumAndSection
+      value => value.classId == courseNumAndSection
     );
   }
 
@@ -28,14 +28,10 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseInformationObjInput.CurrentClassInfo = new CurrentClassInfo('', null, '', '', ''); //console log is nasty without this.
-
+    this.courseInformationObjInput.CurrentClassInfo = new CurrentClassInfo(0, 0, '', null, '', '', ''); //console log is nasty without this.
     this.currentClassInformationService.getCurrentClassInfo().subscribe((courses: CurrentClassInfo[]) => {
       this.courseAndSections = courses;
       console.log(this.courseAndSections);
-      if (this.courseAndSections.length > 0) {
-        this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections[0];
-      }
     });
   }
 }

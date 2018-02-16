@@ -4,8 +4,9 @@ import java.io.File;
 
 public class ClassInfo {
 
-	public ClassInfo(long courseId, String courseID, byte[] bs, String section, String semester, String courseTitle, long instructorId, String instructorName) 
+	public ClassInfo(long classId, long courseId, String courseID, byte[] bs, String section, String semester, String courseTitle, long instructorId, String instructorName) 
 	{
+		this.classId = classId;
 		this.courseId = courseId;
 		this.courseID = courseID;
 		this.syllabus = bs;
@@ -15,6 +16,7 @@ public class ClassInfo {
 		this.instructorName = instructorName;
 		this.courseTitle = courseTitle;
 	}
+	private long classId;
 	private long courseId;
 	private String courseID;
 	private byte[] syllabus;
@@ -24,6 +26,11 @@ public class ClassInfo {
 	private String instructorName;
 	private String courseTitle;
 
+	public long getClassId()
+	{
+		return classId;
+	}
+	
 	public long getCourseId()
 	{
 		return courseId;

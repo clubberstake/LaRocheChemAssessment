@@ -12,9 +12,6 @@ import { ClassInfo } from "./classInfo";
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
 
-  newClicked: boolean = false;
-  evalClicked: boolean = true;
-
   constructor() {
     this.courseInformationObj = new CourseInformationObject();
   }
@@ -24,18 +21,4 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
   onSave() {
     console.log(this.courseInformationObj);
   }
-
-  showNew()
-  {
-      this.evalClicked = false;
-      this.newClicked = true;
-  }
-
-  showEval()
-  {
-      this.newClicked = false;
-      this.evalClicked = true;
-  }
-
-
 }
