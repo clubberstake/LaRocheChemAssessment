@@ -4,6 +4,7 @@ import { NotesInfoForMiscNotesTabService } from '../services/notes-info-for-misc
 import { StudentInfoForBioAndAdmissionsPlacementTab } from './studentInfoForBioAndAdmissionsPlacementTab';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/student-info-for-bio-and-admissions-placement-tab.service';
 import { Response } from '@angular/http/src/static_response';
+import { IndividualLearningRecordObject } from './individual-learning-record-object';
 
 @Component({
   selector: 'app-individual-learning-record',
@@ -12,34 +13,28 @@ import { Response } from '@angular/http/src/static_response';
 })
 export class IndividualLearningRecordComponent implements OnInit {
 
-  studentId: any;
-  student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
-  students: StudentInfoForBioAndAdmissionsPlacementTab[];
-  miscNotes: NotesInfoForMiscNotesTab[] = [];
-  date: string;
-
-  time = new Date();
+  // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
+  ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
 
   constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService) {
   }
 
   ngOnInit() {
-    this.date = this.time.getMonth().toString() + "/" + this.time.getDate().toString() + "/" + this.time.getFullYear();
-    console.log(this.date);
   }
 
   onSearchById(studentId: any) {
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
-      this.student = student;
+      this.ilrStudentObject.student = student;
+      console.log(this.ilrStudentObject.student);
     });
 
     this.notesService.getMiscNoteInfoByStudentId(studentId).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-      this.miscNotes = miscNotes;
-      console.log(this.miscNotes);
+      this.ilrStudentObject.miscNotes = miscNotes;
+      console.log(this.ilrStudentObject.miscNotes);
     })
 
-    this.studentId = studentId;
-    console.log(this.studentId);
+    this.ilrStudentObject.studentId = studentId;
+    console.log(this.ilrStudentObject.studentId);
   }
 
   onSearchByName(studentName: any) {
