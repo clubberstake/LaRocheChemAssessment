@@ -1,4 +1,5 @@
-<div>
+<div class="newCourseContainer">
+<div class="newCoursePane">
   Course ID: 
   <select ng-model="mod" id="coursedd" class="courseInfoForAssessmentWorksheetSelector" #selectCourse (change)="setcourseAndSection(selectCourse.value)">
     <option selected="selected">COURSE ID</option>
@@ -38,4 +39,5 @@
     Instructor Name:<input type="text" name="instructorName" [(ngModel)]="newInstructor.name"><br>
   </div>
   <input type="submit" value="Add" (click)="addClass()">
+</div>
 </div>

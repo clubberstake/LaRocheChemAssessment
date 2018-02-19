@@ -1,12 +1,13 @@
 <div class="studentIdSearchBox">
   <div class="studentIdSearchBoxLabel">Search for a student!</div>
-    <input #studentIdSearchBox studentIdSearchBox.value=''>
-    <button (click)="onSearch(studentIdSearchBox.value)">Search</button>
+    <input #studentIdSearchBox studentIdSearchBox.value="">
+    <button (click)="onSearchById(studentIdSearchBox.value)">Search by Id</button>
+    <input #studentNameSearchBox studentNameSearchBox.value=""/>
+    <button (click)="onSearchByName(studentNameSearchBox.value)">Search by Name</button>
 </div>
 <div class="ilrBase">
-  <app-student-pane [studentsInput]="student" [studentIdInput]="studentId"></app-student-pane>
+  <app-student-pane [studentObjectInput]="ilrStudentObject"></app-student-pane>
   <div class = "miscNotesBase">
-      <app-misc-notes [studentsInput]="student" [studentIdInput]="studentId"></app-misc-notes>
+      <app-misc-notes [studentObjectInput]="ilrStudentObject"></app-misc-notes>
   </div>
-  <!--<button (click)="onAddStudent()">Add Student</button>-->
 </div>

@@ -39,11 +39,12 @@ public class CurrentClassController {
 
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes(1, null, "SPR 2017", "01", 1));
-			classRepository.save(new Classes(1, null, "FAL 2016", "01", 1));
-			classRepository.save(new Classes(3, null, "SPR 2017", "01", 1));
-			classRepository.save(new Classes(2, null, "SPR 2017", "01", 2));
-			classRepository.save(new Classes(4, null, "SPR 2017", "01", 4));
+			classRepository.save(new Classes(1, null, "SP2017", "01", 1));
+			classRepository.save(new Classes(1, null, "FA2016", "01", 1));
+			classRepository.save(new Classes(3, null, "SP2017", "01", 1));
+			classRepository.save(new Classes(2, null, "SP2017", "01", 2));
+			classRepository.save(new Classes(4, null, "SP2017", "01", 4));
+			classRepository.save(new Classes(1, null, "SP2018", "01", 1));
 			classes = classRepository.findAll();
 		}
 		
@@ -87,7 +88,7 @@ public class CurrentClassController {
 		for (Classes classs : classes) {
 			if(classs.getSemester().equals(semester))
 			{
-				data.add(new ClassInfo(classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), getInstructorId(instructors, thiscourse), getInstructorName(instructors, thiscourse)));		
+				data.add(new ClassInfo(classs.getId(), classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), classs.getInstructorId(), getInstructorName(instructors, classs)));		
 			}
 		}
 
@@ -105,9 +106,9 @@ public class CurrentClassController {
 		return "Bad Course Name";
 	}
 	
-	private String getInstructorName(List<Instructor> instructors, Course course) {
+	private String getInstructorName(List<Instructor> instructors, Classes classs) {
 		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
+			if (instructor.getId() == classs.getInstructorId()) {
 				return instructor.getName();
 			}
 		}

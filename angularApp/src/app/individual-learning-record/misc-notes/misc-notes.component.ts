@@ -3,6 +3,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../service
 import { NotesInfoForMiscNotesTab } from '../notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../../services/notes-info-for-misc-notes-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBioAndAdmissionsPlacementTab';
+import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 
 @Component({
   selector: 'app-misc-notes',
@@ -11,29 +12,25 @@ import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBio
 })
 export class MiscNotesComponent implements OnInit {
 
-  miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('','','','');
-  miscNotes: NotesInfoForMiscNotesTab[] = [];
+  //studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
 
-  @Input() studentIdInput: any;
-  @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
+  //@Input() studentIdInput: any;
+  @Input() studentObjectInput: IndividualLearningRecordObject;
+  //@Input() notes: NotesInfoForMiscNotesTab[];
+  //@Input() dateInput: string;
+  time = new Date();
 
-  constructor(private notesService: NotesInfoForMiscNotesTabService) {
-  }
+  constructor(private notesService: NotesInfoForMiscNotesTabService) {}
 
   ngOnInit() {
   }
 
-  getMiscNotes(){
-    this.notesService.getMiscNoteInfoByStudentId(this.studentIdInput).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-      this.miscNotes = miscNotes;
-      console.log(this.miscNotes)
-    })
+  postMiscNotes() {
+    this.studentObjectInput.miscNote.studentId = this.studentObjectInput.studentId;
+    this.studentObjectInput.miscNote.author = "placeholder@somewhere.com";
+    this.studentObjectInput.miscNote.time = this.time.getMonth() + "/" + this.time.getDate() + "/" + this.time.getFullYear();
+    if (this.studentObjectInput.miscNote.notes != "") {
+      this.notesService.addNewNote(this.studentObjectInput.miscNote);
+    }
   }
-
-
-
-
-
-
-
 }

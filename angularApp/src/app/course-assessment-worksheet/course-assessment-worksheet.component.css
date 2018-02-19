@@ -29,31 +29,6 @@
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.sidenav {
-  height: 90%;
-  position: fixed;
-  z-index: 1;
-  top: 105px;
-  left: 0;
-  background-color: rgb(221, 221, 221);
-  overflow-x: hidden;
-  padding-top: 10px;
-  transition: 0.5s;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 8px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #000000;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
 #main {
   margin-left: 200px;
 }

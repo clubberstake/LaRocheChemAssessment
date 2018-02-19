@@ -1,0 +1,9 @@
+.newCourse{
+font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 100px;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBioAndAdmissionsPlacementTab';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../services/student-info-for-bio-and-admissions-placement-tab.service';
+import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 
 @Component({
   selector: 'app-student-pane',
@@ -9,26 +10,21 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../service
 })
 export class StudentPaneComponent implements OnInit {
 
-  @Input() studentIdInput: any;
-  @Input() studentsInput: StudentInfoForBioAndAdmissionsPlacementTab;
-  
+  @Input() studentObjectInput: IndividualLearningRecordObject;
+
   majors = ['Chemistry', 'Biochemistry', 'Other'];
-  years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+  years = ['Sophomore','Junior','Senior'];
   semesters = ['Fall', 'Spring', 'Summer'];
   grades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 
-
-  constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) {
-
-  }
+  constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) {}
 
   ngOnInit() {
   }
 
   onUpdateStudent() {
-    this.studentsInput.id = this.studentIdInput;
-    console.log(this.studentsInput);
-    this.studentService.updateStudent(this.studentsInput);
+    this.studentObjectInput.student.id = this.studentObjectInput.studentId;
+    console.log(this.studentObjectInput);
+    this.studentService.updateStudent(this.studentObjectInput.student);
   }
-
 }

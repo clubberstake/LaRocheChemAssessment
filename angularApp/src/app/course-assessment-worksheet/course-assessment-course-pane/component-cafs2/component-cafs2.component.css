@@ -1,20 +1,6 @@
-.courseInfoForAssessmentWorksheet {
-    border: 3px solid #000;
-    margin-left: 5px;
-    margin-right: 20px;
-    margin-top: 10px;
-    padding: 5px;
-    border-radius: 5px;
-  }
 
-.courseInfoForAssessmentWorksheet {
-    color: #ffffff !important;
-    background-color: #6d6565 !important;
-    border-left: 6px solid #ccc !important;
-    padding: 0.01em 16px;
-    margin: 20px;
-    border-color: #b4a5a5 !important;
-  }
+
+
   
   .courseInfoForAssessmentWorksheetContainer {
     display: flex;

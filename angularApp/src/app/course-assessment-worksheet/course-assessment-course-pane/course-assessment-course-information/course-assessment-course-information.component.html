@@ -3,24 +3,25 @@
     <div>
       <span class="courseInfoForAssessmentWorksheetLabel">Course # / Sec:</span>
       <select class="courseInfoForAssessmentWorksheetSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
-        <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseID}}>
-          {{courseAndSection.courseID}}
+          <option selected="selected">COURSE ID/SEC</option>
+          <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.classId}}>
+          {{courseAndSection.courseID}} / {{courseAndSection.section}}
         </option>
       </select>
     </div>
     <div class="courseInfoForAssessmentWorksheetRow">
       <span class="courseInfoForAssessmentWorksheetLabel">Course Title:</span>
-      <span>{{courseAndSection.courseTitle}}</span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.courseTitle}}</span>
     </div>
   </div>
   <div class="courseInfoForAssessmentWorksheetContainer">
     <div>
       <span class="courseInfoForAssessmentWorksheetLabel">Semester:</span>
-      <span>{{courseAndSection.semester}}</span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.semester}}</span>
     </div>
     <div class="courseInfoForAssessmentWorksheetRow">
       <span class="courseInfoForAssessmentWorksheetLabel">Instructor:</span>
-      <span>{{courseAndSection.instructorName}}</span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.instructorName}}</span>
     </div>
   </div>
 </div>

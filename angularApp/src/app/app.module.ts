@@ -20,15 +20,15 @@ import { CourseAssessmentNewCourseComponent } from './course-assessment-workshee
 import { ClassInformationService } from './services/class-service.service';
 import {InstructorInformationService} from './services/instructor-service.service';
 import { CurrentClassInformationService } from './services/current-class-service';
-import { CourseAssessmentSection1Component } from './course-assessment-worksheet/course-assessment-section1/course-assessment-section1.component';
 import { MiscNotesComponent } from './individual-learning-record/misc-notes/misc-notes.component';
 import { CourseSLOsInformationService } from './services/course-slo-service.service';
 import { ComponentCafs2Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs2/component-cafs2.component';
 import { ComponentCafs4Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs4/component-cafs4.component';
 import { ComponentCafs5Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs5/component-cafs5.component';
 import { ComponentCafs6Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs6/component-cafs6.component';
-
-
+import { AdminComponent } from './admin/admin.component';
+import { ComponentCafs1Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs1/component-cafs1.component';
+import { ComponentCafs3Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs3/component-cafs3.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +42,16 @@ import { ComponentCafs6Component } from './course-assessment-worksheet/course-as
     CourseAssessmentCourseInformationComponent,
     CourseAssessmentCourseStudentLearningOutcomesComponent,
     CourseAssessmentNewCourseComponent,
-    CourseAssessmentSection1Component,
+    
     MiscNotesComponent,
+    ComponentCafs1Component,
     ComponentCafs2Component,
+    ComponentCafs3Component,
     ComponentCafs4Component,
     ComponentCafs5Component,
-    ComponentCafs6Component
+    ComponentCafs6Component,
+    
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

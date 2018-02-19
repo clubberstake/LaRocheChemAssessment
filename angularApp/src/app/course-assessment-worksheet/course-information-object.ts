@@ -1,20 +1,16 @@
+import { Cafs1Info } from "./cafs1";
+import { CafSLO } from "./cafSLO";
+import { Cafs2Info } from "./cafs2";
+import { CurrentClassInfo } from "./currentClassInfo";
+
 export class CourseInformationObject {
-  blah: string;
-  studentLearningOutcomes: {
-    knowledgeBaseValue: boolean;
-    labSkillsValue: boolean;
-    practiceValue: boolean;
-    societalConnectsValue: boolean;
-    capstoneValue: boolean;
-  };
+  CurrentClassInfo: CurrentClassInfo;
+  CafSLO: CafSLO;
+  Cafs1Info: Cafs1Info;
+  Cafs2Info: Cafs2Info;
+
 
   constructor() {
-    this.studentLearningOutcomes = {
-      knowledgeBaseValue: false,
-      labSkillsValue: false,
-      practiceValue: false,
-      societalConnectsValue: false,
-      capstoneValue: false
-    };
-  }
+    this.CafSLO = new CafSLO(false, false, false, false, false);
+  };
 }
