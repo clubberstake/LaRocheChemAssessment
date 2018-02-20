@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { CourseInfoForAssessment } from "./courseInfoForAssessment";
 import { CourseInformationObject } from "./course-information-object";
 import { ClassInfo } from "./classInfo";
+import { CourseSLOsInformationService } from "../services/course-slo-service.service"
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -12,13 +13,13 @@ import { ClassInfo } from "./classInfo";
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
 
-  constructor() {
+  constructor(public sloService: CourseSLOsInformationService) {
     this.courseInformationObj = new CourseInformationObject();
   }
 
   ngOnInit(): void {    }
 
   onSave() {
-    console.log(this.courseInformationObj);
+    this.sloService.updateSLOs(this.courseInformationObj.CourseSLOs);
   }
 }
