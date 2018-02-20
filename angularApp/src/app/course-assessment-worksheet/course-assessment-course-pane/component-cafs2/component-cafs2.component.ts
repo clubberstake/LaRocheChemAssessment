@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CourseInformationObject } from '../../course-information-object';
+import { Cafs2Info } from '../../cafs2';
+import { CurrentClassInformationService } from '../../../services/current-class-service';
+import { CourseInformationService } from '../../../services/course-information-service.service';
 
 
 @Component({
@@ -8,8 +12,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class ComponentCafs2Component implements OnInit {
+  @Input() courseInformationObjInput: CourseInformationObject;
+  constructor(private courseInfoService: CourseInformationService, private currentClassInformationService: CurrentClassInformationService) { }
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() { 
+}
 }

@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { CAFS3InformationService } from './caf3-service.service';
+import { CAFS3InformationService } from './cafs3-service.service';
 
 describe('Cafs1ServiceService', () => {
   beforeEach(() => {
