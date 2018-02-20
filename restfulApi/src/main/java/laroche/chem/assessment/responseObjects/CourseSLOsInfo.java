@@ -2,12 +2,8 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseSLOsInfo {
 
-	public CourseSLOsInfo(long classID, String courseTitle, String semester,
-			String instructor, String slo1, String slo2, String slo3, String slo4, String slo5) {
-		this.classID = classID;
-		this.courseTitle = courseTitle;
-		this.semester = semester;
-		this.instructor = instructor;
+	public CourseSLOsInfo(long classId, boolean slo1, boolean slo2, boolean slo3, boolean slo4, boolean slo5) {
+		this.classId = classId;
 		this.slo1 = slo1;
 		this.slo2 = slo2;
 		this.slo3 = slo3;
@@ -15,55 +11,39 @@ public class CourseSLOsInfo {
 		this.slo5 = slo5;
 	}
 
-	private long classID;
-	private String courseTitle;
-	private String semester;
-	private String instructor;
-	private String slo1;
-	private String slo2;
-	private String slo3;
-	private String slo4;
-	private String slo5;
+	private long classId;
+	private boolean slo1;
+	private boolean slo2;
+	private boolean slo3;
+	private boolean slo4;
+	private boolean slo5;
 
-
-	public String getCourseName() {
-		return courseTitle;
-	}
-
-	public String getSemester() {
-		return semester;
-	}
-
-	public String getInstructor() {
-		return instructor;
-	}
-	
-	public long getClassID()
+	public long getClassId()
 	{
-		return classID;
+		return classId;
 	}
 	
-	public String getSLO1()
+	public boolean getSLO1()
 	{
 		return slo1;
 	}
 	
-	public String getSLO2()
+	public boolean getSLO2()
 	{
 		return slo2;
 	}
 	
-	public String getSLO3()
+	public boolean getSLO3()
 	{
 		return slo3;
 	}
 	
-	public String getSLO4()
+	public boolean getSLO4()
 	{
 		return slo4;
 	}
 	
-	public String getSLO5()
+	public boolean getSLO5()
 	{
 		return slo5;
 	}
