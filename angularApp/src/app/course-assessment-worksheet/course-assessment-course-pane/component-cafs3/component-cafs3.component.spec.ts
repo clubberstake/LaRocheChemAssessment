@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseAssessmentCaf3 } from './caf-section-3.component';
+import { ComponentCafs3Component } from './component-cafs3.component';
 
-describe('CourseAssessmentCaf3', () => {
-  let component: CourseAssessmentCaf3;
-  let fixture: ComponentFixture<CourseAssessmentCaf3>;
+describe('ComponentCafs3Component', () => {
+  let component: ComponentCafs3Component;
+  let fixture: ComponentFixture<ComponentCafs3Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseAssessmentCaf3 ]
+      declarations: [ ComponentCafs3Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseAssessmentCaf3);
+    fixture = TestBed.createComponent(ComponentCafs3Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
