@@ -1,10 +1,7 @@
 .sloForAssessmentWorksheet {
-  color: #ffffff !important;
-  background-color: #ae211f !important;
-  border-left: 6px solid #ccc !important;
+  color: #000000 !important;
   padding: 0.01em 16px;
   margin: 20px;
-  border-color: #831917 !important;
 }
 
 .sloForAssessmentWorksheetContainer {

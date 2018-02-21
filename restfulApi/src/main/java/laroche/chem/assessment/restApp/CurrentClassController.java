@@ -126,16 +126,4 @@ public class CurrentClassController {
 
 		return "Bad Course ID";
 	}
-	
-
-	private long getInstructorId(List<Instructor> instructors, Course course) {
-		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
-				return instructor.getId();
-			}
-		}
-
-		return 0;
-	}
-
 }
