@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import laroche.chem.assessment.entities.Course;
-import laroche.chem.assessment.entities.Student;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 

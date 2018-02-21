@@ -14,7 +14,7 @@ import { CourseSLOsInformationService } from "../../../services/course-slo-servi
 export class CourseAssessmentCourseStudentLearningOutcomesComponent
   implements OnInit {
   @Input() studentLearningOutcomesInput: CourseInformationObject;
-  courseSLOs = new CourseSLOs(0, false, false, false, false, false);
+  courseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
   courseSLOsList: CourseSLOs[] = [];
 
   constructor(private courseSLOsService: CourseSLOsInformationService) {}

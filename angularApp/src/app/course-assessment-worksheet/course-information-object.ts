@@ -19,6 +19,6 @@ export class CourseInformationObject {
   Cafs6Info: Cafs6Info;
 
   constructor() {
-    this.CourseSLOs = new CourseSLOs(0, false, false, false, false, false);
+    this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
   };
 }

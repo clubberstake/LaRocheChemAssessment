@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import laroche.chem.assessment.entities.CourseAssessmentFormSection1;
 import laroche.chem.assessment.repositories.Course_Assessment_Form_Section_1Repository;
-import laroche.chem.assessment.responseObjects.CourseInfoForAssessmentWorksheet;
 
 @RestController
 public class CourseAssessmentFormSection1Controller {

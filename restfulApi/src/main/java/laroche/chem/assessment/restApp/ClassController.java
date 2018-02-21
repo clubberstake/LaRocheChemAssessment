@@ -19,7 +19,6 @@ import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
 import laroche.chem.assessment.responseObjects.ClassInfo;
-import laroche.chem.assessment.responseObjects.CourseInfoForAssessmentWorksheet;
 
 @RestController
 public class ClassController {
@@ -88,7 +87,7 @@ public class ClassController {
 	
 	private String getCourseTitle(List<Course> courses, Classes classs) {
 		for (Course course : courses) {
-			if (course.getCourseNumAndSection().equals(classs.getCourseId())) {
+			if (course.getId() == classs.getCourseId()) {
 				thiscourse = course;
 				return course.getCourseName();
 			}

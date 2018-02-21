@@ -1,7 +1,5 @@
 package laroche.chem.assessment.responseObjects;
 
-import java.io.File;
-
 public class ClassInfo {
 
 	public ClassInfo(long classId, long courseId, String courseID, byte[] bs, String section, String semester, String courseTitle, long instructorId, String instructorName) 

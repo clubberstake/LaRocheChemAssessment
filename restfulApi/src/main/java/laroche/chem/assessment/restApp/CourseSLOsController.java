@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import laroche.chem.assessment.entities.Course;
 import laroche.chem.assessment.entities.Instructor;
 import laroche.chem.assessment.entities.SLOs;
-import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.entities.CourseSLOs;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.Course_SLOsRepository;
@@ -55,8 +54,6 @@ public class CourseSLOsController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
-
-	private Course thiscourse;
 	
 	private ArrayList<CourseSLOsInfo> generateFakeData() {
 
@@ -101,41 +98,9 @@ public class CourseSLOsController {
 		ArrayList<CourseSLOsInfo> data = new ArrayList<CourseSLOsInfo>();
 
 		for (CourseSLOs courseSLOs : slos) {
-			data.add(new CourseSLOsInfo(courseSLOs.getClassId(), courseSLOs.getSlo1(), courseSLOs.getSlo2(), courseSLOs.getSlo3(), courseSLOs.getSlo4(), courseSLOs.getSlo5()));
+			data.add(new CourseSLOsInfo(courseSLOs.getId(), courseSLOs.getClassId(), courseSLOs.getSlo1(), courseSLOs.getSlo2(), courseSLOs.getSlo3(), courseSLOs.getSlo4(), courseSLOs.getSlo5()));
 		}
 
 		return data;
 	}
-
-	private String getCourseTitle(List<Course> courses, long classID) {
-		for (Course course : courses) {
-			if (course.getId() == classID) {
-				thiscourse = course;
-				return course.getCourseName();
-			}
-		}
-
-		return "Bad Course Name";
-	}
-	
-	private String getInstructorName(List<Instructor> instructors, Course course) {
-		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
-				return instructor.getName();
-			}
-		}
-
-		return "Bad Instructor Name";
-	}
-	
-	private String getSLOName(List<SLOs> slos, int SLONum) {
-		for (SLOs SLOs : slos) {
-			if (SLOs.getId() == SLONum) {
-				return SLOs.getSloName();
-			}
-		}
-
-		return "Bad SLO Name";
-	}
-
 }

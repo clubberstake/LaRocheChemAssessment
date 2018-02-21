@@ -2,7 +2,8 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseSLOsInfo {
 
-	public CourseSLOsInfo(long classId, boolean slo1, boolean slo2, boolean slo3, boolean slo4, boolean slo5) {
+	public CourseSLOsInfo(long id, long classId, boolean slo1, boolean slo2, boolean slo3, boolean slo4, boolean slo5) {
+		this.id = id;
 		this.classId = classId;
 		this.slo1 = slo1;
 		this.slo2 = slo2;
@@ -11,6 +12,7 @@ public class CourseSLOsInfo {
 		this.slo5 = slo5;
 	}
 
+	private long id;
 	private long classId;
 	private boolean slo1;
 	private boolean slo2;
@@ -18,6 +20,11 @@ public class CourseSLOsInfo {
 	private boolean slo4;
 	private boolean slo5;
 
+	public long getId()
+	{
+		return id;
+	}
+	
 	public long getClassId()
 	{
 		return classId;

@@ -32,7 +32,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     console.log("Value: ", courseNumAndSection)
     if(this.courseInformationObjInput.CourseSLOs == null)
     {
-      this.courseInformationObjInput.CourseSLOs = new CourseSLOs(Number(courseNumAndSection), false, false, false, false, false);
+      this.courseInformationObjInput.CourseSLOs = new CourseSLOs(null, Number(courseNumAndSection), false, false, false, false, false);
     }
     console.log(this.courseInformationObjInput.CourseSLOs == null);
     console.log("Dropdownslos", this.courseInformationObjInput.CourseSLOs);
