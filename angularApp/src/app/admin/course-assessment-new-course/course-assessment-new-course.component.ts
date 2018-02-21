@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core/src/metadata/directives';
-import { CourseInfoForAssessment } from '../courseInfoForAssessment';
 import { CourseInformationService } from '../../services/course-information-service.service';
-import { InstructorInfo } from '../instructorInfo';
 import { InstructorInformationService } from '../../services/instructor-service.service';
-import { ClassInfo } from '../classInfo';
 import { ClassInformationService } from '../../services/class-service.service';
+import { CourseInfoForAssessment } from '../../course-assessment-worksheet/courseInfoForAssessment';
+import { InstructorInfo } from '../../course-assessment-worksheet/instructorInfo';
+import { ClassInfo } from '../../course-assessment-worksheet/classInfo';
 
 @Component({
   selector: 'app-course-assessment-new-course',
