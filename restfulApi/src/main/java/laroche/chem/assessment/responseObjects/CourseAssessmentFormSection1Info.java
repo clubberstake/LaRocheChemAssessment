@@ -1,10 +1,11 @@
 package laroche.chem.assessment.responseObjects;
 
-public class CourseAssessmentFormSection1 {
+public class CourseAssessmentFormSection1Info {
 
-	public CourseAssessmentFormSection1(String CAFS1ID, String NewSLOs, String Upgrades, String Enhancements, String Modifications, String Other)
+	public CourseAssessmentFormSection1Info(long id, long classId, String NewSLOs, String Upgrades, String Enhancements, String Modifications, String Other)
 	{
-		this.CAFS1ID = CAFS1ID;
+		this.id = id;
+		this.classId = classId;
 		this.NewSLOs = NewSLOs;
 		this.Upgrades = Upgrades;
 		this.Enhancements = Enhancements;
@@ -12,16 +13,22 @@ public class CourseAssessmentFormSection1 {
 		this.Other = Other;
 	}
 	
-	private String CAFS1ID;
+	private long id;
+	private long classId;
 	private String NewSLOs;
 	private String Upgrades;
 	private String Enhancements;
 	private String Modifications;
 	private String Other;
 	
-	public String getCAFS1ID()
+	public long getId()
 	{
-		return CAFS1ID;
+		return id;
+	}
+	
+	public long getClassId()
+	{
+		return classId;
 	}
 	
 	public String getNewSLOs()

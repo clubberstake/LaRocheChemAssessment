@@ -29,6 +29,7 @@ import { ComponentCafs6Component } from './course-assessment-worksheet/course-as
 import { AdminComponent } from './admin/admin.component';
 import { ComponentCafs1Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs1/component-cafs1.component';
 import { ComponentCafs3Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs3/component-cafs3.component';
+import { CAFS1InformationService } from './services/cafs1-service.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { ComponentCafs3Component } from './course-assessment-worksheet/course-as
     HttpModule,
     FormsModule
   ],
-  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService, CAFS1InformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

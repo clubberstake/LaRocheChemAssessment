@@ -10,6 +10,8 @@ import { CurrentClassInfo } from '../../../course-assessment-worksheet/currentCl
 import { CurrentClassInformationService } from '../../../services/current-class-service'
 import { CourseSLOsInformationService } from '../../../services/course-slo-service.service'
 import { CourseSLOs } from '../../../course-assessment-worksheet/courseSLOs'
+import { Cafs1Info } from '../../cafs1';
+import { CAFS1InformationService } from '../../../services/cafs1-service.service';
 
 @Component({
   selector: 'app-course-assessment-course-information',
@@ -20,6 +22,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   @Input() courseInformationObjInput: CourseInformationObject;
   courseAndSections: CurrentClassInfo[] = [];
   courseSlos: CourseSLOs[] = [];
+  cafs1: Cafs1Info[] = [];
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
@@ -36,9 +39,17 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     }
     console.log(this.courseInformationObjInput.CourseSLOs == null);
     console.log("Dropdownslos", this.courseInformationObjInput.CourseSLOs);
+    this.courseInformationObjInput.Cafs1Info = this.cafs1.find(
+      value => value.classId == courseNumAndSection
+    );
+    if(this.courseInformationObjInput.Cafs1Info == null)
+    {
+      this.courseInformationObjInput.Cafs1Info = new Cafs1Info(null, Number(courseNumAndSection), '', '', '', '', '');
+    }
+    console.log("this section 1", this.courseInformationObjInput.Cafs1Info);
   }
 
-  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService) {
+  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService) {
   }
 
   ngOnInit() {
@@ -50,6 +61,10 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.courseSLOsInformationService.getCourseSLOsInfo().subscribe((slos: CourseSLOs[]) => {
       this.courseSlos = slos;
       console.log("courseSLOs", this.courseSlos);
+    });
+    this.cafs1InformationService.getCAFS1Info().subscribe((section1: Cafs1Info[]) => {
+      this.cafs1 = section1;
+      console.log("section1", this.cafs1);
     });
   }
 }

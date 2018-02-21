@@ -1,3 +1,3 @@
 export class Cafs1Info {
-    constructor(public classID: number, public newSLOs: string, public upgrades: string, public enhancements: string, public modifications: string, public other: string) { }
+    constructor(public id: number, public classId: number, public newSLOs: ByteString, public upgrades: ByteString, public enhancements: ByteString, public modifications: ByteString, public other: ByteString) { }
   }

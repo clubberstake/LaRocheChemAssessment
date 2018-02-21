@@ -20,5 +20,6 @@ export class CourseInformationObject {
 
   constructor() {
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
+    this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
   };
 }

@@ -13,5 +13,8 @@ export class CAFS1InformationService {
     console.log('Made it to the service');
     return this.http.get<Cafs1Info[]>("http://localhost:8080/cafs1");
   };
-
+  public updateCafs1(cafs1: any) {
+    console.log('Made it to the Cafs1 update service', cafs1);
+    return this.http.put<Response>("http://localhost:8080/section1", cafs1).subscribe(res => console.log(res));
+  };
 }
