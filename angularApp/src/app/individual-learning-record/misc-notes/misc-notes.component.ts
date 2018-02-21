@@ -12,12 +12,7 @@ import { IndividualLearningRecordObject } from '../individual-learning-record-ob
 })
 export class MiscNotesComponent implements OnInit {
 
-  //studentNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
-
-  //@Input() studentIdInput: any;
   @Input() studentObjectInput: IndividualLearningRecordObject;
-  //@Input() notes: NotesInfoForMiscNotesTab[];
-  //@Input() dateInput: string;
   time = new Date();
 
   constructor(private notesService: NotesInfoForMiscNotesTabService) {}

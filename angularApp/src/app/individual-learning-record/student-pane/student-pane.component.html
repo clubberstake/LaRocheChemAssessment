@@ -15,7 +15,7 @@
       ID #:
     </div>
     <div>
-      <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId">
+      <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId" readonly>
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -23,7 +23,7 @@
       Create Date:
     </div>
     <div>
-      <input name="studentDateBox" type="text" [(ngModel)]="studentObjectInput.student.time">
+      <input name="studentDateBox" type="date" [(ngModel)]="studentObjectInput.student.time">
     </div>
   </div>
   <div class="ilrStudentRow">
@@ -114,7 +114,7 @@
             <p>Yes!</p>
          </div>
     </div> -->
-  <div> 
+  <div>
     <button (click)="onUpdateStudent()">Update Student</button>
   </div>
 </div>
