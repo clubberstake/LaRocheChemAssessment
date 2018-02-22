@@ -29,6 +29,7 @@ import { ComponentCafs1Component } from "./course-assessment-worksheet/component
 import { ComponentCafs3Component } from "./course-assessment-worksheet/component-cafs3/component-cafs3.component";
 import { CAFS1InformationService } from "./services/cafs1-service.service";
 import { AdminComponent } from "./admin/admin.component";
+import { MidSemesterEvaluationComponent } from './individual-learning-record/mid-semester-evaluation/mid-semester-evaluation.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { AdminComponent } from "./admin/admin.component";
     ComponentCafs5Component,
     ComponentCafs6Component,
 
-    AdminComponent
+    AdminComponent,
+
+    MidSemesterEvaluationComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [

@@ -14,3 +14,23 @@
 h1 {
     align-self: center
 }
+
+.student-notes-objects {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.student-notes-pane {
+  max-height: 250px;
+}
+
+.scroll-view {
+  overflow: auto;
+}
+
+textarea {
+  max-height: 250px;
+}
