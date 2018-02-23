@@ -12,7 +12,12 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.miscNotesBase {
-  flex-grow: 1;
+.ilrSideBoxes {
+  display: flex;
+  flex-direction: column;
 }
 
+.ilr-page-center {
+  margin: 0 auto;
+  width: 50%;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { CourseInformationObject } from "../../course-information-object";
-import { CourseSLOs } from "../../courseSLOs"
-import { CourseSLOsInformationService } from "../../../services/course-slo-service.service"
+import { CourseInformationObject } from "../course-information-object";
+import { CourseSLOs } from "../courseSLOs"
+import { CourseSLOsInformationService } from "../../services/course-slo-service.service"
 
 @Component({
   selector: "app-course-assessment-course-student-learning-outcomes",

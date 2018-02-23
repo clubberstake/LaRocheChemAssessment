@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CourseInformationObject } from '../course-information-object';
 
 @Component({
-  selector: 'app-course-assessment-course-pane',
-  templateUrl: './course-assessment-course-pane.component.html',
-  styleUrls: ['./course-assessment-course-pane.component.css']
+  selector: 'app-component-cafs1',
+  templateUrl: './component-cafs1.component.html',
+  styleUrls: ['./component-cafs1.component.css']
 })
-export class CourseAssessmentCoursePaneComponent implements OnInit {
+export class ComponentCafs1Component implements OnInit {
   @Input() courseInformationObjInput: CourseInformationObject;
 
   constructor() { }

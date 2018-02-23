@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CourseInfoForAssessment } from '../../courseInfoForAssessment';
-import { CourseInformationService } from '../../../services/course-information-service.service';
-import { CourseInformationObject } from '../../course-information-object';
-import { NotesInfoForMiscNotesTab } from '../../../individual-learning-record/notesInfoForMiscNotesTab';
-import { NotesInfoForMiscNotesTabService } from '../../../services/notes-info-for-misc-notes-tab.service';
-import { ClassInfo } from '../../../course-assessment-worksheet/classInfo'
-import { ClassInformationService } from '../../../services/class-service.service'
-import { CurrentClassInfo } from '../../../course-assessment-worksheet/currentClassInfo'
-import { CurrentClassInformationService } from '../../../services/current-class-service'
-import { CourseSLOsInformationService } from '../../../services/course-slo-service.service'
-import { CourseSLOs } from '../../../course-assessment-worksheet/courseSLOs'
-import { Cafs1Info } from '../../cafs1';
-import { CAFS1InformationService } from '../../../services/cafs1-service.service';
+import { CourseInfoForAssessment } from '../courseInfoForAssessment';
+import { CourseInformationService } from '../../services/course-information-service.service';
+import { CourseInformationObject } from '../course-information-object';
+import { NotesInfoForMiscNotesTab } from '../../individual-learning-record/notesInfoForMiscNotesTab';
+import { NotesInfoForMiscNotesTabService } from '../../services/notes-info-for-misc-notes-tab.service';
+import { ClassInfo } from '../../course-assessment-worksheet/classInfo'
+import { ClassInformationService } from '../../services/class-service.service'
+import { CurrentClassInfo } from '../../course-assessment-worksheet/currentClassInfo'
+import { CurrentClassInformationService } from '../../services/current-class-service'
+import { CourseSLOsInformationService } from '../../services/course-slo-service.service'
+import { CourseSLOs } from '../../course-assessment-worksheet/courseSLOs'
+import { Cafs1Info } from '../cafs1';
+import { CAFS1InformationService } from '../../services/cafs1-service.service';
 
 @Component({
   selector: 'app-course-assessment-course-information',

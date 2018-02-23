@@ -1,14 +1,15 @@
 <div class="courseAssessment">
-    <div id="main">
-        <div id="sectionCourseEvaluation">
-            <app-course-assessment-course-pane [courseInformationObjInput]="courseInformationObj"></app-course-assessment-course-pane>
-            <app-component-cafs1 [courseInformationObjInput]="courseInformationObj"></app-component-cafs1>
-            <app-component-cafs2></app-component-cafs2>
-            <app-component-cafs3></app-component-cafs3>
-            <app-component-cafs4></app-component-cafs4>
-            <app-component-cafs5></app-component-cafs5>
-            <app-component-cafs6></app-component-cafs6>
-            
-            <button class="saveButton" (click)="onSave()">Save</button>
-        </div>
+    <div>
+        <app-course-assessment-course-information [courseInformationObjInput]="courseInformationObj"></app-course-assessment-course-information>
+        <app-course-assessment-course-student-learning-outcomes [studentLearningOutcomesInput]="courseInformationObj"></app-course-assessment-course-student-learning-outcomes>
     </div>
+    <div>
+        <app-component-cafs1 [courseInformationObjInput]="courseInformationObj"></app-component-cafs1>
+        <app-component-cafs2></app-component-cafs2>
+        <app-component-cafs3></app-component-cafs3>
+        <app-component-cafs4></app-component-cafs4>
+        <app-component-cafs5></app-component-cafs5>
+        <app-component-cafs6></app-component-cafs6>
+    </div>
+    <button class="saveButton" (click)="onSave()">Save</button>
+</div>
