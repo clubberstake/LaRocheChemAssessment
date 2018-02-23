@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class MidSemesterReviewEntity {
+public class MidSemesterReview {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -16,9 +16,9 @@ public class MidSemesterReviewEntity {
 	private String extentInstructor;
 	private String instructorRecommendations;
 	
-	public MidSemesterReviewEntity() {}
+	public MidSemesterReview() {}
 
-	public MidSemesterReviewEntity(int studentID, Boolean[] learningIssues, String extentInstructor,
+	public MidSemesterReview(int studentID, Boolean[] learningIssues, String extentInstructor,
 			String instructorRecommendations) {
 		this.setStudentID(studentID);
 		this.learningIssues = learningIssues;

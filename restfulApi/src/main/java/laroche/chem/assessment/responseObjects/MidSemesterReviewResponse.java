@@ -1,12 +1,12 @@
 package laroche.chem.assessment.responseObjects;
 
-public class CourseInfoForAssessmentWorksheet4 {
+public class MidSemesterReviewResponse {
 	private int studentID;
 	private Boolean[] learningIssues;
 	private String extentInstructor;
 	private String instructorRecommendations;
 	
-	public CourseInfoForAssessmentWorksheet4(int studentID,Boolean[] learningIssues, String extentInstructor, String instructorRecommendations) {
+	public MidSemesterReviewResponse(int studentID,Boolean[] learningIssues, String extentInstructor, String instructorRecommendations) {
 		this.setStudentID(studentID);
 		this.learningIssues = learningIssues;
 		this.extentInstructor = extentInstructor;

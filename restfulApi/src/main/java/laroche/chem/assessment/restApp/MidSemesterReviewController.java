@@ -11,25 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import laroche.chem.assessment.entities.MidSemesterReviewEntity;
-import laroche.chem.assessment.entities.MiscNotes;
-import laroche.chem.assessment.repositories.Course_Assessment_Form_Section_4_Repository;
-import laroche.chem.assessment.responseObjects.CourseInfoForAssessmentWorksheet4;
+import laroche.chem.assessment.entities.MidSemesterReview;
+import laroche.chem.assessment.repositories.MidSemesterReviewRepository;
+import laroche.chem.assessment.responseObjects.MidSemesterReviewResponse;
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/midSemesterReview")
 public class MidSemesterReviewController {
 	@Autowired
-	private Course_Assessment_Form_Section_4_Repository midSemesterRepo;
+	private MidSemesterReviewRepository midSemesterRepo;
 
-	public ArrayList<CourseInfoForAssessmentWorksheet4> getCourseInfoForAssessmentWorksheet4() {
+	public ArrayList<MidSemesterReviewResponse> getCourseInfoForAssessmentWorksheet4() {
 		return getData();
 	}
 	
 	@PostMapping("/addNote")
-	public ResponseEntity<Void> addMidSemesterReview(@RequestBody MidSemesterReviewEntity midSemesterEntry) {
+	public ResponseEntity<Void> addMidSemesterReview(@RequestBody MidSemesterReview midSemesterEntry) {
 		midSemesterRepo.save(midSemesterEntry);
 		
 		try {
@@ -42,11 +40,11 @@ public class MidSemesterReviewController {
 	
 	
 
-	private ArrayList<CourseInfoForAssessmentWorksheet4> getData() {		
-		List<MidSemesterReviewEntity> sec4list = midSemesterRepo.findAll();
-		ArrayList<CourseInfoForAssessmentWorksheet4> midSemesterData = new ArrayList<>();
-		for(MidSemesterReviewEntity e: sec4list) {
-			midSemesterData.add(new CourseInfoForAssessmentWorksheet4(e.getStudentID(),e.getLearningIssues(),
+	private ArrayList<MidSemesterReviewResponse> getData() {		
+		List<MidSemesterReview> sec4list = midSemesterRepo.findAll();
+		ArrayList<MidSemesterReviewResponse> midSemesterData = new ArrayList<>();
+		for(MidSemesterReview e: sec4list) {
+			midSemesterData.add(new MidSemesterReviewResponse(e.getStudentID(),e.getLearningIssues(),
 					e.getExtentInstructor(),e.getInstructorRecommendations()));
 			
 		}	    

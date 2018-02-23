@@ -13,10 +13,14 @@
 }
 
 .mid-semester-evaluation-objects {
-  display: flex;
-  flex-direction: row;
   border: 1px solid #000;
   border-radius: 5px;
+  padding: 5px;
+}
+
+.mid-semester-evaluation-encasing {
+  display: flex;
+  flex-direction: row;
 }
 
 .mid-semester-evaluation-learning-issues {
@@ -29,6 +33,12 @@
 
 .mid-semester-evaluation-instructor-recommendations {
   padding: 5px;
+}
+
+.mid-semester-evaluation-header {
+  display: flex;
+  flex-direction: row;
+  padding-left: 5px;
 }
 
 textarea {

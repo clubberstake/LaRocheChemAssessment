@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MidSemesterEvaluationComponent implements OnInit {
 
-  learningIssues = ["Course Pace", "Poor Background", "Lack of Mindset", "Lack of Interest/Curiosity", "Lack of Effort/Focus", "Poor Time Management", "Health Issues", "Complacence", "Employment Hours", "Other"]
-  
+  learningIssues = ["Course Pace", "Poor Background", "Lack of Mindset", "Lack of Interest/Curiosity", "Lack of Effort/Focus", "Poor Time Management", "Health Issues", "Complacence", "Employment Hours", "Other"];
+
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  postMidSemesterReview() {
+    console.log("At post mid semester review");
   }
 
 }

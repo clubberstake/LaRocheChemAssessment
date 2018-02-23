@@ -1,8 +1,8 @@
 package laroche.chem.assessment.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import laroche.chem.assessment.entities.MidSemesterReviewEntity;
+import laroche.chem.assessment.entities.MidSemesterReview;
 
-public interface Course_Assessment_Form_Section_4_Repository extends JpaRepository<MidSemesterReviewEntity, Long> {
+public interface MidSemesterReviewRepository extends JpaRepository<MidSemesterReview, Long> {
 
 }

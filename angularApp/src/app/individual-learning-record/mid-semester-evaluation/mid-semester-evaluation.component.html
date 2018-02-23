@@ -1,27 +1,32 @@
 <div class="mid-semester-evaluation">
-  <h3 class="mid-semester-evaluation-header">Mid-Semester Student Performance</h3>
+  <div class="mid-semester-evaluation-header">
+    <h3>Mid-Semester Student Performance</h3>
+  </div>
   <div class="mid-semester-evaluation-objects">
-    <div class="mid-semester-evaluation-learning-issues">
-      <label><strong>Learning Issues</strong></label>
-      <div *ngFor="let issue of learningIssues">
-        <input type="radio"/> {{issue}}
+    <div class="mid-semester-evaluation-encasing">
+      <div class="mid-semester-evaluation-learning-issues">
+        <label><strong>Learning Issues</strong></label>
+        <div *ngFor="let issue of learningIssues">
+          <input type="checkbox"/> {{issue}}
+        </div>
+      </div>
+      <div class="mid-semester-evaluation-instructor-interactions">
+        <div>
+          <label><strong>Instructor Interactions</strong></label>
+          <p>
+            <textarea></textarea>
+          </p>
+        </div>
+      </div>
+      <div class="mid-semester-evaluation-instructor-recommendations">
+        <div>
+          <label><strong>Instructor Recommendations</strong></label>
+          <p>
+            <textarea></textarea>
+          </p>
+        </div>
       </div>
     </div>
-    <div class="mid-semester-evaluation-instructor-interactions">
-      <div>
-        <label><strong>Instructor Interactions</strong></label>
-        <p>
-          <textarea></textarea>
-        </p>
-      </div>
-    </div>
-    <div class="mid-semester-evaluation-instructor-recommendations">
-      <div>
-        <label><strong>Instructor Recommendations</strong></label>
-        <p>
-          <textarea></textarea>
-        </p>
-      </div>
-    </div>
+    <button (click) = "postMidSemesterReview()">Add Review</button>
   </div>
 </div>
