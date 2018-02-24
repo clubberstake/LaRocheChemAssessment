@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +24,10 @@ public class MidSemesterReviewController {
 	private MidSemesterReviewRepository midSemesterRepo;
 
 	public ArrayList<MidSemesterReviewResponse> getCourseInfoForAssessmentWorksheet4() {
-		return getData();
+		return getMidSemesterReview();
 	}
 	
-	@PostMapping("/addNote")
+	@PostMapping("/addReview")
 	public ResponseEntity<Void> addMidSemesterReview(@RequestBody MidSemesterReview midSemesterEntry) {
 		midSemesterRepo.save(midSemesterEntry);
 		
@@ -39,8 +40,8 @@ public class MidSemesterReviewController {
 	}
 	
 	
-
-	private ArrayList<MidSemesterReviewResponse> getData() {		
+	@GetMapping("/midSemesterReviews")
+	private ArrayList<MidSemesterReviewResponse> getMidSemesterReview() {		
 		List<MidSemesterReview> sec4list = midSemesterRepo.findAll();
 		ArrayList<MidSemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for(MidSemesterReview e: sec4list) {
