@@ -1,9 +1,19 @@
-  
-  .courseInfoForAssessmentWorksheetContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.courseInfoForAssessmentWorksheetContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+  flex-direction: column;
+  border: 1px solid #000;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
   
   .courseInfoForAssessmentWorksheetLabel {
     font-weight: bold;

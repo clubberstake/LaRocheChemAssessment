@@ -1,35 +1,24 @@
-<div class="courseInfoForAssessmentWorksheet">
-    <h4>Course Assessment Form Section I:
-        <div class="sectionItem">
-            <label>New SLOs: </label>
-            <textarea name='NewSLOs' [(ngModel)]="courseInformationObjInput.Cafs1Info.newSLOs"></textarea>
-        </div>
+
+<div class="courseInfoForAssessmentWorksheetContainer">
+    
+    Course Assessment Form Section I:
         <br>
-        <div>
-            <label>Upgrades:
-                <br>
-                <textarea name='Upgrades' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs1Info.upgrades"></textarea>
+        <br>
+            <label>New SLOs:<br>
+            <textarea name='NewSLOs' cols='45' rows='2' [(ngModel)]="courseInformationObjInput.Cafs1Info.newSLOs"></textarea>
+            </label>
+            <label>Upgrades:<br>
+            <textarea name='Upgrades' cols='45' rows='2' [(ngModel)]="courseInformationObjInput.Cafs1Info.upgrades"></textarea>
+            </label>
+            <label>Enhancements:<br>
+            <textarea name='Enhancements' cols='45' rows='2' [(ngModel)]="courseInformationObjInput.Cafs1Info.enhancements"></textarea>
+            </label>
+            <label>Modifications:<br>
+            <textarea name='Modifications' cols='45' rows='2' [(ngModel)]="courseInformationObjInput.Cafs1Info.modifications"></textarea>
+            </label>
+            <label>Other:<br>
+            <textarea name='Other' cols='45' rows='2' [(ngModel)]="courseInformationObjInput.Cafs1Info.other"></textarea>
             </label>
         </div>
-        <br>
-        <div>
-            <label>Enhancements:
-                <br>
-                <textarea name='Enhancements' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs1Info.enhancements"></textarea>
-            </label>
-        </div>
-        <br>
-        <div>
-            <label>Modifications:
-                <br>
-                <textarea name='Modifications' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs1Info.modifications"></textarea>
-            </label>
-        </div>
-        <br>
-        <div>
-            <label>Other:
-                <br>
-                <textarea name='Other' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs1Info.other"></textarea>
-            </label>
-        </div>
-        <br>
+
+     

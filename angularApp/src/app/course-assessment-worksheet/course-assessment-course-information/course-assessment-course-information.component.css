@@ -1,17 +1,26 @@
 .courseInfoForAssessmentWorksheet {
   color: #000000 !important;
   padding: 0.01em 16px;
-  margin: 20px;
+  margin: 10px;
 }
 
 .courseInfoForAssessmentWorksheetContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-shrink: 0;
+  flex-direction: column;
+  border: 3px solid #000;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #DCDCDC;
+  font-family: "Open Sans", sans-serif;
 }
 
 .courseInfoForAssessmentWorksheetLabel {
   font-weight: bold;
-  margin-left: 40px;
+
 }
 
