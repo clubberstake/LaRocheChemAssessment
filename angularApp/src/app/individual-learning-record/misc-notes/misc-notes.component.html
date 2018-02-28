@@ -1,16 +1,22 @@
 <div class="studentNotes">
-  <h1>Student Notes</h1>
-  <label>Comments:</label>
-  <textarea name="studentNotesBox" type="text" [(ngModel)]="studentObjectInput.miscNote.notes"></textarea>
-  <div class="notesAuthor">
-    Notes on {{studentObjectInput.student.studentName}}
+  <h3>Student Notes</h3>
+  <div class="student-notes-objects">
+    <label><strong>Comments:</strong></label>
+    <textarea name="studentNotesBox" type="text" [(ngModel)]="studentObjectInput.miscNote.notes"></textarea>
+    <div class="scroll-view">
+      <div class="student-notes-pane">
+        <div class="notesAuthor">
+          <strong>Notes on {{studentObjectInput.student.studentName}}</strong>
+        </div>
+        <!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
+        <div class="notes" *ngFor="let note of studentObjectInput.miscNotes">
+          <strong>[Entry]</strong>
+          <strong>Author:</strong> {{note.author}}
+          <strong>Date:</strong> {{note.time}}
+          <p>{{note.notes}}</p>
+        </div>
+      </div>
+    </div>
+    <button (click) = "postMiscNotes()">Post!</button>
   </div>
-<!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
-  <div class="notes" *ngFor="let note of studentObjectInput.miscNotes">
-    <strong>[Entry]</strong>
-    <strong>Author:</strong> {{note.author}}
-    <strong>Date:</strong> {{note.time}}
-    <p>{{note.notes}}</p>
-  </div>
-  <button (click) = "postMiscNotes()">Post</button>
 </div>

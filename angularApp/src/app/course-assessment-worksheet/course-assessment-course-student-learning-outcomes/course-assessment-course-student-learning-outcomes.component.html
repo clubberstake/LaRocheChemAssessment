@@ -1,0 +1,30 @@
+<div class="sloForAssessmentWorksheet">
+    <div class="sloForAssessmentWorksheetContainer">
+ <span class="sloInfoForAssessmentWorksheetLabel">Student Learning Outcomes (SLOs) Addressed In This Course:</span>
+    <div>
+      <div>#1 Knowledge Base</div>
+      <input #knowledgeBaseCheckBox id="knowledgeBaseCheckBox" type="checkbox" (change)="knowledgeBaseChecked(knowledgeBaseCheckBox.checked)" [(ngModel)]="studentLearningOutcomesInput.CourseSLOs.slo1" ng-true-value="'true'" ng-false-value="'false'">
+      <br>
+    </div>
+    <div>
+      <div>#2 Lab Skills</div>
+      <input #labSkillsCheckBox id="labSkillsCheckBox" type="checkbox" (change)="labSkillsChecked(labSkillsCheckBox.checked)" [(ngModel)]="studentLearningOutcomesInput.CourseSLOs.slo2" ng-true-value="'true'" ng-false-value="'false'">
+      <br>
+    </div>
+    <div>
+      <div>#3 Practice</div>
+      <input #practiceCheckBox id="practiceCheckBox" type="checkbox" (change)="practiceChecked(practiceCheckBox.checked)" [(ngModel)]="studentLearningOutcomesInput.CourseSLOs.slo3" ng-true-value="'true'" ng-false-value="'false'">
+      <br>
+    </div>
+    <div>
+      <div>#4 Societal Connects</div>
+      <input #societalConnectsCheckBox id="societalConnectsCheckBox" type="checkbox" (change)="societalConnectsChecked(societalConnectsCheckBox.checked)" [(ngModel)]="studentLearningOutcomesInput.CourseSLOs.slo4" ng-true-value="'true'" ng-false-value="'false'">
+      <br>
+    </div>
+    <div>
+      <div>#5 Capstone</div>
+      <input #capstoneCheckBox id="capstoneCheckBox" type="checkbox" (change)="capstoneChecked(capstoneCheckBox.checked)" [(ngModel)]="studentLearningOutcomesInput.CourseSLOs.slo5" ng-true-value="'true'" ng-false-value="'false'">
+      <br>
+    </div>
+  
+</div>

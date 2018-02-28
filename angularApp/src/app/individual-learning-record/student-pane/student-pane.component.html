@@ -1,120 +1,123 @@
 <div class="ilrStudent">
-  <div>
-    <img src="https://www-league.nhlstatic.com/builds/site-core/505a6f127dcc403fdad1e629840e9058ca0f1e88_1506980076/images/logos/team/current/team-5-light.svg">
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Name
-    </div>
+  <h3>Student Profile</h3>
+  <div class="student-pane-pane">
     <div>
-      <input name="studentNameBox" type="text" [(ngModel)]="studentObjectInput.student.studentName" required>
+      <img src="https://www-league.nhlstatic.com/builds/site-core/505a6f127dcc403fdad1e629840e9058ca0f1e88_1506980076/images/logos/team/current/team-5-light.svg">
     </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      ID #:
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Name
+      </div>
+      <div>
+        <input name="studentNameBox" type="text" [(ngModel)]="studentObjectInput.student.studentName" required>
+      </div>
     </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        ID #:
+      </div>
+      <div>
+        <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId" readonly>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Create Date:
+      </div>
+      <div>
+        <input name="studentDateBox" type="date" [(ngModel)]="studentObjectInput.student.time">
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Major:
+      </div>
+      <div>
+          <select name="studentMajorSel" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
+              <option *ngFor="let p of majors" [value]="p">{{p}}</option>
+          </select>
+          <!-- <div *ngif="value of majors == Other">
+              <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
+          </div>
+          <input ng-show="value of p == Other" type="text">  -->
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Year:
+      </div>
+      <div>
+          <select name="studentYearSel" required [(ngModel)]="studentObjectInput.student.studentYear" #year="ngModel">
+              <option *ngFor="let p of years" [value]="p">{{p}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Semester:
+      </div>
+      <div>
+          <select name="studentSemesterSel" required [(ngModel)]="studentObjectInput.student.studentSemester" #sememster="ngModel">
+              <option *ngFor="let p of semesters" [value]="p">{{p}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Math Placement:
+      </div>
+      <div>
+          <select name="studentMathSel" required [(ngModel)]="studentObjectInput.student.studentMathGrade" #grade="ngModel">
+              <option *ngFor="let p of grades" [value]="p">{{p}}</option>
+          </select>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Athletics:
+      </div>
+      <div>
+          <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="Yes"> Yes
+          <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="No"> No
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Housing Status:
+      </div>
+      <div>
+          <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Resident"> Resident
+          <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Commuter"> Commuter
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        Honors Status:
+      </div>
+      <div>
+          <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="Yes"> Yes
+          <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="No"> No
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        International Status:
+      </div>
+      <div>
+          <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="Yes"> Yes
+          <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="No"> No
+      </div>
+      </div>
+       <!-- <div ng-switch="studentsInput.internationalStudent">
+          <div ng-switch-when="No">
+             <p>No!</p>
+          </div>
+          <div ng-switch-when="Yes">
+              <p>Yes!</p>
+           </div>
+      </div> -->
     <div>
-      <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId" readonly>
+      <button (click)="onUpdateStudent()">Add/Update Student</button>
     </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Create Date:
-    </div>
-    <div>
-      <input name="studentDateBox" type="date" [(ngModel)]="studentObjectInput.student.time">
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Major:
-    </div>
-    <div>
-        <select name="studentMajorSel" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
-            <option *ngFor="let p of majors" [value]="p">{{p}}</option>
-        </select>
-        <!-- <div *ngif="value of majors == Other">
-            <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
-        </div>
-        <input ng-show="value of p == Other" type="text">  -->
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Year:
-    </div>
-    <div>
-        <select name="studentYearSel" required [(ngModel)]="studentObjectInput.student.studentYear" #year="ngModel">
-            <option *ngFor="let p of years" [value]="p">{{p}}</option>
-        </select>
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Semester:
-    </div>
-    <div>
-        <select name="studentSemesterSel" required [(ngModel)]="studentObjectInput.student.studentSemester" #sememster="ngModel">
-            <option *ngFor="let p of semesters" [value]="p">{{p}}</option>
-        </select>
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Math Placement:
-    </div>
-    <div>
-        <select name="studentMathSel" required [(ngModel)]="studentObjectInput.student.studentMathGrade" #grade="ngModel">
-            <option *ngFor="let p of grades" [value]="p">{{p}}</option>
-        </select>
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Athletics:
-    </div>
-    <div>
-        <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="Yes"> Yes
-        <input name="studentAtleticsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentAthletics" value="No"> No
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Housing Status:
-    </div>
-    <div>
-        <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Resident"> Resident
-        <input name="studentHousingRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHousingStatus" value="Commuter"> Commuter
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      Honors Status:
-    </div>
-    <div>
-        <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="Yes"> Yes
-        <input name="studentHonorsRadio" type="radio" [(ngModel)]="studentObjectInput.student.studentHonors" value="No"> No
-    </div>
-  </div>
-  <div class="ilrStudentRow">
-    <div class="ilrStudentLabel">
-      International Status:
-    </div>
-    <div>
-        <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="Yes"> Yes
-        <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="No"> No
-    </div>
-    </div>
-     <!-- <div ng-switch="studentsInput.internationalStudent">
-        <div ng-switch-when="No">
-           <p>No!</p>
-        </div>
-        <div ng-switch-when="Yes">
-            <p>Yes!</p>
-         </div>
-    </div> -->
-  <div>
-    <button (click)="onUpdateStudent()">Update Student</button>
   </div>
 </div>
