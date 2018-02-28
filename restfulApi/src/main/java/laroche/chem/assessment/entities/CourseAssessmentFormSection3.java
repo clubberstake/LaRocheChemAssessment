@@ -11,18 +11,21 @@ public class CourseAssessmentFormSection3 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private byte[] coursePreReq;
-	private byte[] textbooks;
-	private byte[] studentAsse;
-	private byte[] pedagogy;
-	private byte[] faculty;
-	private byte[] minorCapitalEq;
-	private byte[] other;
+	
+	private long classId;
+	private String coursePreReq;
+	private String textbooks;
+	private String studentAsse;
+	private String pedagogy;
+	private String faculty;
+	private String minorCapitalEq;
+	private String other;
 	
 	public CourseAssessmentFormSection3() {}
 	
-	public CourseAssessmentFormSection3(byte[] coursePreReq, byte[] textbooks, byte[] studentAsse, byte[] pedagogy,
-			byte[] faculty, byte[] minorCapitalEq, byte[] other) {
+	public CourseAssessmentFormSection3(long classId, String coursePreReq, String textbooks, String studentAsse, String pedagogy,
+			String faculty, String minorCapitalEq, String other) {
+		this.classId = classId;
 		this.coursePreReq = coursePreReq;
 		this.textbooks = textbooks;
 		this.studentAsse = studentAsse;
@@ -39,60 +42,67 @@ public class CourseAssessmentFormSection3 {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public byte[] getCoursePreReq() {
+	
+	public long getClassId() {
+		return classId;
+	}
+	
+	public void setClassId(long classId) {
+		this.classId = classId;
+	}
+	public String getCoursePreReq() {
 		return coursePreReq;
 	}
 
-	public void setCoursePreReq(byte[] coursePreReq) {
+	public void setCoursePreReq(String coursePreReq) {
 		this.coursePreReq = coursePreReq;
 	}
 
-	public byte[] getTextbooks() {
+	public String getTextbooks() {
 		return textbooks;
 	}
 
-	public void setTextbooks(byte[] textbooks) {
+	public void setTextbooks(String textbooks) {
 		this.textbooks = textbooks;
 	}
 
-	public byte[] getStudentAsse() {
+	public String getStudentAsse() {
 		return studentAsse;
 	}
 
-	public void setStudentAsse(byte[] studentAsse) {
+	public void setStudentAsse(String studentAsse) {
 		this.studentAsse = studentAsse;
 	}
 
-	public byte[] getPedagogy() {
+	public String getPedagogy() {
 		return pedagogy;
 	}
 
-	public void setPedagogy(byte[] pedagogy) {
+	public void setPedagogy(String pedagogy) {
 		this.pedagogy = pedagogy;
 	}
 
-	public byte[] getFaculty() {
+	public String getFaculty() {
 		return faculty;
 	}
 
-	public void setFaculty(byte[] faculty) {
+	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
 
-	public byte[] getMinorCapitalEq() {
+	public String getMinorCapitalEq() {
 		return minorCapitalEq;
 	}
 
-	public void setMinorCapitalEq(byte[] minorCapitalEq) {
+	public void setMinorCapitalEq(String minorCapitalEq) {
 		this.minorCapitalEq = minorCapitalEq;
 	}
 
-	public byte[] getOther() {
+	public String getOther() {
 		return other;
 	}
 
-	public void setOther(byte[] other) {
+	public void setOther(String other) {
 		this.other = other;
 	}
 	

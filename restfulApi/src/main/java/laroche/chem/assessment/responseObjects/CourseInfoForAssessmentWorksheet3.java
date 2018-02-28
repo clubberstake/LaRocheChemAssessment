@@ -2,59 +2,70 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseInfoForAssessmentWorksheet3 {
 
-	public CourseInfoForAssessmentWorksheet3(long cafsi1d, byte[] coursePreReq, byte[] textbooks, byte[] studentAsse, byte[] pedagogy, byte[] faculty, byte[] mindCapitalEq) {
+	public CourseInfoForAssessmentWorksheet3(long id, long classId, String coursePreReq, String textbooks, String studentAsse, String pedagogy, String faculty, String minorCapitalEq, String other) {
 
-		
-		this.cafsi1d = cafsi1d;
+		this.id = id;
+		this.classId = classId;
 		this.coursePreReq = coursePreReq;
 		this.textbooks = textbooks;
 		this.studentAsse = studentAsse;
 		this.pedagogy = pedagogy;
 		this.faculty = faculty;
-		this.mindCapitalEq = mindCapitalEq;
+		this.minorCapitalEq = minorCapitalEq;
+		this.other = other;
 	}
 
-	private long cafsi1d;
-	private byte[] coursePreReq;
-	private byte[] textbooks;
-	private byte[] studentAsse;
-	private byte[] pedagogy;
-	private byte[] faculty;
-	private byte[] mindCapitalEq;
+	private long id;
+	private long classId;
+	private String coursePreReq;
+	private String textbooks;
+	private String studentAsse;
+	private String pedagogy;
+	private String faculty;
+	private String minorCapitalEq;
+	private String other;
 	
 	
-	public long getCAFS1ID() 
+	public long getId()
 	{
-		return cafsi1d;
+		return id;
+	}
+	public long getClassId() 
+	{
+		return classId;
 	}
 
-	public byte[] getCoursePreReq() 
+	public String getCoursePreReq() 
 	{
 		return coursePreReq;
 	}
 
-	public byte[] getTextbooks() 
+	public String getTextbooks() 
 	{
 		return textbooks;
 	}
 
-	public byte[] getStudentAsse() 
+	public String getStudentAsse() 
 	{
 		return studentAsse;
 	}
 
-	public byte[] getPedagogy() 
+	public String getPedagogy() 
 	{
 		return pedagogy;
 	}
 
-	public byte[] getFaculty() 
+	public String getFaculty() 
 	{
 		return faculty;
 	}
 	
-	public byte[] getMindCapitalEq() 
+	public String getMinorCapitalEq() 
 	{
-		return mindCapitalEq;
+		return minorCapitalEq;
+	}
+	public String getOther()
+	{
+		return other;
 	}
 }

@@ -14,7 +14,8 @@ import { Cafs1Info } from '../cafs1';
 import { CAFS1InformationService } from '../../services/cafs1-service.service';
 import { Cafs2Info } from '../cafs2';
 import { CAFS2InformationService } from '../../services/cafs2-service.service';
-
+import { Cafs3Info } from '../cafs3';
+import { CAFS3InformationService } from '../../services/cafs3-service.service';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   courseSlos: CourseSLOs[] = [];
   cafs1: Cafs1Info[] = [];
   cafs2: Cafs2Info[] = [];
+  cafs3: Cafs3Info[] = [];
+
 
 
   setcourseAndSection(courseNumAndSection: any): void {
@@ -53,10 +56,6 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       this.courseInformationObjInput.Cafs1Info = new Cafs1Info(null, Number(courseNumAndSection), '', '', '', '', '');
     }
     console.log("this section 1", this.courseInformationObjInput.Cafs1Info);
-    console.log("section 4: ", courseNumAndSection)
-    if(this.courseInformationObjInput.Cafs4Info == null)
-    {
-    }
     this.courseInformationObjInput.Cafs2Info = this.cafs2.find(
       value => value.classId == courseNumAndSection
     );
@@ -65,9 +64,17 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     {
       this.courseInformationObjInput.Cafs2Info = new Cafs2Info(null, Number(courseNumAndSection), '', '', '', '', '', '', '', '');
     }
+    this.courseInformationObjInput.Cafs3Info = this.cafs3.find(
+      value => value.classId == courseNumAndSection
+      );
+      if(this.courseInformationObjInput.Cafs3Info == null)
+      {
+        this.courseInformationObjInput.Cafs3Info = new Cafs3Info(null, Number(courseNumAndSection), '', '', '', '', '', '', '');
+      }
+      console.log("this section 3", this.courseInformationObjInput.Cafs3Info);
   }
 
-  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService,  private cafs2InformationService: CAFS2InformationService) {
+  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService,  private cafs2InformationService: CAFS2InformationService, private cafs3InformationService: CAFS3InformationService) {
   }
 
   ngOnInit() {
@@ -87,6 +94,10 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.cafs2InformationService.getCAFS2Info().subscribe((section2: Cafs2Info[]) => {
       this.cafs2 = section2;
       console.log("section2", this.cafs2);
+    });
+    this.cafs3InformationService.getCAFS3Info().subscribe((section3: Cafs3Info[]) => {
+      this.cafs3 = section3;
+      console.log("section3", this.cafs3);
     });
   }
 }
