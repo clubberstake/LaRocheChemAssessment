@@ -9,9 +9,12 @@ export class CAFS6InformationService {
   constructor(private http: HttpClient) {
   }
 
-  public getCAFS6Info(): Observable<Cafs6Info[]> {
+  public getCourseInfoForAssessmentWorksheetReview(): Observable<Cafs6Info[]> {
     console.log('Made it to the service');
-    return this.http.get<Cafs6Info[]>("http://localhost:8080/cafs6");
+    return this.http.get<Cafs6Info[]>("http://localhost:8080/courseInfoForAssessmentWorksheetReview");
   };
-
+  public updateCafs6(cafs6: any) {
+    console.log('Made it to the Cafs6 update service', cafs6);
+    return this.http.put<Response>("http://localhost:8080/section6", cafs6).subscribe(res => console.log(res));
+  };
 }

@@ -6,30 +6,25 @@
         <div class="cafs-component-encasing">
             <div class="cafs-component-padding">
     
-      <label>Review ID:<br><textarea name = '' cols='25' rows='1'></textarea>
-      </label>
-      <br>
       <label>Department review and comments:<br>
-      <textarea name = '' cols='75' rows='2'></textarea>
+      <textarea name = '' cols='75' rows='2' [(ngModel)]="courseInformationObjInput.Cafs6Info.depReview"></textarea>
       </label>
-      <label>Department Reviewer(s):<br><textarea name = '' cols='35' rows='1'></textarea><br>
-      </label>
-      <label>Date of review:<br> <textarea name = '' cols='25' rows='1'></textarea><br>
+      <label>Department Reviewer(s):<br><textarea name = '' cols='35' rows='1' [(ngModel)]="courseInformationObjInput.Cafs6Info.depReviewer"></textarea><br>
       </label>
       <label>New action plans set for this course:<br>
-      <textarea name = '' cols='75' rows='2'></textarea>
+      <textarea name = '' cols='75' rows='2' [(ngModel)]="courseInformationObjInput.Cafs6Info.newActPlan"></textarea>
       </label>
       <label>New budget items to request for<br>
       the next fiscal year:<br>
-      <textarea name = 'Other' cols='75' rows='2'></textarea>
+      <textarea name = 'Other' cols='75' rows='2' [(ngModel)]="courseInformationObjInput.Cafs6Info.newBudgItem"></textarea>
       </label>
       <label>Director of Assessment/Division Chair<br> 
       review and comments:<br>
-      <textarea name = 'Other' cols='75' rows='2'></textarea>
+      <textarea name = 'Other' cols='75' rows='2' [(ngModel)]="courseInformationObjInput.Cafs6Info.divChairReview"></textarea>
       </label>
-      <label>Division Chair Signature:<br> <textarea name = '' cols='35' rows='1'></textarea><br> 
+      <label>Division Chair Signature:<br> <textarea name = '' cols='35' rows='1' [(ngModel)]="courseInformationObjInput.Cafs6Info.divChairSig"></textarea><br> 
       </label>
-      <label>Date of review:<br> <textarea name = '' cols='25' rows='1'></textarea><br>
+      <label>Date of review:<br> <textarea name = '' cols='25' rows='1' [(ngModel)]="courseInformationObjInput.Cafs6Info.divChairRevDate"></textarea><br>
       </label>
       </div>
 </div>

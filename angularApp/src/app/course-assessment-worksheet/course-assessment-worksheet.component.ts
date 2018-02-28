@@ -7,6 +7,7 @@ import { CourseSLOsInformationService } from "../services/course-slo-service.ser
 import { CAFS1InformationService } from "../services/cafs1-service.service";
 import { CAFS2InformationService } from "../services/cafs2-service.service";
 import { CAFS3InformationService } from "../services/cafs3-service.service";
+import { CAFS6InformationService } from "../services/cafs6-service.service";
 
 
 
@@ -18,7 +19,7 @@ import { CAFS3InformationService } from "../services/cafs3-service.service";
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
 
-  constructor(public sloService: CourseSLOsInformationService, public cafs1Service: CAFS1InformationService, public cafs2Service: CAFS2InformationService, public cafs3Service: CAFS3InformationService) {
+  constructor(public sloService: CourseSLOsInformationService, public cafs1Service: CAFS1InformationService, public cafs2Service: CAFS2InformationService, public cafs3Service: CAFS3InformationService, public cafs6Service: CAFS6InformationService) {
     this.courseInformationObj = new CourseInformationObject();
   }
 
@@ -29,5 +30,6 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs1Service.updateCafs1(this.courseInformationObj.Cafs1Info);
     this.cafs2Service.updateCafs2(this.courseInformationObj.Cafs2Info);
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
+    this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
   }
 }

@@ -2,59 +2,71 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseInfoForAssessmentWorksheetReview {
 
-	public CourseInfoForAssessmentWorksheetReview(byte[] depReview, byte[] divChairRevData, byte[] divChairReview, byte[] divChairSig, byte[] newActPlan, byte[] newBudgetItem, byte[] reviewID) {
+	public CourseInfoForAssessmentWorksheetReview(long id, long classId, String depReview, String divChairRevDate, String divChairReview, String divChairSig, String newActPlan, String newBudgItem, String depReviewer) {
 
-		
+		this.id = id;
+		this.classId = classId;
 		this.depReview = depReview;
-		this.divChairRevData = divChairRevData;
+		this.divChairRevDate = divChairRevDate;
 		this.divChairReview = divChairReview;
 		this.divChairSig = divChairSig;
 		this.newActPlan = newActPlan;
-		this.newBudgetItem = newBudgetItem;
-		this.reviewID = reviewID;
+		this.newBudgItem = newBudgItem;
+		this.depReviewer = depReviewer;
 	}
 
-	private byte[] depReview;
-	private byte[] divChairRevData;
-	private byte[] divChairReview;
-	private byte[] divChairSig;
-	private byte[] newActPlan;
-	private byte[] newBudgetItem;
-	private byte[] reviewID;
+	private long id;
+	private long classId;
+	private String depReview;
+	private String divChairRevDate;
+	private String divChairReview;
+	private String divChairSig;
+	private String newActPlan;
+	private String newBudgItem;
+	private String depReviewer;
 	
+	public long getId()
+	{
+		return id;
+	}
 	
-	public byte[] getDepReview() 
+	public long getClassId()
+	{
+		return classId;
+	}
+	
+	public String getDepReview() 
 	{
 		return depReview;
 	}
 
-	public byte[] getDivChairRevData() 
+	public String getDivChairRevDate() 
 	{
-		return divChairRevData;
+		return divChairRevDate;
 	}
 
-	public byte[] getDivChairReview() 
+	public String getDivChairReview() 
 	{
 		return divChairReview;
 	}
 
-	public byte[] getDivChairSig() 
+	public String getDivChairSig() 
 	{
 		return divChairSig;
 	}
 
-	public byte[] getNewActPlans() 
+	public String getNewActPlan() 
 	{
 		return newActPlan;
 	}
 
-	public byte[] getNewBudgetItem() 
+	public String getNewBudgItem() 
 	{
-		return newBudgetItem;
+		return newBudgItem;
 	}
 	
-	public byte[] getReviewID() 
+	public String getDepReviewer() 
 	{
-		return reviewID;
+		return depReviewer;
 	}
 }

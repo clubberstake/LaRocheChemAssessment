@@ -1,13 +1,12 @@
 export class Cafs6Info {
-    constructor(public classID: number,
-  public reviewID: number, 
+    constructor(public id: number,
+      public classId: number,
   public depReview: String, 
-  public depReviewSig: String, //needs added to restapi??
-  public depReviewDate: String, //needs added to restapi??
+  public depReviewer: String, 
   public newActPlan: String, 
-  public newBudgetItem: String, 
+  public newBudgItem: String, 
   public divChairReview: String, 
-  public divChairRevSig: String, //needs updated name in restapi??
-  public divChairRevDate: String) {} //needs added to restapi??
+  public divChairSig: String, 
+  public divChairRevDate: String) {} 
   
 }

@@ -12,18 +12,20 @@ public class CourseAssessmentReviewSection {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private byte[] depReview;
-	private byte[] depReviewer;
-	private byte[] newActPlan;
-	private byte[] newBudgItem;
-	private byte[] divChairReview;
-	private byte[] divChairSig;
-	private byte[] divChairRevDate;
+	private long classId;
+	private String depReview;
+	private String depReviewer;
+	private String newActPlan;
+	private String newBudgItem;
+	private String divChairReview;
+	private String divChairSig;
+	private String divChairRevDate;
 	
 	public CourseAssessmentReviewSection() {}
 
-	public CourseAssessmentReviewSection(byte[] depReview, byte[] depReviewer, byte[] newActPlan, byte[] newBudgItem,
-			byte[] divChairReview, byte[] divChairSig, byte[] divChairRevDate) {
+	public CourseAssessmentReviewSection(long classId, String depReview, String depReviewer, String newActPlan, String newBudgItem,
+			String divChairReview, String divChairSig, String divChairRevDate) {
+		this.classId = classId;
 		this.depReview = depReview;
 		this.depReviewer = depReviewer;
 		this.newActPlan = newActPlan;
@@ -41,59 +43,67 @@ public class CourseAssessmentReviewSection {
 		this.id = id;
 	}
 
-	public byte[] getDepReview() {
+	public long getClassId() {
+		return classId;
+	}
+	
+	public void setClasssId(long classId) {
+		this.classId = classId;		
+	}
+	
+	public String getDepReview() {
 		return depReview;
 	}
 
-	public void setDepReview(byte[] depReview) {
+	public void setDepReview(String depReview) {
 		this.depReview = depReview;
 	}
 
-	public byte[] getDepReviewer() {
+	public String getDepReviewer() {
 		return depReviewer;
 	}
 
-	public void setDepReviewer(byte[] depReviewer) {
+	public void setDepReviewer(String depReviewer) {
 		this.depReviewer = depReviewer;
 	}
 
-	public byte[] getNewActPlan() {
+	public String getNewActPlan() {
 		return newActPlan;
 	}
 
-	public void setNewActPlan(byte[] newActPlan) {
+	public void setNewActPlan(String newActPlan) {
 		this.newActPlan = newActPlan;
 	}
 
-	public byte[] getNewBudgItem() {
+	public String getNewBudgItem() {
 		return newBudgItem;
 	}
 
-	public void setNewBudgItem(byte[] newBudgItem) {
+	public void setNewBudgItem(String newBudgItem) {
 		this.newBudgItem = newBudgItem;
 	}
 
-	public byte[] getDivChairReview() {
+	public String getDivChairReview() {
 		return divChairReview;
 	}
 
-	public void setDivChairReview(byte[] divChairReview) {
+	public void setDivChairReview(String divChairReview) {
 		this.divChairReview = divChairReview;
 	}
 
-	public byte[] getDivChairSig() {
+	public String getDivChairSig() {
 		return divChairSig;
 	}
 
-	public void setDivChairSig(byte[] divChairSig) {
+	public void setDivChairSig(String divChairSig) {
 		this.divChairSig = divChairSig;
 	}
 
-	public byte[] getDivChairRevDate() {
+	public String getDivChairRevDate() {
 		return divChairRevDate;
 	}
 
-	public void setDivChairRevDate(byte[] divChairRevDate) {
+	public void setDivChairRevDate(String divChairRevDate) {
 		this.divChairRevDate = divChairRevDate;
 	}
 	

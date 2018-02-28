@@ -23,5 +23,6 @@ export class CourseInformationObject {
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
     this.Cafs3Info = new Cafs3Info(null, 0, '', '', '', '', '', '', '');
+    this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
   };
 }
