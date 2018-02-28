@@ -30,6 +30,8 @@ import { AdminComponent } from './admin/admin.component';
 import { ComponentCafs1Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs1/component-cafs1.component';
 import { ComponentCafs3Component } from './course-assessment-worksheet/course-assessment-course-pane/component-cafs3/component-cafs3.component';
 import { CAFS1InformationService } from './services/cafs1-service.service';
+import { CAFS4InformationService } from './services/cafs4-service.service';
+import { CAFS2InformationService } from './services/cafs2-service.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { CAFS1InformationService } from './services/cafs1-service.service';
     HttpModule,
     FormsModule
   ],
-  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService, CAFS1InformationService],
+  providers: [CourseInformationService, NotesInfoForMiscNotesTabService, StudentInfoForBioAndAdmissionsPlacementTabService, HttpClientModule, ClassInformationService, InstructorInformationService, CurrentClassInformationService, CourseSLOsInformationService, CAFS1InformationService, CAFS4InformationService, CAFS2InformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

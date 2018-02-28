@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CourseInformationObject } from '../../course-information-object';
 
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class ComponentCafs4Component implements OnInit {
+  @Input() courseInformationObjInput: CourseInformationObject;
 
   constructor() { }
 

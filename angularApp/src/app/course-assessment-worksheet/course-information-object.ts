@@ -21,5 +21,7 @@ export class CourseInformationObject {
   constructor() {
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
+    this.Cafs4Info = new Cafs4Info(null, 0, 0, 0, '', '', '')
+    this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
   };
 }

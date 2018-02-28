@@ -12,9 +12,10 @@ public class CourseAssessmentFormSection2 {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private byte[] chemConcept;
-	private byte[] objectivesContent;
-	private byte[] generalComments;
+	private long classId;
+	private String chemConcept;
+	private String objectivesContent;
+	private String generalComments;
 	private int percentA;
 	private int percentB;
 	private int percentC;
@@ -23,9 +24,10 @@ public class CourseAssessmentFormSection2 {
 	
 	public CourseAssessmentFormSection2() {}
 	
-	public CourseAssessmentFormSection2(long id, byte[] chemConcept, byte[] objectivesContent, byte[] generalComments,
+	public CourseAssessmentFormSection2(long classId, String chemConcept, String objectivesContent, String generalComments,
 			int percentA, int percentB, int percentC, int percentD, int percentF) {
-		this.id = id;
+
+		this.classId = classId;
 		this.chemConcept = chemConcept;
 		this.objectivesContent = objectivesContent;
 		this.generalComments = generalComments;
@@ -43,28 +45,33 @@ public class CourseAssessmentFormSection2 {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public byte[] getChemConcept() {
+	public long getClassId() {
+		return classId;
+	}
+	public void setClassId(long classId) {
+		this.classId = classId;
+	}
+	public String getChemConcept() {
 		return chemConcept;
 	}
 
-	public void setChemConcept(byte[] chemConcept) {
+	public void setChemConcept(String chemConcept) {
 		this.chemConcept = chemConcept;
 	}
 
-	public byte[] getObjectivesContent() {
+	public String getObjectivesContent() {
 		return objectivesContent;
 	}
 
-	public void setObjectivesContent(byte[] objectivesContent) {
+	public void setObjectivesContent(String objectivesContent) {
 		this.objectivesContent = objectivesContent;
 	}
 
-	public byte[] getGeneralComments() {
+	public String getGeneralComments() {
 		return generalComments;
 	}
 
-	public void setGeneralComments(byte[] generalComments) {
+	public void setGeneralComments(String generalComments) {
 		this.generalComments = generalComments;
 	}
 

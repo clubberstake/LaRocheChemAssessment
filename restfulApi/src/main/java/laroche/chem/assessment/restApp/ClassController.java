@@ -1,5 +1,11 @@
 package laroche.chem.assessment.restApp;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +48,24 @@ public class ClassController {
  		classRepository.save(classes);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/saveSyllabus")
+ 	public ResponseEntity<Void> saveSyllabus(@RequestBody String syllabus) throws FileNotFoundException, IOException{
+ 		System.out.println(syllabus);
+ 		
+ 		try
+ 		{
+ 			PrintWriter writer = new PrintWriter(syllabus, "UTF-8");
+ 			writer.println("The first line");
+ 			writer.println("The second line");
+ 			writer.close();
+ 		}
+ 		catch (FileNotFoundException e)
+ 		{
+ 			
+ 		}
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
+	}
 
 		private Course thiscourse;
 		
@@ -49,12 +73,12 @@ public class ClassController {
 
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes(1, null, "SP2017", "01", 1));
-			classRepository.save(new Classes(1, null, "FA2016", "01", 1));
-			classRepository.save(new Classes(3, null, "SP2017", "01", 1));
-			classRepository.save(new Classes(2, null, "SP2017", "01", 2));
-			classRepository.save(new Classes(4, null, "SP2017", "01", 4));
-			classRepository.save(new Classes(1, null, "SP2018", "01", 1));
+			classRepository.save(new Classes(1, "/SP2017/CHEM2016/01Syllabus.txt", "SP2017", "01", 1));
+			classRepository.save(new Classes(1, "/SP2016/CHEM2016/01Syllabus.txt", "FA2016", "01", 1));
+			classRepository.save(new Classes(3, "/SP2017/MATH2050/01Syllabus.txt", "SP2017", "01", 1));
+			classRepository.save(new Classes(2, "/SP2017/CSCI4098/01Syllabus.txt", "SP2017", "01", 2));
+			classRepository.save(new Classes(4, "/SP2017/MATH1040/01Syllabus.txt", "SP2017", "01", 4));
+			classRepository.save(new Classes(1, "/SP2018/CHEM2016/01Syllabus.txt", "SP2018", "01", 1));
 			classes = classRepository.findAll();
 		}
 		

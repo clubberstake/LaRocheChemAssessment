@@ -2,28 +2,31 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseInfoForAssessmentWorksheet4 {
 
-	public CourseInfoForAssessmentWorksheet4(long cafsi1d, int sec4Num, int iDNum, String learningIssues, byte[] extentInstructor, byte[] instructorRecommendations) {
+	public CourseInfoForAssessmentWorksheet4(long id, long classId, int sec4Num, int iDNum, String learningIssues, String extentInstructor, String instructorRecommendations) {
 
-		
-		this.cafsi1d = cafsi1d;
+		this.id = id;
+		this.classId = classId;
 		this.sec4Num = sec4Num;
 		this.iDNum = iDNum;
 		this.learningIssues = learningIssues;
 		this.extentInstructor = extentInstructor;
 		this.instructorRecommendations = instructorRecommendations;
 	}
-
-	private long cafsi1d;
+	private long id;
+	private long classId;
 	private int sec4Num;
 	private int iDNum;
 	private String learningIssues;
-	private byte[] extentInstructor;
-	private byte[] instructorRecommendations;
+	private String extentInstructor;
+	private String instructorRecommendations;
 	
-	
-	public long getCAFS1ID() 
+	public long getId()
 	{
-		return cafsi1d;
+		return id;
+	}
+	public long getClassId() 
+	{
+		return classId;
 	}
 
 	public int getSec4Num() 
@@ -41,12 +44,12 @@ public class CourseInfoForAssessmentWorksheet4 {
 		return learningIssues;
 	}
 
-	public byte[] getExtentInstructor() 
+	public String getExtentInstructor() 
 	{
 		return extentInstructor;
 	}
 
-	public byte[] getInstructorRecommendations() 
+	public String getInstructorRecommendations() 
 	{
 		return instructorRecommendations;
 	}

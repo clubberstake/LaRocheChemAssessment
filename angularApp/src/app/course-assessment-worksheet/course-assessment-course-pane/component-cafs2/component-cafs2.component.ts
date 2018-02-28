@@ -13,7 +13,7 @@ import { CourseInformationService } from '../../../services/course-information-s
 
 export class ComponentCafs2Component implements OnInit {
   @Input() courseInformationObjInput: CourseInformationObject;
-  constructor(private courseInfoService: CourseInformationService, private currentClassInformationService: CurrentClassInformationService) { }
+  constructor() { }
 
   ngOnInit() { 
 }

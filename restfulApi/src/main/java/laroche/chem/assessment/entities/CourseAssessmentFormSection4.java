@@ -11,21 +11,23 @@ public class CourseAssessmentFormSection4 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private long classId;
 	private int section4Num;
 	private int idNum;
 	private String learningIssue;
-	private byte[] extentInstructor;
-	private byte[] InstructorRecommendations;
+	private String extentInstructor;
+	private String InstructorRecommendations;
 	
 	public CourseAssessmentFormSection4() {}
 
-	public CourseAssessmentFormSection4(int section4Num, int idNum, String learningIssue, byte[] extentInstructor,
-			byte[] instructorRecommendations) {
+	public CourseAssessmentFormSection4(long classId, int section4Num, int idNum, String learningIssue, String extentInstructor,
+			String instructorRecommendations) {
+		this.classId = classId;
 		this.section4Num = section4Num;
 		this.idNum = idNum;
 		this.learningIssue = learningIssue;
 		this.extentInstructor = extentInstructor;
-		InstructorRecommendations = instructorRecommendations;
+		this.InstructorRecommendations = instructorRecommendations;
 	}
 
 	public long getId() {
@@ -35,7 +37,12 @@ public class CourseAssessmentFormSection4 {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	public long getClassId() {
+		return classId;
+	}
+	public void setClassId(long classId) {
+		this.classId = classId;
+	}
 	public int getSection4Num() {
 		return section4Num;
 	}
@@ -60,19 +67,19 @@ public class CourseAssessmentFormSection4 {
 		this.learningIssue = learningIssue;
 	}
 
-	public byte[] getExtentInstructor() {
+	public String getExtentInstructor() {
 		return extentInstructor;
 	}
 
-	public void setExtentInstructor(byte[] extentInstructor) {
+	public void setExtentInstructor(String extentInstructor) {
 		this.extentInstructor = extentInstructor;
 	}
 
-	public byte[] getInstructorRecommendations() {
+	public String getInstructorRecommendations() {
 		return InstructorRecommendations;
 	}
 
-	public void setInstructorRecommendations(byte[] instructorRecommendations) {
+	public void setInstructorRecommendations(String instructorRecommendations) {
 		InstructorRecommendations = instructorRecommendations;
 	}
 	

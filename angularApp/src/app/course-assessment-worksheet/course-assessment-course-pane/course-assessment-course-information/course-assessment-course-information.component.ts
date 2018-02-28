@@ -12,6 +12,12 @@ import { CourseSLOsInformationService } from '../../../services/course-slo-servi
 import { CourseSLOs } from '../../../course-assessment-worksheet/courseSLOs'
 import { Cafs1Info } from '../../cafs1';
 import { CAFS1InformationService } from '../../../services/cafs1-service.service';
+import { Cafs4Info } from '../../cafs4';
+import { CAFS4InformationService } from '../../../services/cafs4-service.service';
+import { CAFS2InformationService } from '../../../services/cafs2-service.service';
+import { Cafs2Info } from '../../cafs2';
+
+
 
 @Component({
   selector: 'app-course-assessment-course-information',
@@ -23,6 +29,9 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   courseAndSections: CurrentClassInfo[] = [];
   courseSlos: CourseSLOs[] = [];
   cafs1: Cafs1Info[] = [];
+  cafs4: Cafs4Info[] = [];
+  cafs2: Cafs2Info[] = [];
+
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
@@ -47,9 +56,25 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       this.courseInformationObjInput.Cafs1Info = new Cafs1Info(null, Number(courseNumAndSection), '', '', '', '', '');
     }
     console.log("this section 1", this.courseInformationObjInput.Cafs1Info);
+    this.courseInformationObjInput.Cafs4Info = this.cafs4.find(
+      value => value.classId == courseNumAndSection
+    );
+    console.log("section 4: ", courseNumAndSection)
+    if(this.courseInformationObjInput.Cafs4Info == null)
+    {
+      this.courseInformationObjInput.Cafs4Info = new Cafs4Info(null, Number(courseNumAndSection), 0, 0, '', '', '');
+    }
+    this.courseInformationObjInput.Cafs2Info = this.cafs2.find(
+      value => value.classId == courseNumAndSection
+    );
+    console.log("this section 2: ", courseNumAndSection)
+    if(this.courseInformationObjInput.Cafs2Info == null)
+    {
+      this.courseInformationObjInput.Cafs2Info = new Cafs2Info(null, Number(courseNumAndSection), '', '', '', '', '', '', '', '');
+    }
   }
 
-  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService) {
+  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService, private cafs4InformationService: CAFS4InformationService,  private cafs2InformationService: CAFS2InformationService) {
   }
 
   ngOnInit() {
@@ -65,6 +90,14 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.cafs1InformationService.getCAFS1Info().subscribe((section1: Cafs1Info[]) => {
       this.cafs1 = section1;
       console.log("section1", this.cafs1);
+    });
+    this.cafs4InformationService.getCAFS4Info().subscribe((section4: Cafs4Info[]) => {
+      this.cafs4 = section4;
+      console.log("section4", this.cafs4);
+    });
+    this.cafs2InformationService.getCAFS2Info().subscribe((section2: Cafs2Info[]) => {
+      this.cafs2 = section2;
+      console.log("section2", this.cafs2);
     });
   }
 }

@@ -10,7 +10,7 @@ public class Classes {
 	
 	public Classes() {}
 	
-	public Classes(long courseId, byte[] syllabus, String semester, String section, int instructorId) {
+	public Classes(long courseId, String syllabus, String semester, String section, int instructorId) {
 		this.courseId = courseId;
 		this.syllabus = syllabus;
 		this.semester = semester;
@@ -24,7 +24,7 @@ public class Classes {
 	
 	private long courseId;
 	// Array represents tinyblob
-	private byte[] syllabus;
+	private String syllabus;
 	private String semester;
 	private String section;
 	private int instructorId;
@@ -45,11 +45,11 @@ public class Classes {
 		this.courseId = courseId;
 	}
 	
-	public byte[] getSyllabus() {
+	public String getSyllabus() {
 		return syllabus;
 	}
 	
-	public void setSyllabus(byte[] syllabus) {
+	public void setSyllabus(String syllabus) {
 		this.syllabus = syllabus;
 	}
 	

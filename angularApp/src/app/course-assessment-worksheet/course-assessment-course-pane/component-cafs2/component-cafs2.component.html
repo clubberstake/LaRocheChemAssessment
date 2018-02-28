@@ -3,9 +3,9 @@
 <br>
 <br>
 <div>
-<div><label>Chemestry Concepts Carry-Over From Previous Semsters:<textarea name = '' cols='55' rows='5'></textarea></label></div><br>
-<div><label>Were Objectives and Content Covered:<textarea name = '' cols='55' rows='5'></textarea></label></div><br>
-<div><label>General Comments:<br><textarea name = '' cols='55' rows='5'></textarea></label></div><br>
+<div><label>Chemestry Concepts Carry-Over From Previous Semsters:<textarea name = '' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs2Info.chemConcept"></textarea></label></div><br>
+<div><label>Were Objectives and Content Covered:<textarea name = '' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs2Info.objectivesContent"></textarea></label></div><br>
+<div><label>General Comments:<br><textarea name = '' cols='55' rows='5' [(ngModel)]="courseInformationObjInput.Cafs2Info.generalComments"></textarea></label></div><br>
 </div>
 
   Overall student performace: 
@@ -19,11 +19,11 @@
       <td>%F</td>
       <tr>
       <tr>
-      <td><input type='text' id='gradeA' size = '5' NAME='Apercent' value= ''/></td>
-      <td><input type='text' id='gradeB' size = '5' NAME='Bpercent' value= ''/></td>
-      <td><input type='text' id='gradeC' size = '5' NAME='Cpercent' value= ''/></td>
-      <td><input type='text' id='gradeD' size = '5' NAME='Dpercent' value= ''/></td>
-      <td><input type='text' id='gradeF' size = '5' NAME='Fpercent' value= ''/></td>
+      <td><input type='text' id='gradeA' size = '5' NAME='Apercent' value= '' [(ngModel)]="courseInformationObjInput.Cafs2Info.percentA"/></td>
+      <td><input type='text' id='gradeB' size = '5' NAME='Bpercent' value= '' [(ngModel)]="courseInformationObjInput.Cafs2Info.percentB"/></td>
+      <td><input type='text' id='gradeC' size = '5' NAME='Cpercent' value= '' [(ngModel)]="courseInformationObjInput.Cafs2Info.percentC"/></td>
+      <td><input type='text' id='gradeD' size = '5' NAME='Dpercent' value= '' [(ngModel)]="courseInformationObjInput.Cafs2Info.percentD"/></td>
+      <td><input type='text' id='gradeF' size = '5' NAME='Fpercent' value= '' [(ngModel)]="courseInformationObjInput.Cafs2Info.percentF"/></td>
       </tr>
       </table>
       <br>

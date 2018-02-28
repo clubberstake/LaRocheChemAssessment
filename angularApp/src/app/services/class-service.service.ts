@@ -18,4 +18,8 @@ export class ClassInformationService {
     return this.http.post<Response>('http://localhost:8080/addClass', classs).subscribe(res => console.log(res));
   }
 
+  public saveSyllabus(syllabus: any) {
+    return this.http.post<Response>('http://localhost:8080/saveSyllabus', syllabus).subscribe(res => console.log(res));
+  }
+
 }

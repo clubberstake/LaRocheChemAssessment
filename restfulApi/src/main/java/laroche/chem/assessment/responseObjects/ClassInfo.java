@@ -2,12 +2,12 @@ package laroche.chem.assessment.responseObjects;
 
 public class ClassInfo {
 
-	public ClassInfo(long classId, long courseId, String courseID, byte[] bs, String section, String semester, String courseTitle, long instructorId, String instructorName) 
+	public ClassInfo(long classId, long courseId, String courseID, String string, String section, String semester, String courseTitle, long instructorId, String instructorName) 
 	{
 		this.classId = classId;
 		this.courseId = courseId;
 		this.courseID = courseID;
-		this.syllabus = bs;
+		this.syllabus = string;
 		this.section = section;
 		this.semester = semester;
 		this.instructorId = instructorId;
@@ -17,7 +17,7 @@ public class ClassInfo {
 	private long classId;
 	private long courseId;
 	private String courseID;
-	private byte[] syllabus;
+	private String syllabus;
 	private String section;
 	private String semester;
 	private long instructorId;
@@ -39,7 +39,7 @@ public class ClassInfo {
 		return courseID;
 	}
 	
-	public byte[] getSyllabus()
+	public String getSyllabus()
 	{
 		return syllabus;
 	}

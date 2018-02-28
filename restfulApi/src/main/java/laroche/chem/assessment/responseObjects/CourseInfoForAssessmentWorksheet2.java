@@ -2,11 +2,10 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseInfoForAssessmentWorksheet2 {
 
-	public CourseInfoForAssessmentWorksheet2(long cafsi1d, byte[] chemConcept, byte[] objectivesContent, byte[] generalComments, int percentA, int percentB, int percentC, int percentD, int percentF) 
+	public CourseInfoForAssessmentWorksheet2(long id, long classId, String chemConcept, String objectivesContent, String generalComments, int percentA, int percentB, int percentC, int percentD, int percentF) 
 	{
-
-		
-		this.cafsi1d = cafsi1d;
+		this.id = id;
+		this.classId = classId;
 		this.chemConcept = chemConcept;
 		this.objectivesContent = objectivesContent;
 		this.generalComments = generalComments;
@@ -16,34 +15,36 @@ public class CourseInfoForAssessmentWorksheet2 {
 		this.percentD = percentD;
 		this.percentF = percentF;
 	}
-
-	private long cafsi1d;
-	private byte[] chemConcept;
-	private byte[] objectivesContent;
-	private byte[] generalComments;
+	private long id;
+	private long classId;
+	private String chemConcept;
+	private String objectivesContent;
+	private String generalComments;
 	private int percentA;
 	private int percentB;
 	private int percentC;
 	private int percentD;
 	private int percentF;
 	
-	
-	public long getCAFS1ID() 
+	public long getId() {
+		return id;
+	}
+	public long getClassId() 
 	{
-		return cafsi1d;
+		return classId;
 	}
 
-	public byte[] getChemConcept() 
+	public String getChemConcept() 
 	{
 		return chemConcept;
 	}
 
-	public byte[] getObjectivesContent() 
+	public String getObjectivesContent() 
 	{
 		return objectivesContent;
 	}
 
-	public byte[] getGeneralComments() 
+	public String getGeneralComments() 
 	{
 		return generalComments;
 	}

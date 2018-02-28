@@ -38,6 +38,9 @@
   <div *ngIf="otherInstructor">
     Instructor Name:<input type="text" name="instructorName" [(ngModel)]="newInstructor.name"><br>
   </div>
+  <div>
+    <input type="file" name="syllabus" id="syllabus">
+  </div>
   <input type="submit" value="Add" (click)="addClass()">
 </div>
 </div>

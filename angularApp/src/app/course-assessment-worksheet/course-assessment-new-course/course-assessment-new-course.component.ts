@@ -84,6 +84,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     else
     {
       this.newClass.courseId = this.courseAndSection.courseId;
+      this.newClass.courseID = this.courseAndSection.courseNumAndSection;
     }
     if(this.otherInstructor)
     {
@@ -102,8 +103,14 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       console.log(this.instructor.id)
     }
     this.newClass.semester = this.semester + "" + this.year;
-    console.log(this.newClass.courseId, this.newClass.section, this.newClass.semester, this.newClass.instructorId);
+    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
+    console.log("FILE to Load: ", fileToLoad);
+    this.newClass.syllabus = "/" + this.newClass.semester + "/" + this.newClass.courseID + "/" + this.newClass.section + "Syllabus.txt";
+    console.log(this.newClass);
     this.classService.addClass(this.newClass);
+    var fileReader = new FileReader();
+    console.log(fileToLoad.name);
+    this.classService.saveSyllabus(this.newClass.syllabus);
   }
 
   newCourseDropDown()
