@@ -1,43 +1,39 @@
 package laroche.chem.assessment.responseObjects;
 
+import laroche.chem.assessment.entities.Student;
+
 public class MidSemesterReviewResponse {
-	private int studentID;
+	private Student student;
 	private Boolean[] learningIssues;
 	private String extentInstructor;
 	private String instructorRecommendations;
-	
-	public MidSemesterReviewResponse(int studentID,Boolean[] learningIssues, String extentInstructor, String instructorRecommendations) {
-		this.setStudentID(studentID);
+
+	public MidSemesterReviewResponse(Student student, Boolean[] learningIssues, String extentInstructor,
+			String instructorRecommendations) {
+		this.setStudent(student);
 		this.learningIssues = learningIssues;
 		this.extentInstructor = extentInstructor;
 		this.instructorRecommendations = instructorRecommendations;
-	}	
+	}
 
-	
-	public Boolean[] getLearningIssues() 
-	{
+	public Boolean[] getLearningIssues() {
 		return learningIssues;
 	}
 
-	public String getExtentInstructor() 
-	{
+	public String getExtentInstructor() {
 		return extentInstructor;
 	}
 
-	public String getInstructorRecommendations() 
-	{
+	public String getInstructorRecommendations() {
 		return instructorRecommendations;
 	}
 
-
-	public int getStudentID() {
-		return studentID;
+	public Student getStudent() {
+		return student;
 	}
 
-
-	public void setStudentID(int studentID) {
-		this.studentID = studentID;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
-
 
 }

@@ -1,9 +1,12 @@
 package laroche.chem.assessment.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class MidSemesterReview {
@@ -11,16 +14,19 @@ public class MidSemesterReview {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private int studentID;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+	private Student student;
+	
 	private Boolean[] learningIssues;
 	private String extentInstructor;
 	private String instructorRecommendations;
 	
 	public MidSemesterReview() {}
 
-	public MidSemesterReview(int studentID, Boolean[] learningIssues, String extentInstructor,
+	public MidSemesterReview(Student student, Boolean[] learningIssues, String extentInstructor,
 			String instructorRecommendations) {
-		this.setStudentID(studentID);
+		this.setStudentID(student);
 		this.learningIssues = learningIssues;
 		this.extentInstructor = extentInstructor;
 		this.instructorRecommendations = instructorRecommendations;
@@ -54,12 +60,12 @@ public class MidSemesterReview {
 		this.instructorRecommendations = instructorRecommendations;
 	}
 
-	public int getStudentID() {
-		return studentID;
+	public Student getStudentID() {
+		return student;
 	}
 
-	public void setStudentID(int studentID) {
-		this.studentID = studentID;
+	public void setStudentID(Student student) {
+		this.student = student;
 	}
 
 	
