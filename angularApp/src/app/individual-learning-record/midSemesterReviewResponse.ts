@@ -1,3 +1,3 @@
 export class MidSemesterReviewResponse {
-  constructor(studentID: number, learningIssues: boolean[], extentInstructor: string, instructorRecommendations: string){}
+  constructor(public studentID: number, public learningIssues: boolean[], public extentInstructor: string, public instructorRecommendations: string){}
 }

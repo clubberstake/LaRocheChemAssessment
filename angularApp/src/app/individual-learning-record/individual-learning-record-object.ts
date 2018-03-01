@@ -7,6 +7,6 @@ export class IndividualLearningRecordObject {
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
     student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
-    midSemesterReview: MidSemesterReviewResponse = new MidSemesterReviewResponse(0, [], "", "");
+    midSemesterReview: MidSemesterReviewResponse = new MidSemesterReviewResponse(0, [false, false, false, false, false, false, false, false, false, false], "", "");
     midSemesterReviews: MidSemesterReviewResponse[] = [];
 }

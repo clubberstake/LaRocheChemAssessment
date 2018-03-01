@@ -33,6 +33,7 @@ import { MidSemesterEvaluationComponent } from './individual-learning-record/mid
 import { CAFS2InformationService } from "./services/cafs2-service.service";
 import { CAFS3InformationService } from "./services/cafs3-service.service";
 import { CAFS6InformationService } from "./services/cafs6-service.service";
+import { MidSemesterEvaluationService } from "./services/mid-semester-evaluation.service";
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { CAFS6InformationService } from "./services/cafs6-service.service";
     CAFS1InformationService,
     CAFS2InformationService,
     CAFS3InformationService,
-    CAFS6InformationService
+    CAFS6InformationService,
+    MidSemesterEvaluationService
   ],
   bootstrap: [AppComponent]
 })
