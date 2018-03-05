@@ -1,4 +1,4 @@
-.mid-semester-evaluation {
+.semester-evaluation {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
@@ -12,30 +12,30 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.mid-semester-evaluation-objects {
+.semester-evaluation-objects {
   border: 1px solid #000;
   border-radius: 5px;
   padding: 5px;
 }
 
-.mid-semester-evaluation-encasing {
+.semester-evaluation-encasing {
   display: flex;
   flex-direction: row;
 }
 
-.mid-semester-evaluation-learning-issues {
+.semester-evaluation-learning-issues {
   padding: 5px;
 }
 
-.mid-semester-evaluation-instructor-interactions {
+.semester-evaluation-instructor-interactions {
   padding: 5px;
 }
 
-.mid-semester-evaluation-instructor-recommendations {
+.semester-evaluation-instructor-recommendations {
   padding: 5px;
 }
 
-.mid-semester-evaluation-header {
+.semester-evaluation-header {
   display: flex;
   flex-direction: row;
   padding-left: 5px;

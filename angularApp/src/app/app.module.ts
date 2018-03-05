@@ -29,11 +29,11 @@ import { ComponentCafs1Component } from "./course-assessment-worksheet/component
 import { ComponentCafs3Component } from "./course-assessment-worksheet/component-cafs3/component-cafs3.component";
 import { CAFS1InformationService } from "./services/cafs1-service.service";
 import { AdminComponent } from "./admin/admin.component";
-import { MidSemesterEvaluationComponent } from './individual-learning-record/mid-semester-evaluation/mid-semester-evaluation.component';
 import { CAFS2InformationService } from "./services/cafs2-service.service";
 import { CAFS3InformationService } from "./services/cafs3-service.service";
 import { CAFS6InformationService } from "./services/cafs6-service.service";
-import { MidSemesterEvaluationService } from "./services/mid-semester-evaluation.service";
+import { SemesterEvaluationComponent } from './individual-learning-record/semester-evaluation/semester-evaluation.component';
+import { SemesterEvaluationService } from './services/semester-evaluation.service'
 
 
 @NgModule({
@@ -55,10 +55,8 @@ import { MidSemesterEvaluationService } from "./services/mid-semester-evaluation
     ComponentCafs4Component,
     ComponentCafs5Component,
     ComponentCafs6Component,
-
     AdminComponent,
-
-    MidSemesterEvaluationComponent
+    SemesterEvaluationComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [
@@ -74,7 +72,7 @@ import { MidSemesterEvaluationService } from "./services/mid-semester-evaluation
     CAFS2InformationService,
     CAFS3InformationService,
     CAFS6InformationService,
-    MidSemesterEvaluationService
+    SemesterEvaluationService
   ],
   bootstrap: [AppComponent]
 })

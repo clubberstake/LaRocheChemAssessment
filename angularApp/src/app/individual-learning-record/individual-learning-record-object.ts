@@ -1,12 +1,12 @@
 import { NotesInfoForMiscNotesTab } from "./notesInfoForMiscNotesTab";
 import { StudentInfoForBioAndAdmissionsPlacementTab } from "./studentInfoForBioAndAdmissionsPlacementTab";
-import { MidSemesterReviewResponse } from "./midSemesterReviewResponse";
+import { SemesterReviewResponse } from "./SemesterReviewResponse";
 
 export class IndividualLearningRecordObject {
     studentId: any;
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
     student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
-    midSemesterReview: MidSemesterReviewResponse = new MidSemesterReviewResponse(0, [false, false, false, false, false, false, false, false, false, false], "", "");
-    midSemesterReviews: MidSemesterReviewResponse[] = [];
+    midSemesterReview: SemesterReviewResponse = new SemesterReviewResponse(0, null, null, '', '', '', '');
+    midSemesterReviews: SemesterReviewResponse[] = [];
 }
