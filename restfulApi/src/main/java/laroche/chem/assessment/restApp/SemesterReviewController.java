@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import laroche.chem.assessment.entities.SemesterReview;
+import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.SemesterReviewRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
+import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
 
 @RestController
@@ -33,12 +35,15 @@ public class SemesterReviewController {
 	}
 
 	@PostMapping("/addReview")
-	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReview semesterEntry) {
-		semesterReviewRepository.save(semesterEntry);
-		System.out.println("Semester Entry Student Id: " + semesterEntry.getStudentID());
+	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReviewRequest request) {
+		Student student = studentRepository.findOne(request.getStudentId());
+		//SemesterReview review = new SemesterReview(student, midSemesterLearningIssues, endSemesterLearningIssues, midSemesterExtentInstructor, endSemesterExtentInstructor, midSemesterInstructorRecommendations, endSemesterInstructorRecommendations)
+		SemesterReview review = new SemesterReview();
+		semesterReviewRepository.save(review);
+		System.out.println("Semester Entry Student Id: " + request.getStudentId());
 
 		try {
-			return ResponseEntity.created(new URI("/midSemesterEntry/" + semesterEntry.getID())).build();
+			return ResponseEntity.created(new URI("/midSemesterEntry/" + review.getID())).build();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
