@@ -1,6 +1,6 @@
 <div class="semester-evaluation">
   <div class="semester-evaluation-header">
-    <h3>Semester Performance</h3>
+    <h3>Semester Evaluation</h3>
   </div>
   <div class="semester-evaluation-objects">
     <div class="semester-evaluation-encasing">
@@ -11,16 +11,16 @@
               <div class="mid-semester-learning-issues-header">
                 <label><strong>Mid</strong></label>
               </div>
-              <div *ngFor="let issue of learningIssues">
-                <input type="checkbox"/>
+              <div *ngFor="let issue of studentObjectInput.learningIssues">
+                <input type="checkbox" [(ngModel)]="issue.midvalue" />
               </div>
             </div>
             <div class="end-semester-learning-issues">
               <div class="end-semester-learning-issues-header">
                 <label><strong>End</strong></label>
               </div>
-              <div *ngFor="let issue of learningIssues">
-                <input type="checkbox"/> {{issue}}
+              <div *ngFor="let issue of studentObjectInput.learningIssues">
+                <input type="checkbox" [(ngModel)]="issue.endvalue" /> {{issue.name}}
               </div>
             </div>
           </div>

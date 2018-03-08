@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 import { SemesterEvaluationService } from '../../services/semester-evaluation.service';
+import { LearningIssues } from '../learningIssues';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -9,9 +10,7 @@ import { SemesterEvaluationService } from '../../services/semester-evaluation.se
 })
 export class SemesterEvaluationComponent implements OnInit {
 
-  learningIssues = ["Course Pace", "Poor Background", "Lack of Mindset", "Lack of Interest/Curiosity", "Lack of Effort/Focus", "Poor Time Management", "Health Issues", "Complacence", "Employment Hours", "Other"];
   @Input() studentObjectInput: IndividualLearningRecordObject;
-
   constructor() { }
 
   ngOnInit() {

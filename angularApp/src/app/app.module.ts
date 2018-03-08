@@ -33,7 +33,8 @@ import { CAFS2InformationService } from "./services/cafs2-service.service";
 import { CAFS3InformationService } from "./services/cafs3-service.service";
 import { CAFS6InformationService } from "./services/cafs6-service.service";
 import { SemesterEvaluationComponent } from './individual-learning-record/semester-evaluation/semester-evaluation.component';
-import { SemesterEvaluationService } from './services/semester-evaluation.service'
+import { SemesterEvaluationService } from './services/semester-evaluation.service';
+import { CourseSemesterEvaluationComponent } from './course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component'
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { SemesterEvaluationService } from './services/semester-evaluation.servic
     ComponentCafs5Component,
     ComponentCafs6Component,
     AdminComponent,
-    SemesterEvaluationComponent
+    SemesterEvaluationComponent,
+    CourseSemesterEvaluationComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [
