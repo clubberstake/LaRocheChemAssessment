@@ -11,13 +11,15 @@ import { LearningIssues } from '../learningIssues';
 export class SemesterEvaluationComponent implements OnInit {
 
   @Input() studentObjectInput: IndividualLearningRecordObject;
-  constructor() { }
+  constructor(private semesterEvaluationService: SemesterEvaluationService) { }
 
   ngOnInit() {
   }
 
   postMidSemesterReview() {
-    // this.midSemesterReviewService.addMidSemesterReview();
+    this.studentObjectInput.semesterReview.studentId = this.studentObjectInput.student
+    console.log("The semester review studend ID: " + this.studentObjectInput.semesterReview.studentId.id)
+    this.semesterEvaluationService.addMidSemesterReview(this.studentObjectInput.semesterReview)
   }
 
 }

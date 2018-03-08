@@ -35,6 +35,7 @@ public class SemesterReviewController {
 	@PostMapping("/addReview")
 	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReview semesterEntry) {
 		semesterReviewRepository.save(semesterEntry);
+		System.out.println("Semester Entry Student Id: " + semesterEntry.getStudentID());
 
 		try {
 			return ResponseEntity.created(new URI("/midSemesterEntry/" + semesterEntry.getID())).build();

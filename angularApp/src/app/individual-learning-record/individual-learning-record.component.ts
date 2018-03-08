@@ -16,8 +16,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
 
-  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService) {
-  }
+  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService) {}
 
   ngOnInit() {
   }
@@ -31,12 +30,13 @@ export class IndividualLearningRecordComponent implements OnInit {
     this.notesService.getMiscNoteInfoByStudentId(studentId).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
       this.ilrStudentObject.miscNotes = miscNotes;
       console.log(this.ilrStudentObject.miscNotes);
-    })
+    });
 
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);
   }
 
+  /*To be worked on later*/
   onSearchByName(studentName: any) {
     console.log(studentName);
   }
