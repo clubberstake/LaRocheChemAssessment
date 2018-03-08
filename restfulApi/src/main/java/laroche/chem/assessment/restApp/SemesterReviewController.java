@@ -36,9 +36,11 @@ public class SemesterReviewController {
 
 	@PostMapping("/addReview")
 	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReviewRequest request) {
+		// Find a student from student repository based on request's recorded student ID and create a new student
 		Student student = studentRepository.findOne(request.getStudentId());
-		//SemesterReview review = new SemesterReview(student, midSemesterLearningIssues, endSemesterLearningIssues, midSemesterExtentInstructor, endSemesterExtentInstructor, midSemesterInstructorRecommendations, endSemesterInstructorRecommendations)
-		SemesterReview review = new SemesterReview();
+		// Pass this newly created student to a Semester Review object along with additional request's recorded data
+		SemesterReview review = new SemesterReview(student, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
+		// Save this newly create Semester Review object to the database through the semester review repository
 		semesterReviewRepository.save(review);
 		System.out.println("Semester Entry Student Id: " + request.getStudentId());
 
