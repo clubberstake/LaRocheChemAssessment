@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,11 @@ import laroche.chem.assessment.repositories.SemesterReviewRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
+import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTab;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/midSemesterReview")
+@RequestMapping("/review")
 public class SemesterReviewController {
 	@Autowired
 	private SemesterReviewRepository semesterReviewRepository;
@@ -52,7 +54,7 @@ public class SemesterReviewController {
 		}
 	}
 
-	@GetMapping("/midSemesterReviews")
+	@GetMapping("/semesterReviews")
 	private ArrayList<SemesterReviewResponse> getMidSemesterReview() {
 
 		SemesterReview item = new SemesterReview();
@@ -74,5 +76,15 @@ public class SemesterReviewController {
 					review.getEndSemesterInstructorRecommendations()));
 		}
 		return midSemesterData;
+	}
+	
+	@GetMapping("/semesterReviews/studentId={studentId}")
+	public SemesterReviewResponse getReviewInfo(@PathVariable int studentId) {
+		Student student = studentRepository.findOne((long) studentId);
+		List<SemesterReview> reviews = semesterReviewRepository.findByStudentId(student.getId());
+		SemesterReview review = reviews.get(0);
+		return new SemesterReviewResponse(review.getStudentID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
+				review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
+				review.getEndSemesterInstructorRecommendations());		
 	}
 }

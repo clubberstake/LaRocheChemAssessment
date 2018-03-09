@@ -21,12 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.Course;
 import laroche.chem.assessment.entities.Instructor;
+import laroche.chem.assessment.entities.SemesterReview;
+import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
+import laroche.chem.assessment.repositories.SemesterReviewRepository;
+import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.ClassInfo;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClassController {
 	
 	@Autowired
@@ -35,20 +40,23 @@ public class ClassController {
 	private InstructorRepository instructorRepository;
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private StudentRepository studentRepository;
+	@Autowired
+	private SemesterReviewRepository semesterReviewRepository;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/classInfo")
 	public ArrayList<ClassInfo> getClassInfo() {
 		return generateFakeData();
 	}
-	@CrossOrigin(origins = "http://localhost:4200")
+	
 	@PostMapping("/addClass")
  	public ResponseEntity<Void> addClass(@RequestBody Classes classes) {
  		System.out.println(classes.getId());
  		classRepository.save(classes);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
-	@CrossOrigin(origins = "http://localhost:4200")
+	
 	@PostMapping("/saveSyllabus")
  	public ResponseEntity<Void> saveSyllabus(@RequestBody String syllabus) throws FileNotFoundException, IOException{
  		System.out.println(syllabus);
@@ -67,10 +75,10 @@ public class ClassController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
 
-		private Course thiscourse;
+	private Course thiscourse;
 		
 	private ArrayList<ClassInfo> generateFakeData() {
-
+		
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
 			classRepository.save(new Classes(1, "/SP2017/CHEM2016/01Syllabus.txt", "SP2017", "01", 1));
