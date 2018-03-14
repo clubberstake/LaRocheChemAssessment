@@ -26,8 +26,24 @@ fdescribe("Cafs1ServiceService", () => {
 
   it("should return expected heroes (HttpClient called once)", () => {
     const dummyPosts: Cafs1Info[] = [
-      { classId: 1, id: 1 },
-      { classId: 2, id: 2 }
+      {
+        classId: 1,
+        id: 1,
+        newSLOs: "",
+        enhancements: "",
+        modifications: "",
+        other: "",
+        upgrades: ""
+      },
+      {
+        classId: 2,
+        id: 2,
+        newSLOs: "",
+        enhancements: "",
+        modifications: "",
+        other: "",
+        upgrades: ""
+      }
     ];
 
     service.getCAFS1Info().subscribe(posts => {
