@@ -1,0 +1,175 @@
+DRAFT 19
+MECHANICAL DRAWING
+
+COURSE SYLLABUS
+
+FALL, 1998
+
+INSTRUCTOR: JOHN DOE
+
+	
+	Course alpha, number, and title. Document title. Since you'll keep reference copies of syllabi for a number of semesters, the date is useful in distinguishing this syllabus from others that naturally look much the same. Instructor name sets syllabus apart from others for sections of the course possibly taught by other people, and of course it's important for students.
+OFFICE: 	Building 2, Room 613
+OFFICE HOURS: 	4:30-5:30 MON & WED; 7:30-8:30 TUE & THR; 11:30-12:30 FRI
+OFFICE PHONE: 	845-9409 (leave a message after six rings; please speak loud enough and clearly)
+E-MAIL ADDRESS: 	johndoe@hcc.hawaii.edu (school)
+johndoe@aol.com (weekends and holidays)
+WEB PAGE: 	http://home.honolulu.hawaii.edu/~johndoe
+COURSE PAGE: 	http://www.honolulu.hawaii.edu/instruct/div6/drafting/basic.htm
+CLASS HOURS: 	5:30-7:50 MON & WED
+	
+	The basics so students can communicate with you as easily as possible. Students appreciate (and need) easy access. They should not feel unduly restricted. John has found that students who phone are often hesitant and speak too softly to be heard, or they run together the last numbers of their phone numbers. So he makes a point of encouraging clarity on the phone.
+
+A. DESCRIPTION
+    This course involves a careful examination of drafting as a tool of technical communication and for solving graphical problems. Emphases are on development of basic drafting skills, visualization, and solution of spatial problems. It is an exploratory, first course in drafting designed primarily for students planning to enroll in the regular-program Drafting Technology courses upon completion of this course. However, it also meets the needs of many students with other interests, as a refresher course in drafting, a course for upgrading drafting skills, a course for IED students training to be public school industrial arts teachers, or a course that provides students with a general "feel" for the subject of drafting. 
+
+	
+	
+The course -- what it is and how it fits into a program or supports other courses, needs, etc. Throughout this syllabus there are things students will not read the first day, but they probably will read it later, or they will use it later for reference.
+
+B. ORGANIZATION
+    This is a lecture-lab course in which topics are presented by the instructor, practice drawings are explained, and assigned drawings are completed by students both during lab periods and outside of class. Objective and drawing-type quizzes are given daily, and there is a comprehensive final exam. The course is a prerequisite for the beginning regular-program drafting courses. DRAFT 19 students generally have had neither high school or other drafting training, nor experience in drafting employment. So when students in this course proceed to the regular-program drafting courses, if they do, they will be at approximately the same level of expertise as those who have had previous training or experience and who are permitted to waive DRAFT 19. This basic drafting course therefore assumes no previous drafting experience or training, so the initial emphases are on the use of equipment and basic procedures. 
+
+	
+	
+This could probably be worked into "purpose." But here John states very briefly "how" the course will be conducted and very roughly what will be involved.
+
+C. COURSE OBJECTIVES
+
+        To introduce students to the use of mechanical drafting tools, to drafting procedures, and to acceptable standards of work in the industry.
+        To introduce students to various forms of graphical representation and to selection of representations appropriate to specific needs.
+        To introduce students to time and quality drafting production requirements.
+        To orient students to the range of drafting methods, topics, and occupations that characterize the field.
+        To provide students with opportunities to develop basic drafting skills in respect to sheet composition, working neatly and accurately, lettering, and line drawing. 
+
+	
+	
+Five or six general, overall objectives of the course. These might be stated in the form of behavioral or performance objectives, but John has reserved that format for class and activity objectives that are more specific, differentiated, and quantifiable.
+
+D. COURSE TOPICS
+    The course will cover the following topics:
+
+        Equipment and Basic Drafting Procedures
+        Lettering; Symbols
+        Drafting Geometry and Single-View Drawing
+        Orthographic Projection
+        Dimensions
+        Auxiliary Views
+        Sectional Views
+        Pictorial Drawing (isometric and perspective drawing)
+        Threads
+        Weldments
+        Developments
+        Introduction to Descriptive Geometry
+        Introduction to Computer Drafting
+        Architectural Working Drawings (plans, sections, and elevations) 
+
+	
+	
+The units or topics of study. It shows the progression of topics and evidences your pre-course planning.
+
+E. TEXT AND REQUIRED SUPPLIES
+
+        Required text: Basic Technical Drawing, by Spencer & Dygdon
+        Supplies: see separate list with pictures. 
+
+	
+	
+Very important. Students need to know right away what materials they need and how much the course will cost them.
+
+F. GRADING PLAN
+    Coursework will be weighted as follows: 
+
+    	1. Drawings 	45% 	
+    	
+    	
+    	
+    	
+    	
+
+    	2. Quizzes 	
+    	25% 	
+
+    	3. Final exam 	
+    	20% 	
+
+    	4. Attendance 	____ 	
+    	____ 	
+    	10% 	
+
+    	45% 	+ 	45% 	+ 	10% 	= 	100%
+
+	
+	
+Very important and often explicitly required. Students MUST know how they are going to be graded, and they must know this as early as possible. This is the place to "put it in writing" and ensure that everyone is clear about it (students who enroll late should be given a syllabus upon entering the class).
+
+    DRAWINGS:
+    A drawing will be assigned almost every class period. Each drawing will be graded unless there are major errors or omissions and it is returned for correction or completion. Drawings with minor detail or other non-conceptual errors will be graded as submitted, and letter grades will be given.
+
+    Drawing due dates will be given to you for each assignment. Drawings will usually be due at the beginning of class periods on the due dates (unless specifically stated otherwise). Unless you are absent on the day an assignment is due, it will not be accepted later than at the beginning of the class period when it is due. If you are absent from class when a drawing is due, it will be accepted late -- but only if submitted immediately upon your return and only if an acceptable, written "excuse," is presented. If you cannot attend class when a drawing is due and cannot provide an acceptable written excuse, you should send your drawing to class with a friend, family member, or other person. An "acceptable" excuse for an absence is only one which is judged so by the instructor. Due dates will not be changed because of earlier absences. 
+
+	
+	
+It's best to be as precise as possible "up front" rather than clarifying policies as questions and problems arise later. Policies should be presented in an open, friendly manner. Students generally appreciate clarity and same-for-all policies if they are reasonable, explainable, and open for discussion. These particular policies were developed as a result of some students regularly "choosing" to submit every assignment late if permitted, the difficulty of keepng track of lower-grade late assignments, students being preoccupied with late work when most of the class was moving on to new work, etc.
+
+    QUIZZES:
+    There will be many drawing-type and other quizzes (probably one almost every class period). Quizzes will relate to current and previous topics. A quiz may be given at any time during any class period -- immediately after a lecture, at the beginning or end of a class, etc. There will be no make-up quizzes -- none even later during the same class period. Quizzes will be given only to those students who are present when the quizzes are passed out. 
+
+	
+	
+Daily quizzes encourage regular attendance, emhasize the importance of each class, and are great teaching tools. At the second class, students are quizzed principally on this syllabus.
+
+    FINAL EXAM:
+    The final exam will be comprehensive and entirely drawing-type. It will be given at the time shown at the end of the schedule that follows. 
+
+	
+	
+
+    ATTENDANCE:
+    Attendance will be graded as follows:
+
+        No absences 	A+
+        One absence 	A
+        Two absences 	B
+        Three absences 	C
+        Four or more absences 	F
+
+    Absences for which a medical or court excuse is provided (professional letterhead required) will be recorded but not figured in the attendance grade. Likewise, one absence for which advance notice is given by phone or in person will not be figured in the attendance grade. Any significant tardy or early departure from class will be figured as a half absence.
+
+    Also, anyone who has more than four class-long, unexcused absences will receive an "F" grade for the COURSE. Keep in mind that this is an occupational course, and attendance is important here just as it will be in the employment for which this course is in part designed to prepare you. 
+
+	
+	
+If required, required attendance needs to be explainable, incorporated into course or activity objectives, and clarified the very first day of class. Six to 10 absences are often considered "reasonable" in employment over a year, and a semester course meets about one-quarter of a year, usually fewer than five days a week, and only a few hours each time, so six absences plus "excusable" absences and one "freebie" is probable reasonable in an occupational course.
+
+    GENERAL:
+    Your recorded grades will be available for your review at any convenient time. Do remember to keep all drawings and quizzes returned to you so that any discrepancies can be easily and fairly straightened out. Except in cases of actual error, final grades are permanent. The last day to withdraw from the course is Friday, October 16.
+
+    Final "I" grades will not be permitted except in cases of prolonged, continuous, and excused absences in the latter half of the course. Under no circumstances will an "I" grade be given when more than half of the coursework has not been completed.
+
+    Final "N" grades will be given only in very rare and exceptional cases. An "N" will never be given simply to replace a grade that you would prefer not to receive.
+
+    You will be required to meet privately with the instructor in his office at least one time outside of class time early in the course and to complete at least two evaluation-type exercises during the course. 
+
+	
+	
+General grading policies really need to be spelled out as early as possible. The policies here are based on having tried probably everything else, finding that students very seldom make up "incompletes," and understanding that there are liability issues involved in recording a failing grade for any student when an "N" (no grade) is recorded for anyone else. Since settling on these policies years ago, John has never had a student complaint about a grade or ever struggled over a grade.
+
+G. CLASSROOM RULES OF CONDUCT
+
+        No radios are allowed in class unless operated only with headphones and only during drawing periods.
+        No drawing is permitted during lecture periods.
+        Food and beverages are not permitted in the classroom. This includes plate lunches, drinks, candy, etc. whether opened or not.
+        Class lab time is expected to be spent in lab work. Lab time is not free time. Attendance and concerted work on assignments are required. Work at home will be required in addition to work during lab times (work at home should not substitute for work during lab periods). 
+
+	
+	
+Miscellaneous operating rules appropriate to the type of course and the classroom/lab environment. For trade courses, safety rules should be spelled out here or separately.
+
+H. EMERGENCY PROCEDURES
+
+        Evacuation procedures -- see instructions posted in the classroom.
+        First aid kit -- located in Room 612. All instructors have a key to the room.
+        Emergency ambulance -- from any instructor's office, phone "9" to get an outside line, then "911." There are also phones on other floors and at the bookstore and nurse's office on the ground floor.
+        Campus security -- phone "142" Mon, Tues, or Fri 7:00 am - 4:30 pm, Wed or Thrs 7:00am - 6:30pm; phone "245" Mon through Wed 5:00 pm - 
+

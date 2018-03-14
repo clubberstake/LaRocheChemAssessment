@@ -6,6 +6,7 @@ import { ClassInformationService } from "../../services/class-service.service";
 import { CourseInfoForAssessment } from "../../course-assessment-worksheet/courseInfoForAssessment";
 import { InstructorInfo } from "../../course-assessment-worksheet/instructorInfo";
 import { ClassInfo } from "../../course-assessment-worksheet/classInfo";
+import { when } from "q";
 
 @Component({
   selector: "app-course-assessment-new-course",
@@ -23,7 +24,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   nextYear: number;
   newCourse = new CourseInfoForAssessment(0, "", "", "", "");
   newInstructor = new InstructorInfo(0, "");
-  newClass = new ClassInfo(0, "", null, "", "", "", 0, "");
+  newClass = new ClassInfo(0, "", ["", ""], "", "", "", 0, "");
   semester: String;
   year: String;
 
@@ -101,12 +102,22 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     this.newClass.semester = this.semester + "" + this.year;
     var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
     console.log("FILE to Load: ", fileToLoad);
-    this.newClass.syllabus = "/" + this.newClass.semester + "/" + this.newClass.courseID + "/" + this.newClass.section + "Syllabus.txt";
-    console.log(this.newClass);
-    this.classService.addClass(this.newClass);
+    this.newClass.syllabus[0] = this.newClass.semester + "/" + this.newClass.courseID + "/" + this.newClass.section + "Syllabus.txt";
+    console.log(this.newClass.syllabus[0]);
     var fileReader = new FileReader();
-    console.log(fileToLoad.name);
-    this.classService.saveSyllabus(this.newClass.syllabus);
+    var ready = false;
+    var me = this;
+    fileReader.onload = function(e) {
+      let target: any = e.target;
+      var contents = target.result;
+      alert(contents);
+      me.newClass.syllabus[1] = contents;
+      console.log(me.newClass);
+      me.classService.addClass(me.newClass);
+      console.log(fileToLoad.name);
+      me.classService.saveSyllabus(me.newClass.syllabus);
+    }
+    fileReader.readAsText(fileToLoad);
   }
 
   newCourseDropDown() {

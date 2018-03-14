@@ -32,6 +32,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs2: Cafs2Info[] = [];
   cafs3: Cafs3Info[] = [];
   cafs6: Cafs6Info[] = [];
+  syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
 
 
 
@@ -53,6 +54,9 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.courseInformationObjInput.Cafs1Info = this.cafs1.find(
       value => value.classId == courseNumAndSection
     );
+    console.log(this.courseInformationObjInput);
+    this.syllabusPath = this.syllabusPath + this.courseInformationObjInput.CurrentClassInfo.syllabus;
+    console.log(this.syllabusPath);
     if(this.courseInformationObjInput.Cafs1Info == null)
     {
       this.courseInformationObjInput.Cafs1Info = new Cafs1Info(null, Number(courseNumAndSection), '', '', '', '', '');
@@ -88,7 +92,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseInformationObjInput.CurrentClassInfo = new CurrentClassInfo(0, 0, '', null, '', '', ''); //console log is nasty without this.
+    this.courseInformationObjInput.CurrentClassInfo = new CurrentClassInfo(0, 0, '', null, '', '', '', ''); //console log is nasty without this.
     this.currentClassInformationService.getCurrentClassInfo().subscribe((courses: CurrentClassInfo[]) => {
       this.courseAndSections = courses;
       console.log(this.courseAndSections);
