@@ -35,7 +35,9 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs2: Cafs2Info[] = [];
   cafs3: Cafs3Info[] = [];
   cafs6: Cafs6Info[] = [];
-  semesterReviews: SemesterReviewByStudent[] = [];
+  semesterReviews: SemesterReviewByStudent[] = []; ///fix this!!
+  //@Input() semesterReviews: SemesterReviewByStudent[];
+  syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
@@ -43,11 +45,13 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     );
     console.log(this.courseInformationObjInput.CourseSLOs);
 
-    this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(this.courseInformationObjInput.CurrentClassInfo.classId) //change this!!!!
-    .subscribe((reviews: ClassSemesterReviewsResponse[]) => {
-      this.semesterReviews = reviews;
-      console.log("section6", this.cafs6);
-    });
+    this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(
+      this.courseInformationObjInput.CurrentClassInfo.classId
+    ) //change this!!!!
+      .subscribe((reviews: ClassSemesterReviewsResponse[]) => {
+        //this.semesterReviews = reviews;
+        console.log("section6", this.cafs6);
+      });
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection
@@ -156,8 +160,10 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       null,
       "",
       "",
+      "",
       ""
     ); //console log is nasty without this.
+
     this.currentClassInformationService
       .getCurrentClassInfo()
       .subscribe((courses: CurrentClassInfo[]) => {
