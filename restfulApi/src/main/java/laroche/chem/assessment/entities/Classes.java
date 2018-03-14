@@ -1,5 +1,6 @@
 package laroche.chem.assessment.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Classes {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	private long courseId;
+	// Array represents tinyblob
+	private String syllabus;
+	private String semester;
+	private String section;
+	private int instructorId;
 	
 	public Classes() {}
 	
@@ -17,17 +29,6 @@ public class Classes {
 		this.section = section;
 		this.instructorId = instructorId;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	private long courseId;
-	// Array represents tinyblob
-	private String syllabus;
-	private String semester;
-	private String section;
-	private int instructorId;
 	
 	public long getId() {
 		return id;

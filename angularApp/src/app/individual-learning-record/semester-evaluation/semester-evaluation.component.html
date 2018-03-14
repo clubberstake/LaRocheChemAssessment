@@ -1,0 +1,76 @@
+<div class="semester-evaluation">
+  <div class="semester-evaluation-header">
+    <h3>Semester Evaluation</h3>
+  </div>
+  <div class="semester-evaluation-objects">
+    <div class="semester-evaluation-encasing">
+      <div class="semester-evaluation-learning-issues">
+          <label><strong>Learning Issues</strong></label>
+          <div class="semester-evaluation-learning-issues-encasing">
+            <div class="mid-semester-learning-issues">
+              <div class="mid-semester-learning-issues-header">
+                <label><strong>Mid</strong></label>
+              </div>
+              <div *ngFor="let issue of studentObjectInput.learningIssues">
+                <input type="checkbox" [(ngModel)]="issue.midvalue" />
+              </div>
+            </div>
+            <div class="end-semester-learning-issues">
+              <div class="end-semester-learning-issues-header">
+                <label><strong>End</strong></label>
+              </div>
+              <div *ngFor="let issue of studentObjectInput.learningIssues">
+                <input type="checkbox" [(ngModel)]="issue.endvalue" /> {{issue.name}}
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="semester-instructor-notes">
+        <div class="mid-semester-instructor-notes">
+          <div class="semester-evaluation-instructor-interactions">
+            <label><strong>Mid Semester</strong></label>
+            <div>
+              <label><strong>Instructor Interactions</strong></label>
+              <p>
+                <textarea [(ngModel)]="studentObjectInput.semesterReviewRequest.midSemesterExtentInstructor"></textarea>
+              </p>
+            </div>
+          </div>
+          <div class="semester-evaluation-instructor-recommendations">
+            <label><strong>Mid Semester</strong></label>
+            <div>
+              <label><strong>Instructor Recommendations</strong></label>
+              <p>
+                <textarea [(ngModel)]="studentObjectInput.semesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="end-semester-instructor-notes">
+          <div class="semester-evaluation-instructor-interactions">
+            <label><strong>End Semester</strong></label>
+            <div>
+              <label><strong>Instructor Interactions</strong></label>
+              <p>
+                <textarea [(ngModel)]="studentObjectInput.semesterReviewRequest.endSemesterExtentInstructor"></textarea>
+              </p>
+            </div>
+          </div>
+          <div class="semester-evaluation-instructor-recommendations">
+            <label><strong>End Semester</strong></label>
+            <div>
+              <label><strong>Instructor Recommendations</strong></label>
+              <p>
+                <textarea [(ngModel)]="studentObjectInput.semesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button (click) = "postMidSemesterReview()">Add Review</button>
+  </div>
+</div>

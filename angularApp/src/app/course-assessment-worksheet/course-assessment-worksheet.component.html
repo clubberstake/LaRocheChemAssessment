@@ -1,15 +1,15 @@
 <div class="courseAssessment">
     <div>
         <app-course-assessment-course-information [courseInformationObjInput]="courseInformationObj"></app-course-assessment-course-information>
+        <button class="syllabusButton" (click)="onSave()">Upload Course Syllabus</button>
         <app-course-assessment-course-student-learning-outcomes [studentLearningOutcomesInput]="courseInformationObj"></app-course-assessment-course-student-learning-outcomes>
     </div>
     <div>
         <app-component-cafs1 [courseInformationObjInput]="courseInformationObj"></app-component-cafs1>
         <app-component-cafs2 [courseInformationObjInput]="courseInformationObj"></app-component-cafs2>
         <app-component-cafs3 [courseInformationObjInput]="courseInformationObj"></app-component-cafs3>
-        <!--<app-component-cafs4></app-component-cafs4>-->
         <!-- ILR Team: Replaced original cafs4 component to match the cafs4 component created by the ILR team [Name changed from              app-component-cafs4 to app-mid-semester-evaluation]. This name has been changed throughout BOTH the Java side and the Angular side. -->
-        <app-mid-semester-evaluation></app-mid-semester-evaluation>
+        <app-course-semester-evaluation [courseInformationObjInput]="courseInformationObj" [studentObjectInput]="ilrStudentObject"></app-course-semester-evaluation>
         <!--<app-component-cafs5></app-component-cafs5>-->
         <!-- Course Assessment Team: Removing cafs5 for timing being to verify with ILR if should be merged into mid-semster-evalution-->
         <app-component-cafs6 [courseInformationObjInput]="courseInformationObj"></app-component-cafs6>

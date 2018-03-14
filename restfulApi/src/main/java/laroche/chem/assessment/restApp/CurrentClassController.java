@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.Course;
 import laroche.chem.assessment.entities.Instructor;
+import laroche.chem.assessment.entities.SemesterReview;
+import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
+import laroche.chem.assessment.repositories.SemesterReviewRepository;
+import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.ClassInfo;
 
 @RestController
@@ -33,10 +37,10 @@ public class CurrentClassController {
 		return generateFakeData();
 	}
 
-		private Course thiscourse;
+	private Course thiscourse;
 		
 	private ArrayList<ClassInfo> generateFakeData() {
-
+		
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
 			classRepository.save(new Classes(1, "/SP2017/CHEM2016/01Syllabus.txt", "SP2017", "01", 1));
