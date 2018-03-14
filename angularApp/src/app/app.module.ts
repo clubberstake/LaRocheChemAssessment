@@ -32,10 +32,10 @@ import { AdminComponent } from "./admin/admin.component";
 import { CAFS2InformationService } from "./services/cafs2-service.service";
 import { CAFS3InformationService } from "./services/cafs3-service.service";
 import { CAFS6InformationService } from "./services/cafs6-service.service";
-import { SemesterEvaluationComponent } from './individual-learning-record/semester-evaluation/semester-evaluation.component';
-import { SemesterEvaluationService } from './services/semester-evaluation.service';
-import { CourseSemesterEvaluationComponent } from './course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component'
-
+import { SemesterEvaluationComponent } from "./individual-learning-record/semester-evaluation/semester-evaluation.component";
+import { SemesterEvaluationService } from "./services/semester-evaluation.service";
+import { CourseSemesterEvaluationComponent } from "./course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component";
+import { CourseSemesterEvaluationService } from "./services/course-semester-evaluation.service";
 
 @NgModule({
   declarations: [
@@ -74,7 +74,8 @@ import { CourseSemesterEvaluationComponent } from './course-assessment-worksheet
     CAFS2InformationService,
     CAFS3InformationService,
     CAFS6InformationService,
-    SemesterEvaluationService
+    SemesterEvaluationService,
+    CourseSemesterEvaluationService
   ],
   bootstrap: [AppComponent]
 })
