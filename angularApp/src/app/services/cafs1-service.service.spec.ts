@@ -51,7 +51,7 @@ fdescribe("Cafs1ServiceService", () => {
       expect(posts).toEqual(dummyPosts);
     });
 
-    const request = httpMock.expectOne("${this.API_URL}/cafs1");
+    const request = httpMock.expectOne(service.API_URL + "/cafs1");
     expect(request.request.method).toBe("GET");
     request.flush(dummyPosts);
   });
