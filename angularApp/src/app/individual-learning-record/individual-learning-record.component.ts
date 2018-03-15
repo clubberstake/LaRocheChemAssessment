@@ -36,7 +36,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       console.log(this.ilrStudentObject.miscNotes);
     });
 
-    this.semesterEvaluationService.getMidSemesterEvaluationsById(studentId).subscribe((semesterReview: SemesterReviewRequest) => {
+    this.semesterEvaluationService.getSemesterEvaluationsByStudentId(studentId).subscribe((semesterReview: SemesterReviewRequest) => {
       this.ilrStudentObject.semesterReviewRequest = semesterReview;
     });
 

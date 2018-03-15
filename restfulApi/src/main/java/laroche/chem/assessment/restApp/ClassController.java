@@ -38,10 +38,6 @@ public class ClassController {
 	private InstructorRepository instructorRepository;
 	@Autowired
 	private CourseRepository courseRepository;
-	@Autowired
-	private StudentRepository studentRepository;
-	@Autowired
-	private SemesterReviewRepository semesterReviewRepository;
 	
 	@RequestMapping("/classInfo")
 	public ArrayList<ClassInfo> getClassInfo() {

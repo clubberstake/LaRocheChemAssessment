@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.SemesterReview;
 import laroche.chem.assessment.entities.Student;
+import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.SemesterReviewRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
@@ -28,7 +31,8 @@ import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPla
 public class SemesterReviewController {
 	@Autowired
 	private SemesterReviewRepository semesterReviewRepository;
-
+	@Autowired
+	private ClassRepository classRepository;
 	@Autowired
 	private StudentRepository studentRepository;
 
@@ -40,8 +44,9 @@ public class SemesterReviewController {
 	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReviewRequest request) {
 		// Find a student from student repository based on request's recorded student ID and create a new student
 		Student student = studentRepository.findOne(request.getStudentId());
+		Classes classes = classRepository.findOne(request.getClassId());
 		// Pass this newly created student to a Semester Review object along with additional request's recorded data
-		SemesterReview review = new SemesterReview(student, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
+		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
 		// Save this newly create Semester Review object to the database through the semester review repository
 		semesterReviewRepository.save(review);
 		System.out.println("Semester Entry Student Id: " + request.getStudentId());
@@ -65,13 +70,13 @@ public class SemesterReviewController {
 		item.setMidSemesterLearningIssues(null);
 		item.setEndSemesterLearningIssues(null);
 		item.setStudentID(studentRepository.findOne((long) 1));
-
+		item.setClassesId(classRepository.findOne((long) 1));
 		semesterReviewRepository.save(item);
 
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
 		ArrayList<SemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
-			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
+			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesId(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
 					review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
 					review.getEndSemesterInstructorRecommendations()));
 		}
@@ -83,7 +88,7 @@ public class SemesterReviewController {
 		Student student = studentRepository.findOne((long) studentId);
 		List<SemesterReview> reviews = semesterReviewRepository.findByStudentId(student.getId());
 		SemesterReview review = reviews.get(0);
-		return new SemesterReviewResponse(review.getStudentID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
+		return new SemesterReviewResponse(review.getStudentID(), review.getClassesId(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
 				review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
 				review.getEndSemesterInstructorRecommendations());		
 	}

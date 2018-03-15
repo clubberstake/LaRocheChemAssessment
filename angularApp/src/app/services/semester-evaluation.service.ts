@@ -8,15 +8,16 @@ export class SemesterEvaluationService {
 
   constructor(private http: HttpClient) { }
 
-  public getMidSemesterEvaluations() {
+  public getSemesterEvaluations() {
     return this.http.get<SemesterReviewResponse[]>("http://localhost:8080/review/semesterReviews");
   }
 
-  public getMidSemesterEvaluationsById(id: number) {
-    return this.http.get<SemesterReviewRequest>("http://localhost:8080/review/semesterReviews/studentId=" + id);
+  public getSemesterEvaluationsByStudentId(studentId: number) {
+    return this.http.get<SemesterReviewRequest>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
   }
 
-  public addMidSemesterReview(review: SemesterReviewRequest) {
+
+  public addSemesterEvaluation(review: SemesterReviewRequest) {
     return this.http.post<Response>('http://localhost:8080/review/addReview', review).subscribe(res => console.log(res));
   }
 

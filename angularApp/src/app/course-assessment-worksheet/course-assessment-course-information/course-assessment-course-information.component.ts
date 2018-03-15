@@ -19,8 +19,8 @@ import { CAFS3InformationService } from "../../services/cafs3-service.service";
 import { Cafs6Info } from "../cafs6";
 import { CAFS6InformationService } from "../../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../../services/course-semester-evaluation.service";
-import { ClassSemesterReviewsResponse } from "../course-semester-evaluation/class-semester-reviews-response";
 import { SemesterReviewByStudent } from "../course-semester-evaluation/semester-review-by-student";
+import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
 
 @Component({
   selector: "app-course-assessment-course-information",
@@ -48,7 +48,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(
       this.courseInformationObjInput.CurrentClassInfo.classId
     ) //change this!!!!
-      .subscribe((reviews: ClassSemesterReviewsResponse[]) => {
+      .subscribe((reviews: SemesterReviewResponse[]) => {
         //this.semesterReviews = reviews;
         console.log("section6", this.cafs6);
       });

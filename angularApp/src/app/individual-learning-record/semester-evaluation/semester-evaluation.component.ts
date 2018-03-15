@@ -19,7 +19,7 @@ export class SemesterEvaluationComponent implements OnInit {
   postMidSemesterReview() {
     this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
     console.log("The semester review studend ID: " + this.studentObjectInput.semesterReviewRequest.studentId)
-    this.semesterEvaluationService.addMidSemesterReview(this.studentObjectInput.semesterReviewRequest)
+    this.semesterEvaluationService.addSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
   }
 
 }
