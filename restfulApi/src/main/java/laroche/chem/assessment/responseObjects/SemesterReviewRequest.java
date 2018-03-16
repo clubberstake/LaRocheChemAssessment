@@ -1,5 +1,8 @@
 package laroche.chem.assessment.responseObjects;
 
+import laroche.chem.assessment.entities.Classes;
+import laroche.chem.assessment.entities.Student;
+
 public class SemesterReviewRequest {
 	
 	private Boolean[] midSemesterLearningIssues;

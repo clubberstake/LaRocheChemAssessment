@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +59,26 @@ public class SemesterReviewController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
+	
+	/**
+	 * Put request to update currently placed semester review
+	 * @param request the semester review request object to be updated/added
+	 * @return response URI path
+	 */
+	@PutMapping("/putReview")
+	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {
+		Student student = studentRepository.findOne(request.getStudentId());
+		Classes classes = classRepository.findOne(request.getClassId());
+		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
+		semesterReviewRepository.save(review);
+		
+		try {
+			return ResponseEntity.created(new URI("/semesterEntry/" + review.getID())).build();
+		} catch(URISyntaxException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
 
 	@GetMapping("/semesterReviews")
 	private ArrayList<SemesterReviewResponse> getMidSemesterReview() {
@@ -70,7 +91,7 @@ public class SemesterReviewController {
 		item.setMidSemesterLearningIssues(null);
 		item.setEndSemesterLearningIssues(null);
 		item.setStudentID(studentRepository.findOne((long) 1));
-		item.setClassesId(classRepository.findOne((long) 1));
+		item.setClassesId(classRepository.findOne((long) 3));
 		semesterReviewRepository.save(item);
 
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
@@ -91,5 +112,27 @@ public class SemesterReviewController {
 		return new SemesterReviewResponse(review.getStudentID(), review.getClassesId(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
 				review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
 				review.getEndSemesterInstructorRecommendations());		
+	}
+	
+	/**
+	 * Obtain a list of semester review info by course Id
+	 * @param courseId course id from URL
+	 * @return list of semester reviews
+	 */
+	@GetMapping("/semesterReviews/classId={classId}")
+	public ArrayList<SemesterReviewResponse> getReviewInfoByCourseId(@PathVariable int classId) {
+		Classes classes = classRepository.findOne((long) classId);
+		List<SemesterReview> reviews = semesterReviewRepository.findAll();
+		
+		ArrayList<SemesterReviewResponse> semesterReviewData = new ArrayList<>();
+		
+		for(SemesterReview review : reviews) {
+			if(review.getClassesId().getId() == classes.getId()) {
+				semesterReviewData.add(new SemesterReviewResponse(review.getStudentID(), classes, null, null, 
+						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), 
+						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
+			}
+		}
+		return semesterReviewData;
 	}
 }

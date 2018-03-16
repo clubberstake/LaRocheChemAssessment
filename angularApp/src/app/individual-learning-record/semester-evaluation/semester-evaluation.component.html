@@ -3,8 +3,9 @@
     <h3>Semester Evaluation</h3>
     <div class="semester-evaultion-selector">
       <label>Select Class:</label>
-      <select>
-
+      <select #selectElement (change)="setCourseIdAndName(selectElement.value)">
+        <option selected="selected">Class</option>
+        <option *ngFor="let course of courseAndSections" value={{course.classId}}>{{course.courseTitle}}</option>
       </select>
     </div>
 

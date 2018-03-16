@@ -7,6 +7,11 @@ import { Cafs5Info } from "./cafs5";
 import { Cafs6Info } from "./cafs6";
 import { CurrentClassInfo } from "./currentClassInfo";
 import { CourseSLOs } from "./courseSLOs";
+import { NotesInfoForMiscNotesTab } from "../individual-learning-record/notesInfoForMiscNotesTab";
+import { StudentInfoForBioAndAdmissionsPlacementTab } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTab";
+import { Student } from "../individual-learning-record/student";
+import { Classes } from "../individual-learning-record/classes";
+import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
 
 export class CourseInformationObject {
   CurrentClassInfo: CurrentClassInfo;
@@ -17,6 +22,10 @@ export class CourseInformationObject {
   Cafs4Info: Cafs4Info;
   Cafs5Info: Cafs5Info;
   Cafs6Info: Cafs6Info;
+  studentClass: Student;
+  classes: Classes;
+  semesterReviewResponse: SemesterReviewResponse;
+
 
   constructor() {
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
@@ -24,5 +33,8 @@ export class CourseInformationObject {
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
     this.Cafs3Info = new Cafs3Info(null, 0, '', '', '', '', '', '', '');
     this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
+    this.studentClass = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
+    this.classes = new Classes(0, 0, '', '', '', 0);
+    //this.semesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
   };
 }

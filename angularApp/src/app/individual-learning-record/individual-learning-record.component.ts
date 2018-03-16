@@ -8,6 +8,7 @@ import { IndividualLearningRecordObject } from './individual-learning-record-obj
 import { SemesterEvaluationService } from '../services/semester-evaluation.service';
 import { SemesterReviewResponse } from './SemesterReviewResponse';
 import { SemesterReviewRequest } from './SemesterReviewRequest';
+import { CourseInformationObject } from '../course-assessment-worksheet/course-information-object';
 
 @Component({
   selector: 'app-individual-learning-record',
@@ -18,6 +19,7 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
+  courseInformationObject: CourseInformationObject = new CourseInformationObject();
 
   constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService,
     private semesterEvaluationService: SemesterEvaluationService) {}
@@ -38,6 +40,7 @@ export class IndividualLearningRecordComponent implements OnInit {
 
     this.semesterEvaluationService.getSemesterEvaluationsByStudentId(studentId).subscribe((semesterReview: SemesterReviewRequest) => {
       this.ilrStudentObject.semesterReviewRequest = semesterReview;
+      console.log(this.ilrStudentObject.semesterReviewRequest);
     });
 
     this.ilrStudentObject.studentId = studentId;

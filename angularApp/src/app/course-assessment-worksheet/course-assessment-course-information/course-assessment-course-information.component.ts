@@ -21,6 +21,7 @@ import { CAFS6InformationService } from "../../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../../services/course-semester-evaluation.service";
 import { SemesterReviewByStudent } from "../course-semester-evaluation/semester-review-by-student";
 import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
+import { SemesterEvaluationService } from "../../services/semester-evaluation.service";
 
 @Component({
   selector: "app-course-assessment-course-information",
@@ -35,23 +36,28 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs2: Cafs2Info[] = [];
   cafs3: Cafs3Info[] = [];
   cafs6: Cafs6Info[] = [];
-  semesterReviews: SemesterReviewByStudent[] = []; ///fix this!!
+  semesterReviews: SemesterReviewResponse[] = []; ///fix this!!
   //@Input() semesterReviews: SemesterReviewByStudent[];
   syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
 
   setcourseAndSection(courseNumAndSection: any): void {
-    this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(
-      value => value.classId == courseNumAndSection
-    );
+    this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(value => value.classId == courseNumAndSection);
     console.log(this.courseInformationObjInput.CourseSLOs);
 
-    this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(
-      this.courseInformationObjInput.CurrentClassInfo.classId
-    ) //change this!!!!
-      .subscribe((reviews: SemesterReviewResponse[]) => {
-        //this.semesterReviews = reviews;
-        console.log("section6", this.cafs6);
-      });
+    /**
+      Attempting to retrieve semester reviews by classID here.
+    */
+    this.courseInformationObjInput.semesterReviewResponse = this.semesterReviews.find(value => value.classes.id == courseNumAndSection);
+    console.log("LOOK HERE " + this.courseInformationObjInput.semesterReviewResponse)
+
+    // this.semesterEvaluationService.getSemesterReviewsByCourse(this.courseInformationObjInput.CurrentClassInfo.classId).subscribe((reviews: SemesterReviewResponse[]) => {
+    //   this.courseInformationObjInput.semesterReviewResponses = reviews;
+    // });
+
+    // this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(this.courseInformationObjInput.CurrentClassInfo.classId).subscribe((reviews: SemesterReviewResponse[]) => {
+    //     //this.semesterReviews = reviews;
+    //     console.log("section6", this.cafs6);
+    //   });
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection
@@ -149,7 +155,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     private cafs2InformationService: CAFS2InformationService,
     private cafs3InformationService: CAFS3InformationService,
     private cafs6InformationService: CAFS6InformationService,
-    private CourseSemesterEvaluationService: CourseSemesterEvaluationService
+    private CourseSemesterEvaluationService: CourseSemesterEvaluationService,
+    private semesterEvaluationService: SemesterEvaluationService
   ) {}
 
   ngOnInit() {
