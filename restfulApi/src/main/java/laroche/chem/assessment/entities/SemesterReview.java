@@ -33,7 +33,7 @@ public class SemesterReview {
 
 	public SemesterReview(Student student, Classes classes, Boolean[] midSemesterLearningIssues, Boolean[] endSemesterLearningIssues, String midSemesterExtentInstructor,
 			String endSemesterExtentInstructor, String midSemesterInstructorRecommendations, String endSemesterInstructorRecommendations) {
-		this.setClassesId(classes);
+		this.setClassesID(classes);
 		this.setStudentID(student);
 		this.midSemesterLearningIssues = midSemesterLearningIssues;
 		this.endSemesterLearningIssues = endSemesterLearningIssues;
@@ -103,11 +103,11 @@ public class SemesterReview {
 		this.student = student;
 	}
 
-	public Classes getClassesId() {
+	public Classes getClassesID() {
 		return classes;
 	}
 
-	public void setClassesId(Classes classes) {
+	public void setClassesID(Classes classes) {
 		this.classes = classes;
 	}
 

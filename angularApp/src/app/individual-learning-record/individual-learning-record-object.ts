@@ -17,6 +17,7 @@ export class IndividualLearningRecordObject {
     semesterReviewResponses: SemesterReviewResponse[] = [];
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, null, null, '', '', '', '');
+    semesterReviewRequests: SemesterReviewRequest[] = [];
 
     learningIssues = [new LearningIssues(false, false, "Course Pace"), new LearningIssues(false, false, "Poor Background"), new LearningIssues(false, false, "Lack of Mindset"),
       new LearningIssues(false, false, "Lack of Interest/Curiosity"), new LearningIssues(false, false, "Lack of Effort/Focus"), new LearningIssues(false, false, "Poor Time Management"),

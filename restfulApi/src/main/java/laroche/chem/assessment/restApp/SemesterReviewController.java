@@ -91,13 +91,13 @@ public class SemesterReviewController {
 		item.setMidSemesterLearningIssues(null);
 		item.setEndSemesterLearningIssues(null);
 		item.setStudentID(studentRepository.findOne((long) 1));
-		item.setClassesId(classRepository.findOne((long) 3));
+		item.setClassesID(classRepository.findOne((long) 3));
 		semesterReviewRepository.save(item);
 
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
 		ArrayList<SemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
-			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesId(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
+			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
 					review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
 					review.getEndSemesterInstructorRecommendations()));
 		}
@@ -105,34 +105,39 @@ public class SemesterReviewController {
 	}
 	
 	@GetMapping("/semesterReviews/studentId={studentId}")
-	public SemesterReviewResponse getReviewInfo(@PathVariable int studentId) {
+	public ArrayList<SemesterReviewResponse> getReviewInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
 		List<SemesterReview> reviews = semesterReviewRepository.findByStudentId(student.getId());
-		SemesterReview review = reviews.get(0);
-		return new SemesterReviewResponse(review.getStudentID(), review.getClassesId(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
-				review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
-				review.getEndSemesterInstructorRecommendations());		
-	}
-	
-	/**
-	 * Obtain a list of semester review info by course Id
-	 * @param courseId course id from URL
-	 * @return list of semester reviews
-	 */
-	@GetMapping("/semesterReviews/classId={classId}")
-	public ArrayList<SemesterReviewResponse> getReviewInfoByCourseId(@PathVariable int classId) {
-		Classes classes = classRepository.findOne((long) classId);
-		List<SemesterReview> reviews = semesterReviewRepository.findAll();
-		
-		ArrayList<SemesterReviewResponse> semesterReviewData = new ArrayList<>();
-		
+		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
 		for(SemesterReview review : reviews) {
-			if(review.getClassesId().getId() == classes.getId()) {
-				semesterReviewData.add(new SemesterReviewResponse(review.getStudentID(), classes, null, null, 
-						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), 
+			if(review.getStudentID().getId() == student.getId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
 						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
 			}
 		}
-		return semesterReviewData;
+		return reviewData;	
 	}
+	
+	/**
+	 * Obtain a list of semester review info by class Id
+	 * @param classId course id from URL
+	 * @return list of semester reviews
+	 */
+	@GetMapping("/semesterReviews/classId={classId}")
+	public ArrayList<SemesterReviewResponse> getReviewInfoByClassId(@PathVariable int classId) {
+		Classes classes = classRepository.findOne((long) classId);
+		List<SemesterReview> reviews = semesterReviewRepository.findByClassesId(classes.getId());
+		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
+		
+		for(SemesterReview review : reviews) {
+			if(review.getClassesID().getId() == classes.getId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
+						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
+			}
+		}
+		return reviewData;
+	}
+	
 }

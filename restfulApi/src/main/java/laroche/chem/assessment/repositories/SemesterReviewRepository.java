@@ -8,4 +8,5 @@ import laroche.chem.assessment.entities.SemesterReview;
 public interface SemesterReviewRepository extends JpaRepository<SemesterReview, Long> {
 
 	List<SemesterReview> findByStudentId(long studentId);
+	List<SemesterReview> findByClassesId(long classesId);
 }

@@ -14,7 +14,7 @@ export class SemesterEvaluationService {
   }
 
   public getSemesterEvaluationsByStudentId(studentId: number) {
-    return this.http.get<SemesterReviewRequest>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
+    return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
   }
 
 
