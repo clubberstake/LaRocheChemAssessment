@@ -47,17 +47,12 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     /**
       Attempting to retrieve semester reviews by classID here.
     */
-    this.courseInformationObjInput.semesterReviewResponse = this.semesterReviews.find(value => value.classes.id == courseNumAndSection);
-    console.log("LOOK HERE " + this.courseInformationObjInput.semesterReviewResponse)
-
-    // this.semesterEvaluationService.getSemesterReviewsByCourse(this.courseInformationObjInput.CurrentClassInfo.classId).subscribe((reviews: SemesterReviewResponse[]) => {
-    //   this.courseInformationObjInput.semesterReviewResponses = reviews;
-    // });
-
-    // this.CourseSemesterEvaluationService.getSemesterReviewsByCourse(this.courseInformationObjInput.CurrentClassInfo.classId).subscribe((reviews: SemesterReviewResponse[]) => {
-    //     //this.semesterReviews = reviews;
-    //     console.log("section6", this.cafs6);
-    //   });
+    for(let i in this.semesterReviews) {
+      this.courseInformationObjInput.semesterReviewResponse.push(this.semesterReviews.find(value => value.classes.id == courseNumAndSection))
+    }
+    for(let i in this.courseInformationObjInput.semesterReviewResponse) {
+      console.log("YO CHECK THIS OUT: " + this.courseInformationObjInput.semesterReviewResponse[i])
+    }
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection
@@ -171,6 +166,10 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       ""
     ); //console log is nasty without this.
 
+    this.semesterEvaluationService.getSemesterEvaluations().subscribe((reviews: SemesterReviewResponse[]) => {
+      this.semesterReviews = reviews;
+      console.log("LOOK HERE FOR SEMESTER REVIEWS: " + this.semesterReviews[0].classes.id);
+    });
     this.currentClassInformationService
       .getCurrentClassInfo()
       .subscribe((courses: CurrentClassInfo[]) => {

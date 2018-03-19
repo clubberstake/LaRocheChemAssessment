@@ -9,11 +9,11 @@ export class SemesterEvaluationService {
 
   constructor(private http: HttpClient) { }
 
-  public getSemesterEvaluations() {
+  public getSemesterEvaluations(): Observable<SemesterReviewResponse[]> {
     return this.http.get<SemesterReviewResponse[]>("http://localhost:8080/review/semesterReviews");
   }
 
-  public getSemesterEvaluationsByStudentId(studentId: number) {
+  public getSemesterEvaluationsByStudentId(studentId: number): Observable<SemesterReviewRequest[]> {
     return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
   }
 
