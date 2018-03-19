@@ -22,7 +22,7 @@ export class SemesterEvaluationService {
     return this.http.post<Response>('http://localhost:8080/review/addReview', review).subscribe(res => console.log(res));
   }
 
-  public getSemesterReviewsByCourse(classId: number): Observable<SemesterReviewResponse[]> {
+  public getSemesterReviewsByClassId(classId: number): Observable<SemesterReviewResponse[]> {
     console.log("Made it to the service");
     return this.http.get<SemesterReviewResponse[]>(
       'http://localhost:8080/review/semesterReviews/classId=' + classId

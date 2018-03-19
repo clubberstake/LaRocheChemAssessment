@@ -22,6 +22,7 @@ import { CourseSemesterEvaluationService } from "../../services/course-semester-
 import { SemesterReviewByStudent } from "../course-semester-evaluation/semester-review-by-student";
 import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
 import { SemesterEvaluationService } from "../../services/semester-evaluation.service";
+import { SemesterReviewRequest } from "../../individual-learning-record/SemesterReviewRequest";
 
 @Component({
   selector: "app-course-assessment-course-information",
@@ -47,12 +48,11 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     /**
       Attempting to retrieve semester reviews by classID here.
     */
-    for(let i in this.semesterReviews) {
-      this.courseInformationObjInput.semesterReviewResponse.push(this.semesterReviews.find(value => value.classes.id == courseNumAndSection))
-    }
-    for(let i in this.courseInformationObjInput.semesterReviewResponse) {
-      console.log("YO CHECK THIS OUT: " + this.courseInformationObjInput.semesterReviewResponse[i])
-    }
+    this.semesterEvaluationService.getSemesterReviewsByClassId(courseNumAndSection).subscribe((semesterReviews: SemesterReviewResponse[]) => {
+      this.semesterReviews = semesterReviews;
+      this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews;
+      console.log("LOOK OVER HERE " + this.courseInformationObjInput.semesterReviewResponses[0].classes.id)
+    });
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection
@@ -166,10 +166,11 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       ""
     ); //console log is nasty without this.
 
-    this.semesterEvaluationService.getSemesterEvaluations().subscribe((reviews: SemesterReviewResponse[]) => {
-      this.semesterReviews = reviews;
-      console.log("LOOK HERE FOR SEMESTER REVIEWS: " + this.semesterReviews[0].classes.id);
-    });
+
+    // this.semesterEvaluationService.getSemesterEvaluations().subscribe((reviews: SemesterReviewResponse[]) => {
+    //   this.semesterReviews = reviews;
+    //   console.log("LOOK HERE FOR SEMESTER REVIEWS: " + this.semesterReviews[0].classes.id);
+    // });
     this.currentClassInformationService
       .getCurrentClassInfo()
       .subscribe((courses: CurrentClassInfo[]) => {

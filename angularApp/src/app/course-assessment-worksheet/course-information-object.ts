@@ -12,6 +12,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTab } from "../individual-learni
 import { Student } from "../individual-learning-record/student";
 import { Classes } from "../individual-learning-record/classes";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
+import { SemesterReviewRequest } from "../individual-learning-record/SemesterReviewRequest";
 
 export class CourseInformationObject {
   CurrentClassInfo: CurrentClassInfo;
@@ -24,7 +25,7 @@ export class CourseInformationObject {
   Cafs6Info: Cafs6Info;
   studentClass: Student;
   classes: Classes;
-  semesterReviewResponse: SemesterReviewResponse[];
+  semesterReviewResponses: SemesterReviewResponse[];
 
 
   constructor() {
@@ -35,6 +36,6 @@ export class CourseInformationObject {
     this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
     this.studentClass = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
     this.classes = new Classes(0, 0, '', '', '', 0);
-    this.semesterReviewResponse = [];
+    this.semesterReviewResponses = [];
   };
 }

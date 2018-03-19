@@ -11,7 +11,7 @@ import { CourseSemesterEvaluationService } from '../../services/course-semester-
 export class CourseSemesterEvaluationComponent implements OnInit {
 
   @Input() courseInformationObjInput: CourseInformationObject;
-  @Input() studentObjectInput: IndividualLearningRecordObject;
+  //@Input() studentObjectInput: IndividualLearningRecordObject;
 
   constructor( ) { }
 
