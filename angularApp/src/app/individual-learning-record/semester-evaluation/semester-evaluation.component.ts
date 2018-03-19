@@ -18,7 +18,10 @@ export class SemesterEvaluationComponent implements OnInit {
   constructor(private semesterEvaluationService: SemesterEvaluationService) { }
 
   ngOnInit() {
+    
   }
+
+
 
   setCourseIdAndName(courseIdAndName: any) {
     this.courseInformationObjectInput.CurrentClassInfo = this.courseAndSections.find(
