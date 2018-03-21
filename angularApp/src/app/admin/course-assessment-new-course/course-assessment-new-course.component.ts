@@ -103,8 +103,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       console.log(this.instructor.id);
     }
     this.newClass.semester = this.semester + "" + this.year;
-    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus"))
-      .files[0];
+    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabusAdmin")).files[0];
     console.log("FILE to Load: ", fileToLoad);
     this.newClass.syllabus[0] =
       this.newClass.semester +
@@ -115,26 +114,27 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       "Syllabus.txt";
     console.log(this.newClass.syllabus[0]);
     var fileReader = new FileReader();
-    var ready = false;
-    var me = this;
-    fileReader.onload = function(e) {
-      let target: any = e.target;
-      var contents = target.result;
-      alert(contents);
-      me.newClass.syllabus[1] = contents;
-      console.log(me.newClass);
-      me.classService.addClass(me.newClass);
-      console.log(fileToLoad.name);
-      me.classService.saveSyllabus(me.newClass.syllabus);
-    };
+    // var ready = false;
+    // var me = this;
+    // fileReader.onload = function(e) {
+    //   let target: any = e.target;
+    //   var contents = target.result;
+    //   alert(contents);
+    //   me.newClass.syllabus[1] = contents;
+    //   console.log(me.newClass);
+    //   me.classService.addClass(me.newClass);
+    //   console.log(fileToLoad.name);
+    //   me.classService.saveSyllabus(me.newClass.syllabus);
+    // };
     
     var fileStorage = new FileStorage(0, "", this.newClass.syllabus[0]);
     if (fileReader && fileToLoad) {
-      fileReader.readAsText(fileToLoad);
       fileReader.onload = function() {
         fileStorage.fileContent = fileReader.result.toString();
       };
     }
+
+    fileReader.readAsText(fileToLoad);    
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
   }
