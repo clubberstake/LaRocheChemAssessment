@@ -1,0 +1,17 @@
+<div class="login-component">
+  <div class="login-component-header">
+    <h3>Login using your Username and Password:</h3>
+  </div>
+  <div class="login-component-objects">
+    <div class="login-component-encasing">
+      <div class="login-component-padding">
+        <input name="email-login" type="text" name="username" placeholder="Username" [(ngModel)]="username">
+        <font color="red">{{emailFeedback}}</font>
+        <br>
+        <input name="password-login" type="text" name="password" placeholder="Password" [(ngModel)]="password">
+        <br>
+        <button class="loginButton" (click)="logIn()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

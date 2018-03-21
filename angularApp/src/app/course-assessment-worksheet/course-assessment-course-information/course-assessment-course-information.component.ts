@@ -88,7 +88,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     console.log("this section 6", this.courseInformationObjInput.Cafs6Info);
   }
 
-  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService,  private cafs2InformationService: CAFS2InformationService, private cafs3InformationService: CAFS3InformationService, private cafs6InformationService: CAFS6InformationService) {
+  constructor(private courseInfoService: CourseInformationService, private notesService: NotesInfoForMiscNotesTabService, private classInformationService: ClassInformationService, private currentClassInformationService: CurrentClassInformationService, private courseSLOsInformationService: CourseSLOsInformationService, private cafs1InformationService: CAFS1InformationService,  private cafs2InformationService: CAFS2InformationService, private cafs3InformationService: CAFS3InformationService, private cafs6InformationService: CAFS6InformationService,     private classService: ClassInformationService
+  ) {
   }
 
   ngOnInit() {
@@ -117,6 +118,25 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       this.cafs6 = section6;
       console.log("section6", this.cafs6);
     });
+  }
+  setSyllabus() {
+    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
+    console.log("FILE to Load: ", fileToLoad);
+    this.courseInformationObjInput.CurrentClassInfo.syllabus = this.courseInformationObjInput.CurrentClassInfo.semester + "/" + this.courseInformationObjInput.CurrentClassInfo.courseID + "/" + this.courseInformationObjInput.CurrentClassInfo.section + "Syllabus.txt";
+    console.log(this.courseInformationObjInput.CurrentClassInfo.syllabus);
+    var fileReader = new FileReader();
+    var ready = false;
+    var me = this;
+    fileReader.onload = function(e) {
+      let target: any = e.target;
+      var contents = target.result;
+      alert(contents);
+      var newSyllabus = [me.courseInformationObjInput.CurrentClassInfo.syllabus, contents]
+      console.log(newSyllabus);
+      console.log(fileToLoad.name);
+      me.classService.saveSyllabus(newSyllabus);
+    }
+    fileReader.readAsText(fileToLoad);
   }
 }
 

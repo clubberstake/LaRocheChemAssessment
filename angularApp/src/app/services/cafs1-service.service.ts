@@ -13,7 +13,7 @@ export class CAFS1InformationService {
 
   public getCAFS1Info(): Observable<Cafs1Info[]> {
     console.log('Made it to the service');
-    return this.http.get<Cafs1Info[]>('${this.API_URL}/cafs1');
+    return this.http.get<Cafs1Info[]>(this.API_URL + '/cafs1');
   };
   public updateCafs1(cafs1: any) {
     console.log('Made it to the Cafs1 update service', cafs1);
