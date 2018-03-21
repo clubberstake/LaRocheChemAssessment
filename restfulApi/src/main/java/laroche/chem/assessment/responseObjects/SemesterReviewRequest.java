@@ -1,5 +1,8 @@
 package laroche.chem.assessment.responseObjects;
 
+import laroche.chem.assessment.entities.Classes;
+import laroche.chem.assessment.entities.Student;
+
 public class SemesterReviewRequest {
 	
 	private Boolean[] midSemesterLearningIssues;
@@ -9,6 +12,15 @@ public class SemesterReviewRequest {
 	private String midSemesterInstructorRecommendations;
 	private String endSemesterInstructorRecommendations;
 	private long studentId;
+	private long classId;
+	
+	public long getClassId() {
+		return classId;
+	}
+	
+	public void setClassId(long classId) {
+		this.classId = classId;
+	}
 	
 	public long getStudentId() {
 		return studentId;

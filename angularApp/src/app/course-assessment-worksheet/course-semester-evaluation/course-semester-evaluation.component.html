@@ -4,31 +4,57 @@
     <table border="1">
       <tr>
         <th>
-          <strong>Student Id</strong>
+          Student Id
         </th>
         <th>
-          <strong>Student Name</strong>
+          Student Name
         </th>
         <th>
-          <strong>Mid Semester Learning Issues</strong>
+          Mid Semester Learning Issues
         </th>
         <th>
-          <strong>End Semester Learning Issues</strong>
+          End Semester Learning Issues
         </th>
         <th>
-          <strong>Mid Semester Instructor Interactions</strong>
+          Mid Semester Instructor Interactions
         </th>
         <th>
-          <strong>End Semester Instructor Interactions</strong>
+          End Semester Instructor Interactions
         </th>
         <th>
-          <strong>Mid Semester Instructor Notes</strong>
+          Mid Semester Instructor Notes
         </th>
         <th>
-          <strong>End Semester Instructor Notes</strong>
+          End Semester Instructor Notes
         </th>
       </tr>
       <!-- *ngFor to add rows for each array entry of returned student / semester evaluation Object -->
+      <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">
+        <td>
+          {{review.student.id}}
+        </td>
+        <td>
+          {{review.student.studentName}}
+        </td>
+        <td>
+          {{review.midSemesterLearningIssues}}
+        </td>
+        <td>
+          {{review.endSemesterLearningIssues}}
+        </td>
+        <td>
+          {{review.midSemesterExtentInstructor}}
+        </td>
+        <td>
+          {{review.endSemesterExtentInstructor}}
+        </td>
+        <td>
+          {{review.midSemesterInstructorRecommendations}}
+        </td>
+        <td>
+          {{review.endSemesterInstructorRecommendations}}
+        </td>
+      </tr>
     </table>
   </div>
 </div>

@@ -18,6 +18,10 @@ public class SemesterReview {
     @JoinColumn(name = "student_id")
 	private Student student;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "class_id")
+	private Classes classes;
+	
 	private Boolean[] midSemesterLearningIssues;
 	private Boolean[] endSemesterLearningIssues;
 	private String midSemesterExtentInstructor;
@@ -27,8 +31,9 @@ public class SemesterReview {
 	
 	public SemesterReview() {}
 
-	public SemesterReview(Student student, Boolean[] midSemesterLearningIssues, Boolean[] endSemesterLearningIssues, String midSemesterExtentInstructor,
+	public SemesterReview(Student student, Classes classes, Boolean[] midSemesterLearningIssues, Boolean[] endSemesterLearningIssues, String midSemesterExtentInstructor,
 			String endSemesterExtentInstructor, String midSemesterInstructorRecommendations, String endSemesterInstructorRecommendations) {
+		this.setClassesID(classes);
 		this.setStudentID(student);
 		this.midSemesterLearningIssues = midSemesterLearningIssues;
 		this.endSemesterLearningIssues = endSemesterLearningIssues;
@@ -98,5 +103,12 @@ public class SemesterReview {
 		this.student = student;
 	}
 
-	
+	public Classes getClassesID() {
+		return classes;
+	}
+
+	public void setClassesID(Classes classes) {
+		this.classes = classes;
+	}
+
 }

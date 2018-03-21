@@ -1,9 +1,11 @@
 package laroche.chem.assessment.responseObjects;
 
+import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.Student;
 
 public class SemesterReviewResponse {
 	private Student student;
+	private Classes classes;
 	
 	private Boolean[] midSemesterLearningIssues;
 	private Boolean[] endSemesterLearningIssues;
@@ -12,8 +14,9 @@ public class SemesterReviewResponse {
 	private String midSemesterInstructorRecommendations;
 	private String endSemesterInstructorRecommendations;
 
-	public SemesterReviewResponse(Student student, Boolean[] midSemesterLearningIssues, Boolean[] endSemesterLearningIssues, String midSemesterExtentInstructor,
+	public SemesterReviewResponse(Student student, Classes classes, Boolean[] midSemesterLearningIssues, Boolean[] endSemesterLearningIssues, String midSemesterExtentInstructor,
 			String endSemesterExtentInstructor, String midSemesterInstructorRecommendations, String endSemesterInstructorRecommendations) {
+		this.setClasses(classes);
 		this.setStudent(student);
 		this.midSemesterLearningIssues = midSemesterLearningIssues;
 		this.endSemesterLearningIssues = endSemesterLearningIssues;
@@ -79,4 +82,13 @@ public class SemesterReviewResponse {
 		this.student = student;
 	}
 
+	public Classes getClasses() {
+		return classes;
+	}
+
+	public void setClasses(Classes classes) {
+		this.classes = classes;
+	}
+
+	
 }

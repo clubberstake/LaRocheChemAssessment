@@ -8,8 +8,7 @@ import { CAFS1InformationService } from "../services/cafs1-service.service";
 import { CAFS2InformationService } from "../services/cafs2-service.service";
 import { CAFS3InformationService } from "../services/cafs3-service.service";
 import { CAFS6InformationService } from "../services/cafs6-service.service";
-
-
+import { CourseSemesterEvaluationService } from "../services/course-semester-evaluation.service";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -19,11 +18,18 @@ import { CAFS6InformationService } from "../services/cafs6-service.service";
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
 
-  constructor(public sloService: CourseSLOsInformationService, public cafs1Service: CAFS1InformationService, public cafs2Service: CAFS2InformationService, public cafs3Service: CAFS3InformationService, public cafs6Service: CAFS6InformationService) {
+  constructor(
+    public sloService: CourseSLOsInformationService,
+    public cafs1Service: CAFS1InformationService,
+    public cafs2Service: CAFS2InformationService,
+    public cafs3Service: CAFS3InformationService,
+    public cafs6Service: CAFS6InformationService,
+    public CourseSemesterEvaluationService: CourseSemesterEvaluationService
+  ) {
     this.courseInformationObj = new CourseInformationObject();
   }
 
-  ngOnInit(): void {    }
+  ngOnInit(): void {}
 
   onSave() {
     this.sloService.updateSLOs(this.courseInformationObj.CourseSLOs);
@@ -31,5 +37,6 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs2Service.updateCafs2(this.courseInformationObj.Cafs2Info);
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
+    //add semester save work here.
   }
 }
