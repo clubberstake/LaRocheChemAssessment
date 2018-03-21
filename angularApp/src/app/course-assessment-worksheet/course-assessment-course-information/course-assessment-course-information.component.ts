@@ -208,4 +208,23 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
         console.log("section6", this.cafs6);
       });
   }
+  setSyllabus() {
+    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
+    console.log("FILE to Load: ", fileToLoad);
+    this.courseInformationObjInput.CurrentClassInfo.syllabus = this.courseInformationObjInput.CurrentClassInfo.semester + "/" + this.courseInformationObjInput.CurrentClassInfo.courseID + "/" + this.courseInformationObjInput.CurrentClassInfo.section + "Syllabus.txt";
+    console.log(this.courseInformationObjInput.CurrentClassInfo.syllabus);
+    var fileReader = new FileReader();
+    var ready = false;
+    var me = this;
+    fileReader.onload = function(e) {
+      let target: any = e.target;
+      var contents = target.result;
+      alert(contents);
+      var newSyllabus = [me.courseInformationObjInput.CurrentClassInfo.syllabus, contents]
+      console.log(newSyllabus);
+      console.log(fileToLoad.name);
+      me.classInformationService.saveSyllabus(newSyllabus);
+    }
+    fileReader.readAsText(fileToLoad);
+  }
 }

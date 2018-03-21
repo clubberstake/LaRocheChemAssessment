@@ -42,7 +42,7 @@ public class CourseController {
  		courseRepository.save(course);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
-	@GetMapping("/{CourseNumAndSection}")
+	@GetMapping("/course/{CourseNumAndSection}")
 	public long getCourseId(@PathVariable String courseNumAndSection) {
 		List<Course> courses = courseRepository.findByCourseName(courseNumAndSection);
 		long courseId = courses.get(0).getId();

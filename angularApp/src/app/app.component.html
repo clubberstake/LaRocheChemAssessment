@@ -4,8 +4,11 @@
     </div>
     <div class="headerTitle">Chemistry Department Student Learning System</div>
 </div>
-<tabs>
-    <tab tabTitle="Course Assessment Form">
+<div tabTitle="Login" *ngIf="!userObject.loggedIn">
+    <app-login [userObject]="userObject"></app-login>
+</div>
+<tabs *ngIf="userObject.loggedIn">
+    <tab tabTitle="Course Assessment Form" *ngIf="userObject.user.permissions == 'teacher' || userObject.user.permissions == 'admin'">
         <div class="messaging-app-main">
             <app-course-assessment-worksheet></app-course-assessment-worksheet>
         </div>
@@ -13,7 +16,7 @@
     <tab tabTitle="Individual Learning Record">
         <app-individual-learning-record></app-individual-learning-record>
     </tab>
-    <tab tabTitle="Admin">
+    <tab tabTitle="Admin" *ngIf="userObject.user.permissions == 'admin'">
         <app-admin></app-admin>
     </tab>
 </tabs>

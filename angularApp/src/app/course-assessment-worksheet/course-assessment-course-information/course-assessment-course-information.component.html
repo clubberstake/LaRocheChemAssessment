@@ -24,7 +24,10 @@
       <span>{{courseInformationObjInput.CurrentClassInfo.instructorName}}</span>
     </div>
     <div>
-      <a href={{syllabusPath}} download="01Syllabus.txt" >Course Syllabus </a>
+      <a href="test.txt">Course Syllabus </a>
+    </div>
+    <div>
+      Upload Syllabus:<input type="file" name="syllabus" id="syllabus" (change)="setSyllabus()">
     </div>
   </div>
 </div>

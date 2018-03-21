@@ -32,9 +32,11 @@ import { AdminComponent } from "./admin/admin.component";
 import { CAFS2InformationService } from "./services/cafs2-service.service";
 import { CAFS3InformationService } from "./services/cafs3-service.service";
 import { CAFS6InformationService } from "./services/cafs6-service.service";
-import { SemesterEvaluationComponent } from "./individual-learning-record/semester-evaluation/semester-evaluation.component";
-import { SemesterEvaluationService } from "./services/semester-evaluation.service";
-import { CourseSemesterEvaluationComponent } from "./course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component";
+import { SemesterEvaluationComponent } from './individual-learning-record/semester-evaluation/semester-evaluation.component';
+import { SemesterEvaluationService } from './services/semester-evaluation.service';
+import { CourseSemesterEvaluationComponent } from './course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component';
+import { LoginComponent } from './login/login.component'
+import { UserService } from "./services/user-service.service";
 import { CourseSemesterEvaluationService } from "./services/course-semester-evaluation.service";
 import { ClassRosterService } from "./services/class-roster.service";
 import { FileStorageService } from "./services/file-storage.service";
@@ -60,7 +62,8 @@ import { FileStorageService } from "./services/file-storage.service";
     ComponentCafs6Component,
     AdminComponent,
     SemesterEvaluationComponent,
-    CourseSemesterEvaluationComponent
+    CourseSemesterEvaluationComponent,
+    LoginComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [
@@ -77,6 +80,7 @@ import { FileStorageService } from "./services/file-storage.service";
     CAFS3InformationService,
     CAFS6InformationService,
     SemesterEvaluationService,
+    UserService,
     CourseSemesterEvaluationService,
     ClassRosterService,
     FileStorageService
