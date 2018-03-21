@@ -6,7 +6,9 @@ import { ClassInformationService } from "../../services/class-service.service";
 import { CourseInfoForAssessment } from "../../course-assessment-worksheet/courseInfoForAssessment";
 import { InstructorInfo } from "../../course-assessment-worksheet/instructorInfo";
 import { ClassInfo } from "../../course-assessment-worksheet/classInfo";
-import { when } from "q";
+import { when, delay } from "q";
+import { FileStorageService } from "../../services/file-storage.service";
+import { FileStorage } from "../../services/file-storage";
 
 @Component({
   selector: "app-course-assessment-new-course",
@@ -51,7 +53,8 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   constructor(
     private courseInfoService: CourseInformationService,
     private instructorService: InstructorInformationService,
-    private classService: ClassInformationService
+    private classService: ClassInformationService,
+    private fileStorageService: FileStorageService
   ) {}
 
   ngOnInit() {
@@ -100,9 +103,16 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       console.log(this.instructor.id);
     }
     this.newClass.semester = this.semester + "" + this.year;
-    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
+    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus"))
+      .files[0];
     console.log("FILE to Load: ", fileToLoad);
-    this.newClass.syllabus[0] = this.newClass.semester + "/" + this.newClass.courseID + "/" + this.newClass.section + "Syllabus.txt";
+    this.newClass.syllabus[0] =
+      this.newClass.semester +
+      "/" +
+      this.newClass.courseID +
+      "/" +
+      this.newClass.section +
+      "Syllabus.txt";
     console.log(this.newClass.syllabus[0]);
     var fileReader = new FileReader();
     var ready = false;
@@ -116,9 +126,23 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       me.classService.addClass(me.newClass);
       console.log(fileToLoad.name);
       me.classService.saveSyllabus(me.newClass.syllabus);
+    };
+    
+    var fileStorage = new FileStorage(0, "", this.newClass.syllabus[0]);
+    if (fileReader && fileToLoad) {
+      fileReader.readAsText(fileToLoad);
+      fileReader.onload = function() {
+        fileStorage.fileContent = fileReader.result.toString();
+      };
     }
-    fileReader.readAsText(fileToLoad);
+
+    this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
   }
+
+  private sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
 
   newCourseDropDown() {
     this.other = true;

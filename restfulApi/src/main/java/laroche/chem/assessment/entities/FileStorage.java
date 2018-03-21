@@ -1,5 +1,6 @@
 package laroche.chem.assessment.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +14,10 @@ public class FileStorage {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String fileName;
-	private String fileType;
 	
 	@Lob
-	private byte[] file; 
+	@Column(columnDefinition = "TEXT")
+	private String fileContent; 
 
 	public long getId() {
 		return id;
@@ -34,20 +35,12 @@ public class FileStorage {
 		this.fileName = fileName;
 	}
 
-	public String getFileType() {
-		return fileType;
+	public String getFileContent() {
+		return fileContent;
 	}
 
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
-	}
-
-	public byte[] getFile() {
-		return file;
-	}
-
-	public void setFile(byte[] file) {
-		this.file = file;
+	public void setFileContent(String file) {
+		this.fileContent = file;
 	}
 
 }

@@ -37,6 +37,7 @@ import { SemesterEvaluationService } from "./services/semester-evaluation.servic
 import { CourseSemesterEvaluationComponent } from "./course-assessment-worksheet/course-semester-evaluation/course-semester-evaluation.component";
 import { CourseSemesterEvaluationService } from "./services/course-semester-evaluation.service";
 import { ClassRosterService } from "./services/class-roster.service";
+import { FileStorageService } from "./services/file-storage.service";
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ClassRosterService } from "./services/class-roster.service";
     CAFS6InformationService,
     SemesterEvaluationService,
     CourseSemesterEvaluationService,
-    ClassRosterService
+    ClassRosterService,
+    FileStorageService
   ],
   bootstrap: [AppComponent]
 })
