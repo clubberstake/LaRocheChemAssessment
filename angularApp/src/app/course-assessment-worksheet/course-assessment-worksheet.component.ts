@@ -9,6 +9,7 @@ import { CAFS2InformationService } from "../services/cafs2-service.service";
 import { CAFS3InformationService } from "../services/cafs3-service.service";
 import { CAFS6InformationService } from "../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../services/course-semester-evaluation.service";
+import { SemesterEvaluationService } from "../services/semester-evaluation.service";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -24,7 +25,8 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     public cafs2Service: CAFS2InformationService,
     public cafs3Service: CAFS3InformationService,
     public cafs6Service: CAFS6InformationService,
-    public CourseSemesterEvaluationService: CourseSemesterEvaluationService
+    public CourseSemesterEvaluationService: CourseSemesterEvaluationService,
+    private semesterEvaluationService: SemesterEvaluationService
   ) {
     this.courseInformationObj = new CourseInformationObject();
   }
@@ -38,5 +40,9 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
     //add semester save work here.
+    this.courseInformationObj.semesterReviewResponse.student.id = this.courseInformationObj.studentId;
+    console.log( "Semester review object to PUT: ");
+    console.log(this.courseInformationObj.semesterReviewResponse)
+    this.semesterEvaluationService.addSemesterReview(this.courseInformationObj.semesterReviewResponse);
   }
 }

@@ -17,6 +17,9 @@ export class SemesterEvaluationService {
     return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
   }
 
+  public addSemesterReview(review: SemesterReviewResponse) {
+    return this.http.post<Response>('http://localhost:8080/review/addReview', review).subscribe(res => console.log(res));
+  }
 
   public addSemesterEvaluation(review: SemesterReviewRequest) {
     return this.http.post<Response>('http://localhost:8080/review/addReview', review).subscribe(res => console.log(res));

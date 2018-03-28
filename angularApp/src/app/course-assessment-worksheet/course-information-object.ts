@@ -23,19 +23,24 @@ export class CourseInformationObject {
   Cafs4Info: Cafs4Info;
   Cafs5Info: Cafs5Info;
   Cafs6Info: Cafs6Info;
-  studentClass: Student;
+  student: Student;
   classes: Classes;
   semesterReviewResponses: SemesterReviewResponse[];
+  semesterReviewResponse: SemesterReviewResponse;
+  studentId: number;
 
 
   constructor() {
+    this.studentId = 0;
+    this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", "", "", "", "", "");
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
     this.Cafs3Info = new Cafs3Info(null, 0, '', '', '', '', '', '', '');
     this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
-    this.studentClass = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
-    this.classes = new Classes(0, 0, '', '', '', 0);
+    this.student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
+    this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
+    this.semesterReviewResponse = new SemesterReviewResponse(this.student, this.classes, null, null, "", "", "", "");
   };
 }

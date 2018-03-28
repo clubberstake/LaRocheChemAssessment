@@ -18,6 +18,19 @@
   padding: 5px;
 }
 
+.course-semester-evaluation-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.course-semester-evaluation-button {
+  padding-left: 10px;
+}
+
+.new-course-semester-evaluation {
+  background-color: green;
+}
+
 th {
   padding: 5px;
 }

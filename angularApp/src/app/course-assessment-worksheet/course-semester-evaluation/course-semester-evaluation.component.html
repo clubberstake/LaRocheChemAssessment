@@ -1,5 +1,10 @@
 <div class="course-semester-evaluation">
-  <h3>Course Semester Evaluation</h3>
+  <div class="course-semester-evaluation-header">
+    <h3>Course Semester Evaluation</h3>
+    <div class="course-semester-evaluation-button">
+      <button (click)="addSemesterReviewRow()">Add Semester Review</button>
+    </div>
+  </div>
   <div class="course-semester-evaluation-objects">
     <table border="1">
       <tr>
@@ -28,31 +33,56 @@
           End Semester Instructor Notes
         </th>
       </tr>
-      <!-- *ngFor to add rows for each array entry of returned student / semester evaluation Object -->
+      <tr class="new-course-semester-evaluation" *ngIf="rowVisible">
+        <td>
+          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.studentId" />
+        </td>
+        <td>
+          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.student.studentName" />
+        </td>
+        <td>
+          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterLearningIssues" />
+        </td>
+        <td>
+          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterLearningIssues" />
+        </td>
+        <td>
+          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterExtentInstructor"></textarea>
+        </td>
+        <td>
+          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterExtentInstructor"></textarea>
+        </td>
+        <td>
+          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterInstructorRecommendations"></textarea>
+        </td>
+        <td>
+          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterInstructorRecommendations"></textarea>
+        </td>
+      </tr>
       <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">
         <td>
-          {{review.student.id}}
+          <input readonly [(ngModel)]="review.student.id" />
         </td>
         <td>
-          {{review.student.studentName}}
+          <input [(ngModel)]="review.student.studentName" />
         </td>
         <td>
-          {{review.midSemesterLearningIssues}}
+          <input [(ngModel)]="review.midSemesterLearningIssues" />
         </td>
         <td>
-          {{review.endSemesterLearningIssues}}
+          <input [(ngModel)]="review.endSemesterLearningIssues" />
         </td>
         <td>
-          {{review.midSemesterExtentInstructor}}
+          <textarea [(ngModel)]="review.midSemesterExtentInstructor"></textarea>
         </td>
         <td>
-          {{review.endSemesterExtentInstructor}}
+          <textarea [(ngModel)]="review.endSemesterExtentInstructor"></textarea>
         </td>
         <td>
-          {{review.midSemesterInstructorRecommendations}}
+          <textarea [(ngModel)]="review.midSemesterInstructorRecommendations"></textarea>
         </td>
         <td>
-          {{review.endSemesterInstructorRecommendations}}
+          <textarea [(ngModel)]="review.endSemesterInstructorRecommendations"></textarea>
         </td>
       </tr>
     </table>

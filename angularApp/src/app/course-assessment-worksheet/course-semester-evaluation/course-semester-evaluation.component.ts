@@ -12,12 +12,16 @@ export class CourseSemesterEvaluationComponent implements OnInit {
 
   @Input() courseInformationObjInput: CourseInformationObject;
   //@Input() studentObjectInput: IndividualLearningRecordObject;
+  rowVisible = false;
 
   constructor( ) { }
 
   ngOnInit() {
   }
 
+  addSemesterReviewRow() {
+    this.rowVisible = true;
+  }
 
 
 }
