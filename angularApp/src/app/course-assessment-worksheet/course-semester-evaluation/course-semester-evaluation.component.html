@@ -35,28 +35,28 @@
       </tr>
       <tr class="new-course-semester-evaluation" *ngIf="rowVisible">
         <td>
-          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.studentId" />
+          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" />
         </td>
         <td>
-          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.student.studentName" />
+          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
         </td>
         <td>
-          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterLearningIssues" />
+          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterLearningIssues" />
         </td>
         <td>
-          <input [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterLearningIssues" />
+          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterLearningIssues" />
         </td>
         <td>
-          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterExtentInstructor"></textarea>
+          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterExtentInstructor"></textarea>
         </td>
         <td>
-          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterExtentInstructor"></textarea>
+          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterExtentInstructor"></textarea>
         </td>
         <td>
-          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.midSemesterInstructorRecommendations"></textarea>
+          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
         </td>
         <td>
-          <textarea [(ngModel)]="courseInformationObjInput.semesterReviewResponse.endSemesterInstructorRecommendations"></textarea>
+          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
         </td>
       </tr>
       <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">

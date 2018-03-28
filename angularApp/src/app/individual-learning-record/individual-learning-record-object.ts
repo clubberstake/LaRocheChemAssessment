@@ -20,7 +20,7 @@ export class IndividualLearningRecordObject {
     classRosterObjects: ClassRosterResponseObject[] = [];
 
 
-    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, null, null, '', '', '', '');
+    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');
     semesterReviewRequests: SemesterReviewRequest[] = [];
 
     learningIssues = [new LearningIssues(false, false, "Course Pace"), new LearningIssues(false, false, "Poor Background"), new LearningIssues(false, false, "Lack of Mindset"),

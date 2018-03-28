@@ -37,8 +37,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs2: Cafs2Info[] = [];
   cafs3: Cafs3Info[] = [];
   cafs6: Cafs6Info[] = [];
-  semesterReviews: SemesterReviewResponse[] = []; ///fix this!!
-  //@Input() semesterReviews: SemesterReviewByStudent[];
+  semesterReviews: SemesterReviewResponse[] = [];
   syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
 
   setcourseAndSection(courseNumAndSection: any): void {
@@ -46,13 +45,16 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     console.log(this.courseInformationObjInput.CourseSLOs);
 
     /**
-      Attempting to retrieve semester reviews by classID here.
+      Lines 50 - 55: Get course semester review information by class ID
+      In addition, set the classId for the course semester review request that will be sent back to the database
+        upon adding a new course semster review.
     */
     this.semesterEvaluationService.getSemesterReviewsByClassId(courseNumAndSection).subscribe((semesterReviews: SemesterReviewResponse[]) => {
       this.semesterReviews = semesterReviews;
       this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews;
-      console.log("LOOK OVER HERE " + this.courseInformationObjInput.semesterReviewResponses[0].classes.id)
+      console.log("Semester Review Responses Response: " + this.courseInformationObjInput.semesterReviewResponses[0].classes.id)
     });
+    this.courseInformationObjInput.courseSemesterReviewRequest.classId = courseNumAndSection;
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection

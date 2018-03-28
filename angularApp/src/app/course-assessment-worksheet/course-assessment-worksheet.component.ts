@@ -40,9 +40,8 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
     //add semester save work here.
-    this.courseInformationObj.semesterReviewResponse.student.id = this.courseInformationObj.studentId;
     console.log( "Semester review object to PUT: ");
-    console.log(this.courseInformationObj.semesterReviewResponse)
-    this.semesterEvaluationService.addSemesterReview(this.courseInformationObj.semesterReviewResponse);
+    console.log(this.courseInformationObj.courseSemesterReviewRequest)
+    this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequest);
   }
 }

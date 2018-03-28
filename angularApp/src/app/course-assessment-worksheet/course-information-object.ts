@@ -13,6 +13,7 @@ import { Student } from "../individual-learning-record/student";
 import { Classes } from "../individual-learning-record/classes";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
 import { SemesterReviewRequest } from "../individual-learning-record/SemesterReviewRequest";
+import { CourseSemesterReviewRequest } from "../individual-learning-record/CourseSemesterReviewRequest";
 
 export class CourseInformationObject {
   CurrentClassInfo: CurrentClassInfo;
@@ -26,12 +27,9 @@ export class CourseInformationObject {
   student: Student;
   classes: Classes;
   semesterReviewResponses: SemesterReviewResponse[];
-  semesterReviewResponse: SemesterReviewResponse;
-  studentId: number;
-
+  courseSemesterReviewRequest: CourseSemesterReviewRequest;
 
   constructor() {
-    this.studentId = 0;
     this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", "", "", "", "", "");
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
@@ -41,6 +39,6 @@ export class CourseInformationObject {
     this.student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
     this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
-    this.semesterReviewResponse = new SemesterReviewResponse(this.student, this.classes, null, null, "", "", "", "");
+    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(0, 0, "", null, null, "", "", "", "");
   };
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SemesterReviewResponse } from '../individual-learning-record/SemesterReviewResponse';
 import { SemesterReviewRequest } from '../individual-learning-record/SemesterReviewRequest';
 import { Observable } from 'rxjs/Observable';
+import { CourseSemesterReviewRequest } from '../individual-learning-record/CourseSemesterReviewRequest';
 
 @Injectable()
 export class SemesterEvaluationService {
@@ -34,6 +35,10 @@ export class SemesterEvaluationService {
 
   public putSemesterEvaluation(review: SemesterReviewRequest) {
     return this.http.put<Request>('http://localhost:8080/review/putReview', review).subscribe(res => console.log(res))
+  }
+
+  public addCourseSemesterReview(review: CourseSemesterReviewRequest) {
+    return this.http.post<Response>('http://localhost:8080/review/putCourseReview', review).subscribe(res => console.log(res));
   }
 
 }
