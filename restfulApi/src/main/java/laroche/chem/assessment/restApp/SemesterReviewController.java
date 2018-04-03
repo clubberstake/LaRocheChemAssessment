@@ -25,7 +25,7 @@ import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.CourseSemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
-import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTab;
+import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTabResponse;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

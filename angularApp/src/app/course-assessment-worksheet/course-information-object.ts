@@ -8,7 +8,7 @@ import { Cafs6Info } from "./cafs6";
 import { CurrentClassInfo } from "./currentClassInfo";
 import { CourseSLOs } from "./courseSLOs";
 import { NotesInfoForMiscNotesTab } from "../individual-learning-record/notesInfoForMiscNotesTab";
-import { StudentInfoForBioAndAdmissionsPlacementTab } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTab";
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
 import { Student } from "../individual-learning-record/student";
 import { Classes } from "../individual-learning-record/classes";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";

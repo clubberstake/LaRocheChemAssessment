@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesInfoForMiscNotesTab } from './notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../services/notes-info-for-misc-notes-tab.service';
-import { StudentInfoForBioAndAdmissionsPlacementTab } from './studentInfoForBioAndAdmissionsPlacementTab';
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from './studentInfoForBioAndAdmissionsPlacementTabResponse';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../services/student-info-for-bio-and-admissions-placement-tab.service';
 import { Response } from '@angular/http/src/static_response';
 import { IndividualLearningRecordObject } from './individual-learning-record-object';
@@ -30,7 +30,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   }
 
   onSearchById(studentId: any) {
-    this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTab) => {
+    this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
       this.ilrStudentObject.student = student;
       console.log(this.ilrStudentObject.student);
     });

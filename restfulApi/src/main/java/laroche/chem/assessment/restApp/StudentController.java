@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import laroche.chem.assessment.repositories.FileStorageRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
-import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTab;
+import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTabResponse;
+import laroche.chem.assessment.entities.FileStorage;
 import laroche.chem.assessment.entities.Student;
 
 @RestController
@@ -29,29 +31,32 @@ public class StudentController {
 
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private FileStorageRepository fileStorageRepository;
 
 	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab")
-	public ArrayList<StudentInfoForBioAndAdmissionsPlacementTab> getMiscNotesInfo() {
+	public ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse> getMiscNotesInfo() {
 		return generateFakeBioAndAdmissionsPlacementTabData();
 	}
 
 	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentId={studentId}")
-	public StudentInfoForBioAndAdmissionsPlacementTab getMiscNotesInfo(@PathVariable int studentId) {
+	public StudentInfoForBioAndAdmissionsPlacementTabResponse getMiscNotesInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
-		return new StudentInfoForBioAndAdmissionsPlacementTab(student.getStudentName(), student.getStudentMajor(),
+		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(), student.getStudentMajor(),
 				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
 				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
-				student.getInternationalStudent(), student.getStudentPhoto(), student.getTime());
+				student.getInternationalStudent(), student.getTime());
 	}
 
 	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentName={studentName}")
-	public StudentInfoForBioAndAdmissionsPlacementTab getMiscNotesInfo(@PathVariable String studentName) {
+	public StudentInfoForBioAndAdmissionsPlacementTabResponse getMiscNotesInfo(@PathVariable String studentName) {
 		List<Student> students = studentRepository.findByStudentName(studentName);
 		Student student = students.get(0);
-		return new StudentInfoForBioAndAdmissionsPlacementTab(student.getStudentName(), student.getStudentMajor(),
+		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(), student.getStudentMajor(),
 				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
 				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
-				student.getInternationalStudent(), student.getStudentPhoto(), student.getTime());
+				student.getInternationalStudent(), student.getTime());
 	}
 
 	@PostMapping("/addStudent")
@@ -87,23 +92,24 @@ public class StudentController {
 		}
 	}
 
-	private ArrayList<StudentInfoForBioAndAdmissionsPlacementTab> generateFakeBioAndAdmissionsPlacementTabData() {
+	private ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse> generateFakeBioAndAdmissionsPlacementTabData() {
 
 		List<Student> students = studentRepository.findAll();
 		if (!students.iterator().hasNext()) {
 			String time = LocalDateTime.now().toString();
-			studentRepository.save(new Student("Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing",
-					"Commuter", "Honors", "No International", "/photo/destination", time));
+			FileStorage file = fileStorageRepository.findOne((long) 1);
+			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing",
+					"Commuter", "Honors", "No International", time));
 			students = studentRepository.findAll();
 		}
 
-		ArrayList<StudentInfoForBioAndAdmissionsPlacementTab> studentData = new ArrayList<StudentInfoForBioAndAdmissionsPlacementTab>();
+		ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse> studentData = new ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse>();
 
 		for (Student student : students) {
-			studentData.add(new StudentInfoForBioAndAdmissionsPlacementTab(student.getStudentName(),
+			studentData.add(new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(),
 					student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
 					student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
-					student.getStudentHonors(), student.getInternationalStudent(), student.getStudentPhoto(),
+					student.getStudentHonors(), student.getInternationalStudent(),
 					student.getTime()));
 		}
 
