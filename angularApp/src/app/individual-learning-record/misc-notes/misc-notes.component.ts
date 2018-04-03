@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../services/student-info-for-bio-and-admissions-placement-tab.service';
 import { NotesInfoForMiscNotesTab } from '../notesInfoForMiscNotesTab';
 import { NotesInfoForMiscNotesTabService } from '../../services/notes-info-for-misc-notes-tab.service';
-import { StudentInfoForBioAndAdmissionsPlacementTab } from '../studentInfoForBioAndAdmissionsPlacementTab';
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from '../studentInfoForBioAndAdmissionsPlacementTabResponse';
 import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 
 @Component({
