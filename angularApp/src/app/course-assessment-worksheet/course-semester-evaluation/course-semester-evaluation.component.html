@@ -6,85 +6,89 @@
     </div>
   </div>
   <div class="course-semester-evaluation-objects">
-    <table border="1">
-      <tr>
-        <th>
-          Student Id
-        </th>
-        <th>
-          Student Name
-        </th>
-        <th>
-          Mid Semester Learning Issues
-        </th>
-        <th>
-          End Semester Learning Issues
-        </th>
-        <th>
-          Mid Semester Instructor Interactions
-        </th>
-        <th>
-          End Semester Instructor Interactions
-        </th>
-        <th>
-          Mid Semester Instructor Notes
-        </th>
-        <th>
-          End Semester Instructor Notes
-        </th>
-      </tr>
-      <tr class="new-course-semester-evaluation" *ngIf="rowVisible">
-        <td>
-          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" />
-        </td>
-        <td>
-          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
-        </td>
-        <td>
-          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterLearningIssues" />
-        </td>
-        <td>
-          <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterLearningIssues" />
-        </td>
-        <td>
-          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterExtentInstructor"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterExtentInstructor"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
-        </td>
-      </tr>
-      <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">
-        <td>
-          <input readonly [(ngModel)]="review.student.id" />
-        </td>
-        <td>
-          <input [(ngModel)]="review.student.studentName" />
-        </td>
-        <td>
-          <input [(ngModel)]="review.midSemesterLearningIssues" />
-        </td>
-        <td>
-          <input [(ngModel)]="review.endSemesterLearningIssues" />
-        </td>
-        <td>
-          <textarea [(ngModel)]="review.midSemesterExtentInstructor"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="review.endSemesterExtentInstructor"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="review.midSemesterInstructorRecommendations"></textarea>
-        </td>
-        <td>
-          <textarea [(ngModel)]="review.endSemesterInstructorRecommendations"></textarea>
-        </td>
-      </tr>
-    </table>
+    <div class="scroll-view">
+      <div class="course-semester-evaluation-pane">
+        <table border="1">
+          <tr>
+            <th>
+              Student Id
+            </th>
+            <th>
+              Student Name
+            </th>
+            <th>
+              Mid Semester Learning Issues
+            </th>
+            <th>
+              End Semester Learning Issues
+            </th>
+            <th>
+              Mid Semester Instructor Interactions
+            </th>
+            <th>
+              End Semester Instructor Interactions
+            </th>
+            <th>
+              Mid Semester Instructor Notes
+            </th>
+            <th>
+              End Semester Instructor Notes
+            </th>
+          </tr>
+          <tr class="new-course-semester-evaluation" *ngIf="courseInformationObjInput.addCourseSemesterReviewFieldVisible">
+            <td>
+              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" />
+            </td>
+            <td>
+              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
+            </td>
+            <td>
+              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterLearningIssues" />
+            </td>
+            <td>
+              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterLearningIssues" />
+            </td>
+            <td>
+              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterExtentInstructor"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterExtentInstructor"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
+            </td>
+          </tr>
+          <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">
+            <td>
+              <input readonly [(ngModel)]="review.student.id" />
+            </td>
+            <td>
+              <input [(ngModel)]="review.student.studentName" />
+            </td>
+            <td>
+              <input [(ngModel)]="review.midSemesterLearningIssues" />
+            </td>
+            <td>
+              <input [(ngModel)]="review.endSemesterLearningIssues" />
+            </td>
+            <td>
+              <textarea [(ngModel)]="review.midSemesterExtentInstructor"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="review.endSemesterExtentInstructor"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="review.midSemesterInstructorRecommendations"></textarea>
+            </td>
+            <td>
+              <textarea [(ngModel)]="review.endSemesterInstructorRecommendations"></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

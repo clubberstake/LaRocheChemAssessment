@@ -11,8 +11,6 @@ import { CourseSemesterEvaluationService } from '../../services/course-semester-
 export class CourseSemesterEvaluationComponent implements OnInit {
 
   @Input() courseInformationObjInput: CourseInformationObject;
-  //@Input() studentObjectInput: IndividualLearningRecordObject;
-  rowVisible = false;
 
   constructor( ) { }
 
@@ -20,7 +18,7 @@ export class CourseSemesterEvaluationComponent implements OnInit {
   }
 
   addSemesterReviewRow() {
-    this.rowVisible = true;
+    this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = true;
   }
 
 

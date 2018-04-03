@@ -41,6 +41,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
 
   setcourseAndSection(courseNumAndSection: any): void {
+    this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = false;
+
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(value => value.classId == courseNumAndSection);
     console.log(this.courseInformationObjInput.CourseSLOs);
 
@@ -51,7 +53,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     */
     this.semesterEvaluationService.getSemesterReviewsByClassId(courseNumAndSection).subscribe((semesterReviews: SemesterReviewResponse[]) => {
       this.semesterReviews = semesterReviews;
-      this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews;
+      this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews.reverse();
       console.log("Semester Review Responses Response: " + this.courseInformationObjInput.semesterReviewResponses[0].classes.id)
     });
     this.courseInformationObjInput.courseSemesterReviewRequest.classId = courseNumAndSection;
