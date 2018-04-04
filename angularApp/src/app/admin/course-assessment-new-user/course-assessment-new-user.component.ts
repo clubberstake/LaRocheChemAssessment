@@ -21,6 +21,7 @@ export class CourseAssessmentNewUserComponent implements OnInit {
 
   username: String;
   password: String;
+  
   setUsername(username: any): void {
     this.username = this.username;
     console.log(username);
