@@ -31,7 +31,7 @@ export class CourseInformationObject {
   addCourseSemesterReviewFieldVisible: boolean;
 
   constructor() {
-    this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", "", "", "", "", "");
+    this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", null, "", "", "", "");
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
