@@ -18,6 +18,27 @@
   padding: 5px;
 }
 
+.course-semester-evaluation-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.course-semester-evaluation-button {
+  padding-left: 10px;
+}
+
+.new-course-semester-evaluation {
+  background-color: green;
+}
+
+.course-semester-evaluation-pane {
+  max-height: 500px;
+}
+
+.scroll-view {
+  overflow: auto;
+}
+
 th {
   padding: 5px;
 }

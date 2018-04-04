@@ -6,7 +6,7 @@
     </div>
     <div class="ilrStudentRow">
       <div class="ilrStudentLabel">
-        Name
+        Name:
       </div>
       <div>
         <input name="studentNameBox" type="text" [(ngModel)]="studentObjectInput.student.studentName" required>
@@ -14,7 +14,15 @@
     </div>
     <div class="ilrStudentRow">
       <div class="ilrStudentLabel">
-        ID #:
+        Photo:
+      </div>
+      <div>
+        <input name="studentPhoto" type="file" [(ngModel)]="studentObjectInput.student.FileStorage" (change)="onFileSelected($event)" required>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        ID#:
       </div>
       <div>
         <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId" readonly>

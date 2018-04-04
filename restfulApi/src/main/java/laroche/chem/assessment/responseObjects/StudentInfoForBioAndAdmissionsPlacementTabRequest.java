@@ -1,23 +1,8 @@
-package laroche.chem.assessment.entities;
+package laroche.chem.assessment.responseObjects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+public class StudentInfoForBioAndAdmissionsPlacementTabRequest {
 
-@Entity
-public class Student {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_photo_id")
-	private FileStorage file;
+	private long fileId;
 	
 	private String studentName;
 	private String studentMajor;
@@ -28,33 +13,7 @@ public class Student {
 	private String studentHousingStatus;
 	private String studentHonors;
 	private String internationalStudent;
-	
-	private String time;
-	
-	public Student() {}
-	
-	public Student(FileStorage file, String studentName, String studentMajor, String studentYear, String studentSemester,
-				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time) {
-		this.setFileId(file);
-		this.studentName = studentName;
-		this.studentMajor = studentMajor;
-		this.studentYear = studentYear;
-		this.studentSemester = studentSemester;
-		this.studentMathGrade = studentMathGrade;
-		this.studentAthletics = studentAthletics;
-		this.studentHousingStatus = studentHousingStatus;
-		this.studentHonors = studentHonors;
-		this.internationalStudent = internationalStudent;
-		this.time = time;
-	}
-	
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
+	private String time;	
 	
 	public String getStudentName() {
 		return studentName;
@@ -128,14 +87,6 @@ public class Student {
 		this.internationalStudent = internationalStudent;
 	}
 
-	public FileStorage getFileId() {
-		return file;
-	}
-
-	public void setFileId(FileStorage file) {
-		this.file = file;
-	}
-
 	public String getTime() {
 		return time;
 	}
@@ -143,5 +94,12 @@ public class Student {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
+	public long getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(long fileId) {
+		this.fileId = fileId;
+	}
 }

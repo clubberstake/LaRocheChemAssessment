@@ -11,13 +11,15 @@ import { CourseSemesterEvaluationService } from '../../services/course-semester-
 export class CourseSemesterEvaluationComponent implements OnInit {
 
   @Input() courseInformationObjInput: CourseInformationObject;
-  //@Input() studentObjectInput: IndividualLearningRecordObject;
 
   constructor( ) { }
 
   ngOnInit() {
   }
 
+  addSemesterReviewRow() {
+    this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = true;
+  }
 
 
 }

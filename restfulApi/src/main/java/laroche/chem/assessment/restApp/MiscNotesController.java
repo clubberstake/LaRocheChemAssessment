@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import laroche.chem.assessment.repositories.FileStorageRepository;
 import laroche.chem.assessment.repositories.MiscNotesRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.NotesInfoForMiscNotesTab;
 import laroche.chem.assessment.entities.Student;
+import laroche.chem.assessment.entities.FileStorage;
 import laroche.chem.assessment.entities.MiscNotes;
 
 @RestController
@@ -32,6 +34,8 @@ public class MiscNotesController {
 	private StudentRepository studentRepository;
 	@Autowired
 	private MiscNotesRepository miscNotesRepository;
+	@Autowired
+	private FileStorageRepository fileStorageRepository;
 
 	@GetMapping("/notesInfoForMiscNotesTab")
 	public ArrayList<NotesInfoForMiscNotesTab> getMiscNotesInfo() {
@@ -70,11 +74,12 @@ public class MiscNotesController {
 		
 		// Generate Data for student table if it does not exist already
 		List<Student> students = studentRepository.findAll();
+		FileStorage file = fileStorageRepository.findOne((long) 1);
 		if(!students.iterator().hasNext()) {
 			String time = LocalDateTime.now().toString();
-			studentRepository.save(new Student("John Nicholson", "Computer Science", "2018", "Spring", "A", "Cross Country", "Commuter", "No Honors", "No International", "/photo/destination", time));
-			studentRepository.save(new Student("Robb Stark", "History", "2017", "Fall", "B", "Fencing", "Resident", "Honors", "Westeros", "/photo/destination", time));
-			studentRepository.save(new Student("Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing", "Commuter", "Honors", "No International", "/photo/destination", time));
+			studentRepository.save(new Student(file, "John Nicholson", "Computer Science", "2018", "Spring", "A", "Cross Country", "Commuter", "No Honors", "No International", time));
+			studentRepository.save(new Student(file, "Robb Stark", "History", "2017", "Fall", "B", "Fencing", "Resident", "Honors", "Westeros", time));
+			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing", "Commuter", "Honors", "No International", time));
 			students = studentRepository.findAll();
 		}
 		

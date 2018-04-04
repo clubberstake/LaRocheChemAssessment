@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { StudentInfoForBioAndAdmissionsPlacementTab } from '../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTab';
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from '../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse';
 import { Response } from '@angular/http/src/static_response';
 
 @Injectable()
 export class StudentInfoForBioAndAdmissionsPlacementTabService {
 
+  uploadData = new FormData();
+
+
   constructor(private http: HttpClient) { }
 
-  public getStudentInfo(): Observable<StudentInfoForBioAndAdmissionsPlacementTab[]> {
-    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab[]>('http://localhost:8080/student/studentInfoForBioAndAdmissionsPlacementTab')
+  public getStudentInfo(): Observable<StudentInfoForBioAndAdmissionsPlacementTabResponse[]> {
+    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTabResponse[]>('http://localhost:8080/student/studentInfoForBioAndAdmissionsPlacementTab')
   }
 
-  public getStudentInfoById(studentId: number): Observable<StudentInfoForBioAndAdmissionsPlacementTab> {
-    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab>('http://localhost:8080/student/studentInfoForBioAndAdmissionsPlacementTab/studentId=' + studentId)
+  public getStudentInfoById(studentId: number): Observable<StudentInfoForBioAndAdmissionsPlacementTabResponse> {
+    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTabResponse>('http://localhost:8080/student/studentInfoForBioAndAdmissionsPlacementTab/studentId=' + studentId)
   }
 
-  public getStudentInfoByName(studentName: string): Observable<StudentInfoForBioAndAdmissionsPlacementTab> {
-    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTab>('http://localhost:8080/studentInfoForBioAndAdmissionsPlacementTab/studentName=' + studentName)
+  public getStudentInfoByName(studentName: string): Observable<StudentInfoForBioAndAdmissionsPlacementTabResponse> {
+    return this.http.get<StudentInfoForBioAndAdmissionsPlacementTabResponse>('http://localhost:8080/studentInfoForBioAndAdmissionsPlacementTab/studentName=' + studentName)
   }
 
   public addNewStudent(student: any) {
@@ -28,4 +31,7 @@ export class StudentInfoForBioAndAdmissionsPlacementTabService {
   public updateStudent(student: any) {
     return this.http.put<Response>('http://localhost:8080/student/updateStudent', student).subscribe(res => console.log(res));
   }
+    public updateStudentPhoto(student: any) {
+    return this.http.post('http://localhost:8080/student/addFile', this.uploadData).subscribe(res => console.log(res)); 
+}  
 }

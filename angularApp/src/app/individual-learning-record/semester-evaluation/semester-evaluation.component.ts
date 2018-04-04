@@ -19,7 +19,7 @@ export class SemesterEvaluationComponent implements OnInit {
   constructor(private semesterEvaluationService: SemesterEvaluationService, private studentClassRosterService: ClassRosterService) { }
 
   ngOnInit() {
-    
+
   }
 
   setCourseIdAndName(courseIdAndName: any) {
@@ -29,7 +29,6 @@ export class SemesterEvaluationComponent implements OnInit {
   }
 
   postMidSemesterReview() {
-
     this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)

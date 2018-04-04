@@ -8,11 +8,12 @@ import { Cafs6Info } from "./cafs6";
 import { CurrentClassInfo } from "./currentClassInfo";
 import { CourseSLOs } from "./courseSLOs";
 import { NotesInfoForMiscNotesTab } from "../individual-learning-record/notesInfoForMiscNotesTab";
-import { StudentInfoForBioAndAdmissionsPlacementTab } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTab";
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
 import { Student } from "../individual-learning-record/student";
 import { Classes } from "../individual-learning-record/classes";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
 import { SemesterReviewRequest } from "../individual-learning-record/SemesterReviewRequest";
+import { CourseSemesterReviewRequest } from "../individual-learning-record/CourseSemesterReviewRequest";
 
 export class CourseInformationObject {
   CurrentClassInfo: CurrentClassInfo;
@@ -23,19 +24,23 @@ export class CourseInformationObject {
   Cafs4Info: Cafs4Info;
   Cafs5Info: Cafs5Info;
   Cafs6Info: Cafs6Info;
-  studentClass: Student;
+  student: Student;
   classes: Classes;
   semesterReviewResponses: SemesterReviewResponse[];
-
+  courseSemesterReviewRequest: CourseSemesterReviewRequest;
+  addCourseSemesterReviewFieldVisible: boolean;
 
   constructor() {
+    this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", "", "", "", "", "");
     this.CourseSLOs = new CourseSLOs(null, 0, false, false, false, false, false);
     this.Cafs1Info = new Cafs1Info(null, 0, '', '', '', '', '');
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
     this.Cafs3Info = new Cafs3Info(null, 0, '', '', '', '', '', '', '');
     this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
-    this.studentClass = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
-    this.classes = new Classes(0, 0, '', '', '', 0);
+    this.student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
+    this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
+    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(0, 0, "", null, null, "", "", "", "");
+    this.addCourseSemesterReviewFieldVisible = false
   };
 }

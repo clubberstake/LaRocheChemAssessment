@@ -22,9 +22,10 @@ import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.SemesterReviewRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
+import laroche.chem.assessment.responseObjects.CourseSemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
-import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTab;
+import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTabResponse;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -74,6 +75,26 @@ public class SemesterReviewController {
 		
 		try {
 			return ResponseEntity.created(new URI("/semesterEntry/" + review.getID())).build();
+		} catch(URISyntaxException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+	
+	/**
+	 * Post request to add a newly created course semester review
+	 * @param request the course semester review request object to be added
+	 * @return response URI path
+	 */
+	@PostMapping("/putCourseReview")
+	public ResponseEntity<Void> putCourseSemesterReview(@RequestBody CourseSemesterReviewRequest request) {
+		Student student = studentRepository.findOne(request.getStudentId());
+		Classes classes = classRepository.findOne(request.getClassId());
+		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
+		semesterReviewRepository.save(review);
+		
+		try {
+			return ResponseEntity.created(new URI("/courseSemesterEntry/" + review.getID())).build();
 		} catch(URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
