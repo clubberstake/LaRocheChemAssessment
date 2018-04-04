@@ -1,16 +1,16 @@
 <div class="newCourseContainer">
-<div class="newCoursePane">
-  <b>Add new user</b>
-  Username (Email):<input type="text" id="username" [(ngModel)]="newUser.username"><br>
-  Password:<input type="text" id="password" [(ngModel)]="newUser.password">
-  
-  <div class="semesterContainer">
-      Student
-      <input #studentRadioBtn name="student" value="student" id="studentRadioBtn" type="radio" [(ngModel)]="student">
-      Teacher
-      <input #teacherRadioBtn name="instructor" value="instructor" id="instructorRadioBtn" type="radio" [(ngModel)]="instructor">
+  <div class="newCoursePane">
+    <b>Add new user</b><br>
+    Username (Email):<input type="text" id="username"><br>
+    Password:<input type="text" id="password">
+    
+    <div class="semesterContainer">
+        Student
+        <input #studentRadioBtn name="student" value="student" id="studentRadioBtn" type="radio">
+        Teacher
+        <input #teacherRadioBtn name="instructor" value="instructor" id="instructorRadioBtn" type="radio">
+    </div>
+    
+    <input type="submit" value="Add" (click)="addUser()">
   </div>
-  
-  <input type="submit" value="Add" (click)="addUser()">
-</div>
-</div>
+  </div>

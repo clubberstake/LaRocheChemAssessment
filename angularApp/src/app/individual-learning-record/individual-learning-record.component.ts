@@ -9,8 +9,6 @@ import { SemesterEvaluationService } from "../services/semester-evaluation.servi
 import { SemesterReviewResponse } from "./SemesterReviewResponse";
 import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { CourseInformationObject } from "../course-assessment-worksheet/course-information-object";
-import { ClassRosterService } from "../services/class-roster.service";
-import { ClassRosterResponseObject } from "./ClassRosterResponseObject";
 
 @Component({
   selector: "app-individual-learning-record",
@@ -25,9 +23,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   constructor(
     private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
     private notesService: NotesInfoForMiscNotesTabService,
-    private semesterEvaluationService: SemesterEvaluationService,
-    private classStudentRoster: ClassRosterService
-  ) {}
+    private semesterEvaluationService: SemesterEvaluationService) {}
 
   ngOnInit() {
   }
@@ -56,12 +52,20 @@ export class IndividualLearningRecordComponent implements OnInit {
         console.log(this.ilrStudentObject.semesterReviewRequests);
       });
 
-    this.classStudentRoster
-      .getClassRoster()
-      .subscribe((classRosters: ClassRosterResponseObject[]) => {
-        this.ilrStudentObject.classRosterObjects = classRosters;
-        console.log(this.ilrStudentObject.classRosterObjects);
-      });
+    this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
+      this.ilrStudentObject.student = student;
+      console.log(this.ilrStudentObject.student);
+    });
+
+    this.notesService.getMiscNoteInfoByStudentId(studentId).subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
+      this.ilrStudentObject.miscNotes = miscNotes;
+      console.log(this.ilrStudentObject.miscNotes);
+    });
+
+    this.semesterEvaluationService.getSemesterEvaluationsByStudentId(studentId).subscribe((semesterReviews: SemesterReviewRequest[]) => {
+      this.ilrStudentObject.semesterReviewRequests = semesterReviews;
+      console.log(this.ilrStudentObject.semesterReviewRequests);
+    });
 
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);

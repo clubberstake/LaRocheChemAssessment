@@ -5,7 +5,6 @@ import { LearningIssues } from "./learningIssues";
 import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { Student } from "./student";
 import { Classes } from "./classes";
-import { ClassRosterResponseObject } from "./ClassRosterResponseObject";
 import { FileStorage } from "../services/file-storage";
 
 export class IndividualLearningRecordObject {
@@ -18,8 +17,6 @@ export class IndividualLearningRecordObject {
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];
-    classRosterObject: ClassRosterResponseObject = new ClassRosterResponseObject(0,0,'');
-    classRosterObjects: ClassRosterResponseObject[] = [];
 
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');
