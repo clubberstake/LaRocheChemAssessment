@@ -7,6 +7,9 @@ import { Response } from '@angular/http/src/static_response';
 @Injectable()
 export class StudentInfoForBioAndAdmissionsPlacementTabService {
 
+  uploadData = new FormData();
+
+
   constructor(private http: HttpClient) { }
 
   public getStudentInfo(): Observable<StudentInfoForBioAndAdmissionsPlacementTabResponse[]> {
@@ -28,4 +31,7 @@ export class StudentInfoForBioAndAdmissionsPlacementTabService {
   public updateStudent(student: any) {
     return this.http.put<Response>('http://localhost:8080/student/updateStudent', student).subscribe(res => console.log(res));
   }
+    public updateStudentPhoto(student: any) {
+    return this.http.post('http://localhost:8080/student/addFile', this.uploadData).subscribe(res => console.log(res)); 
+}  
 }
