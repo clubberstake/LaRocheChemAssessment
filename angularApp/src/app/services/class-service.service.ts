@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ClassInfo } from '../course-assessment-worksheet/classInfo';
 import { Observable } from 'rxjs/Observable';
+import { Classes } from '../course-assessment-worksheet/class';
 
 @Injectable()
 export class ClassInformationService {
