@@ -1,13 +1,15 @@
 package laroche.chem.assessment.responseObjects;
 
+import laroche.chem.assessment.entities.FileStorage;
+
 public class ClassInfo {
 
-	public ClassInfo(long classId, long courseId, String courseID, String string, String section, String semester, String courseTitle, long instructorId, String instructorName) 
+	public ClassInfo(long classId, long courseId, String courseID, FileStorage syllabus, String section, String semester, String courseTitle, long instructorId, String instructorName) 
 	{
 		this.classId = classId;
 		this.courseId = courseId;
 		this.courseID = courseID;
-		this.syllabus = string;
+		this.syllabus = syllabus;
 		this.section = section;
 		this.semester = semester;
 		this.instructorId = instructorId;
@@ -17,7 +19,7 @@ public class ClassInfo {
 	private long classId;
 	private long courseId;
 	private String courseID;
-	private String syllabus;
+	private FileStorage syllabus;
 	private String section;
 	private String semester;
 	private long instructorId;
@@ -39,7 +41,7 @@ public class ClassInfo {
 		return courseID;
 	}
 	
-	public String getSyllabus()
+	public FileStorage getSyllabus()
 	{
 		return syllabus;
 	}

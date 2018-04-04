@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.Course;
+import laroche.chem.assessment.entities.FileStorage;
 import laroche.chem.assessment.entities.Instructor;
 import laroche.chem.assessment.entities.SemesterReview;
 import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
+import laroche.chem.assessment.repositories.FileStorageRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
 import laroche.chem.assessment.repositories.SemesterReviewRepository;
 import laroche.chem.assessment.repositories.StudentRepository;
@@ -38,6 +40,9 @@ public class ClassController {
 	private InstructorRepository instructorRepository;
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private FileStorageRepository fileStorageRepository;
+
 	
 	@RequestMapping("/classInfo")
 	public ArrayList<ClassInfo> getClassInfo() {
@@ -47,6 +52,10 @@ public class ClassController {
 	@PostMapping("/addClass")
  	public ResponseEntity<Void> addClass(@RequestBody Classes classes) {
  		System.out.println(classes.getId());
+ 		List<FileStorage> files = fileStorageRepository.findAll();
+ 		long id = files.get(files.size()-1).getId();
+		FileStorage syllabus = fileStorageRepository.findOne(id);
+		classes.setSyllabus(syllabus);
  		classRepository.save(classes);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
@@ -83,12 +92,12 @@ public class ClassController {
 		
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes(1, "SP2017/CHEM2016/01Syllabus.txt", "SP2017", "01", 1));
-			classRepository.save(new Classes(1, "FA2016/CHEM2016/01Syllabus.txt", "FA2016", "01", 1));
-			classRepository.save(new Classes(3, "SP2017/MATH2050/01Syllabus.txt", "SP2017", "01", 1));
-			classRepository.save(new Classes(2, "SP2017/CSCI4098/01Syllabus.txt", "SP2017", "01", 2));
-			classRepository.save(new Classes(4, "SP2017/MATH1040/01Syllabus.txt", "SP2017", "01", 4));
-			classRepository.save(new Classes(1, "SP2018/CHEM2016/01Syllabus.txt", "SP2018", "01", 1));
+			classRepository.save(new Classes(1, null, "SP2017", "01", 1));
+			classRepository.save(new Classes(1, null, "FA2016", "01", 1));
+			classRepository.save(new Classes(3, null, "SP2017", "01", 1));
+			classRepository.save(new Classes(2, null, "SP2017", "01", 2));
+			classRepository.save(new Classes(4, null, "SP2017", "01", 4));
+			classRepository.save(new Classes(1, null, "SP2018", "01", 1));
 			classes = classRepository.findAll();
 		}
 		
