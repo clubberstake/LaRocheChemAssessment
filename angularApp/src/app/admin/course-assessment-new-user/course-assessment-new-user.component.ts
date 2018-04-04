@@ -17,8 +17,10 @@ import { FileStorage } from "../../services/file-storage";
   styleUrls: ["./course-assessment-new-user.component.css"]
 })
 export class CourseAssessmentNewUserComponent implements OnInit {
-  username: String
-  password: String
+  ngOnInit() {}
+
+  username: String;
+  password: String;
   setUsername(username: any): void {
     this.username = this.username;
     console.log(username);
@@ -31,7 +33,5 @@ export class CourseAssessmentNewUserComponent implements OnInit {
     console.log(this.password);
   }
 
-  constructor(
-    private userService: UserService,
-  ) {}
+  constructor(private userService: UserService) {}
 }
