@@ -10,6 +10,7 @@ import { ClassInfo } from "../../course-assessment-worksheet/classInfo";
 import { when, delay } from "q";
 import { FileStorageService } from "../../services/file-storage.service";
 import { FileStorage } from "../../services/file-storage";
+import { UserInfo } from "../../login/userInfo";
 
 @Component({
   selector: "app-course-assessment-new-user",
@@ -19,19 +20,56 @@ import { FileStorage } from "../../services/file-storage";
 export class CourseAssessmentNewUserComponent implements OnInit {
   ngOnInit() {}
 
-  username: String;
+  newUser = new UserInfo(0, "", "", "");
   password: String;
-  
+  confirmPassword: String;
+  usernameFeedback: String = "";
+  passwordFeedback: String = "";
+  passwordLengthFeedback: String = "";
+
   setUsername(username: any): void {
-    this.username = this.username;
+    this.newUser.username = this.newUser.username;
     console.log(username);
-    console.log(this.username);
+    console.log(this.newUser.username);
   }
 
   setPassword(password: any): void {
     this.password = this.password;
     console.log(password);
     console.log(this.password);
+  }
+
+  checkEmail(): void {
+    if(!this.newUser.username.includes("@"))
+    {
+      this.usernameFeedback = "That is not a valid email address!";
+    }
+    else 
+    {
+      this.usernameFeedback = ""; 
+    }
+  }
+
+  checkPasswordLength(): void {
+    if(this.password.length < 6)
+    {
+      this.passwordLengthFeedback = "The password must be at least 6 characters long!";
+    }
+    else 
+    {
+      this.passwordLengthFeedback = ""; 
+    }
+  }
+
+  checkPassword(): void {
+    if(this.password != this.confirmPassword)
+    {
+      this.passwordFeedback = "The password does not match!";
+    }
+    else
+    {
+      this.passwordFeedback = "";
+    }
   }
 
   constructor(private userService: UserService) {}
