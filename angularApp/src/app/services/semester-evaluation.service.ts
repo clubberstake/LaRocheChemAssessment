@@ -13,6 +13,10 @@ export class SemesterEvaluationService {
   public getSemesterEvaluations(): Observable<SemesterReviewResponse[]> {
     return this.http.get<SemesterReviewResponse[]>("http://localhost:8080/review/semesterReviews");
   }
+  
+  public getSemesterEvaluationResponsesByStudentId(studentId: number): Observable<SemesterReviewResponse[]>{
+    return this.http.get<SemesterReviewResponse[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
+  }
 
   public getSemesterEvaluationsByStudentId(studentId: number): Observable<SemesterReviewRequest[]> {
     return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);

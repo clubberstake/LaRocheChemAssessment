@@ -4,6 +4,7 @@ import { SemesterEvaluationService } from '../../services/semester-evaluation.se
 import { LearningIssues } from '../learningIssues';
 import { CourseInformationObject } from '../../course-assessment-worksheet/course-information-object';
 import { CurrentClassInfo } from '../../course-assessment-worksheet/currentClassInfo';
+import { SemesterReviewResponse } from '../SemesterReviewResponse';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -18,7 +19,6 @@ export class SemesterEvaluationComponent implements OnInit {
   constructor(private semesterEvaluationService: SemesterEvaluationService) { }
 
   ngOnInit() {
-
   }
 
   setCourseIdAndName(courseIdAndName: any) {
