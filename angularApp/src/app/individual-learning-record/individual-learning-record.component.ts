@@ -20,10 +20,8 @@ export class IndividualLearningRecordComponent implements OnInit {
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
 
-  constructor(
-    private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
-    private notesService: NotesInfoForMiscNotesTabService,
-    private semesterEvaluationService: SemesterEvaluationService) {}
+  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService,
+    private semesterEvaluationService: SemesterEvaluationService, private semesterResponse: SemesterEvaluationService) {}
 
   ngOnInit() {
   }
@@ -67,11 +65,16 @@ export class IndividualLearningRecordComponent implements OnInit {
       console.log(this.ilrStudentObject.semesterReviewRequests);
     });
 
+    this.semesterEvaluationService.getSemesterEvaluationResponsesByStudentId(studentId).subscribe((semesterResponses: SemesterReviewResponse[])=>{
+      this.ilrStudentObject.semesterReviewResponses = semesterResponses;
+      console.log(this.ilrStudentObject.semesterReviewResponses);
+    });
+    
+
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);
   }
 
-  /*To be worked on later*/
   onSearchByName(studentName: any) {
     console.log(studentName);
   }
