@@ -43,10 +43,13 @@ public class StudentController {
 	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentId={studentId}")
 	public StudentInfoForBioAndAdmissionsPlacementTabResponse getMiscNotesInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
+		if (student != null) {
 		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(), student.getStudentMajor(),
 				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
 				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
 				student.getInternationalStudent(), student.getTime());
+		}
+		return null;
 	}
 
 	@GetMapping("/studentInfoForBioAndAdmissionsPlacementTab/studentName={studentName}")
