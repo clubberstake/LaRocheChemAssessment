@@ -10,6 +10,8 @@ import { CAFS3InformationService } from "../services/cafs3-service.service";
 import { CAFS6InformationService } from "../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../services/course-semester-evaluation.service";
 import { SemesterEvaluationService } from "../services/semester-evaluation.service";
+import { StudentInfoForBioAndAdmissionsPlacementTabService } from "../services/student-info-for-bio-and-admissions-placement-tab.service";
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -26,12 +28,37 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     public cafs3Service: CAFS3InformationService,
     public cafs6Service: CAFS6InformationService,
     public CourseSemesterEvaluationService: CourseSemesterEvaluationService,
+    private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
     private semesterEvaluationService: SemesterEvaluationService
   ) {
     this.courseInformationObj = new CourseInformationObject();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(){
+    this.studentsService
+      .getStudentInfoById(1)
+      .subscribe(
+        (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
+          if (!student) {
+            console.log("Didnt find students");
+            let student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Greg","Chemistry","Junior","Fall","B","No","Resident","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Keith","Chemistry","Senior","Summer","B","No","Commuter","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Johnny","Chemistry","Sophomore","Spring","B","No","Resident","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Aaron","Chemistry","Senior","Fall","B","No","Commuter","No","No","");
+            this.studentsService.addNewStudent(student);
+          } else {
+            console.log("found student, no need to seed students");
+          }
+        }
+      );
+  }
 
   onSave() {
     this.sloService.updateSLOs(this.courseInformationObj.CourseSLOs);
