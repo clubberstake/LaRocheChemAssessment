@@ -116,7 +116,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     fileReader.readAsText(fileToLoad);    
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
-    this.sleep(1200).then(() => this.classService.addClass(this.newClass));
+    this.sleep(2000).then(() => this.classService.addClass(this.newClass));
   }
 
   private sleep(ms) {

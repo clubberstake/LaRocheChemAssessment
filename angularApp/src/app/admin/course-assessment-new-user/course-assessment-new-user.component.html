@@ -1,14 +1,18 @@
 <div class="newCourseContainer">
   <div class="newCoursePane">
     <b>Add new user</b><br>
-    Username (Email):<input type="text" id="username"><br>
-    Password:<input type="text" id="password">
+    Username (Email):<input type="text" id="username" [(ngModel)]="newUser.username" (change)="checkEmail()">
+    <font color="red">{{usernameFeedback}}</font><br>
+    Password:<input type="password" id="password" [(ngModel)]="password" (change)="checkPasswordLength()">
+    <font color="red">{{passwordLengthFeedback}}</font><br>
+    Confirm Password:<input type="password" id="password" [(ngModel)]="confirmPassword" (change)="checkPassword()">
+    <font color="red">{{passwordFeedback}}</font>
     
     <div class="semesterContainer">
-        Student
-        <input #studentRadioBtn name="student" value="student" id="studentRadioBtn" type="radio">
+        Admin
+        <input #studentRadioBtn name="admin" value="admin" id="adminRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
         Teacher
-        <input #teacherRadioBtn name="instructor" value="instructor" id="instructorRadioBtn" type="radio">
+        <input #teacherRadioBtn name="teacher" value="teacher" id="teacherRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
     </div>
     
     <input type="submit" value="Add" (click)="addUser()">
