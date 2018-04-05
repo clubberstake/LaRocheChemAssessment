@@ -11,7 +11,6 @@ import { when, delay } from "q";
 import { FileStorageService } from "../../services/file-storage.service";
 import { FileStorage } from "../../services/file-storage";
 import { UserInfo } from "../../login/userInfo";
-import { userInfo } from "os";
 
 @Component({
   selector: "app-course-assessment-new-user",
