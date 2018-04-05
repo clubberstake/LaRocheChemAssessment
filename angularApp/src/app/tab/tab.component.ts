@@ -9,6 +9,6 @@ import { TabsComponent } from '../tabs/tabs.component';
 })
 export class TabComponent {
   @Input('tabTitle') title: string;
-  @Input() active = false;
+  @Input() active = true;
   @Input() hidden = false;
 }
