@@ -9,9 +9,18 @@
         <app-component-cafs3 [courseInformationObjInput]="courseInformationObj"></app-component-cafs3>
         <!-- ILR Team: Replaced original cafs4 component to match the cafs4 component created by the ILR team [Name changed from              app-component-cafs4 to app-mid-semester-evaluation]. This name has been changed throughout BOTH the Java side and the Angular side. -->
         <app-course-semester-evaluation [courseInformationObjInput]="courseInformationObj"></app-course-semester-evaluation>
-        <!--<app-component-cafs5></app-component-cafs5>-->
         <!-- Course Assessment Team: Removing cafs5 for timing being to verify with ILR if should be merged into mid-semster-evalution-->
         <app-component-cafs6 [courseInformationObjInput]="courseInformationObj"></app-component-cafs6>
-        <button class="saveButton" (click)="onSave()">Save</button>
+        <div *ngIf="courseInformationObj.unfoundStudent != 'Student does not exist.'; else elseTemplate">
+          <button class="saveButton" (click)="onSave()">Save</button>
+        </div>
+        <ng-template #elseTemplate>
+          <button class="saveButton" (click)="doNothing()">Save</button>
+          <body>
+            <p>
+              <strong>Error: </strong>Invalid student specified within Course Semester Evaluation Section. Please enter a valid student.
+            </p>
+          </body>
+        </ng-template>
     </div>
 </div>
