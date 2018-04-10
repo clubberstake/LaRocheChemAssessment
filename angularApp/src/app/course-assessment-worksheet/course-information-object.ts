@@ -29,6 +29,7 @@ export class CourseInformationObject {
   semesterReviewResponses: SemesterReviewResponse[];
   courseSemesterReviewRequest: CourseSemesterReviewRequest;
   addCourseSemesterReviewFieldVisible: boolean;
+  unfoundStudent: string;
 
   constructor() {
     this.CurrentClassInfo = new CurrentClassInfo(0, 0, "", null, "", "", "", "");
@@ -41,6 +42,7 @@ export class CourseInformationObject {
     this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
     this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(0, 0, "", null, null, "", "", "", "");
-    this.addCourseSemesterReviewFieldVisible = false
+    this.addCourseSemesterReviewFieldVisible = false;
+    this.unfoundStudent = "";
   };
 }

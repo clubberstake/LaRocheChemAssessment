@@ -37,11 +37,14 @@
           </tr>
           <tr class="new-course-semester-evaluation" *ngIf="courseInformationObjInput.addCourseSemesterReviewFieldVisible">
             <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" />
+              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" (ngModelChange)="onIdChange($event)"/>
             </td>
-            <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
+            <td *ngIf="courseInformationObjInput.unfoundStudent != null; else elseTd">
+              <input value="{{courseInformationObjInput.unfoundStudent}}" />
             </td>
+            <ng-template #elseTd>
+              <input required value="{{courseInformationObjInput.unfoundStudent}}" (ngModel)="courseInformationObjInput.courseSemesterReviewRequest.studentName"/>
+            </ng-template>
             <td>
               <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterLearningIssues" />
             </td>
@@ -66,7 +69,7 @@
               <input readonly [(ngModel)]="review.student.id" />
             </td>
             <td>
-              <input [(ngModel)]="review.student.studentName" />
+              <input readonly [(ngModel)]="review.student.studentName" />
             </td>
             <td>
               <input [(ngModel)]="review.midSemesterLearningIssues" />

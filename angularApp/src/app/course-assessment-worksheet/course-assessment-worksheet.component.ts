@@ -58,6 +58,7 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
           }
         }
       );
+      console.log("Unfound student value: " + this.courseInformationObj.unfoundStudent)
   }
 
   onSave() {
@@ -70,5 +71,9 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     console.log( "Semester review object to PUT: ");
     console.log(this.courseInformationObj.courseSemesterReviewRequest)
     this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequest);
+  }
+
+  doNothing() {
+    console.log("Invalid student specified within Course Semester Evaluation Section. Please enter a valid student.")
   }
 }
