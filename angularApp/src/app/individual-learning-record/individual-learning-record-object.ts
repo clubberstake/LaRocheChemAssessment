@@ -17,6 +17,7 @@ export class IndividualLearningRecordObject {
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];
+    courseNames: String[] = [];
 
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');
