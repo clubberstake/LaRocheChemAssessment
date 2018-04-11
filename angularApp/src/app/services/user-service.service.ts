@@ -17,6 +17,6 @@ export class UserService {
   };
 
   public addNewUser(user: any) {
-    return this.http.post<Response>('http://localhost:8080/users/addUser', user).subscribe(res => console.log(res));
+    return this.http.post<Response>('http://localhost:8080/addUser', user).subscribe(res => console.log(res));
   }
 }
