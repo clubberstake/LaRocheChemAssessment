@@ -10,13 +10,14 @@ import { FileStorage } from "../services/file-storage";
 export class IndividualLearningRecordObject {
     studentId: any;
     file: FileStorage = new FileStorage(0, '', '');
-    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
+    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
     student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(this.file, '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];
+    courseNames: String[] = [];
 
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');

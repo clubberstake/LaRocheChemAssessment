@@ -19,7 +19,6 @@ import { CAFS3InformationService } from "../../services/cafs3-service.service";
 import { Cafs6Info } from "../cafs6";
 import { CAFS6InformationService } from "../../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../../services/course-semester-evaluation.service";
-import { SemesterReviewByStudent } from "../course-semester-evaluation/semester-review-by-student";
 import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
 import { SemesterEvaluationService } from "../../services/semester-evaluation.service";
 import { SemesterReviewRequest } from "../../individual-learning-record/SemesterReviewRequest";
@@ -217,7 +216,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     var fileContents = String(this.courseInformationObjInput.CurrentClassInfo.syllabus.fileContent);
     var filename = "syllabus.txt";
     var filetype = "text/plain";
-    
+
     var a = document.createElement("a");
     var dataURI = "data:" + filetype +
         ";base64," + btoa(fileContents);

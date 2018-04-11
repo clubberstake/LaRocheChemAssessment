@@ -9,6 +9,8 @@ import { SemesterEvaluationService } from "../services/semester-evaluation.servi
 import { SemesterReviewResponse } from "./SemesterReviewResponse";
 import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { CourseInformationObject } from "../course-assessment-worksheet/course-information-object";
+import { CourseInformationService } from "../services/course-information-service.service";
+import { CourseInfoForAssessment } from "../course-assessment-worksheet/courseInfoForAssessment";
 
 @Component({
   selector: "app-individual-learning-record",
@@ -20,10 +22,13 @@ export class IndividualLearningRecordComponent implements OnInit {
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
 
-  constructor(
-    private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
-    private notesService: NotesInfoForMiscNotesTabService,
-    private semesterEvaluationService: SemesterEvaluationService) {}
+  courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
+  courseInfoForAssessment: CourseInfoForAssessment[] = [];
+  courseMap = new Map<any,String>();
+
+  constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService,
+    private semesterEvaluationService: SemesterEvaluationService, private semesterResponse: SemesterEvaluationService,
+     private courseInfoService: CourseInformationService) {}
 
   ngOnInit() {
   }
@@ -67,11 +72,37 @@ export class IndividualLearningRecordComponent implements OnInit {
       console.log(this.ilrStudentObject.semesterReviewRequests);
     });
 
+    this.semesterEvaluationService.getSemesterEvaluationResponsesByStudentId(studentId).subscribe((semesterResponses: SemesterReviewResponse[])=>{
+      this.ilrStudentObject.semesterReviewResponses = semesterResponses;
+      console.log(this.ilrStudentObject.semesterReviewResponses);
+    });
+    
+    this.courseInfoService.getCourseInfo().subscribe((courses: CourseInfoForAssessment[])=>{
+      this.courseInfoForAssessment = courses;
+      for(let i in courses){
+        this.courseMap.set(courses[i].courseId,courses[i].courseName);
+      }
+      console.log(this.courseInfoForAssessment + "hey its me");
+      console.log(this.courseMap.get(2));
+      
+      for(let index in this.ilrStudentObject.semesterReviewResponses){
+        if(this.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)){
+          console.log("Hey I have this classs id and i am the map");
+          this.ilrStudentObject.courseNames.push(this.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
+        }
+      }
+      for(let index in this.ilrStudentObject.courseNames){
+        console.log(this.ilrStudentObject.courseNames[index]);
+        
+      }
+      
+
+    });
+
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);
   }
 
-  /*To be worked on later*/
   onSearchByName(studentName: any) {
     console.log(studentName);
   }
