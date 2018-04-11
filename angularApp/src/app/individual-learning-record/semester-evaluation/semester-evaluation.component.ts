@@ -18,7 +18,7 @@ export class SemesterEvaluationComponent implements OnInit {
 
   @Input() studentObjectInput: IndividualLearningRecordObject;
   @Input() courseInformationObjectInput: CourseInformationObject;
-  courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
+  courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   courseNames: String[] = [];
   constructor(private semesterEvaluationService: SemesterEvaluationService, private courseInfoService: CourseInformationService) { }
