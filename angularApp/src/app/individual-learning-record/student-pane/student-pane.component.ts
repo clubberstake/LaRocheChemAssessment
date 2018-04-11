@@ -35,10 +35,6 @@ export class StudentPaneComponent implements OnInit {
   }
 
   onUpdateStudent() {
-    this.studentObjectInput.student.id = this.studentObjectInput.studentId;
-    console.log(this.studentObjectInput);
-    this.studentService.updateStudent(this.studentObjectInput.student);
-
     var fileReader = new FileReader();
     var fileStorage = new FileStorage(0, "", "");
     if (fileReader && this.selectedPhoto) {
@@ -47,13 +43,14 @@ export class StudentPaneComponent implements OnInit {
         fileStorage.fileContent = fileReader.result.toString();
       };
     }
-
     fileReader.readAsText(this.selectedPhoto);   
-     
-
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
     this.studentImage = fileStorage.fileContent;
     console.log(fileStorage.fileName + ' -> ' + fileStorage.fileContent);
+
+    this.studentObjectInput.student.id = this.studentObjectInput.studentId;
+    console.log(this.studentObjectInput);
+    this.studentService.updateStudent(this.studentObjectInput.student);
     // const fd = new FormData();
     // fd.append('image', this.selectedPhoto, this.selectedPhoto.name);
     // //this.studentService.updateStudentPhoto(this.selectedPhoto)

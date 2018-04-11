@@ -1,3 +1,5 @@
+import { FileStorage } from "../services/file-storage";
+
 export class Student {
   constructor(
     public id: number,
@@ -10,7 +12,7 @@ export class Student {
 	  public studentHousingStatus: string,
 	  public studentHonors: string,
 	  public internationalStudent: string,
-	  public studentPhoto: string,
+	  public file: FileStorage,
 	  public time: string
   ) {}
 }
