@@ -1,6 +1,6 @@
 <div class="newCourseContainer">
+    <b>ADD NEW USER</b>
   <div class="newCoursePane">
-    <b>Add new user</b><br>
     Username (Email):<input type="text" id="username" [(ngModel)]="newUser.username" (change)="checkEmail()">
     <font color="red">{{usernameFeedback}}</font><br>
     Password:<input type="password" id="password" [(ngModel)]="password" (change)="checkPasswordLength()">
