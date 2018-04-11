@@ -12,7 +12,7 @@ export class Student {
 	  public studentHousingStatus: string,
 	  public studentHonors: string,
 	  public internationalStudent: string,
-	  public file: FileStorage,
+	  public fileId: number,
 	  public time: string
   ) {}
 }
