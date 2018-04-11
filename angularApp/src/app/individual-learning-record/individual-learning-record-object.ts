@@ -18,6 +18,7 @@ export class IndividualLearningRecordObject {
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];
     courseNames: String[] = [];
+    courseMap = new Map<any,String>();
 
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');

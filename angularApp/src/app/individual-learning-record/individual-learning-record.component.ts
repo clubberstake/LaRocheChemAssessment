@@ -24,7 +24,7 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
-  courseMap = new Map<any,String>();
+  //courseMap = new Map<any,String>();
 
   constructor(private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService, private notesService: NotesInfoForMiscNotesTabService,
     private semesterEvaluationService: SemesterEvaluationService, private semesterResponse: SemesterEvaluationService,
@@ -48,14 +48,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
         this.ilrStudentObject.miscNotes = miscNotes;
         console.log(this.ilrStudentObject.miscNotes);
-      });
-
-    this.semesterEvaluationService
-      .getSemesterEvaluationsByStudentId(studentId)
-      .subscribe((semesterReviews: SemesterReviewRequest[]) => {
-        this.ilrStudentObject.semesterReviewRequests = semesterReviews;
-        console.log(this.ilrStudentObject.semesterReviewRequests);
-      });
+      }); 
 
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
       this.ilrStudentObject.student = student;
@@ -76,27 +69,20 @@ export class IndividualLearningRecordComponent implements OnInit {
       this.ilrStudentObject.semesterReviewResponses = semesterResponses;
       console.log(this.ilrStudentObject.semesterReviewResponses);
     });
-    
+
     this.courseInfoService.getCourseInfo().subscribe((courses: CourseInfoForAssessment[])=>{
       this.courseInfoForAssessment = courses;
       for(let i in courses){
-        this.courseMap.set(courses[i].courseId,courses[i].courseName);
+        this.ilrStudentObject.courseMap.set(courses[i].courseId, courses[i].courseName);
       }
-      console.log(this.courseInfoForAssessment + "hey its me");
-      console.log(this.courseMap.get(2));
-      
+      console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE")
+      console.log(this.ilrStudentObject.courseMap.get(2));
+
       for(let index in this.ilrStudentObject.semesterReviewResponses){
-        if(this.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)){
-          console.log("Hey I have this classs id and i am the map");
-          this.ilrStudentObject.courseNames.push(this.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
+        if(this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)){
+          this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
         }
       }
-      for(let index in this.ilrStudentObject.courseNames){
-        console.log(this.ilrStudentObject.courseNames[index]);
-        
-      }
-      
-
     });
 
     this.ilrStudentObject.studentId = studentId;
