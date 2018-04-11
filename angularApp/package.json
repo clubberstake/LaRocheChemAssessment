@@ -26,10 +26,11 @@
     "bootstrap": "4.0.0-beta.2",
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
-    "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14",
     "jquery": "3.2.1",
-    "popper.js": "1.12.9"
+    "popper.js": "1.12.9",
+    "rxjs": "^5.4.2",
+    "ts-md5": "^1.2.4",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.0",
