@@ -161,4 +161,21 @@ public class SemesterReviewController {
 		return reviewData;
 	}
 	
+	@GetMapping("/semesterReviews/courseId={courseId}")
+	public ArrayList<SemesterReviewResponse> getReviewRequestInfoByCourseId(@PathVariable int courseId) {
+		List<Classes> classes = classRepository.findByCourseId((long) courseId);
+		List<SemesterReview> reviews = semesterReviewRepository.findByClassesId(classes.get(0).getId());
+		System.out.println("Here is the course Id within the class object: " + classes.get(0).getId());
+		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
+		
+		for(SemesterReview review : reviews) {
+			if(review.getClassesID().getCourseId() == classes.get(0).getCourseId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null, 
+						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), 
+						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
+			}
+		}
+		return reviewData;
+	}
+	
 }

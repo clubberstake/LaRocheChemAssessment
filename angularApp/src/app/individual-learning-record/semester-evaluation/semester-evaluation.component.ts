@@ -7,6 +7,7 @@ import { CurrentClassInfo } from '../../course-assessment-worksheet/currentClass
 import { SemesterReviewResponse } from '../SemesterReviewResponse';
 import { CourseInformationService } from '../../services/course-information-service.service';
 import { CourseInfoForAssessment } from '../../course-assessment-worksheet/courseInfoForAssessment';
+import { SemesterReviewRequest } from '../SemesterReviewRequest';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -20,20 +21,29 @@ export class SemesterEvaluationComponent implements OnInit {
   courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   courseNames: String[] = [];
-  courseMap = new Map<any,String>();
   constructor(private semesterEvaluationService: SemesterEvaluationService, private courseInfoService: CourseInformationService) { }
 
   ngOnInit() {
   }
-  
+
   postMidSemesterReview() {
     this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
+    this.studentObjectInput.semesterReviewRequest.classId = this.studentObjectInput.semesterReviewResponse.classes.id
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)
   }
 
- onCourseDropdown() {
-   
- }
+  setSemesterReviewInfo(courseName: string) {
+    console.log("THIS IS THE COURSE NAME THAT WAS SELECTED: " + courseName)
+    this.studentObjectInput.courseMap.forEach((value: string, key: number) => {
+      if(courseName == value) {
+        console.log("The key of " + key + " contains the value " + value)
+        this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key).subscribe((semesterReviewsByCourse: SemesterReviewRequest[]) => {
+          this.studentObjectInput.semesterReviewRequests = semesterReviewsByCourse;
+        });
+      }
+    });
+    this.studentObjectInput.semesterReviewRequest = this.studentObjectInput.semesterReviewRequests[0];
+  }
 
 }
