@@ -23,8 +23,8 @@
       <span class="courseInfoForAssessmentWorksheetLabel">Instructor:<br></span>
       <span>{{courseInformationObjInput.CurrentClassInfo.instructorName}}</span>
     </div>
-    <div>
-      <a href="{{courseInformationObjInput.CurrentClassInfo.syllabus}}">Course Syllabus </a>
+    <div *ngIf="syllabusFound">
+      <font color="blue" (click)="downloadSyllabus()">Download Syllabus </font>
     </div>
     <div>
       Upload Syllabus:<input type="file" name="syllabus" id="syllabus" (change)="setSyllabus()">

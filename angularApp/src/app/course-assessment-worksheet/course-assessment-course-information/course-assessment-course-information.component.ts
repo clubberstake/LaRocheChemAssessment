@@ -38,13 +38,17 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs6: Cafs6Info[] = [];
   semesterReviews: SemesterReviewResponse[] = [];
   syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
+  syllabusFound: boolean = false;
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = false;
 
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(value => value.classId == courseNumAndSection);
     console.log(this.courseInformationObjInput.CourseSLOs);
-
+    if (this.courseInformationObjInput.CurrentClassInfo.syllabus != null)
+    {
+      this.syllabusFound = true;
+    }
     /**
       Lines 50 - 55: Get course semester review information by class ID
       In addition, set the classId for the course semester review request that will be sent back to the database
@@ -214,19 +218,19 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
 
   downloadSyllabus() {
     var fileContents = String(this.courseInformationObjInput.CurrentClassInfo.syllabus.fileContent);
-    var filename = "syllabus.txt";
+    var filename = this.courseInformationObjInput.CurrentClassInfo.semester + "/" + this.courseInformationObjInput.CurrentClassInfo.courseID + "/" + this.courseInformationObjInput.CurrentClassInfo.section + "syllabus.txt";
     var filetype = "text/plain";
 
     var a = document.createElement("a");
     var dataURI = "data:" + filetype +
-        ";base64," + btoa(fileContents);
+    ";base64," + btoa(fileContents);
     a.href = dataURI;
     a['download'] = filename;
     var e = document.createEvent("MouseEvents");
     // Use of deprecated function to satisfy TypeScript.
     e.initMouseEvent("click", true, false,
-        document.defaultView, 0, 0, 0, 0, 0,
-        false, false, false, false, 0, null);
+    document.defaultView, 0, 0, 0, 0, 0,
+    false, false, false, false, 0, null);
     a.dispatchEvent(e);
   }
 
