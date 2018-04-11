@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import laroche.chem.assessment.entities.Classes;
+import laroche.chem.assessment.entities.FileStorage;
 import laroche.chem.assessment.entities.Users;
 import laroche.chem.assessment.repositories.UserRepository;
 import laroche.chem.assessment.responseObjects.UserInfo;
@@ -22,7 +28,15 @@ public class UserController {
 	public ArrayList<UserInfo> getUserInfo() {
 		return generateFakeData();
 	}
-		
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/addUser")
+ 	public ResponseEntity<Void> addUser(@RequestBody Users user) {
+ 		System.out.println(user.getId());
+ 		userRepository.save(user);
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
+	}
+	
 	private ArrayList<UserInfo> generateFakeData() {
 		
 		List<Users> users = userRepository.findAll();

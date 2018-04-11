@@ -11,42 +11,38 @@ import { when, delay } from "q";
 import { FileStorageService } from "../../services/file-storage.service";
 import { FileStorage } from "../../services/file-storage";
 import { UserInfo } from "../../login/userInfo";
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: "app-course-assessment-new-user",
   templateUrl: "./course-assessment-new-user.component.html",
-  styleUrls: ["./course-assessment-new-user.component.css"]
+  styleUrls: ["./course-assessment-new-user.component.css"],
+  providers: [Md5]
 })
 export class CourseAssessmentNewUserComponent implements OnInit {
   ngOnInit() {}
 
   newUser = new UserInfo(0, "", "", "");
-  password: String;
-  confirmPassword: String;
+  username: string;
+  password: string;
+  confirmPassword: string;
   usernameFeedback: String = "";
   passwordFeedback: String = "";
   passwordLengthFeedback: String = "";
 
-  setUsername(username: any): void {
-    this.newUser.username = this.newUser.username;
-    console.log(username);
-    console.log(this.newUser.username);
-  }
-
-  setPassword(password: any): void {
-    this.password = this.password;
-    console.log(password);
-    console.log(this.password);
+  addUser() {
+    this.userService.addNewUser(this.newUser);
   }
 
   checkEmail(): void {
-    if(!this.newUser.username.includes("@"))
+    if(!this.username.includes("@"))
     {
       this.usernameFeedback = "That is not a valid email address!";
     }
     else 
     {
       this.usernameFeedback = ""; 
+      this.newUser.username = this.username;
     }
   }
 
@@ -69,6 +65,8 @@ export class CourseAssessmentNewUserComponent implements OnInit {
     else
     {
       this.passwordFeedback = "";
+      var hashedpassword = String(Md5.hashStr(this.password));
+      this.newUser.password = hashedpassword;
     }
   }
 
