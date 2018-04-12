@@ -22,7 +22,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
 
-  courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
+  courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   //courseMap = new Map<any,String>();
   private _window: Window;

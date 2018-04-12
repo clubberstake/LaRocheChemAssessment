@@ -2,7 +2,6 @@ package laroche.chem.assessment.restApp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +19,10 @@ import laroche.chem.assessment.entities.Classes;
 import laroche.chem.assessment.entities.Course;
 import laroche.chem.assessment.entities.FileStorage;
 import laroche.chem.assessment.entities.Instructor;
-import laroche.chem.assessment.entities.SemesterReview;
-import laroche.chem.assessment.entities.Student;
 import laroche.chem.assessment.repositories.ClassRepository;
 import laroche.chem.assessment.repositories.CourseRepository;
 import laroche.chem.assessment.repositories.FileStorageRepository;
 import laroche.chem.assessment.repositories.InstructorRepository;
-import laroche.chem.assessment.repositories.SemesterReviewRepository;
-import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.ClassInfo;
 
 @RestController
@@ -85,8 +80,6 @@ public class ClassController {
  		writer.close();
 		return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
-
-	private Course thiscourse;
 		
 	private ArrayList<ClassInfo> generateFakeData() {
 		
@@ -102,13 +95,6 @@ public class ClassController {
 		}
 		
 		List<Course> courses = courseRepository.findAll();
-		if (!courses.iterator().hasNext()) {
-			courseRepository.save(new Course("CHEM2016", "Organic Chemistry II Lecture", "Spring", "2017", 1));
-			courseRepository.save(new Course("CSCI4098", "Capstone", "Fall", "2017", 2));
-			courseRepository.save(new Course("MATH2050", "Discrete Mathematics I", "Fall", "2017", 3));
-			courseRepository.save(new Course("MATH1040", "Probability & Statistics", "Fall", "2017", 4));
-			courses = courseRepository.findAll();
-		}
 		
 		List<Instructor> instructors = instructorRepository.findAll();
 		if (!instructors.iterator().hasNext()) {
@@ -122,7 +108,7 @@ public class ClassController {
 		ArrayList<ClassInfo> data = new ArrayList<ClassInfo>();
 
 		for (Classes classs : classes) {
-			data.add(new ClassInfo(classs.getId(), classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), getInstructorId(instructors, thiscourse), getInstructorName(instructors, thiscourse)));
+			data.add(new ClassInfo(classs.getId(), classs.getCourseId(), getCourseId(courses, classs), classs.getSyllabus(), classs.getSection(), classs.getSemester(), getCourseTitle(courses, classs), getInstructorId(instructors, classs), getInstructorName(instructors, classs)));
 		}
 
 		return data;
@@ -131,7 +117,6 @@ public class ClassController {
 	private String getCourseTitle(List<Course> courses, Classes classs) {
 		for (Course course : courses) {
 			if (course.getId() == classs.getCourseId()) {
-				thiscourse = course;
 				return course.getCourseName();
 			}
 		}
@@ -142,17 +127,16 @@ public class ClassController {
 	private String getCourseId(List<Course> courses, Classes classs) {
 		for (Course course : courses) {
 			if (course.getId() == classs.getCourseId()) {
-				thiscourse = course;
-				return course.getCourseNumAndSection();
+				return course.getCourseNumber();
 			}
 		}
 
 		return "Bad Course ID";
 	}
 	
-	private String getInstructorName(List<Instructor> instructors, Course course) {
+	private String getInstructorName(List<Instructor> instructors, Classes classs) {
 		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
+			if (instructor.getId() == classs.getInstructorId()) {
 				return instructor.getName();
 			}
 		}
@@ -160,9 +144,9 @@ public class ClassController {
 		return "Bad Instructor Name";
 	}
 	
-	private long getInstructorId(List<Instructor> instructors, Course course) {
+	private long getInstructorId(List<Instructor> instructors, Classes classs) {
 		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
+			if (instructor.getId() == classs.getInstructorId()) {
 				return instructor.getId();
 			}
 		}

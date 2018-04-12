@@ -53,10 +53,11 @@ public class CourseController {
 
 		List<Course> courses = courseRepository.findAll();
 		if (!courses.iterator().hasNext()) {
-			courseRepository.save(new Course("CHEM2016", "Organic Chemistry II Lecture", "Spring", "2017", 1));
-			courseRepository.save(new Course("CSCI4098", "Capstone", "Fall", "2017", 2));
-			courseRepository.save(new Course("MATH2050", "Discrete Mathematics I", "Fall", "2017", 3));
-			courseRepository.save(new Course("MATH1040", "Probability & Statistics", "Fall", "2017", 4));
+			courseRepository.save(new Course("CHEM2016", "Organic Chemistry II Lecture"));
+			courseRepository.save(new Course("CSCI4098", "Capstone"));
+			courseRepository.save(new Course("MATH2050", "Discrete Mathematics I"));
+			courseRepository.save(new Course("MATH1040", "Probability & Statistics"));
+			courseRepository.save(new Course("CHEM2016L", "Organic Chemistry II Lab"));
 			courses = courseRepository.findAll();
 		}
 
@@ -72,21 +73,9 @@ public class CourseController {
 		ArrayList<CourseInfoForAssessmentWorksheet> data = new ArrayList<CourseInfoForAssessmentWorksheet>();
 
 		for (Course course : courses) {
-			data.add(new CourseInfoForAssessmentWorksheet(course.getId(), course.getCourseNumAndSection(), course.getCourseName(),
-					course.getSemester() + " " + course.getYear(), getInstructorName(instructors, course)));
+			data.add(new CourseInfoForAssessmentWorksheet(course.getId(), course.getCourseNumber(), course.getCourseName()));
 		}
 
 		return data;
 	}
-
-	private String getInstructorName(List<Instructor> instructors, Course course) {
-		for (Instructor instructor : instructors) {
-			if (instructor.getId() == course.getInstructorId()) {
-				return instructor.getName();
-			}
-		}
-
-		return "Bad Instructor Name";
-	}
-
 }

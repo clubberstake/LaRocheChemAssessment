@@ -29,14 +29,10 @@ export class CourseSemesterEvaluationComponent implements OnInit {
     this.studentService.getStudentInfoById(id).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
       this.student = student
       if(this.student == null) {
-        this.courseInformationObjInput.unfoundStudent = "No Student Found."
+        this.courseInformationObjInput.courseSemesterReviewRequest.studentName = "No Student Found."
       } else {
-        this.courseInformationObjInput.unfoundStudent = this.student.studentName
+        this.courseInformationObjInput.courseSemesterReviewRequest.studentName = this.student.studentName
       }
     });
-
-
   }
-
-
 }

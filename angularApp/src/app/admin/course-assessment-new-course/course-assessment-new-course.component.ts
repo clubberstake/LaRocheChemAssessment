@@ -16,7 +16,7 @@ import { FileStorage } from "../../services/file-storage";
   styleUrls: ["./course-assessment-new-course.component.css"]
 })
 export class CourseAssessmentNewCourseComponent implements OnInit {
-  courseAndSection = new CourseInfoForAssessment(0, "", "", "", ""); //console log is nasty without this.
+  courseAndSection = new CourseInfoForAssessment(0, "", ""); //console log is nasty without this.
   courseAndSections: CourseInfoForAssessment[] = [];
   instructor = new InstructorInfo(0, "");
   instructors: InstructorInfo[] = [];
@@ -24,17 +24,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   otherInstructor: boolean = false;
   thisYear: number;
   nextYear: number;
-  newCourse = new CourseInfoForAssessment(0, "", "", "", "");
+  newCourse = new CourseInfoForAssessment(0, "", "");
   newInstructor = new InstructorInfo(0, "");
   newClass = new Classes(0, "", "", 0);
   semester: String;
   year: String;
 
-  setcourseAndSection(courseNumAndSection: any): void {
+  setcourseAndSection(courseNumber: any): void {
     this.courseAndSection = this.courseAndSections.find(
-      value => value.courseNumAndSection === courseNumAndSection
+      value => value.courseNumber === courseNumber
     );
-    console.log(courseNumAndSection);
+    console.log(courseNumber);
     console.log(this.courseAndSections);
     console.log(this.courseAndSection);
   }
@@ -61,7 +61,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     this.courseInfoService
       .getCourseInfo()
       .subscribe((courses: CourseInfoForAssessment[]) => {
-        this.courseAndSections = courses;
+        this.courseAndSections = courses.sort((a: CourseInfoForAssessment, b: CourseInfoForAssessment) => {
+          if (a.courseNumber < b.courseNumber) {
+            return -1;
+          }
+          else if (a.courseNumber > b.courseNumber) {
+            return 1;
+          }
+          else {
+            return 0;
+          }
+        });
         console.log(this.courseAndSections);
         this.courseAndSection = this.courseAndSections[0];
       });
@@ -116,7 +126,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     fileReader.readAsText(fileToLoad);    
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
-    this.sleep(2000).then(() => this.classService.addClass(this.newClass));
+    this.sleep(4000).then(() => this.classService.addClass(this.newClass));
   }
 
   private sleep(ms) {

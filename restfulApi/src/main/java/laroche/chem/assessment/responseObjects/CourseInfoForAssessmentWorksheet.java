@@ -2,20 +2,15 @@ package laroche.chem.assessment.responseObjects;
 
 public class CourseInfoForAssessmentWorksheet {
 
-	public CourseInfoForAssessmentWorksheet(long courseId, String courseNumAndSection, String courseTitle, String semester,
-			String instructor) {
+	public CourseInfoForAssessmentWorksheet(long courseId, String courseNumber, String courseTitle) {
 		this.courseId = courseId;
-		this.courseNumAndSection = courseNumAndSection;
+		this.courseNumber = courseNumber;
 		this.courseTitle = courseTitle;
-		this.semester = semester;
-		this.instructor = instructor;
 	}
 
 	private long courseId;
-	private String courseNumAndSection;
+	private String courseNumber;
 	private String courseTitle;
-	private String semester;
-	private String instructor;
 	
 	public long getCourseId()
 	{
@@ -26,15 +21,7 @@ public class CourseInfoForAssessmentWorksheet {
 		return courseTitle;
 	}
 
-	public String getSemester() {
-		return semester;
-	}
-
-	public String getInstructor() {
-		return instructor;
-	}
-	
-	public String getCourseNumAndSection() {
-		return courseNumAndSection;
+	public String getCourseNumber() {
+		return courseNumber;
 	}
 }

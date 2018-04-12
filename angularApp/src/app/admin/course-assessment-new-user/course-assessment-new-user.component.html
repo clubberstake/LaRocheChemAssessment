@@ -7,14 +7,15 @@
     <font color="red">{{passwordLengthFeedback}}</font><br>
     Confirm Password:<input type="password" id="confirmpassword" [(ngModel)]="confirmPassword" (change)="checkPassword()">
     <font color="red">{{passwordFeedback}}</font>
-    
+
     <div class="semesterContainer">
+        Role:&nbsp;
         Admin
         <input #studentRadioBtn name="admin" value="admin" id="adminRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
         Teacher
         <input #teacherRadioBtn name="teacher" value="teacher" id="teacherRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
     </div>
     
-    <input type="submit" value="Add" (click)="addUser()">
+    <input type="submit" value="ADD" (click)="addUser()">
   </div>
   </div>
