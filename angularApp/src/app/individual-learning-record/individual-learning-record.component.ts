@@ -22,7 +22,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
 
-  courseAndSection = new CourseInfoForAssessment(0, "", "", "", "");
+  courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   //courseMap = new Map<any,String>();
 
@@ -48,7 +48,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
         this.ilrStudentObject.miscNotes = miscNotes;
         console.log(this.ilrStudentObject.miscNotes);
-      }); 
+      });
 
     this.studentsService.getStudentInfoById(studentId).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
       this.ilrStudentObject.student = student;
