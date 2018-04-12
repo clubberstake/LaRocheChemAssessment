@@ -35,7 +35,7 @@ public class Student {
 	
 	public Student(FileStorage file, String studentName, String studentMajor, String studentYear, String studentSemester,
 				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time) {
-		this.setFileId(file);
+		this.setFile(file);
 		this.studentName = studentName;
 		this.studentMajor = studentMajor;
 		this.studentYear = studentYear;
@@ -128,11 +128,11 @@ public class Student {
 		this.internationalStudent = internationalStudent;
 	}
 
-	public FileStorage getFileId() {
+	public FileStorage getFile() {
 		return file;
 	}
 
-	public void setFileId(FileStorage file) {
+	public void setFile(FileStorage file) {
 		this.file = file;
 	}
 

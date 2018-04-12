@@ -6,14 +6,15 @@ import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { Student } from "./student";
 import { Classes } from "./classes";
 import { FileStorage } from "../services/file-storage";
+import { SafeUrl } from "@angular/platform-browser";
 
 export class IndividualLearningRecordObject {
     studentId: any;
-    file: FileStorage = new FileStorage(0, '', '');
+    file: SafeUrl;
     studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
-    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(this.file, '', '', '', '', '', '', '', '', '', '');
+    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];

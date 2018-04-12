@@ -31,7 +31,7 @@ public class StudentController {
 
 	@Autowired
 	private StudentRepository studentRepository;
-	
+
 	@Autowired
 	private FileStorageRepository fileStorageRepository;
 
@@ -44,10 +44,10 @@ public class StudentController {
 	public StudentInfoForBioAndAdmissionsPlacementTabResponse getMiscNotesInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
 		if (student != null) {
-		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(), student.getStudentMajor(),
-				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
-				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
-				student.getInternationalStudent(), student.getTime());
+			return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFile(), student.getStudentName(),
+					student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
+					student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
+					student.getStudentHonors(), student.getInternationalStudent(), student.getTime());
 		}
 		return null;
 	}
@@ -56,10 +56,10 @@ public class StudentController {
 	public StudentInfoForBioAndAdmissionsPlacementTabResponse getMiscNotesInfo(@PathVariable String studentName) {
 		List<Student> students = studentRepository.findByStudentName(studentName);
 		Student student = students.get(0);
-		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(), student.getStudentMajor(),
-				student.getStudentYear(), student.getStudentSemester(), student.getStudentMathGrade(),
-				student.getStudentAthletics(), student.getStudentHousingStatus(), student.getStudentHonors(),
-				student.getInternationalStudent(), student.getTime());
+		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFile(), student.getStudentName(),
+				student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
+				student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
+				student.getStudentHonors(), student.getInternationalStudent(), student.getTime());
 	}
 
 	@PostMapping("/addStudent")
@@ -75,21 +75,38 @@ public class StudentController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
-	
+
 	@PutMapping("/updateStudent")
 	public ResponseEntity<Void> updateStudent(@RequestBody Student student) {
 		// Data Test Prints:
-		System.out.println(student.getStudentSemester());
-		System.out.println(student.getId());
-		System.out.println(studentRepository.exists(student.getId()));
-		System.out.println(student.getStudentAthletics());
-		System.out.println(student.getStudentMajor());
-		
-		studentRepository.save(student);
+		// System.out.println(student.getStudentSemester());
+		// System.out.println(student.getId());
+		// System.out.println(studentRepository.exists(student.getId()));
+		// System.out.println(student.getStudentAthletics());
+		// System.out.println(student.getStudentMajor());
+
+		System.out.println("File Id -> " + student.getFile().getId());
+		if (studentRepository.exists(student.getId())) {
+			if (fileStorageRepository.exists(student.getFile().getId())) {
+				FileStorage fileUpdate = fileStorageRepository.findOne(student.getFile().getId());
+				fileUpdate.setFileContent(student.getFile().getFileContent());
+				fileUpdate.setFileName(student.getFile().getFileName());
+				fileStorageRepository.save(fileUpdate);
+			} 
+
+			Student studentUpdate = studentRepository.findOne(student.getId());
+			studentUpdate.setFile(student.getFile());
+			studentUpdate.setInternationalStudent(student.getInternationalStudent());
+			// Abdull finish!!!
+			
+			studentRepository.save(studentUpdate);
+		} else {
+			fileStorageRepository.save(student.getFile());
+			studentRepository.save(student);
+		}
 		try {
 			return ResponseEntity.created(new URI("/updated/" + student.getId())).build();
-		}
-		catch(URISyntaxException e) {
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
@@ -101,18 +118,18 @@ public class StudentController {
 		if (!students.iterator().hasNext()) {
 			String time = LocalDateTime.now().toString();
 			FileStorage file = fileStorageRepository.findOne((long) 1);
-			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing",
-					"Commuter", "Honors", "No International", time));
+			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A",
+					"Rock Climbing", "Commuter", "Honors", "No International", time));
 			students = studentRepository.findAll();
 		}
 
 		ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse> studentData = new ArrayList<StudentInfoForBioAndAdmissionsPlacementTabResponse>();
 
 		for (Student student : students) {
-			studentData.add(new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFileId(), student.getStudentName(),
-					student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
-					student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
-					student.getStudentHonors(), student.getInternationalStudent(),
+			studentData.add(new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFile(),
+					student.getStudentName(), student.getStudentMajor(), student.getStudentYear(),
+					student.getStudentSemester(), student.getStudentMathGrade(), student.getStudentAthletics(),
+					student.getStudentHousingStatus(), student.getStudentHonors(), student.getInternationalStudent(),
 					student.getTime()));
 		}
 
