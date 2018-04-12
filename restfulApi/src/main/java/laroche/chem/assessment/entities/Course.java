@@ -11,23 +11,17 @@ public class Course {
 	public Course() {
 	}
 
-	public Course(String courseNumAndSection, String courseName, String semester, String year, long instructorId) {
-		this.courseNumAndSection = courseNumAndSection;
+	public Course(String courseNumber, String courseName) {
+		this.courseNumber = courseNumber;
 		this.courseName = courseName;
-		this.semester = semester;
-		this.year = year;
-		this.instructorId = instructorId;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private String courseNumAndSection;
+	private String courseNumber;
 	private String courseName;
-	private String semester;
-	private String year;
-	private long instructorId;
 
 	public long getId() {
 		return id;
@@ -45,35 +39,11 @@ public class Course {
 		this.courseName = courseName;
 	}
 
-	public String getSemester() {
-		return semester;
+	public String getCourseNumber() {
+		return courseNumber;
 	}
 
-	public void setSemester(String semester) {
-		this.semester = semester;
-	}
-
-	public String getYear() {
-		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	public long getInstructorId() {
-		return instructorId;
-	}
-
-	public void setInstructorId(long instructorId) {
-		this.instructorId = instructorId;
-	}
-
-	public String getCourseNumAndSection() {
-		return courseNumAndSection;
-	}
-
-	public void setCourseNumAndSection(String courseNumAndSection) {
-		this.courseNumAndSection = courseNumAndSection;
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
 	}
 }
