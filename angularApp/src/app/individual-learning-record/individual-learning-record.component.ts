@@ -11,6 +11,7 @@ import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { CourseInformationObject } from "../course-assessment-worksheet/course-information-object";
 import { CourseInformationService } from "../services/course-information-service.service";
 import { CourseInfoForAssessment } from "../course-assessment-worksheet/courseInfoForAssessment";
+import { FileStorage } from "../services/file-storage";
 
 @Component({
   selector: "app-individual-learning-record",
@@ -25,7 +26,6 @@ export class IndividualLearningRecordComponent implements OnInit {
   courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   //courseMap = new Map<any,String>();
-  private _window: Window;
 
   constructor(
     private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
@@ -35,7 +35,10 @@ export class IndividualLearningRecordComponent implements OnInit {
     private courseInfoService: CourseInformationService,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // auto-init to keep console clean
+    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'',''),'','','','','','','','','','',);
+  }
 
   onSearchById(studentId: any) {
     this.studentsService

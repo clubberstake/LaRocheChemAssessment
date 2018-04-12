@@ -29,6 +29,7 @@ export class StudentPaneComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedPhoto = <File>event.target.files[0];
+    this.onUpdateStudent(); //autosave just in case
     console.log(event);
   }
 
@@ -44,7 +45,7 @@ export class StudentPaneComponent implements OnInit {
     fileReader.readAsDataURL(this.selectedPhoto);
     this.sleep(300).then(() => {
       this.studentObjectInput.student.file = {
-        id: this.studentObjectInput.student.file.id,
+        id: this.studentObjectInput.student.file ? this.studentObjectInput.student.file.id : 0,
         fileContent: fileStorage.fileContent,
         fileName: fileStorage.fileName
       };

@@ -10,7 +10,6 @@ import { SafeUrl } from "@angular/platform-browser";
 
 export class IndividualLearningRecordObject {
     studentId: any;
-    file: SafeUrl;
     studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
