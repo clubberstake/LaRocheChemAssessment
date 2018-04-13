@@ -25,7 +25,6 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
-  //courseMap = new Map<any,String>();
 
   constructor(
     private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
@@ -101,18 +100,8 @@ export class IndividualLearningRecordComponent implements OnInit {
         console.log(this.ilrStudentObject.courseMap.get(2));
 
         for (let index in this.ilrStudentObject.semesterReviewResponses) {
-          if (
-            this.ilrStudentObject.courseMap.has(
-              this.ilrStudentObject.semesterReviewResponses[index].classes
-                .courseId
-            )
-          ) {
-            this.ilrStudentObject.courseNames.push(
-              this.ilrStudentObject.courseMap.get(
-                this.ilrStudentObject.semesterReviewResponses[index].classes
-                  .courseId
-              )
-            );
+          if (this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)) {
+            this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
           }
         }
       });

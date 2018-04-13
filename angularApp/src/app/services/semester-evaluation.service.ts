@@ -22,8 +22,8 @@ export class SemesterEvaluationService {
     return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/studentId=" + studentId);
   }
 
-  public getSemesterEvaluationsByCourseId(courseId: number): Observable<SemesterReviewRequest[]> {
-    return this.http.get<SemesterReviewRequest[]>("http://localhost:8080/review/semesterReviews/courseId=" + courseId);
+  public getSemesterEvaluationsByCourseId(courseId: number): Observable<SemesterReviewResponse[]> {
+    return this.http.get<SemesterReviewResponse[]>("http://localhost:8080/review/semesterReviews/courseId=" + courseId);
   }
 
   public addSemesterReview(review: SemesterReviewResponse) {

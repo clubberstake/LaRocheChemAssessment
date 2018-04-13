@@ -28,7 +28,6 @@ export class SemesterEvaluationComponent implements OnInit {
 
   postMidSemesterReview() {
     this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
-    this.studentObjectInput.semesterReviewRequest.classId = this.studentObjectInput.semesterReviewResponse.classes.id
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)
   }
@@ -38,8 +37,9 @@ export class SemesterEvaluationComponent implements OnInit {
     this.studentObjectInput.courseMap.forEach((value: string, key: number) => {
       if(courseName == value) {
         console.log("The key of " + key + " contains the value " + value)
-        this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key).subscribe((semesterReviewsByCourse: SemesterReviewRequest[]) => {
-          this.studentObjectInput.semesterReviewRequests = semesterReviewsByCourse;
+        this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key).subscribe((semesterReviewsByCourse: SemesterReviewResponse[]) => {
+          this.studentObjectInput.semesterReviewResponses = semesterReviewsByCourse;
+          console.log("VALUE OF THIS COURSE ID FROM SEMESTER " + semesterReviewsByCourse[0].student)
         });
       }
     });

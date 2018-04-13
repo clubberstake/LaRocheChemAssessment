@@ -104,18 +104,24 @@ public class SemesterReviewController {
 	@GetMapping("/semesterReviews")
 	private ArrayList<SemesterReviewResponse> getMidSemesterReview() {
 
-		SemesterReview item = new SemesterReview();
-		item.setMidSemesterExtentInstructor("Teacher");
-		item.setEndSemesterExtentInstructor("Another Teacher");
-		item.setMidSemesterInstructorRecommendations("Do better bro");
-		item.setEndSemesterInstructorRecommendations("You did better");
-		item.setMidSemesterLearningIssues(null);
-		item.setEndSemesterLearningIssues(null);
-		item.setStudentID(studentRepository.findOne((long) 1));
-		item.setClassesID(classRepository.findOne((long) 3));
-		semesterReviewRepository.save(item);
-
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
+		List<Student> students = studentRepository.findAll();
+		List<Classes> classes = classRepository.findAll();
+		if(!(reviews.iterator().hasNext() || students.iterator().hasNext() || classes.iterator().hasNext())) {
+			SemesterReview item = new SemesterReview();
+			item.setMidSemesterExtentInstructor("Teacher");
+			item.setEndSemesterExtentInstructor("Another Teacher");
+			item.setMidSemesterInstructorRecommendations("Do better bro");
+			item.setEndSemesterInstructorRecommendations("You did better");
+			item.setMidSemesterLearningIssues(null);
+			item.setEndSemesterLearningIssues(null);
+			item.setStudentID(studentRepository.findOne((long) 1));
+			item.setClassesID(classRepository.findOne((long) 3));
+			semesterReviewRepository.save(item);
+			reviews = semesterReviewRepository.findAll();
+		}
+		
+
 		ArrayList<SemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
 			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
@@ -165,7 +171,6 @@ public class SemesterReviewController {
 	public ArrayList<SemesterReviewResponse> getReviewRequestInfoByCourseId(@PathVariable int courseId) {
 		List<Classes> classes = classRepository.findByCourseId((long) courseId);
 		List<SemesterReview> reviews = semesterReviewRepository.findByClassesId(classes.get(0).getId());
-		System.out.println("Here is the course Id within the class object: " + classes.get(0).getId());
 		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
 		
 		for(SemesterReview review : reviews) {

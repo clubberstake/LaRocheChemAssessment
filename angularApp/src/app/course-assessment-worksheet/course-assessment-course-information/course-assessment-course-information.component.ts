@@ -57,7 +57,6 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.semesterEvaluationService.getSemesterReviewsByClassId(courseNumAndSection).subscribe((semesterReviews: SemesterReviewResponse[]) => {
       this.semesterReviews = semesterReviews;
       this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews.reverse();
-      console.log("Semester Review Responses Response: " + this.courseInformationObjInput.semesterReviewResponses[0].student.studentName)
     });
     this.courseInformationObjInput.courseSemesterReviewRequest.classId = courseNumAndSection;
 

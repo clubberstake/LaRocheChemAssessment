@@ -13,6 +13,7 @@ import { SemesterEvaluationService } from "../services/semester-evaluation.servi
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from "../services/student-info-for-bio-and-admissions-placement-tab.service";
 import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
+import { studentInfoForBioAndAdmissionsPlacementTabRequest } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabRequest";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -22,7 +23,7 @@ import { SemesterReviewResponse } from "../individual-learning-record/SemesterRe
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
   reviews: SemesterReviewResponse[] = [];
-  nameCount = 0;
+  student = new studentInfoForBioAndAdmissionsPlacementTabRequest(0, '', '', '', '', '', '', '', '', '', '');
 
   constructor(
     public sloService: CourseSLOsInformationService,
@@ -38,6 +39,7 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
   }
 
   ngOnInit(){
+
     this.studentsService
       .getStudentInfoById(1)
       .subscribe(
@@ -64,7 +66,8 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
 
       this.semesterEvaluationService.getSemesterEvaluations().subscribe((reviews: SemesterReviewResponse[]) => {
         this.reviews = reviews;
-      })
+        this.reviews[0].student = this.student
+      });
   }
 
   onSave() {
@@ -73,11 +76,7 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs2Service.updateCafs2(this.courseInformationObj.Cafs2Info);
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
-    console.log("Student course semester review name: " + this.courseInformationObj.courseSemesterReviewRequest.studentName)
 
-
-    //add semester save work here.
-    console.log( "Semester review object to PUT: ");
     if(this.reviews.some(item => item.student.studentName == this.courseInformationObj.courseSemesterReviewRequest.studentName)) {
       console.log("Student already exists")
     } else {
