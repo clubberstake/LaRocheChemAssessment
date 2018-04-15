@@ -11,16 +11,8 @@
         <app-course-semester-evaluation [courseInformationObjInput]="courseInformationObj"></app-course-semester-evaluation>
         <!-- Course Assessment Team: Removing cafs5 for timing being to verify with ILR if should be merged into mid-semster-evalution-->
         <app-component-cafs6 [courseInformationObjInput]="courseInformationObj"></app-component-cafs6>
-        <div *ngIf="courseInformationObj.courseSemesterReviewRequest.studentName != 'No Student Found.'; else elseTemplate">
-          <button class="saveButton" (click)="onSave()">Save</button>
-        </div>
-        <ng-template #elseTemplate>
-          <button class="saveButton" (click)="doNothing()">Save</button>
-          <body>
-            <p>
-              <strong>Error: </strong>Invalid student specified within Course Semester Evaluation Section. Please enter a valid student.
-            </p>
-          </body>
-        </ng-template>
+
+        <button class="saveButton" (click)="onSave()">Save</button>
+
     </div>
 </div>

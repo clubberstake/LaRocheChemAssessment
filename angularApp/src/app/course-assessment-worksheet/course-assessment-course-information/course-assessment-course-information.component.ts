@@ -58,7 +58,7 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
       this.semesterReviews = semesterReviews;
       this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews.reverse();
     });
-    this.courseInformationObjInput.courseSemesterReviewRequest.classId = courseNumAndSection;
+    this.courseInformationObjInput.classId = courseNumAndSection;
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection

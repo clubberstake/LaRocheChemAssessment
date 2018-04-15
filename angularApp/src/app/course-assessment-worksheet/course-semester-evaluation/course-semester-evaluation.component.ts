@@ -4,6 +4,8 @@ import { IndividualLearningRecordObject } from '../../individual-learning-record
 import { CourseSemesterEvaluationService } from '../../services/course-semester-evaluation.service';
 import { StudentInfoForBioAndAdmissionsPlacementTabService } from '../../services/student-info-for-bio-and-admissions-placement-tab.service';
 import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from '../../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse';
+import { SemesterReviewResponse } from '../../individual-learning-record/SemesterReviewResponse';
+import { CourseSemesterReviewRequest } from '../../individual-learning-record/CourseSemesterReviewRequest';
 
 @Component({
   selector: 'app-course-semester-evaluation',
@@ -22,16 +24,18 @@ export class CourseSemesterEvaluationComponent implements OnInit {
 
   addSemesterReviewRow() {
     this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = true;
+    if(this.courseInformationObjInput.courseSemesterReviewRequests.length < 15) {
+      this.courseInformationObjInput.courseSemesterReviewRequests.push(new CourseSemesterReviewRequest(0, 0, "",  null, null, "", "", "", ""))
+    }
   }
 
-  onIdChange(id: number) {
-    console.log("Got change event here: " + id)
+  onIdChange(id: number, index: number) {
     this.studentService.getStudentInfoById(id).subscribe((student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
       this.student = student
       if(this.student == null) {
-        this.courseInformationObjInput.courseSemesterReviewRequest.studentName = "No Student Found."
+        this.courseInformationObjInput.courseSemesterReviewRequests[index].studentName = "No Student Found."
       } else {
-        this.courseInformationObjInput.courseSemesterReviewRequest.studentName = this.student.studentName
+        this.courseInformationObjInput.courseSemesterReviewRequests[index].studentName = this.student.studentName
       }
     });
   }

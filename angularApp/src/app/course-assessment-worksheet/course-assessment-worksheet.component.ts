@@ -77,14 +77,14 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
 
-    if(this.reviews.some(item => item.student.studentName == this.courseInformationObj.courseSemesterReviewRequest.studentName)) {
-      console.log("Student already exists")
-    } else {
-      this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequest)
+    for(let index in this.courseInformationObj.courseSemesterReviewRequests) {
+      this.courseInformationObj.courseSemesterReviewRequests[index].classId = this.courseInformationObj.classId
+      if(this.reviews.some(item => item.student.studentName == this.courseInformationObj.courseSemesterReviewRequests[index].studentName) ||
+          this.reviews.some(item => item.student.studentName == "No Student Found.")) {
+        console.log("Student already exists")
+      } else {
+        this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequests[index])
+      }
     }
-  }
-
-  doNothing() {
-    console.log("Invalid student specified within Course Semester Evaluation Section. Please enter a valid student.")
   }
 }
