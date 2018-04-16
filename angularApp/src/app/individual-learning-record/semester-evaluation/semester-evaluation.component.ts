@@ -27,19 +27,23 @@ export class SemesterEvaluationComponent implements OnInit {
   }
 
   postMidSemesterReview() {
-    this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
+    this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId;
+    this.studentObjectInput.semesterReviewRequest.classId = this.courseInformationObjectInput.classId;
+    console.log(this.studentObjectInput.studentId, this.courseInformationObjectInput.classId);
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)
   }
 
   setSemesterReviewInfo(courseName: string) {
-    console.log("THIS IS THE COURSE NAME THAT WAS SELECTED: " + courseName)
+    console.log("THIS IS THE COURSE NAME THAT WAS SELECTED: " + courseName);
+    console.log('Course Map -> ', this.studentObjectInput.courseMap);
     this.studentObjectInput.courseMap.forEach((value: string, key: number) => {
       if(courseName == value) {
         console.log("The key of " + key + " contains the value " + value)
+        // this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key, studentId) JOHNNY HERE
         this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key).subscribe((semesterReviewsByCourse: SemesterReviewResponse[]) => {
           this.studentObjectInput.semesterReviewResponses = semesterReviewsByCourse;
-          console.log("VALUE OF THIS COURSE ID FROM SEMESTER " + semesterReviewsByCourse[0].student)
+          console.log("VALUE OF THIS COURSE ID FROM SEMESTER ", semesterReviewsByCourse)
         });
       }
     });
