@@ -95,9 +95,17 @@ public class StudentController {
 			} 
 
 			Student studentUpdate = studentRepository.findOne(student.getId());
+			studentUpdate.setStudentName(student.getStudentName());
 			studentUpdate.setFile(student.getFile());
+			studentUpdate.setTime(student.getTime());
+			studentUpdate.setStudentMajor(student.getStudentMajor());
+			studentUpdate.setStudentYear(student.getStudentYear());
+			studentUpdate.setStudentSemester(student.getStudentSemester());
+			studentUpdate.setStudentMathGrade(student.getStudentMathGrade());
+			studentUpdate.setStudentAthletics(student.getStudentAthletics());
+			studentUpdate.setStudentHousingStatus(student.getStudentHousingStatus());
+			studentUpdate.setStudentHonors(student.getStudentHonors());
 			studentUpdate.setInternationalStudent(student.getInternationalStudent());
-			// Abdull finish!!!
 			
 			studentRepository.save(studentUpdate);
 		} else {
