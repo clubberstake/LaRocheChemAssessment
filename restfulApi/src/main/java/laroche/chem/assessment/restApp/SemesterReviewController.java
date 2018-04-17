@@ -75,13 +75,24 @@ public class SemesterReviewController {
 	 * @return response URI path
 	 */
 	@PutMapping("/putReview")
-	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {
-		Student student = studentRepository.findOne(request.getStudentId());
-		Classes classes = classRepository.findOne(request.getClassId());
-		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
-				request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
-				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
-				request.getEndSemesterInstructorRecommendations());
+	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {		
+		SemesterReview review = findSemeterReviewByClassAndStudent(request.getClassId(), request.getStudentId());
+		if (review != null) {
+			review.setMidSemesterLearningIssues(request.getMidSemesterLearningIssues());
+			review.setEndSemesterLearningIssues(request.getEndSemesterLearningIssues());
+			review.setMidSemesterExtentInstructor(request.getMidSemesterExtentInstructor());
+			review.setMidSemesterExtentInstructor(request.getEndSemesterExtentInstructor());
+			review.setMidSemesterInstructorRecommendations(request.getMidSemesterInstructorRecommendations());
+			review.setEndSemesterInstructorRecommendations(request.getEndSemesterInstructorRecommendations());
+		} else {
+
+			Student student = studentRepository.findOne(request.getStudentId());
+			Classes classes = classRepository.findOne(request.getClassId());
+			review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
+					request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
+					request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+					request.getEndSemesterInstructorRecommendations());
+		}
 		semesterReviewRepository.save(review);
 
 		try {
@@ -132,7 +143,7 @@ public class SemesterReviewController {
 	private SemesterReview findSemeterReviewByClassAndStudent(long classId, long studentId) {
 		List<SemesterReview> reviews = semesterReviewRepository.findByClassesIdAndStudentId(classId, studentId);
 		if (!reviews.isEmpty()) {
-		return reviews.get(0);
+			return reviews.get(0);
 		}
 		return null;
 	}
@@ -208,13 +219,15 @@ public class SemesterReviewController {
 		return reviewData;
 	}
 
-	@GetMapping("/semesterReviews/courseId={courseId}") // JOHNNY FIX THIS
+	@GetMapping("/semesterReviews/courseId={courseId}/studentId={studentId}")
 	public ArrayList<SemesterReviewResponse> getReviewRequestInfoByCourseId(@PathVariable int courseId, @PathVariable int studentId) {
+		System.out.println("Entered courseID & studentID service");
 		List<Classes> classes = classRepository.findByCourseId((long) courseId);
+		Student student = studentRepository.findOne((long) studentId);
 				
 		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
 		
-		SemesterReview review = findSemeterReviewByClassAndStudent(classes.get(0).getId(), studentId);
+		SemesterReview review = findSemeterReviewByClassAndStudent(classes.get(0).getId(), student.getId());
 
 		if (review != null) {
 			if (review.getClassesID().getCourseId() == classes.get(0).getCourseId()) {

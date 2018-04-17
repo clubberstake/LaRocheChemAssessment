@@ -8,5 +8,4 @@ import laroche.chem.assessment.entities.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 	List<Student> findByStudentName(String studentName);
-
 }
