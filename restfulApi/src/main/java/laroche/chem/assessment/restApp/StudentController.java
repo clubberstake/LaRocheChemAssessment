@@ -78,16 +78,9 @@ public class StudentController {
 
 	@PutMapping("/updateStudent")
 	public ResponseEntity<Void> updateStudent(@RequestBody Student student) {
-		// Data Test Prints:
-		// System.out.println(student.getStudentSemester());
-		// System.out.println(student.getId());
-		// System.out.println(studentRepository.exists(student.getId()));
-		// System.out.println(student.getStudentAthletics());
-		// System.out.println(student.getStudentMajor());
-
-		System.out.println("File Id -> " + student.getFile().getId());
+		
 		if (studentRepository.exists(student.getId())) {
-			if (fileStorageRepository.exists(student.getFile().getId())) {
+			if (student.getFile() != null && fileStorageRepository.exists(student.getFile().getId())) {
 				FileStorage fileUpdate = fileStorageRepository.findOne(student.getFile().getId());
 				fileUpdate.setFileContent(student.getFile().getFileContent());
 				fileUpdate.setFileName(student.getFile().getFileName());

@@ -40,6 +40,9 @@ export class IndividualLearningRecordComponent implements OnInit {
   }
 
   onSearchById(studentId: any) {
+
+    this.ilrStudentObject.student.file = new FileStorage(0,'','');
+
     this.studentsService
       .getStudentInfoById(studentId)
       .subscribe(
