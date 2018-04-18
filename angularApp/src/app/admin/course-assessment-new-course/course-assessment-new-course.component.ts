@@ -110,7 +110,9 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     this.newClass.semester = this.semester + "" + this.year;
     var fileToLoad = (<HTMLInputElement>document.getElementById("syllabusAdmin")).files[0];
     console.log("FILE to Load: ", fileToLoad);
-    var fileReader = new FileReader();
+    if(fileToLoad != undefined)
+    {
+      var fileReader = new FileReader();
     console.log("New class", this.newClass);
     
     var fileStorage = new FileStorage(0, "", "");
@@ -123,7 +125,12 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     fileReader.readAsText(fileToLoad);    
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
-    this.sleep(4000).then(() => this.classService.addClass(this.newClass));
+    this.sleep(4000).then(() => this.classService.addClassWithSyllabus(this.newClass));
+    }
+    else
+    {
+      this.classService.addClassWithoutSyllabus(this.newClass);
+    }
   }
 
   private sleep(ms) {
