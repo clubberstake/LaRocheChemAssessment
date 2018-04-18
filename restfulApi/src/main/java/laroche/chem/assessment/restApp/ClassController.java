@@ -44,14 +44,22 @@ public class ClassController {
 		return generateFakeData();
 	}
 	
-	@PostMapping("/addClass")
- 	public ResponseEntity<Void> addClass(@RequestBody Classes classes) {
+	@PostMapping("/addClassWithSyllabus")
+ 	public ResponseEntity<Void> addClassWithSyllabus(@RequestBody Classes classes) {
  		System.out.println(classes.getId());
  		System.out.println("CourseId" + classes.getCourseId());
  		List<FileStorage> files = fileStorageRepository.findAll();
  		long id = files.get(files.size()-1).getId();
 		FileStorage syllabus = fileStorageRepository.findOne(id);
 		classes.setSyllabus(syllabus);
+ 		classRepository.save(classes);
+			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
+	}
+	
+	@PostMapping("/addClassWithoutSyllabus")
+ 	public ResponseEntity<Void> addClassWithoutSyllabus(@RequestBody Classes classes) {
+ 		System.out.println(classes.getId());
+ 		System.out.println("CourseId" + classes.getCourseId());
  		classRepository.save(classes);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
