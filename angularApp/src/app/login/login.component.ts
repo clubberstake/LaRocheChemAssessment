@@ -10,9 +10,9 @@ import { UserInfo } from '../login/userInfo'
 })
 export class LoginComponent implements OnInit {
   @Input() userObject: userObject;
-  username: String = "";
-  emailFeedback: String = "";
-  password: String = "";
+  username: String = "bill.gates@laroche.edu";
+  emailFeedback: String = "1@1.com";
+  password: String = "macdaddy";
   users: UserInfo[];
 
   constructor(private userService: UserService) { }
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserInfo().subscribe((users: UserInfo[]) => {
       this.users = users;
-    });
+    });  
   }
 
   logIn() {

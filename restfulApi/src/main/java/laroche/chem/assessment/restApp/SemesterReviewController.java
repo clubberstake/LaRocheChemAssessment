@@ -44,12 +44,23 @@ public class SemesterReviewController {
 
 	@PostMapping("/addReview")
 	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReviewRequest request) {
-		// Find a student from student repository based on request's recorded student ID and create a new student
+		// Find a student from student repository based on request's recorded student ID
+		// and create a new student
 		Student student = studentRepository.findOne(request.getStudentId());
 		Classes classes = classRepository.findOne(request.getClassId());
-		// Pass this newly created student to a Semester Review object along with additional request's recorded data
-		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
-		// Save this newly create Semester Review object to the database through the semester review repository
+		// Pass this newly created student to a Semester Review object along with
+		// additional request's recorded data
+		SemesterReview review = new SemesterReview(student, classes, request.getMliCoursePace(),
+				request.getMliLackOfMindset(), request.getMliLackOfInterestCuriousity(),
+				request.getMliLackOfEffortFocus(), request.getMliPoorTimeManagement(), request.getMliHealthIssues(),
+				request.getMliComplacence(), request.getMliEmploymentHours(), request.getMliOther(),
+				request.getMliOtherIssues(), request.getEsliCoursePace(), request.getEsliPoorTimeManagement(),
+				request.getEsliHealthIssues(), request.getEsliComplacence(), request.getEsliEmploymentHours(),
+				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
+				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+				request.getEndSemesterInstructorRecommendations());
+		// Save this newly create Semester Review object to the database through the
+		// semester review repository
 		semesterReviewRepository.save(review);
 		System.out.println("Semester Entry Student Id: " + request.getStudentId());
 
@@ -60,42 +71,60 @@ public class SemesterReviewController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
-	
+
 	/**
 	 * Put request to update currently placed semester review
-	 * @param request the semester review request object to be updated/added
+	 * 
+	 * @param request
+	 *            the semester review request object to be updated/added
 	 * @return response URI path
 	 */
 	@PutMapping("/putReview")
 	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {
 		Student student = studentRepository.findOne(request.getStudentId());
 		Classes classes = classRepository.findOne(request.getClassId());
-		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
-		semesterReviewRepository.save(review);
-		
+		SemesterReview review = new SemesterReview(student, classes, request.getMliCoursePace(),
+				request.getMliLackOfMindset(), request.getMliLackOfInterestCuriousity(),
+				request.getMliLackOfEffortFocus(), request.getMliPoorTimeManagement(), request.getMliHealthIssues(),
+				request.getMliComplacence(), request.getMliEmploymentHours(), request.getMliOther(),
+				request.getMliOtherIssues(), request.getEsliCoursePace(), request.getEsliPoorTimeManagement(),
+				request.getEsliHealthIssues(), request.getEsliComplacence(), request.getEsliEmploymentHours(),
+				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
+				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+				request.getEndSemesterInstructorRecommendations());
+
 		try {
 			return ResponseEntity.created(new URI("/semesterEntry/" + review.getID())).build();
-		} catch(URISyntaxException e) {
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
-	
+
 	/**
 	 * Post request to add a newly created course semester review
-	 * @param request the course semester review request object to be added
+	 * 
+	 * @param request
+	 *            the course semester review request object to be added
 	 * @return response URI path
 	 */
 	@PostMapping("/putCourseReview")
 	public ResponseEntity<Void> putCourseSemesterReview(@RequestBody CourseSemesterReviewRequest request) {
 		Student student = studentRepository.findOne(request.getStudentId());
 		Classes classes = classRepository.findOne(request.getClassId());
-		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(), request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(), request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(), request.getEndSemesterInstructorRecommendations());
-		semesterReviewRepository.save(review);
-		
+		SemesterReview review = new SemesterReview(student, classes, request.getMliCoursePace(),
+				request.getMliLackOfMindset(), request.getMliLackOfInterestCuriousity(),
+				request.getMliLackOfEffortFocus(), request.getMliPoorTimeManagement(), request.getMliHealthIssues(),
+				request.getMliComplacence(), request.getMliEmploymentHours(), request.getMliOther(),
+				request.getMliOtherIssues(), request.getEsliCoursePace(), request.getEsliPoorTimeManagement(),
+				request.getEsliHealthIssues(), request.getEsliComplacence(), request.getEsliEmploymentHours(),
+				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
+				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+				request.getEndSemesterInstructorRecommendations());
+
 		try {
 			return ResponseEntity.created(new URI("/courseSemesterEntry/" + review.getID())).build();
-		} catch(URISyntaxException e) {
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
@@ -109,8 +138,7 @@ public class SemesterReviewController {
 		item.setEndSemesterExtentInstructor("Another Teacher");
 		item.setMidSemesterInstructorRecommendations("Do better bro");
 		item.setEndSemesterInstructorRecommendations("You did better");
-		item.setMidSemesterLearningIssues(null);
-		item.setEndSemesterLearningIssues(null);
+		// seed learning issues
 		item.setStudentID(studentRepository.findOne((long) 1));
 		item.setClassesID(classRepository.findOne((long) 3));
 		semesterReviewRepository.save(item);
@@ -118,31 +146,37 @@ public class SemesterReviewController {
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
 		ArrayList<SemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
-			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
-					review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(), review.getMidSemesterInstructorRecommendations(),
+			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
+					true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
+					review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
+					review.getMidSemesterInstructorRecommendations(),
 					review.getEndSemesterInstructorRecommendations()));
 		}
 		return midSemesterData;
 	}
-	
+
 	@GetMapping("/semesterReviews/studentId={studentId}")
 	public ArrayList<SemesterReviewResponse> getReviewInfo(@PathVariable int studentId) {
 		Student student = studentRepository.findOne((long) studentId);
 		List<SemesterReview> reviews = semesterReviewRepository.findByStudentId(student.getId());
 		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
-		for(SemesterReview review : reviews) {
-			if(review.getStudentID().getId() == student.getId()) {
-				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+		for (SemesterReview review : reviews) {
+			if (review.getStudentID().getId() == student.getId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
+						true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
 						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
-						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
+						review.getMidSemesterInstructorRecommendations(),
+						review.getEndSemesterInstructorRecommendations()));
 			}
 		}
-		return reviewData;	
+		return reviewData;
 	}
-	
+
 	/**
 	 * Obtain a list of semester review info by class Id
-	 * @param classId course id from URL
+	 * 
+	 * @param classId
+	 *            course id from URL
 	 * @return list of semester reviews
 	 */
 	@GetMapping("/semesterReviews/classId={classId}")
@@ -150,15 +184,17 @@ public class SemesterReviewController {
 		Classes classes = classRepository.findOne((long) classId);
 		List<SemesterReview> reviews = semesterReviewRepository.findByClassesId(classes.getId());
 		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
-		
-		for(SemesterReview review : reviews) {
-			if(review.getClassesID().getId() == classes.getId()) {
-				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+
+		for (SemesterReview review : reviews) {
+			if (review.getClassesID().getId() == classes.getId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
+						true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
 						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
-						review.getMidSemesterInstructorRecommendations(), review.getEndSemesterInstructorRecommendations()));
+						review.getMidSemesterInstructorRecommendations(),
+						review.getEndSemesterInstructorRecommendations()));
 			}
 		}
 		return reviewData;
 	}
-	
+
 }

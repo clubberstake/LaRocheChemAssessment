@@ -14,13 +14,63 @@ export class IndividualLearningRecordObject {
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
     student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
-    semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
+    semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(
+      this.studentClass, this.classes,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      "",
+      true,  
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true, 
+      true, 
+      "",
+      "",
+      "",
+      "",
+      ""
+      );
     semesterReviewResponses: SemesterReviewResponse[] = [];
     classRosterObject: ClassRosterResponseObject = new ClassRosterResponseObject(0,0,'');
     classRosterObjects: ClassRosterResponseObject[] = [];
 
 
-    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');
+    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      "",
+      true,  
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true, 
+      true, 
+      "",
+      "",
+      "",
+      "",
+      "");
     semesterReviewRequests: SemesterReviewRequest[] = [];
 
     learningIssues = [new LearningIssues(false, false, "Course Pace"), new LearningIssues(false, false, "Poor Background"), new LearningIssues(false, false, "Lack of Mindset"),

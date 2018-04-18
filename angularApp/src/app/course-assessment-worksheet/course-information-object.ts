@@ -40,7 +40,34 @@ export class CourseInformationObject {
     this.student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
     this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
-    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(0, 0, "", null, null, "", "", "", "");
+    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(
+      0,
+      0,
+      "",
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      "",  
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true, 
+      true, 
+      true,
+      "",
+      "",
+      "",
+      "",
+      "");
     this.addCourseSemesterReviewFieldVisible = false
   };
 }

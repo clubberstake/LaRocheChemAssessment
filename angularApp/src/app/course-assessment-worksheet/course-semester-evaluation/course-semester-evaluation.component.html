@@ -43,10 +43,31 @@
               <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
             </td>
             <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliOther" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliOtherIssues" />
+              
+
+
             </td>
             <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliOther" />
+              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliOtherIssues" />
             </td>
             <td>
               <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterExtentInstructor"></textarea>
@@ -56,6 +77,7 @@
             </td>
             <td>
               <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
+              
             </td>
             <td>
               <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
