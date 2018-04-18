@@ -91,10 +91,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       console.log(this.newCourse);
       this.courseInfoService.addCourse(this.newCourse);
       length = this.courseAndSections.length;
-      this.courseAndSection = this.courseAndSections[length - 1];
-      console.log(this.courseAndSections[length - 1]);
-      console.log(this.courseAndSection.courseId + 1);
-      this.newClass.courseId = this.courseAndSection.courseId + 1;
+      this.newClass.courseId = length + 1;
     } else {
       this.newClass.courseId = this.courseAndSection.courseId;
     }

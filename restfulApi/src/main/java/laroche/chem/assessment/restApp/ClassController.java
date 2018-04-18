@@ -47,6 +47,7 @@ public class ClassController {
 	@PostMapping("/addClass")
  	public ResponseEntity<Void> addClass(@RequestBody Classes classes) {
  		System.out.println(classes.getId());
+ 		System.out.println("CourseId" + classes.getCourseId());
  		List<FileStorage> files = fileStorageRepository.findAll();
  		long id = files.get(files.size()-1).getId();
 		FileStorage syllabus = fileStorageRepository.findOne(id);
