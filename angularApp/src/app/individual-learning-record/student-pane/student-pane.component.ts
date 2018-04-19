@@ -4,6 +4,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from "../../service
 import { IndividualLearningRecordObject } from "../individual-learning-record-object";
 import { FileStorage } from "../../services/file-storage";
 import { FileStorageService } from "../../services/file-storage.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-student-pane",
@@ -22,8 +23,7 @@ export class StudentPaneComponent implements OnInit {
 
   constructor(
     private studentService: StudentInfoForBioAndAdmissionsPlacementTabService,
-    private fileStorageService: FileStorageService
-  ) {}
+    private fileStorageService: FileStorageService  ) {}
 
   ngOnInit() {}
 
@@ -34,6 +34,7 @@ export class StudentPaneComponent implements OnInit {
   }
 
   onUpdateStudent() {
+    Swal( "Oops" ,  "Something went wrong!" ,  "error" );
     var fileReader = new FileReader();
     var fileStorage = new FileStorage(0, "", "");
     if (fileReader && this.selectedPhoto) {
