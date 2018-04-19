@@ -5,6 +5,7 @@ import { NotesInfoForMiscNotesTabService } from '../../services/notes-info-for-m
 import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from '../studentInfoForBioAndAdmissionsPlacementTabResponse';
 import { IndividualLearningRecordObject } from '../individual-learning-record-object';
 import { userObject } from '../../userObject';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-misc-notes',
@@ -31,5 +32,12 @@ export class MiscNotesComponent implements OnInit {
     if (this.studentObjectInput.miscNote.notes != "") {
       this.notesService.addNewNote(this.studentObjectInput.miscNote);
     }
+
+    swal({
+      type: 'success',
+      title: 'Miscellaneous Notes Saved!',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }

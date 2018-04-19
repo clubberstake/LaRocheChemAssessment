@@ -51,6 +51,8 @@ export class IndividualLearningRecordComponent implements OnInit {
         (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
           this.ilrStudentObject.student = student;
           console.log("Full Student Object ->", this.ilrStudentObject.student);
+
+        
         }
       );
 
@@ -60,15 +62,6 @@ export class IndividualLearningRecordComponent implements OnInit {
         this.ilrStudentObject.miscNotes = miscNotes;
         console.log(this.ilrStudentObject.miscNotes);
       });
-
-    this.studentsService
-      .getStudentInfoById(studentId)
-      .subscribe(
-        (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
-          this.ilrStudentObject.student = student;
-          console.log(this.ilrStudentObject.student);
-        }
-      );
 
     this.notesService
       .getMiscNoteInfoByStudentId(studentId)
@@ -82,6 +75,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((semesterReviews: SemesterReviewRequest[]) => {
         this.ilrStudentObject.semesterReviewRequests = semesterReviews;
         console.log(this.ilrStudentObject.semesterReviewRequests);
+
       });
 
     this.semesterEvaluationService
@@ -91,7 +85,7 @@ export class IndividualLearningRecordComponent implements OnInit {
         console.log(this.ilrStudentObject.semesterReviewResponses);
       });
 
-    this.courseInfoService
+      this.courseInfoService
       .getCourseInfo()
       .subscribe((courses: CourseInfoForAssessment[]) => {
         this.courseInfoForAssessment = courses;
@@ -110,6 +104,8 @@ export class IndividualLearningRecordComponent implements OnInit {
           }
         }
       });
+
+  
 
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);

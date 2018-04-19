@@ -9,6 +9,7 @@ import { CourseInformationService } from '../../services/course-information-serv
 import { CourseInfoForAssessment } from '../../course-assessment-worksheet/courseInfoForAssessment';
 import { SemesterReviewRequest } from '../SemesterReviewRequest';
 import { userObject } from '../../userObject';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -35,6 +36,14 @@ export class SemesterEvaluationComponent implements OnInit {
     console.log(this.studentObjectInput.studentId, this.courseInformationObjectInput.classId);
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)
+    
+    swal({
+      position: 'center',
+      type: 'success',
+      title: 'Reviews Updated',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   setSemesterReviewInfo(courseName: string) {
@@ -42,6 +51,8 @@ export class SemesterEvaluationComponent implements OnInit {
       if(courseName == value) {
         this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key, this.studentObjectInput.studentId).subscribe((semesterReviewsByCourse: SemesterReviewResponse[]) => {
           this.studentObjectInput.semesterReviewResponse = semesterReviewsByCourse[0];
+          console.log( "Heu ia jsdnvj zsfv" + this.studentObjectInput.semesterReviewResponse.classes.courseId);
+          
         });
       }
     });

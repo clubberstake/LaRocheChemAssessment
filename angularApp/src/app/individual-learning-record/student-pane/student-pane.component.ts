@@ -36,30 +36,35 @@ export class StudentPaneComponent implements OnInit {
   }
 
   onUpdateStudent() {
-    Swal( "Oops" ,  "Something went wrong!" ,  "error" );
-    var fileReader = new FileReader();
-    var fileStorage = new FileStorage(0, "", "");
-    if (fileReader && this.selectedPhoto) {
-      fileStorage.fileName = this.selectedPhoto.name;
-      fileReader.onload = function() {
-        fileStorage.fileContent = fileReader.result.toString();
-      };
+    // var fileReader = new FileReader();
+    // var fileStorage = new FileStorage(0, "", "");
+    // if (fileReader && this.selectedPhoto) {
+    //   fileStorage.fileName = this.selectedPhoto.name;
+    //   fileReader.onload = function() {
+    //     fileStorage.fileContent = fileReader.result.toString();
+    //   };
 
-      fileReader.readAsDataURL(this.selectedPhoto);
-      this.sleep(300).then(() => {
-        this.studentObjectInput.student.file = {
-          id: this.studentObjectInput.student.file
-            ? this.studentObjectInput.student.file.id
-            : 0,
-          fileContent: fileStorage.fileContent,
-          fileName: fileStorage.fileName
-        };
-      });
-    }
+    //   fileReader.readAsDataURL(this.selectedPhoto);
+    //   this.sleep(300).then(() => {
+    //     this.studentObjectInput.student.file = {
+    //       id: this.studentObjectInput.student.file
+    //         ? this.studentObjectInput.student.file.id
+    //         : 0,
+    //       fileContent: fileStorage.fileContent,
+    //       fileName: fileStorage.fileName
+    //     };
+    //   });
+    // }
 
     this.studentObjectInput.student.id = this.studentObjectInput.studentId;
     console.log(this.studentObjectInput);
     this.studentService.updateStudent(this.studentObjectInput.student);
+    Swal({
+      type: 'success',
+      title: 'Student Updated!',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   private sleep(ms) {
