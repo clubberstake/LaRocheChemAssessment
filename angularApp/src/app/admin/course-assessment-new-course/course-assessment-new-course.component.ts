@@ -114,7 +114,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     {
       var fileReader = new FileReader();
     console.log("New class", this.newClass);
-    
+
     var fileStorage = new FileStorage(0, "", "");
     if (fileReader && fileToLoad) {
       fileReader.onload = function() {
@@ -122,7 +122,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       };
     }
 
-    fileReader.readAsText(fileToLoad);    
+    fileReader.readAsText(fileToLoad);
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
     this.sleep(4000).then(() => this.classService.addClassWithSyllabus(this.newClass));
@@ -136,16 +136,18 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   private sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  
+
 
   newCourseDropDown() {
     this.other = true;
+    console.log("new course dropdown entered")
   }
 
   oldCourseDropDown() {
     if (this.other) {
       this.other = false;
     }
+    console.log("Other's value " + this.other)
   }
 
   newInstructorDropDown() {

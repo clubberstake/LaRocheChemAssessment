@@ -6,9 +6,9 @@
     <button (click)="onSearchByName(studentNameSearchBox.value)">Search by Name</button> -->
 </div>
 <div class="ilrBase">
-  <app-student-pane [studentObjectInput]="ilrStudentObject"></app-student-pane>
+  <app-student-pane [studentObjectInput]="ilrStudentObject" [userObject]="userObject"></app-student-pane>
   <div class="ilrSideBoxes">
-    <app-semester-evaluation [studentObjectInput]="ilrStudentObject" [courseInformationObjectInput]="courseInformationObject"></app-semester-evaluation>
-    <app-misc-notes [studentObjectInput]="ilrStudentObject"></app-misc-notes>
+    <app-semester-evaluation [studentObjectInput]="ilrStudentObject" [courseInformationObjectInput]="courseInformationObject" [userObject]="userObject"></app-semester-evaluation>
+    <app-misc-notes [studentObjectInput]="ilrStudentObject" [userObject]="userObject"></app-misc-notes>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, SecurityContext } from "@angular/core";
+import { Component, OnInit, SecurityContext, Input } from "@angular/core";
 import { NotesInfoForMiscNotesTab } from "./notesInfoForMiscNotesTab";
 import { NotesInfoForMiscNotesTabService } from "../services/notes-info-for-misc-notes-tab.service";
 import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "./studentInfoForBioAndAdmissionsPlacementTabResponse";
@@ -12,6 +12,7 @@ import { CourseInformationObject } from "../course-assessment-worksheet/course-i
 import { CourseInformationService } from "../services/course-information-service.service";
 import { CourseInfoForAssessment } from "../course-assessment-worksheet/courseInfoForAssessment";
 import { FileStorage } from "../services/file-storage";
+import { userObject } from "../userObject";
 
 @Component({
   selector: "app-individual-learning-record",
@@ -22,6 +23,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
+  @Input() userObject: userObject;
 
   courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];

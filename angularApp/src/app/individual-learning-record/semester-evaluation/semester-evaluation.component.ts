@@ -8,6 +8,7 @@ import { SemesterReviewResponse } from '../SemesterReviewResponse';
 import { CourseInformationService } from '../../services/course-information-service.service';
 import { CourseInfoForAssessment } from '../../course-assessment-worksheet/courseInfoForAssessment';
 import { SemesterReviewRequest } from '../SemesterReviewRequest';
+import { userObject } from '../../userObject';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -18,6 +19,8 @@ export class SemesterEvaluationComponent implements OnInit {
 
   @Input() studentObjectInput: IndividualLearningRecordObject;
   @Input() courseInformationObjectInput: CourseInformationObject;
+  @Input() userObject: userObject;
+
   courseAndSection = new CourseInfoForAssessment(0, "", "");
   courseInfoForAssessment: CourseInfoForAssessment[] = [];
   courseNames: String[] = [];

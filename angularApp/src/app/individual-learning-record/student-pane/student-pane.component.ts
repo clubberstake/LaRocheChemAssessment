@@ -5,6 +5,7 @@ import { IndividualLearningRecordObject } from "../individual-learning-record-ob
 import { FileStorage } from "../../services/file-storage";
 import { FileStorageService } from "../../services/file-storage.service";
 import Swal from 'sweetalert2';
+import { userObject } from "../../userObject";
 
 @Component({
   selector: "app-student-pane",
@@ -15,6 +16,7 @@ export class StudentPaneComponent implements OnInit {
   selectedPhoto: File = null;
 
   @Input() studentObjectInput: IndividualLearningRecordObject;
+  @Input() userObject: userObject;
 
   majors = ["Chemistry", "Biochemistry", "Other"];
   years = ["Sophomore", "Junior", "Senior"];
@@ -54,7 +56,7 @@ export class StudentPaneComponent implements OnInit {
         };
       });
     }
-    
+
     this.studentObjectInput.student.id = this.studentObjectInput.studentId;
     console.log(this.studentObjectInput);
     this.studentService.updateStudent(this.studentObjectInput.student);
