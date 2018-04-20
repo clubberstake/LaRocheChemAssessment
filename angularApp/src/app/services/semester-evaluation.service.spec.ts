@@ -8,7 +8,7 @@ import { SemesterReviewResponse } from '../individual-learning-record/SemesterRe
 import { SemesterReviewRequest } from '../individual-learning-record/SemesterReviewRequest';
 import { CourseSemesterReviewRequest } from '../individual-learning-record/CourseSemesterReviewRequest';
 
-fdescribe('When creating the Semester Evaluation Service', () => {
+fdescribe('When creating the Semester Evaluation Services', () => {
   let service: SemesterEvaluationService;
   let httpMock: HttpTestingController;
   beforeEach(() => {
@@ -24,7 +24,7 @@ fdescribe('When creating the Semester Evaluation Service', () => {
     httpMock.verify();
   });
 
-  it('should return a course semester evaluation response', inject([SemesterEvaluationService], (service: SemesterEvaluationService) => {
+  it('should return a proper course semester evaluation response or request pertaining to each service within the Semester Evaluation Service file', inject([SemesterEvaluationService], (service: SemesterEvaluationService) => {
     const dummySemesterReviewResponses: SemesterReviewResponse[] = [
       {
         student: null,
