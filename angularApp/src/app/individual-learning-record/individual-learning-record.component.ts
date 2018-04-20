@@ -52,7 +52,25 @@ export class IndividualLearningRecordComponent implements OnInit {
           this.ilrStudentObject.student = student;
           console.log("Full Student Object ->", this.ilrStudentObject.student);
 
-        
+          this.courseInfoService
+          .getCourseInfo()
+          .subscribe((courses: CourseInfoForAssessment[]) => {
+            this.courseInfoForAssessment = courses;
+            for (let i in courses) {
+              this.ilrStudentObject.courseMap.set(
+                courses[i].courseId,
+                courses[i].courseName
+              );
+            }
+            console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
+            console.log(this.ilrStudentObject.courseMap.get(2));
+    
+            for (let index in this.ilrStudentObject.semesterReviewResponses) {
+              if (this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)) {
+                this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
+              }
+            }
+          });
         }
       );
 
@@ -83,29 +101,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((semesterResponses: SemesterReviewResponse[]) => {
         this.ilrStudentObject.semesterReviewResponses = semesterResponses;
         console.log(this.ilrStudentObject.semesterReviewResponses);
-      });
-
-      this.courseInfoService
-      .getCourseInfo()
-      .subscribe((courses: CourseInfoForAssessment[]) => {
-        this.courseInfoForAssessment = courses;
-        for (let i in courses) {
-          this.ilrStudentObject.courseMap.set(
-            courses[i].courseId,
-            courses[i].courseName
-          );
-        }
-        console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
-        console.log(this.ilrStudentObject.courseMap.get(2));
-
-        for (let index in this.ilrStudentObject.semesterReviewResponses) {
-          if (this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)) {
-            this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
-          }
-        }
-      });
-
-  
+      });  
 
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);
