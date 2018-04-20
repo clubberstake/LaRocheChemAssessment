@@ -25,7 +25,6 @@ import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.CourseSemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
-import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTabResponse;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -40,31 +39,6 @@ public class SemesterReviewController {
 
 	public ArrayList<SemesterReviewResponse> getCourseInfoForAssessmentWorksheet4() {
 		return getMidSemesterReview();
-	}
-
-	@PostMapping("/addReview")
-	public ResponseEntity<Void> addMidSemesterReview(@RequestBody SemesterReviewRequest request) {
-		// Find a student from student repository based on request's recorded student ID
-		// and create a new student
-		Student student = studentRepository.findOne(request.getStudentId());
-		Classes classes = classRepository.findOne(request.getClassId());
-		// Pass this newly created student to a Semester Review object along with
-		// additional request's recorded data
-		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
-				request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
-				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
-				request.getEndSemesterInstructorRecommendations());
-		// Save this newly create Semester Review object to the database through the
-		// semester review repository
-		semesterReviewRepository.save(review);
-		System.out.println("Semester Entry Student Id: " + request.getStudentId());
-
-		try {
-			return ResponseEntity.created(new URI("/midSemesterEntry/" + review.getID())).build();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
-		}
 	}
 
 	/**
@@ -221,7 +195,6 @@ public class SemesterReviewController {
 
 	@GetMapping("/semesterReviews/courseId={courseId}/studentId={studentId}")
 	public ArrayList<SemesterReviewResponse> getReviewRequestInfoByCourseId(@PathVariable int courseId, @PathVariable int studentId) {
-		System.out.println("Entered courseID & studentID service");
 		List<Classes> classes = classRepository.findByCourseId((long) courseId);
 		Student student = studentRepository.findOne((long) studentId);
 				
@@ -239,5 +212,4 @@ public class SemesterReviewController {
 		}
 		return reviewData;
 	}
-
 }

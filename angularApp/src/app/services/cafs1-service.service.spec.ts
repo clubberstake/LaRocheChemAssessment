@@ -5,8 +5,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from "@angular/common/http/testing";
-
-fdescribe("When creating the CAFS 1 Service", () => {
+// Use as example.
+describe("When creating the CAFS 1 Service", () => {
   let service: CAFS1InformationService;
   let httpMock: HttpTestingController;
 
