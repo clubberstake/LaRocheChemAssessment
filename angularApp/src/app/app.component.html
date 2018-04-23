@@ -14,7 +14,7 @@
         </div>
     </tab>
     <tab tabTitle="Individual Learning Record">
-        <app-individual-learning-record></app-individual-learning-record>
+        <app-individual-learning-record [userObject]="userObject"></app-individual-learning-record>
     </tab>
     <tab tabTitle="Admin" *ngIf="userObject.user.permissions == 'admin'">
         <app-admin></app-admin>
