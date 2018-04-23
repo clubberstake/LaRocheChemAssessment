@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CurrentClassInformationService {
+  readonly API_URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) {
   }
