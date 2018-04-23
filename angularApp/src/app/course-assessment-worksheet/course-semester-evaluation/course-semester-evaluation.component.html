@@ -35,57 +35,55 @@
               End Semester Instructor Notes
             </th>
           </tr>
-          <tr class="new-course-semester-evaluation" *ngIf="courseInformationObjInput.addCourseSemesterReviewFieldVisible">
+          <tr class="new-course-semester-evaluation" *ngFor="let courseReview of courseReviews; let i = index">
             <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentId" />
+              <input [(ngModel)]="courseReview.studentId" (ngModelChange)="onIdChange($event, i)"/>
             </td>
             <td>
-              <input [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.studentName" />
+              <input [(ngModel)]="courseReview.studentName"/>
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliCoursePace" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfMindset" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfCuriosity" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliLackOfEffortFocus" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliPoorTimeManagement" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliHealthIssues" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliComplacence" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliEmployementHours" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliOther" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.mliOtherIssues" />
-              
+              <input type="checkbox" [(ngModel)]="courseReview.mliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliOther" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliOtherIssues" />            
 
 
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliCoursePace" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfMindset" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfCuriosity" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliLackOfEffortFocus" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliPoorTimeManagement" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliHealthIssues" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliComplacence" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliEmployementHours" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliOther" />
-              <input type="checkbox" [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.esliOtherIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliOther" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliOtherIssues" />
             </td>
             <td>
-              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterExtentInstructor"></textarea>
+              <textarea [(ngModel)]="courseReview.midSemesterExtentInstructor"></textarea>
             </td>
             <td>
-              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterExtentInstructor"></textarea>
+              <textarea [(ngModel)]="courseReview.endSemesterExtentInstructor"></textarea>
             </td>
             <td>
-              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.midSemesterInstructorRecommendations"></textarea>
-              
+              <textarea [(ngModel)]="courseReview.midSemesterInstructorRecommendations"></textarea>
             </td>
             <td>
-              <textarea [(ngModel)]="courseInformationObjInput.courseSemesterReviewRequest.endSemesterInstructorRecommendations"></textarea>
+              <textarea [(ngModel)]="courseReview.endSemesterInstructorRecommendations"></textarea>
             </td>
           </tr>
           <tr *ngFor="let review of courseInformationObjInput.semesterReviewResponses">
             <td>
-              <input readonly [(ngModel)]="review.student.id" />
+              <input [(ngModel)]="review.student.id" />
             </td>
             <td>
               <input [(ngModel)]="review.student.studentName" />

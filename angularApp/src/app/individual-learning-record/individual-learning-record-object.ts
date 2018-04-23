@@ -1,18 +1,19 @@
 import { NotesInfoForMiscNotesTab } from "./notesInfoForMiscNotesTab";
-import { StudentInfoForBioAndAdmissionsPlacementTab } from "./studentInfoForBioAndAdmissionsPlacementTab";
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "./studentInfoForBioAndAdmissionsPlacementTabResponse";
 import { SemesterReviewResponse } from "./SemesterReviewResponse";
 import { LearningIssues } from "./learningIssues";
 import { SemesterReviewRequest } from "./SemesterReviewRequest";
 import { Student } from "./student";
 import { Classes } from "./classes";
-import { ClassRosterResponseObject } from "./ClassRosterResponseObject";
+import { FileStorage } from "../services/file-storage";
+import { SafeUrl } from "@angular/platform-browser";
 
 export class IndividualLearningRecordObject {
     studentId: any;
-    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', '', '');
+    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
-    student: StudentInfoForBioAndAdmissionsPlacementTab = new StudentInfoForBioAndAdmissionsPlacementTab('', '', '', '', '', '', '', '', '', '', '');
+    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(
       this.studentClass, this.classes,
@@ -42,8 +43,8 @@ export class IndividualLearningRecordObject {
       ""
       );
     semesterReviewResponses: SemesterReviewResponse[] = [];
-    classRosterObject: ClassRosterResponseObject = new ClassRosterResponseObject(0,0,'');
-    classRosterObjects: ClassRosterResponseObject[] = [];
+    courseNames: String[] = [];
+    courseMap = new Map<any,String>();
 
 
     semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0,

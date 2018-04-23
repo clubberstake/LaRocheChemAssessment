@@ -5,7 +5,7 @@ import { InstructorInformationService } from "../../services/instructor-service.
 import { ClassInformationService } from "../../services/class-service.service";
 import { CourseInfoForAssessment } from "../../course-assessment-worksheet/courseInfoForAssessment";
 import { InstructorInfo } from "../../course-assessment-worksheet/instructorInfo";
-import { ClassInfo } from "../../course-assessment-worksheet/classInfo";
+import { Classes } from "../../course-assessment-worksheet/class";
 import { when, delay } from "q";
 import { FileStorageService } from "../../services/file-storage.service";
 import { FileStorage } from "../../services/file-storage";
@@ -16,7 +16,7 @@ import { FileStorage } from "../../services/file-storage";
   styleUrls: ["./course-assessment-new-course.component.css"]
 })
 export class CourseAssessmentNewCourseComponent implements OnInit {
-  courseAndSection = new CourseInfoForAssessment(0, "", "", "", ""); //console log is nasty without this.
+  courseAndSection = new CourseInfoForAssessment(0, "", ""); //console log is nasty without this.
   courseAndSections: CourseInfoForAssessment[] = [];
   instructor = new InstructorInfo(0, "");
   instructors: InstructorInfo[] = [];
@@ -24,17 +24,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   otherInstructor: boolean = false;
   thisYear: number;
   nextYear: number;
-  newCourse = new CourseInfoForAssessment(0, "", "", "", "");
+  newCourse = new CourseInfoForAssessment(0, "", "");
   newInstructor = new InstructorInfo(0, "");
-  newClass = new ClassInfo(0, "", ["", ""], "", "", "", 0, "");
+  newClass = new Classes(0, "", "", 0);
   semester: String;
   year: String;
 
-  setcourseAndSection(courseNumAndSection: any): void {
+  setcourseAndSection(courseNumber: any): void {
     this.courseAndSection = this.courseAndSections.find(
-      value => value.courseNumAndSection === courseNumAndSection
+      value => value.courseNumber === courseNumber
     );
-    console.log(courseNumAndSection);
+    console.log(courseNumber);
     console.log(this.courseAndSections);
     console.log(this.courseAndSection);
   }
@@ -61,7 +61,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     this.courseInfoService
       .getCourseInfo()
       .subscribe((courses: CourseInfoForAssessment[]) => {
-        this.courseAndSections = courses;
+        this.courseAndSections = courses.sort((a: CourseInfoForAssessment, b: CourseInfoForAssessment) => {
+          if (a.courseNumber < b.courseNumber) {
+            return -1;
+          }
+          else if (a.courseNumber > b.courseNumber) {
+            return 1;
+          }
+          else {
+            return 0;
+          }
+        });
         console.log(this.courseAndSections);
         this.courseAndSection = this.courseAndSections[0];
       });
@@ -81,13 +91,9 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
       console.log(this.newCourse);
       this.courseInfoService.addCourse(this.newCourse);
       length = this.courseAndSections.length;
-      this.courseAndSection = this.courseAndSections[length - 1];
-      console.log(this.courseAndSections[length - 1]);
-      console.log(this.courseAndSection.courseId + 1);
-      this.newClass.courseId = this.courseAndSection.courseId + 1;
+      this.newClass.courseId = length + 1;
     } else {
       this.newClass.courseId = this.courseAndSection.courseId;
-      this.newClass.courseID = this.courseAndSection.courseNumAndSection;
     }
     if (this.otherInstructor) {
       console.log(this.newInstructor.name);
@@ -100,34 +106,16 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     } else {
       this.newClass.instructorId = this.instructor.id;
       console.log(this.newClass.instructorId);
-      console.log(this.instructor.id);
     }
     this.newClass.semester = this.semester + "" + this.year;
     var fileToLoad = (<HTMLInputElement>document.getElementById("syllabusAdmin")).files[0];
     console.log("FILE to Load: ", fileToLoad);
-    this.newClass.syllabus[0] =
-      this.newClass.semester +
-      "/" +
-      this.newClass.courseID +
-      "/" +
-      this.newClass.section +
-      "Syllabus.txt";
-    console.log(this.newClass.syllabus[0]);
-    var fileReader = new FileReader();
-    // var ready = false;
-    // var me = this;
-    // fileReader.onload = function(e) {
-    //   let target: any = e.target;
-    //   var contents = target.result;
-    //   alert(contents);
-    //   me.newClass.syllabus[1] = contents;
-    //   console.log(me.newClass);
-    //   me.classService.addClass(me.newClass);
-    //   console.log(fileToLoad.name);
-    //   me.classService.saveSyllabus(me.newClass.syllabus);
-    // };
+    if(fileToLoad != undefined)
+    {
+      var fileReader = new FileReader();
+    console.log("New class", this.newClass);
     
-    var fileStorage = new FileStorage(0, "", this.newClass.syllabus[0]);
+    var fileStorage = new FileStorage(0, "", "");
     if (fileReader && fileToLoad) {
       fileReader.onload = function() {
         fileStorage.fileContent = fileReader.result.toString();
@@ -137,6 +125,12 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     fileReader.readAsText(fileToLoad);    
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
+    this.sleep(4000).then(() => this.classService.addClassWithSyllabus(this.newClass));
+    }
+    else
+    {
+      this.classService.addClassWithoutSyllabus(this.newClass);
+    }
   }
 
   private sleep(ms) {

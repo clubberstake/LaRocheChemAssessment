@@ -1,6 +1,7 @@
 <div class="courseInfoForAssessmentWorksheet">
   <div class="courseInfoForAssessmentWorksheetContainer">
     <div>
+      <!--  Looking here -->
       <span class="courseInfoForAssessmentWorksheetLabel">Course # / Sec:<br></span>
       <select class="courseInfoForAssessmentWorksheetSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
           <option selected="selected">COURSE ID/SEC</option>
@@ -13,8 +14,6 @@
       <span class="courseInfoForAssessmentWorksheetLabel">Course Title:<br></span>
       <span>{{courseInformationObjInput.CurrentClassInfo.courseTitle}}</span>
     </div>
-  </div>
-  <div class="courseInfoForAssessmentWorksheetContainer">
     <div>
       <span class="courseInfoForAssessmentWorksheetLabel">Semester:<br></span>
       <span>{{courseInformationObjInput.CurrentClassInfo.semester}}</span>
@@ -23,11 +22,11 @@
       <span class="courseInfoForAssessmentWorksheetLabel">Instructor:<br></span>
       <span>{{courseInformationObjInput.CurrentClassInfo.instructorName}}</span>
     </div>
-    <div>
-      <a href="test.txt">Course Syllabus </a>
+    <div *ngIf="syllabusFound">
+      <font color="blue" (click)="downloadSyllabus()">Download Syllabus </font>
     </div>
     <div>
-      Upload Syllabus:<input type="file" name="syllabus" id="syllabus" (change)="setSyllabus()">
+      Upload Syllabus:<input type="file" name="syllabus" id="syllabus">
     </div>
   </div>
 </div>

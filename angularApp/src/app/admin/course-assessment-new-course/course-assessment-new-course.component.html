@@ -1,19 +1,22 @@
 <div class="newCourseContainer">
+    <b>ADD NEW CLASS</b>
 <div class="newCoursePane">
   Course ID: 
   <select ng-model="mod" id="coursedd" class="courseInfoForAssessmentWorksheetSelector" #selectCourse (change)="setcourseAndSection(selectCourse.value)">
     <option selected="selected">COURSE ID</option>
-    <option (click)="oldCourseDropDown()" class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumAndSection}}>
-      {{courseAndSection.courseNumAndSection}}
+    <option (click)="oldCourseDropDown()" class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumber}}>
+      {{courseAndSection.courseNumber}}
     </option>
     <option (click)="newCourseDropDown()" value="OTHER">OTHER</option>
   </select><br>
   <div *ngIf="other">
     Course Name:<input type="text" id="courseName" [(ngModel)]="newCourse.courseName"><br>
-    Course Number:<input type="text" id="courseNumber" [(ngModel)]="newCourse.courseNumAndSection">
+    Course Number:<input type="text" id="courseNumber" [(ngModel)]="newCourse.courseNumber">
   </div>
   Course Section: <input type="text" name="coursesection" [(ngModel)]="newClass.section"><br>
+  
   <div class="semesterContainer">
+      Semester:&nbsp;
       FALL
       <input #fallRadioBtn name="semester" value="FA" id="fallRadioBtn" type="radio" [(ngModel)]="semester">
       SPRING
@@ -21,7 +24,9 @@
       SUMMER
       <input #summerRadioBtn name="semester" value="SU" id="summerRadioBtn" type="radio" [(ngModel)]="semester">
   </div>
+  
   <div class="yearContainer">
+      Year:&nbsp;
         {{thisYear}} 
         <input #thisYearRadioBtn name="year" value="{{thisYear}}" id="thisYearRadioBtn" type="radio" [(ngModel)]="year">
         {{nextYear}} 
@@ -41,6 +46,6 @@
   <div>
     Upload Syllabus:<input type="file" name="syllabusAdmin" id="syllabusAdmin">
   </div>
-  <input type="submit" value="Add" (click)="addClass()">
+  <input type="submit" value="ADD" (click)="addClass()">
 </div>
 </div>

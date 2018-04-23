@@ -10,6 +10,10 @@ import { CAFS3InformationService } from "../services/cafs3-service.service";
 import { CAFS6InformationService } from "../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../services/course-semester-evaluation.service";
 import { SemesterEvaluationService } from "../services/semester-evaluation.service";
+import { StudentInfoForBioAndAdmissionsPlacementTabService } from "../services/student-info-for-bio-and-admissions-placement-tab.service";
+import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
+import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
+import { studentInfoForBioAndAdmissionsPlacementTabRequest } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabRequest";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -18,6 +22,8 @@ import { SemesterEvaluationService } from "../services/semester-evaluation.servi
 })
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
+  reviews: SemesterReviewResponse[] = [];
+  student = new studentInfoForBioAndAdmissionsPlacementTabRequest(0, '', '', '', '', '', '', '', '', '', '');
 
   constructor(
     public sloService: CourseSLOsInformationService,
@@ -26,12 +32,43 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     public cafs3Service: CAFS3InformationService,
     public cafs6Service: CAFS6InformationService,
     public CourseSemesterEvaluationService: CourseSemesterEvaluationService,
+    private studentsService: StudentInfoForBioAndAdmissionsPlacementTabService,
     private semesterEvaluationService: SemesterEvaluationService
   ) {
     this.courseInformationObj = new CourseInformationObject();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(){
+
+    this.studentsService
+      .getStudentInfoById(1)
+      .subscribe(
+        (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
+          if (!student) {
+            console.log("Didnt find students");
+            let student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Greg","Chemistry","Junior","Fall","B","No","Resident","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Keith","Chemistry","Senior","Summer","B","No","Commuter","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Johnny","Chemistry","Sophomore","Spring","B","No","Resident","No","No","");
+            this.studentsService.addNewStudent(student);
+            student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+              null,"Aaron","Chemistry","Senior","Fall","B","No","Commuter","No","No","");
+            this.studentsService.addNewStudent(student);
+          } else {
+            console.log("found student, no need to seed students");
+          }
+        }
+      );
+
+      this.semesterEvaluationService.getSemesterEvaluations().subscribe((reviews: SemesterReviewResponse[]) => {
+        this.reviews = reviews;
+        this.reviews[0].student = this.student
+      });
+  }
 
   onSave() {
     this.sloService.updateSLOs(this.courseInformationObj.CourseSLOs);
@@ -39,9 +76,15 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
     this.cafs2Service.updateCafs2(this.courseInformationObj.Cafs2Info);
     this.cafs3Service.updateCafs3(this.courseInformationObj.Cafs3Info);
     this.cafs6Service.updateCafs6(this.courseInformationObj.Cafs6Info);
-    //add semester save work here.
-    console.log( "Semester review object to PUT: ");
-    console.log(this.courseInformationObj.courseSemesterReviewRequest)
-    this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequest);
+
+    for(let index in this.courseInformationObj.courseSemesterReviewRequests) {
+      this.courseInformationObj.courseSemesterReviewRequests[index].classId = this.courseInformationObj.classId
+      if(this.reviews.some(item => item.student.studentName == this.courseInformationObj.courseSemesterReviewRequests[index].studentName) ||
+          this.reviews.some(item => item.student.studentName == "No Student Found.")) {
+        console.log("Student already exists")
+      } else {
+        this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequests[index])
+      }
+    }
   }
 }

@@ -31,6 +31,10 @@
   background-color: green;
 }
 
+.new-course-semester-evaluation-error {
+  background-color: red;
+}
+
 .course-semester-evaluation-pane {
   max-height: 500px;
 }

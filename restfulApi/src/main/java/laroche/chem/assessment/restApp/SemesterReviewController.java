@@ -25,7 +25,7 @@ import laroche.chem.assessment.repositories.StudentRepository;
 import laroche.chem.assessment.responseObjects.CourseSemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewRequest;
 import laroche.chem.assessment.responseObjects.SemesterReviewResponse;
-import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTab;
+import laroche.chem.assessment.responseObjects.StudentInfoForBioAndAdmissionsPlacementTabResponse;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -50,6 +50,7 @@ public class SemesterReviewController {
 		Classes classes = classRepository.findOne(request.getClassId());
 		// Pass this newly created student to a Semester Review object along with
 		// additional request's recorded data
+<<<<<<< HEAD
 		SemesterReview review = new SemesterReview(student, classes, request.getMliCoursePace(),
 				request.getMliLackOfMindset(), request.getMliLackOfInterestCuriousity(),
 				request.getMliLackOfEffortFocus(), request.getMliPoorTimeManagement(), request.getMliHealthIssues(),
@@ -57,6 +58,10 @@ public class SemesterReviewController {
 				request.getMliOtherIssues(), request.getEsliCoursePace(), request.getEsliPoorTimeManagement(),
 				request.getEsliHealthIssues(), request.getEsliComplacence(), request.getEsliEmploymentHours(),
 				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
+=======
+		SemesterReview review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
+				request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
 				request.getEndSemesterInstructorRecommendations());
 		// Save this newly create Semester Review object to the database through the
@@ -80,6 +85,7 @@ public class SemesterReviewController {
 	 * @return response URI path
 	 */
 	@PutMapping("/putReview")
+<<<<<<< HEAD
 	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {
 		Student student = studentRepository.findOne(request.getStudentId());
 		Classes classes = classRepository.findOne(request.getClassId());
@@ -92,6 +98,27 @@ public class SemesterReviewController {
 				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
 				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
 				request.getEndSemesterInstructorRecommendations());
+=======
+	public ResponseEntity<Void> putMidSemesterReview(@RequestBody SemesterReviewRequest request) {		
+		SemesterReview review = findSemeterReviewByClassAndStudent(request.getClassId(), request.getStudentId());
+		if (review != null) {
+			review.setMidSemesterLearningIssues(request.getMidSemesterLearningIssues());
+			review.setEndSemesterLearningIssues(request.getEndSemesterLearningIssues());
+			review.setMidSemesterExtentInstructor(request.getMidSemesterExtentInstructor());
+			review.setMidSemesterExtentInstructor(request.getEndSemesterExtentInstructor());
+			review.setMidSemesterInstructorRecommendations(request.getMidSemesterInstructorRecommendations());
+			review.setEndSemesterInstructorRecommendations(request.getEndSemesterInstructorRecommendations());
+		} else {
+
+			Student student = studentRepository.findOne(request.getStudentId());
+			Classes classes = classRepository.findOne(request.getClassId());
+			review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
+					request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
+					request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+					request.getEndSemesterInstructorRecommendations());
+		}
+		semesterReviewRepository.save(review);
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 
 		try {
 			return ResponseEntity.created(new URI("/semesterEntry/" + review.getID())).build();
@@ -110,6 +137,7 @@ public class SemesterReviewController {
 	 */
 	@PostMapping("/putCourseReview")
 	public ResponseEntity<Void> putCourseSemesterReview(@RequestBody CourseSemesterReviewRequest request) {
+<<<<<<< HEAD
 		Student student = studentRepository.findOne(request.getStudentId());
 		Classes classes = classRepository.findOne(request.getClassId());
 		SemesterReview review = new SemesterReview(student, classes, request.getMliCoursePace(),
@@ -121,6 +149,27 @@ public class SemesterReviewController {
 				request.getEsliOther(), request.getEsliotherIssues(), request.getMidSemesterExtentInstructor(),
 				request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
 				request.getEndSemesterInstructorRecommendations());
+=======
+		SemesterReview review = findSemeterReviewByClassAndStudent(request.getClassId(), request.getStudentId());
+		if (review != null) {
+			review.setMidSemesterLearningIssues(request.getMidSemesterLearningIssues());
+			review.setEndSemesterLearningIssues(request.getEndSemesterLearningIssues());
+			review.setMidSemesterExtentInstructor(request.getMidSemesterExtentInstructor());
+			review.setMidSemesterExtentInstructor(request.getEndSemesterExtentInstructor());
+			review.setMidSemesterInstructorRecommendations(request.getMidSemesterInstructorRecommendations());
+			review.setEndSemesterInstructorRecommendations(request.getEndSemesterInstructorRecommendations());
+		} else {
+
+			Student student = studentRepository.findOne(request.getStudentId());
+			Classes classes = classRepository.findOne(request.getClassId());
+			review = new SemesterReview(student, classes, request.getMidSemesterLearningIssues(),
+					request.getEndSemesterLearningIssues(), request.getMidSemesterExtentInstructor(),
+					request.getEndSemesterExtentInstructor(), request.getMidSemesterInstructorRecommendations(),
+					request.getEndSemesterInstructorRecommendations());
+		}
+
+		semesterReviewRepository.save(review);
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 
 		try {
 			return ResponseEntity.created(new URI("/courseSemesterEntry/" + review.getID())).build();
@@ -130,9 +179,18 @@ public class SemesterReviewController {
 		}
 	}
 
+	private SemesterReview findSemeterReviewByClassAndStudent(long classId, long studentId) {
+		List<SemesterReview> reviews = semesterReviewRepository.findByClassesIdAndStudentId(classId, studentId);
+		if (!reviews.isEmpty()) {
+			return reviews.get(0);
+		}
+		return null;
+	}
+
 	@GetMapping("/semesterReviews")
 	private ArrayList<SemesterReviewResponse> getMidSemesterReview() {
 
+<<<<<<< HEAD
 		SemesterReview item = new SemesterReview();
 		item.setMidSemesterExtentInstructor("Teacher");
 		item.setEndSemesterExtentInstructor("Another Teacher");
@@ -143,11 +201,34 @@ public class SemesterReviewController {
 		item.setClassesID(classRepository.findOne((long) 3));
 		semesterReviewRepository.save(item);
 
+=======
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 		List<SemesterReview> reviews = semesterReviewRepository.findAll();
+		List<Student> students = studentRepository.findAll();
+		List<Classes> classes = classRepository.findAll();
+		if (!(reviews.iterator().hasNext() || students.iterator().hasNext() || classes.iterator().hasNext())) {
+			SemesterReview item = new SemesterReview();
+			item.setMidSemesterExtentInstructor("Teacher");
+			item.setEndSemesterExtentInstructor("Another Teacher");
+			item.setMidSemesterInstructorRecommendations("Do better bro");
+			item.setEndSemesterInstructorRecommendations("You did better");
+			item.setMidSemesterLearningIssues(null);
+			item.setEndSemesterLearningIssues(null);
+			item.setStudentID(studentRepository.findOne((long) 1));
+			item.setClassesID(classRepository.findOne((long) 3));
+			semesterReviewRepository.save(item);
+			reviews = semesterReviewRepository.findAll();
+		}
+
 		ArrayList<SemesterReviewResponse> midSemesterData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
+<<<<<<< HEAD
 			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
 					true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
+=======
+			midSemesterData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(),
+					review.getMidSemesterLearningIssues(), review.getEndSemesterLearningIssues(),
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 					review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
 					review.getMidSemesterInstructorRecommendations(),
 					review.getEndSemesterInstructorRecommendations()));
@@ -162,8 +243,12 @@ public class SemesterReviewController {
 		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
 		for (SemesterReview review : reviews) {
 			if (review.getStudentID().getId() == student.getId()) {
+<<<<<<< HEAD
 				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
 						true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
+=======
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
 						review.getMidSemesterInstructorRecommendations(),
 						review.getEndSemesterInstructorRecommendations()));
@@ -187,8 +272,33 @@ public class SemesterReviewController {
 
 		for (SemesterReview review : reviews) {
 			if (review.getClassesID().getId() == classes.getId()) {
+<<<<<<< HEAD
 				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), true, true,
 						true, true, true, true, true, true, true, "OTHER", true, true, true, true, true, true, "OTHER",
+=======
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
+						review.getMidSemesterInstructorRecommendations(),
+						review.getEndSemesterInstructorRecommendations()));
+			}
+		}
+		return reviewData;
+	}
+
+	@GetMapping("/semesterReviews/courseId={courseId}/studentId={studentId}")
+	public ArrayList<SemesterReviewResponse> getReviewRequestInfoByCourseId(@PathVariable int courseId, @PathVariable int studentId) {
+		System.out.println("Entered courseID & studentID service");
+		List<Classes> classes = classRepository.findByCourseId((long) courseId);
+		Student student = studentRepository.findOne((long) studentId);
+				
+		ArrayList<SemesterReviewResponse> reviewData = new ArrayList<>();
+		
+		SemesterReview review = findSemeterReviewByClassAndStudent(classes.get(0).getId(), student.getId());
+
+		if (review != null) {
+			if (review.getClassesID().getCourseId() == classes.get(0).getCourseId()) {
+				reviewData.add(new SemesterReviewResponse(review.getStudentID(), review.getClassesID(), null, null,
+>>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
 						review.getMidSemesterExtentInstructor(), review.getEndSemesterExtentInstructor(),
 						review.getMidSemesterInstructorRecommendations(),
 						review.getEndSemesterInstructorRecommendations()));

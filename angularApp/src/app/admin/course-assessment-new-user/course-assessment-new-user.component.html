@@ -1,0 +1,21 @@
+<div class="newCourseContainer">
+    <b>ADD NEW USER</b>
+  <div class="newCoursePane">
+    Username (Email):<input type="text" id="username" [(ngModel)]="username" (change)="checkEmail()">
+    <font color="red">{{usernameFeedback}}</font><br>
+    Password:<input type="password" id="password" [(ngModel)]="password" (change)="checkPasswordLength()">
+    <font color="red">{{passwordLengthFeedback}}</font><br>
+    Confirm Password:<input type="password" id="confirmpassword" [(ngModel)]="confirmPassword" (change)="checkPassword()">
+    <font color="red">{{passwordFeedback}}</font>
+
+    <div class="semesterContainer">
+        Role:&nbsp;
+        Admin
+        <input #studentRadioBtn name="admin" value="admin" id="adminRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
+        Teacher
+        <input #teacherRadioBtn name="teacher" value="teacher" id="teacherRadioBtn" type="radio" [(ngModel)]="newUser.permissions">
+    </div>
+    
+    <input type="submit" value="ADD" (click)="addUser()">
+  </div>
+  </div>

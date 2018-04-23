@@ -58,13 +58,6 @@ public class CourseSLOsController {
 	private ArrayList<CourseSLOsInfo> generateFakeData() {
 
 		List<Course> courses = courseRepository.findAll();
-		if (!courses.iterator().hasNext()) {
-			courseRepository.save(new Course("CHEM2016", "Organic Chemistry II Lecture", "Spring", "2017", 1));
-			courseRepository.save(new Course("CSCI4098", "Capstone", "Fall", "2017", 2));
-			courseRepository.save(new Course("MATH2050", "Discrete Mathematics I", "Fall", "2017", 3));
-			courseRepository.save(new Course("MATH1040", "Probability & Statistics", "Fall", "2017", 4));
-			courses = courseRepository.findAll();
-		}
 		
 		List<Instructor> instructors = instructorRepository.findAll();
 		if (!instructors.iterator().hasNext()) {

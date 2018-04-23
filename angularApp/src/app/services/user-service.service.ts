@@ -15,4 +15,8 @@ export class UserService {
     console.log('Made it to the user service');
     return this.http.get<UserInfo[]>(this.API_URL + '/userInfo');
   };
+
+  public addNewUser(user: any) {
+    return this.http.post<Response>('http://localhost:8080/addUser', user).subscribe(res => console.log(res));
+  }
 }

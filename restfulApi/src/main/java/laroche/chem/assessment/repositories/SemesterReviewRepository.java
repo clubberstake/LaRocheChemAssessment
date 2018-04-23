@@ -9,4 +9,5 @@ public interface SemesterReviewRepository extends JpaRepository<SemesterReview, 
 
 	List<SemesterReview> findByStudentId(long studentId);
 	List<SemesterReview> findByClassesId(long classesId);
+	List<SemesterReview> findByClassesIdAndStudentId(long classesId, long studentId);
 }

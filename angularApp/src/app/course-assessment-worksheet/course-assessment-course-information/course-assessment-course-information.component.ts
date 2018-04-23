@@ -19,7 +19,6 @@ import { CAFS3InformationService } from "../../services/cafs3-service.service";
 import { Cafs6Info } from "../cafs6";
 import { CAFS6InformationService } from "../../services/cafs6-service.service";
 import { CourseSemesterEvaluationService } from "../../services/course-semester-evaluation.service";
-import { SemesterReviewByStudent } from "../course-semester-evaluation/semester-review-by-student";
 import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
 import { SemesterEvaluationService } from "../../services/semester-evaluation.service";
 import { SemesterReviewRequest } from "../../individual-learning-record/SemesterReviewRequest";
@@ -39,13 +38,17 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
   cafs6: Cafs6Info[] = [];
   semesterReviews: SemesterReviewResponse[] = [];
   syllabusPath: string = "../../../../../restfulApi/src/main/java/laroche/chem/assessment/syllabus";
+  syllabusFound: boolean = false;
 
   setcourseAndSection(courseNumAndSection: any): void {
     this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = false;
 
     this.courseInformationObjInput.CurrentClassInfo = this.courseAndSections.find(value => value.classId == courseNumAndSection);
     console.log(this.courseInformationObjInput.CourseSLOs);
-
+    if (this.courseInformationObjInput.CurrentClassInfo.syllabus != null)
+    {
+      this.syllabusFound = true;
+    }
     /**
       Lines 50 - 55: Get course semester review information by class ID
       In addition, set the classId for the course semester review request that will be sent back to the database
@@ -54,9 +57,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.semesterEvaluationService.getSemesterReviewsByClassId(courseNumAndSection).subscribe((semesterReviews: SemesterReviewResponse[]) => {
       this.semesterReviews = semesterReviews;
       this.courseInformationObjInput.semesterReviewResponses = this.semesterReviews.reverse();
-      console.log("Semester Review Responses Response: " + this.courseInformationObjInput.semesterReviewResponses[0].classes.id)
     });
-    this.courseInformationObjInput.courseSemesterReviewRequest.classId = courseNumAndSection;
+    this.courseInformationObjInput.classId = courseNumAndSection;
 
     this.courseInformationObjInput.CourseSLOs = this.courseSlos.find(
       value => value.classId == courseNumAndSection
@@ -178,7 +180,17 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     this.currentClassInformationService
       .getCurrentClassInfo()
       .subscribe((courses: CurrentClassInfo[]) => {
-        this.courseAndSections = courses;
+        this.courseAndSections = courses.sort((a: CurrentClassInfo, b: CurrentClassInfo) => {
+          if (a.courseID < b.courseID) {
+            return -1;
+          }
+          else if (a.courseID > b.courseID) {
+            return 1;
+          }
+          else {
+            return 0;
+          }
+        });
         console.log(this.courseAndSections);
       });
     this.courseSLOsInformationService
@@ -212,11 +224,28 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
         console.log("section6", this.cafs6);
       });
   }
+
+  downloadSyllabus() {
+    var fileContents = String(this.courseInformationObjInput.CurrentClassInfo.syllabus.fileContent);
+    var filename = this.courseInformationObjInput.CurrentClassInfo.semester + "/" + this.courseInformationObjInput.CurrentClassInfo.courseID + "/" + this.courseInformationObjInput.CurrentClassInfo.section + "syllabus.txt";
+    var filetype = "text/plain";
+
+    var a = document.createElement("a");
+    var dataURI = "data:" + filetype +
+    ";base64," + btoa(fileContents);
+    a.href = dataURI;
+    a['download'] = filename;
+    var e = document.createEvent("MouseEvents");
+    // Use of deprecated function to satisfy TypeScript.
+    e.initMouseEvent("click", true, false,
+    document.defaultView, 0, 0, 0, 0, 0,
+    false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+  }
+
   setSyllabus() {
     var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
     console.log("FILE to Load: ", fileToLoad);
-    this.courseInformationObjInput.CurrentClassInfo.syllabus = this.courseInformationObjInput.CurrentClassInfo.semester + "/" + this.courseInformationObjInput.CurrentClassInfo.courseID + "/" + this.courseInformationObjInput.CurrentClassInfo.section + "Syllabus.txt";
-    console.log(this.courseInformationObjInput.CurrentClassInfo.syllabus);
     var fileReader = new FileReader();
     var ready = false;
     var me = this;

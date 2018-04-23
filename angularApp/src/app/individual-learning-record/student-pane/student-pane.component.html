@@ -2,11 +2,11 @@
   <h3>Student Profile</h3>
   <div class="student-pane-pane">
     <div>
-      <img src="https://www-league.nhlstatic.com/builds/site-core/505a6f127dcc403fdad1e629840e9058ca0f1e88_1506980076/images/logos/team/current/team-5-light.svg">
+      <img src={{studentObjectInput.student.file.fileContent}} alt="No Image" class="img-thumbnail">
     </div>
     <div class="ilrStudentRow">
       <div class="ilrStudentLabel">
-        Name
+        Name:
       </div>
       <div>
         <input name="studentNameBox" type="text" [(ngModel)]="studentObjectInput.student.studentName" required>
@@ -14,7 +14,15 @@
     </div>
     <div class="ilrStudentRow">
       <div class="ilrStudentLabel">
-        ID #:
+        Photo:
+      </div>
+      <div>
+        <input name="studentPhoto" type="file" [(ngModel)]="studentObjectInput.student.file" (change)="onFileSelected($event)" required>
+      </div>
+    </div>
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabel">
+        ID#:
       </div>
       <div>
         <input name="studentIdBox" type="text" [(ngModel)]="studentObjectInput.studentId" readonly>

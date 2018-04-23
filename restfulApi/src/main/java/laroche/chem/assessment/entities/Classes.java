@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Classes {
@@ -15,14 +17,18 @@ public class Classes {
 
 	private long courseId;
 	// Array represents tinyblob
-	private String syllabus;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "syllabus")
+	private FileStorage syllabus;
+		
 	private String semester;
 	private String section;
 	private int instructorId;
 	
 	public Classes() {}
 	
-	public Classes(long courseId, String syllabus, String semester, String section, int instructorId) {
+	public Classes(long courseId, FileStorage syllabus, String semester, String section, int instructorId) {
 		this.courseId = courseId;
 		this.syllabus = syllabus;
 		this.semester = semester;
@@ -46,11 +52,11 @@ public class Classes {
 		this.courseId = courseId;
 	}
 	
-	public String getSyllabus() {
+	public FileStorage getSyllabus() {
 		return syllabus;
 	}
 	
-	public void setSyllabus(String syllabus) {
+	public void setSyllabus(FileStorage syllabus) {
 		this.syllabus = syllabus;
 	}
 	

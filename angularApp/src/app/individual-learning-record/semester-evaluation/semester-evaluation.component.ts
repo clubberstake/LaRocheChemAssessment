@@ -4,7 +4,10 @@ import { SemesterEvaluationService } from '../../services/semester-evaluation.se
 import { LearningIssues } from '../learningIssues';
 import { CourseInformationObject } from '../../course-assessment-worksheet/course-information-object';
 import { CurrentClassInfo } from '../../course-assessment-worksheet/currentClassInfo';
-import { ClassRosterService } from '../../services/class-roster.service';
+import { SemesterReviewResponse } from '../SemesterReviewResponse';
+import { CourseInformationService } from '../../services/course-information-service.service';
+import { CourseInfoForAssessment } from '../../course-assessment-worksheet/courseInfoForAssessment';
+import { SemesterReviewRequest } from '../SemesterReviewRequest';
 
 @Component({
   selector: 'app-semester-evaluation',
@@ -15,23 +18,31 @@ export class SemesterEvaluationComponent implements OnInit {
 
   @Input() studentObjectInput: IndividualLearningRecordObject;
   @Input() courseInformationObjectInput: CourseInformationObject;
-  courseAndSections: CurrentClassInfo[] = [];
-  constructor(private semesterEvaluationService: SemesterEvaluationService, private studentClassRosterService: ClassRosterService) { }
+  courseAndSection = new CourseInfoForAssessment(0, "", "");
+  courseInfoForAssessment: CourseInfoForAssessment[] = [];
+  courseNames: String[] = [];
+  constructor(private semesterEvaluationService: SemesterEvaluationService, private courseInfoService: CourseInformationService) { }
 
   ngOnInit() {
-
-  }
-
-  setCourseIdAndName(courseIdAndName: any) {
-    this.courseInformationObjectInput.CurrentClassInfo = this.courseAndSections.find(
-      value => value.classId == courseIdAndName
-    );
   }
 
   postMidSemesterReview() {
-    this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.studentId
+    this.studentObjectInput.semesterReviewRequest.studentId = this.studentObjectInput.semesterReviewResponse.student.id;
+    this.studentObjectInput.semesterReviewRequest.classId = this.studentObjectInput.semesterReviewResponse.classes.id;
+    console.log(this.studentObjectInput.studentId, this.courseInformationObjectInput.classId);
     this.semesterEvaluationService.putSemesterEvaluation(this.studentObjectInput.semesterReviewRequest)
     console.log(this.studentObjectInput.semesterReviewRequest)
+  }
+
+  setSemesterReviewInfo(courseName: string) {
+    this.studentObjectInput.courseMap.forEach((value: string, key: number) => {
+      if(courseName == value) {
+        this.semesterEvaluationService.getSemesterEvaluationsByCourseId(key, this.studentObjectInput.studentId).subscribe((semesterReviewsByCourse: SemesterReviewResponse[]) => {
+          this.studentObjectInput.semesterReviewResponse = semesterReviewsByCourse[0];
+        });
+      }
+    });
+    this.studentObjectInput.semesterReviewRequest = this.studentObjectInput.semesterReviewRequests[0];
   }
 
 }

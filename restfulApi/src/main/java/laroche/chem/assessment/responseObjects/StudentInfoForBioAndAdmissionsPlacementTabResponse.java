@@ -1,9 +1,11 @@
 package laroche.chem.assessment.responseObjects;
 
-import java.time.LocalDateTime;
+import laroche.chem.assessment.entities.FileStorage;
 
-public class StudentInfoForBioAndAdmissionsPlacementTab {
+public class StudentInfoForBioAndAdmissionsPlacementTabResponse {
 
+	private FileStorage file;
+	
 	private String studentName;
 	private String studentMajor;
 	private String studentYear;
@@ -13,12 +15,12 @@ public class StudentInfoForBioAndAdmissionsPlacementTab {
 	private String studentHousingStatus;
 	private String studentHonors;
 	private String internationalStudent;
-	private String studentPhoto;
 	
 	private String time;
 	
-	public StudentInfoForBioAndAdmissionsPlacementTab(String studentName, String studentMajor, String studentYear, String studentSemester,
-				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String studentPhoto, String time) {
+	public StudentInfoForBioAndAdmissionsPlacementTabResponse(FileStorage file, String studentName, String studentMajor, String studentYear, String studentSemester,
+				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time) {
+		this.setFile(file);
 		this.studentName = studentName;
 		this.studentMajor = studentMajor;
 		this.studentYear = studentYear;
@@ -28,7 +30,6 @@ public class StudentInfoForBioAndAdmissionsPlacementTab {
 		this.studentHousingStatus = studentHousingStatus;
 		this.studentHonors = studentHonors;
 		this.internationalStudent = internationalStudent;
-		this.studentPhoto = studentPhoto;
 		this.time = time;
 	}
 	
@@ -104,20 +105,20 @@ public class StudentInfoForBioAndAdmissionsPlacementTab {
 		this.internationalStudent = internationalStudent;
 	}
 
-	public String getStudentPhoto() {
-		return studentPhoto;
-	}
-
-	public void setStudentPhoto(String studentPhoto) {
-		this.studentPhoto = studentPhoto;
-	}
-
 	public String getTime() {
 		return time;
 	}
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public FileStorage getFile() {
+		return file;
+	}
+
+	public void setFile(FileStorage file) {
+		this.file = file;
 	}
 	
 }
