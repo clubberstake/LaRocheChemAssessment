@@ -1,20 +1,20 @@
 <div class="newCourseContainer">
     <b>ADD NEW CLASS</b>
 <div class="newCoursePane">
-  Course ID: 
+  Course ID:
   <select ng-model="mod" id="coursedd" class="courseInfoForAssessmentWorksheetSelector" #selectCourse (change)="setcourseAndSection(selectCourse.value)">
     <option selected="selected">COURSE ID</option>
     <option (click)="oldCourseDropDown()" class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumber}}>
       {{courseAndSection.courseNumber}}
     </option>
-    <option (click)="newCourseDropDown()" value="OTHER">OTHER</option>
+    <option onclick="newCourseDropDown()" value="OTHER">OTHER</option>
   </select><br>
   <div *ngIf="other">
     Course Name:<input type="text" id="courseName" [(ngModel)]="newCourse.courseName"><br>
     Course Number:<input type="text" id="courseNumber" [(ngModel)]="newCourse.courseNumber">
   </div>
   Course Section: <input type="text" name="coursesection" [(ngModel)]="newClass.section"><br>
-  
+
   <div class="semesterContainer">
       Semester:&nbsp;
       FALL
@@ -24,15 +24,15 @@
       SUMMER
       <input #summerRadioBtn name="semester" value="SU" id="summerRadioBtn" type="radio" [(ngModel)]="semester">
   </div>
-  
+
   <div class="yearContainer">
       Year:&nbsp;
-        {{thisYear}} 
+        {{thisYear}}
         <input #thisYearRadioBtn name="year" value="{{thisYear}}" id="thisYearRadioBtn" type="radio" [(ngModel)]="year">
-        {{nextYear}} 
+        {{nextYear}}
         <input #nextYearRadioBtn name="year" value="{{nextYear}}" id="nextYearRadioBtn" type="radio" [(ngModel)]="year">
   </div>
-  Instructor: 
+  Instructor:
   <select ng-model="mod" class="instructorInfoForAssessmentWorksheetSelector" #selectInstructor (change)="setInstructor(selectInstructor.value)">
     <option selected="selected">Instructor</option>
     <option (click)="instructorDropDown()" class="instructorInfoForAssessmentWorksheetSelector" *ngFor="let instructor of instructors" value={{instructor.name}}>

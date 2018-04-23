@@ -5,8 +5,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from "@angular/common/http/testing";
-
-fdescribe("Cafs1ServiceService", () => {
+// Use as example.
+describe("When creating the CAFS 1 Service", () => {
   let service: CAFS1InformationService;
   let httpMock: HttpTestingController;
 
@@ -24,7 +24,7 @@ fdescribe("Cafs1ServiceService", () => {
     httpMock.verify();
   });
 
-  it("should return expected heroes (HttpClient called once)", () => {
+  it("should return two section 1 blocks (HttpClient called once)", () => {
     const dummyPosts: Cafs1Info[] = [
       {
         classId: 1,

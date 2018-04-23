@@ -1,15 +1,60 @@
-import { TestBed, inject } from '@angular/core/testing';
-
+import { TestBed, inject, async } from '@angular/core/testing';
 import { InstructorInformationService } from './instructor-service.service';
+import { InstructorInfo } from '../course-assessment-worksheet/instructorInfo';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from "@angular/common/http/testing";
 
-describe('InstructorInformationServiceService', () => {
+fdescribe('InstructorInformationServiceService', () => {
+  let service: InstructorInformationService;
+  let httpMock: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [InstructorInformationService]
     });
+
+    service = TestBed.get(InstructorInformationService);
+    httpMock = TestBed.get(HttpTestingController);
   });
 
-  it('should be created', inject([InstructorInformationService], (service: InstructorInformationService) => {
-    expect(service).toBeTruthy();
-  }));
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should return expected instructors', () => {
+    const dummyPosts: InstructorInfo[] = [
+      {
+       id: 1,
+       name: ""
+      },
+      {
+       id: 2,
+       name: ""
+      }
+    ];
+
+    const dummyInstructor: InstructorInfo[] = [
+      {
+        id: 3,
+        name: ""
+      }
+    ];
+
+    service.getInstructorInfo().subscribe(posts => {
+      expect(posts.length).toBe(2);
+      expect(posts).toEqual(dummyPosts);
+    });
+
+    const request = httpMock.expectOne(service.API_URL + "/instructors");
+    expect(request.request.method).toBe("GET");
+    request.flush(dummyPosts);
+
+    service.addInstructor(dummyInstructor);
+    const addInstructor = httpMock.expectOne(service.API_URL + "/addInstructor");
+    expect(addInstructor.request.method).toBe("POST");
+
+  });
 });
