@@ -8,7 +8,7 @@ import { SemesterReviewResponse } from '../individual-learning-record/SemesterRe
 import { SemesterReviewRequest } from '../individual-learning-record/SemesterReviewRequest';
 import { CourseSemesterReviewRequest } from '../individual-learning-record/CourseSemesterReviewRequest';
 
-fdescribe('When creating the Semester Evaluation Services', () => {
+describe('When creating the Semester Evaluation Services', () => {
   let service: SemesterEvaluationService;
   let httpMock: HttpTestingController;
   beforeEach(() => {
