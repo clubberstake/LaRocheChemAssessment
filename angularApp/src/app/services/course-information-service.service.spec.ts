@@ -53,20 +53,6 @@ fdescribe('When Creating the CourseInformation Service', () => {
    expect(getDummyCourseRequest.request.method).toBe("GET");
    getDummyCourseRequest.flush(dummyCourseRequest);
 
-   /*  
-    Greg I am not sure to why this is happening or why this service is needed at all.
-    There service method is expecting an id of type string but ids are of type number. 
-    All unit tests are working perfectly fine apart from this to which I am not sure of what must be done. 
-   */
-
-   //getCourseInfoByID unit Test for CourseInformationService 
-  //  service.getCourseId('CHEM2016').subscribe(dummyCourseIdRequest => {
-  //     expect(dummyCourseIdRequest).toEqual(dummyReviewByCourseId);
-  //  })
-  //  const getdummyByCourseId = mockHttp.expectOne(service.API_URL + 'CHEM2016');
-  //  expect(getdummyByCourseId.request.method).toBe("GET");
-  //  getdummyByCourseId.flush(dummyReviewByCourseId);
-
    //add courses to the database Unit test 
    service.addCourse(dummyReviewByCourseId);
    const putCourseRequest = mockHttp.expectOne(service.API_URL + "/addCourse");
