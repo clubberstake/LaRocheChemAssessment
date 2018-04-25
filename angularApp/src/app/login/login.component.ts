@@ -12,15 +12,9 @@ import { Md5 } from 'ts-md5/dist/md5'
 })
 export class LoginComponent implements OnInit {
   @Input() userObject: userObject;
-<<<<<<< HEAD
-  username: String = "bill.gates@laroche.edu";
-  emailFeedback: String = "1@1.com";
-  password: String = "macdaddy";
-=======
   username: String = "";
   emailFeedback: String = "";
   password: string = "";
->>>>>>> fc623a71c0e9c100d86b53b1cc282529aa5aef15
   users: UserInfo[];
 
   constructor(private userService: UserService) { }

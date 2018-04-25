@@ -6,8 +6,6 @@ import laroche.chem.assessment.entities.Student;
 public class SemesterReviewResponse {
 	private Student students;
 	private Classes classes;
-	//private long studentId;
-	//private long classId;
 	public Boolean mliCoursePace;
 	public Boolean mliLackOfMindset;	
 	public Boolean mliLackOfInterestCuriousity;
@@ -19,6 +17,9 @@ public class SemesterReviewResponse {
 	public Boolean mliOther;
 	public String mliOtherIssues;
 	public Boolean esliCoursePace;
+
+	public Boolean esliLackOfMindset;	
+	public Boolean esliLackOfInterestCuriousity;
 	public Boolean esliPoorTimeManagement;
 	public Boolean esliHealthIssues;
 	public Boolean esliComplacence;
@@ -33,12 +34,32 @@ public class SemesterReviewResponse {
 	public SemesterReviewResponse(Student students, Classes classes, Boolean mliCoursePace, Boolean mliLackOfMindset,
 			Boolean mliLackOfInterestCuriousity, Boolean mliLackOfEffortFocus, Boolean mliPoorTimeManagement,
 			Boolean mliHealthIssues, Boolean mliComplacence, Boolean mliEmploymentHours, Boolean mliOther,
-			String mliOtherIssues, Boolean esliCoursePace, Boolean esliPoorTimeManagement, Boolean esliHealthIssues,
+			String mliOtherIssues, Boolean esliCoursePace, Boolean esliLackOfMindset,Boolean esliLackOfInterestCuriosity, Boolean esliPoorTimeManagement, Boolean esliHealthIssues,
 			Boolean esliComplacence, Boolean esliEmploymentHours, Boolean esliOther, String esliotherIssues,
 			String midSemesterExtentInstructor, String endSemesterExtentInstructor,
 			String midSemesterInstructorRecommendations, String endSemesterInstructorRecommendations) {
 		this.setClasses(classes);
 		this.setStudent(students);
+		this.mliCoursePace = mliCoursePace;
+		this.mliLackOfMindset = mliLackOfMindset;
+		this.mliLackOfInterestCuriousity = mliLackOfInterestCuriousity;
+		this.mliLackOfEffortFocus = mliLackOfEffortFocus;
+		this.mliPoorTimeManagement = mliPoorTimeManagement;
+		this.mliHealthIssues = mliHealthIssues;
+		this.mliComplacence = mliComplacence;
+		this.mliEmploymentHours = mliEmploymentHours;
+		this.mliOther = mliOther;
+		this.mliOtherIssues = mliOtherIssues;
+		this.esliCoursePace = esliCoursePace;
+		this.esliLackOfMindset = esliLackOfMindset;
+		this.esliLackOfInterestCuriousity = esliLackOfInterestCuriosity;
+		this.esliPoorTimeManagement = esliPoorTimeManagement;
+		this.esliHealthIssues = esliHealthIssues;
+		this.esliComplacence = esliComplacence;
+		this.esliEmploymentHours = esliEmploymentHours;
+		this.esliOther = esliOther;
+		this.esliotherIssues = esliotherIssues;
+		
 		this.midSemesterExtentInstructor = midSemesterExtentInstructor;
 		this.endSemesterExtentInstructor = endSemesterExtentInstructor;
 		this.midSemesterInstructorRecommendations = midSemesterInstructorRecommendations;
@@ -49,6 +70,21 @@ public class SemesterReviewResponse {
 		return mliCoursePace;
 	}
 
+	public Boolean getEsliLackOfMindset() {
+		return esliLackOfMindset;
+	}
+
+	public void setEsliLackOfMindset(Boolean esliLackOfMindset) {
+		this.esliLackOfMindset = esliLackOfMindset;
+	}
+
+	public Boolean getEsliLackOfInterestCuriousity() {
+		return esliLackOfInterestCuriousity;
+	}
+
+	public void setEsliLackOfInterestCuriousity(Boolean esliLackOfInterestCuriousity) {
+		this.esliLackOfInterestCuriousity = esliLackOfInterestCuriousity;
+	}
 
 
 	public void setMliCoursePace(Boolean mliCoursePace) {

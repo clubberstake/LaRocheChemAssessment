@@ -4,11 +4,11 @@ import { Classes } from "./classes";
 
 export class SemesterReviewResponse {
   constructor(
-    public students: Student,
+    public student: Student,
     public classes: Classes, 
     public mliCoursePace:boolean,
     public mliLackOfMindset:boolean,
-    public mliLackOfCuriosity:boolean,
+    public mliLackOfInterestCuriousity:boolean,
     public mliLackOfEffortFocus:boolean,
     public mliPoorTimeManagement:boolean,
     public mliHealthIssues:boolean,
@@ -18,7 +18,7 @@ export class SemesterReviewResponse {
     public mliOtherIssues:String,
     public esliCoursePace:boolean,
     public esliLackOfMindset:boolean,
-    public esliLackOfCuriosity:boolean,
+    public esliLackOfInterestCuriousity:boolean,
     public esliLackOfEffortFocus:boolean,
     public esliPoorTimeManagement:boolean,
     public esliHealthIssues:boolean,

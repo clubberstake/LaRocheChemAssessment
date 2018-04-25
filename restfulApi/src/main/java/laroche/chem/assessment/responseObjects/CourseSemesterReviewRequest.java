@@ -13,6 +13,8 @@ public class CourseSemesterReviewRequest {
 	public Boolean mliOther;
 	public String mliOtherIssues;
 	public Boolean esliCoursePace;
+	private Boolean esliLackOfMindset;	
+	private Boolean esliLackOfInterestCuriosity;
 	public Boolean esliPoorTimeManagement;
 	public Boolean esliHealthIssues;
 	public Boolean esliComplacence;
@@ -219,5 +221,21 @@ public class CourseSemesterReviewRequest {
 
 	public void setEndSemesterInstructorRecommendations(String endSemesterInstructorRecommendations) {
 		this.endSemesterInstructorRecommendations = endSemesterInstructorRecommendations;
+	}
+
+	public Boolean getEsliLackOfMindset() {
+		return esliLackOfMindset;
+	}
+
+	public void setEsliLackOfMindset(Boolean esliLackOfMindset) {
+		this.esliLackOfMindset = esliLackOfMindset;
+	}
+
+	public Boolean getEsliLackOfInterestCuriosity() {
+		return esliLackOfInterestCuriosity;
+	}
+
+	public void setEsliLackOfInterestCuriosity(Boolean esliLackOfInterestCuriosity) {
+		this.esliLackOfInterestCuriosity = esliLackOfInterestCuriosity;
 	}
 }

@@ -24,8 +24,12 @@ export class CourseSemesterEvaluationComponent implements OnInit {
 
   addSemesterReviewRow() {
     this.courseInformationObjInput.addCourseSemesterReviewFieldVisible = true;
+    console.log(this.courseInformationObjInput.courseSemesterReviewRequests.length );
     if(this.courseInformationObjInput.courseSemesterReviewRequests.length < 15) {
-      this.courseInformationObjInput.courseSemesterReviewRequests.push(new CourseSemesterReviewRequest(0, 0, "",  null, null, "", "", "", ""))
+      this.courseInformationObjInput.courseSemesterReviewRequests.push( new CourseSemesterReviewRequest(false,false,false,false,false,false,false,false,false,"",false,false,false,false,false,false,"","","","","","",0,0));
+      
+
+
     }
   }
 

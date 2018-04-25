@@ -33,6 +33,8 @@ public class SemesterReview {
 	private Boolean mliOther;
 	private String mliOtherIssues;
 	private Boolean esliCoursePace;
+	private Boolean esliLackOfMindset;	
+	private Boolean esliLackOfInterestCuriosity;
 	private Boolean esliPoorTimeManagement;
 	private Boolean esliHealthIssues;
 	private Boolean esliComplacence;
@@ -50,7 +52,7 @@ public class SemesterReview {
 	public SemesterReview(Student student, Classes classes, Boolean mliCoursePace, Boolean mliLackOfMindset,
 			Boolean mliLackOfInterestCuriousity, Boolean mliLackOfEffortFocus, Boolean mliPoorTimeManagement,
 			Boolean mliHealthIssues, Boolean mliComplacence, Boolean mliEmploymentHours, Boolean mliOther,
-			String mliOtherIssues, Boolean esliCoursePace, Boolean esliPoorTimeManagement, Boolean esliHealthIssues,
+			String mliOtherIssues, Boolean esliCoursePace, Boolean esliLackOfMindset,Boolean esliLackOfInterestCuriosity, Boolean esliPoorTimeManagement, Boolean esliHealthIssues,
 			Boolean esliComplacence, Boolean esliEmploymentHours, Boolean esliOther, String esliotherIssues,
 			String midSemesterExtentInstructor, String endSemesterExtentInstructor,
 			String midSemesterInstructorRecommendations, String endSemesterInstructorRecommendations) {
@@ -67,6 +69,8 @@ public class SemesterReview {
 		this.mliOther = mliOther;
 		this.mliOtherIssues = mliOtherIssues;
 		this.esliCoursePace = esliCoursePace;
+		this.esliLackOfInterestCuriosity = esliLackOfInterestCuriosity;
+		this.esliLackOfMindset = esliLackOfMindset;
 		this.esliPoorTimeManagement = esliPoorTimeManagement;
 		this.esliHealthIssues = esliHealthIssues;
 		this.esliComplacence = esliComplacence;
@@ -81,6 +85,21 @@ public class SemesterReview {
 
 	public long getID() {
 		return id;
+	}
+	public Boolean getEsliLackOfMindset() {
+		return esliLackOfMindset;
+	}
+
+	public void setEsliLackOfMindset(Boolean esliLackOfMindset) {
+		this.esliLackOfMindset = esliLackOfMindset;
+	}
+
+	public Boolean getEsliLackOfInterestCuriosity() {
+		return esliLackOfInterestCuriosity;
+	}
+
+	public void setEsliLackOfInterestCuriosity(Boolean esliLackOfInterestCuriosity) {
+		this.esliLackOfInterestCuriosity = esliLackOfInterestCuriosity;
 	}
 
 	public String getMidSemesterExtentInstructor() {
