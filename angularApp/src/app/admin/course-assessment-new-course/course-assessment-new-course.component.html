@@ -35,10 +35,10 @@
   Instructor:
   <select ng-model="mod" class="instructorInfoForAssessmentWorksheetSelector" #selectInstructor (change)="setInstructor(selectInstructor.value)">
     <option selected="selected">Instructor</option>
-    <option (click)="instructorDropDown()" class="instructorInfoForAssessmentWorksheetSelector" *ngFor="let instructor of instructors" value={{instructor.name}}>
+    <option class="instructorInfoForAssessmentWorksheetSelector" *ngFor="let instructor of instructors" value={{instructor.name}}>
       {{instructor.name}}
     </option>
-    <option (click)="newInstructorDropDown()" value="OTHER">OTHER</option>
+    <option value="OTHER">OTHER</option>
   </select><br>
   <div *ngIf="otherInstructor">
     Instructor Name:<input type="text" name="instructorName" [(ngModel)]="newInstructor.name"><br>

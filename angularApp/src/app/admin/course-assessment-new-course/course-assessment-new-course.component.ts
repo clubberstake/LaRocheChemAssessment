@@ -51,6 +51,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   }
 
   setInstructor(instructor: any): void {
+    if(instructor === "OTHER")
+    {
+      this.otherInstructor = true;
+    }
+    else
+    {
+      if (this.otherInstructor)
+      {
+        this.otherInstructor = false;
+      }
+    }
     this.instructor = this.instructors.find(value => value.name === instructor);
     console.log(instructor);
     console.log(this.instructors);
@@ -146,15 +157,5 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
 
   private sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  newInstructorDropDown() {
-    this.otherInstructor = true;
-  }
-
-  instructorDropDown() {
-    if (this.otherInstructor) {
-      this.otherInstructor = false;
-    }
   }
 }
