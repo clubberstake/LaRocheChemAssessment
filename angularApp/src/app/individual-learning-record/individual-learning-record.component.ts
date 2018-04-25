@@ -33,44 +33,68 @@ export class IndividualLearningRecordComponent implements OnInit {
     private notesService: NotesInfoForMiscNotesTabService,
     private semesterEvaluationService: SemesterEvaluationService,
     private semesterResponse: SemesterEvaluationService,
-    private courseInfoService: CourseInformationService,
+    private courseInfoService: CourseInformationService
   ) {}
 
   ngOnInit() {
     // auto-init to keep console clean
-    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'',''),'','','','','','','','','','',);
+    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
+      new FileStorage(0, "", ""),
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    );
   }
 
   onSearchById(studentId: any) {
-
-    this.ilrStudentObject.student.file = new FileStorage(0,'','');
+    this.ilrStudentObject.courseNames = [];
 
     this.studentsService
       .getStudentInfoById(studentId)
       .subscribe(
         (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
-          this.ilrStudentObject.student = student;
+          if (!student.file) {
+            student.file = new FileStorage(0, "", "");
+          }
+          this.ilrStudentObject.student = student;          
           console.log("Full Student Object ->", this.ilrStudentObject.student);
 
           this.courseInfoService
-          .getCourseInfo()
-          .subscribe((courses: CourseInfoForAssessment[]) => {
-            this.courseInfoForAssessment = courses;
-            for (let i in courses) {
-              this.ilrStudentObject.courseMap.set(
-                courses[i].courseId,
-                courses[i].courseName
-              );
-            }
-            console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
-            console.log(this.ilrStudentObject.courseMap.get(2));
-    
-            for (let index in this.ilrStudentObject.semesterReviewResponses) {
-              if (this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)) {
-                this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
+            .getCourseInfo()
+            .subscribe((courses: CourseInfoForAssessment[]) => {
+              this.courseInfoForAssessment = courses;
+              for (let i in courses) {
+                this.ilrStudentObject.courseMap.set(
+                  courses[i].courseId,
+                  courses[i].courseName
+                );
               }
-            }
-          });
+              console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
+              console.log(this.ilrStudentObject.courseMap.get(2));
+
+              for (let index in this.ilrStudentObject.semesterReviewResponses) {
+                if (
+                  this.ilrStudentObject.courseMap.has(
+                    this.ilrStudentObject.semesterReviewResponses[index].classes
+                      .courseId
+                  )
+                ) {
+                  this.ilrStudentObject.courseNames.push(
+                    this.ilrStudentObject.courseMap.get(
+                      this.ilrStudentObject.semesterReviewResponses[index]
+                        .classes.courseId
+                    )
+                  );
+                }
+              }
+            });
         }
       );
 
@@ -93,7 +117,6 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((semesterReviews: SemesterReviewRequest[]) => {
         this.ilrStudentObject.semesterReviewRequests = semesterReviews;
         console.log(this.ilrStudentObject.semesterReviewRequests);
-
       });
 
     this.semesterEvaluationService
@@ -101,7 +124,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe((semesterResponses: SemesterReviewResponse[]) => {
         this.ilrStudentObject.semesterReviewResponses = semesterResponses;
         console.log(this.ilrStudentObject.semesterReviewResponses);
-      });  
+      });
 
     this.ilrStudentObject.studentId = studentId;
     console.log(this.ilrStudentObject.studentId);
