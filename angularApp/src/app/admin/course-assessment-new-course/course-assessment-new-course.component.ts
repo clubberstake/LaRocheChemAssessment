@@ -31,6 +31,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   year: String;
 
   setcourseAndSection(courseNumber: any): void {
+    if(courseNumber === "OTHER")
+    {
+      this.other = true;
+    }
+    else
+    {
+      if (this.other) 
+      {
+        this.other = false;
+      }
+    }
     this.courseAndSection = this.courseAndSections.find(
       value => value.courseNumber === courseNumber
     );
@@ -40,6 +51,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
   }
 
   setInstructor(instructor: any): void {
+    if(instructor === "OTHER")
+    {
+      this.otherInstructor = true;
+    }
+    else
+    {
+      if (this.otherInstructor)
+      {
+        this.otherInstructor = false;
+      }
+    }
     this.instructor = this.instructors.find(value => value.name === instructor);
     console.log(instructor);
     console.log(this.instructors);
@@ -125,7 +147,7 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     fileReader.readAsText(fileToLoad);
 
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
-    this.sleep(4000).then(() => this.classService.addClassWithSyllabus(this.newClass));
+    this.sleep(8000).then(() => this.classService.addClassWithSyllabus(this.newClass));
     }
     else
     {
@@ -135,28 +157,5 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
 
   private sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-
-  newCourseDropDown() {
-    this.other = true;
-    console.log("new course dropdown entered")
-  }
-
-  oldCourseDropDown() {
-    if (this.other) {
-      this.other = false;
-    }
-    console.log("Other's value " + this.other)
-  }
-
-  newInstructorDropDown() {
-    this.otherInstructor = true;
-  }
-
-  instructorDropDown() {
-    if (this.otherInstructor) {
-      this.otherInstructor = false;
-    }
   }
 }
