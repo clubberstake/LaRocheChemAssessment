@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CourseInformationService {
+  readonly API_URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) {
   }
@@ -16,7 +17,4 @@ export class CourseInformationService {
   public addCourse(course: any) {
        return this.http.post<Response>('http://localhost:8080/addCourse', course).subscribe(res => console.log(res));
      }
-  public getCourseId(course: String): Observable<number> {
-    return this.http.get<number>("http://localhost:8080/" + course);
-  }   
 }
