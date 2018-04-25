@@ -4,10 +4,10 @@
   Course ID:
   <select ng-model="mod" id="coursedd" class="courseInfoForAssessmentWorksheetSelector" #selectCourse (change)="setcourseAndSection(selectCourse.value)">
     <option selected="selected">COURSE ID</option>
-    <option (click)="oldCourseDropDown()" class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumber}}>
+    <option class="courseInfoForAssessmentWorksheetSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.courseNumber}}>
       {{courseAndSection.courseNumber}}
     </option>
-    <option onclick="newCourseDropDown()" value="OTHER">OTHER</option>
+    <option value="OTHER">OTHER</option>
   </select><br>
   <div *ngIf="other">
     Course Name:<input type="text" id="courseName" [(ngModel)]="newCourse.courseName"><br>
