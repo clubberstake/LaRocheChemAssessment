@@ -54,7 +54,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   }
 
   onSearchById(studentId: any) {
-    this.ilrStudentObject.courseNames = [];
+   this.clearSemesterReviewData();
 
     this.studentsService
       .getStudentInfoById(studentId)
@@ -132,5 +132,35 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   onSearchByName(studentName: any) {
     console.log(studentName);
+  }
+
+  clearSemesterReviewData(){
+    this.ilrStudentObject.courseNames = [];
+    this.ilrStudentObject.semesterReviewRequest.mliCoursePace=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfMindset=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfCuriosity=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfEffortFocus=false;
+    this.ilrStudentObject.semesterReviewRequest.mliPoorTimeManagement=false;
+    this.ilrStudentObject.semesterReviewRequest.mliHealthIssues=false;
+    this.ilrStudentObject.semesterReviewRequest.mliComplacence=false;
+    this.ilrStudentObject.semesterReviewRequest.mliEmployementHours=false;
+    this.ilrStudentObject.semesterReviewRequest.mliOther=false;
+    this.ilrStudentObject.semesterReviewRequest.mliOtherIssues="";
+    this.ilrStudentObject.semesterReviewRequest.esliCoursePace=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfMindset=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfCuriosity=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfEffortFocus=false;
+    this.ilrStudentObject.semesterReviewRequest.esliPoorTimeManagement=false;
+    this.ilrStudentObject.semesterReviewRequest.esliHealthIssues=false;
+    this.ilrStudentObject.semesterReviewRequest.esliComplacence=false;
+    this.ilrStudentObject.semesterReviewRequest.esliEmployementHours=false;
+    this.ilrStudentObject.semesterReviewRequest.esliOther=false;
+    this.ilrStudentObject.semesterReviewRequest.esliOtherIssues="";
+    this.ilrStudentObject.semesterReviewRequest.midSemesterExtentInstructor="";
+    this.ilrStudentObject.semesterReviewRequest.endSemesterExtentInstructor="";
+    this.ilrStudentObject.semesterReviewRequest.midSemesterInstructorRecommendations="";
+    this.ilrStudentObject.semesterReviewRequest.endSemesterInstructorRecommendations=""; 
+    
+
   }
 }
