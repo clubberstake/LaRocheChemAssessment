@@ -4,7 +4,7 @@ import { NotesInfoForMiscNotesTabService } from './notes-info-for-misc-notes-tab
 import {HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import {NotesInfoForMiscNotesTab} from "..//individual-learning-record/notesInfoForMiscNotesTab"
 
-fdescribe('NotesInfoForMiscNotesTabService', () => {
+describe('NotesInfoForMiscNotesTabService', () => {
   let service: NotesInfoForMiscNotesTabService;
   let mockHttp: HttpTestingController;
 
@@ -51,7 +51,7 @@ fdescribe('NotesInfoForMiscNotesTabService', () => {
   expect(getdummynotesInfoForMiscNotesTabRequest.request.method).toBe("GET");
   getdummynotesInfoForMiscNotesTabRequest.flush(getdummynotesInfoForMiscNotesTabRequest);
 
-   
+
   service.addNewNote(dummyReviewBystudentName);
   const putdummynotesInforForMiscNotesTabRequest = mockHttp.expectOne("http://localhost:8080/notes/notesInfoForMiscNotesTab/studentId=");
   expect(putdummynotesInforForMiscNotesTabRequest.request.method).toBe("POST");
