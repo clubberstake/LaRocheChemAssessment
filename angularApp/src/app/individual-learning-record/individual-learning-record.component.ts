@@ -20,7 +20,7 @@ import { userObject } from "../userObject";
   styleUrls: ["./individual-learning-record.component.css"]
 })
 export class IndividualLearningRecordComponent implements OnInit {
-  // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
+  // ILR Object at the root level which will now hold a reference to all ILR information
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
   @Input() userObject: userObject;
@@ -54,7 +54,7 @@ export class IndividualLearningRecordComponent implements OnInit {
   }
 
   onSearchById(studentId: any) {
-   this.clearSemesterReviewData();
+    this.clearSemesterReviewData();
 
     this.studentsService
       .getStudentInfoById(studentId)
@@ -63,7 +63,7 @@ export class IndividualLearningRecordComponent implements OnInit {
           if (!student.file) {
             student.file = new FileStorage(0, "", "");
           }
-          this.ilrStudentObject.student = student;          
+          this.ilrStudentObject.student = student;
           console.log("Full Student Object ->", this.ilrStudentObject.student);
 
           this.courseInfoService
@@ -102,36 +102,21 @@ export class IndividualLearningRecordComponent implements OnInit {
       .getMiscNoteInfoByStudentId(studentId)
       .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
         this.ilrStudentObject.miscNotes = miscNotes;
-        console.log(this.ilrStudentObject.miscNotes);
-      });
-
-    this.notesService
-      .getMiscNoteInfoByStudentId(studentId)
-      .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-        this.ilrStudentObject.miscNotes = miscNotes;
-        console.log(this.ilrStudentObject.miscNotes);
       });
 
     this.semesterEvaluationService
       .getSemesterEvaluationsByStudentId(studentId)
       .subscribe((semesterReviews: SemesterReviewRequest[]) => {
         this.ilrStudentObject.semesterReviewRequests = semesterReviews;
-        console.log(this.ilrStudentObject.semesterReviewRequests);
       });
 
     this.semesterEvaluationService
       .getSemesterEvaluationResponsesByStudentId(studentId)
       .subscribe((semesterResponses: SemesterReviewResponse[]) => {
         this.ilrStudentObject.semesterReviewResponses = semesterResponses;
-        console.log(this.ilrStudentObject.semesterReviewResponses);
       });
 
     this.ilrStudentObject.studentId = studentId;
-    console.log(this.ilrStudentObject.studentId);
-  }
-
-  onSearchByName(studentName: any) {
-    console.log(studentName);
   }
 
   clearSemesterReviewData(){
@@ -159,8 +144,6 @@ export class IndividualLearningRecordComponent implements OnInit {
     this.ilrStudentObject.semesterReviewRequest.midSemesterExtentInstructor="";
     this.ilrStudentObject.semesterReviewRequest.endSemesterExtentInstructor="";
     this.ilrStudentObject.semesterReviewRequest.midSemesterInstructorRecommendations="";
-    this.ilrStudentObject.semesterReviewRequest.endSemesterInstructorRecommendations=""; 
-    
-
+    this.ilrStudentObject.semesterReviewRequest.endSemesterInstructorRecommendations="";
   }
 }

@@ -2,8 +2,6 @@
   <div class="studentIdSearchBoxLabel">Search for a student!</div>
     <input #studentIdSearchBox studentIdSearchBox.value="">
     <button (click)="onSearchById(studentIdSearchBox.value)">Search by Id</button>
-    <!-- <input #studentNameSearchBox studentNameSearchBox.value=""/>
-    <button (click)="onSearchByName(studentNameSearchBox.value)">Search by Name</button> -->
 </div>
 <div class="ilrBase">
   <app-student-pane [studentObjectInput]="ilrStudentObject" [userObject]="userObject"></app-student-pane>

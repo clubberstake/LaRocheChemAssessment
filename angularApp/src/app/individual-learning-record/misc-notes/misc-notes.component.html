@@ -8,7 +8,6 @@
         <div class="notesAuthor">
           <strong>Notes on {{studentObjectInput.student.studentName}}</strong>
         </div>
-        <!-- Guys this is just dumping all the notes in the miscNotes Array so far! -->
         <div class="notes" *ngFor="let note of studentObjectInput.miscNotes">
           <strong>[Entry]</strong>
           <strong>Author:</strong> {{note.author}}

@@ -35,7 +35,7 @@ export class MiscNotesComponent implements OnInit {
 
     swal({
       type: 'success',
-      title: 'Miscellaneous Notes Saved!',
+      title: 'Student Notes Saved!',
       showConfirmButton: false,
       timer: 1500
     })
