@@ -11,7 +11,7 @@ export class CourseSLOsInformationService {
   }
 
   public getCourseSLOsInfo(): Observable<CourseSLOs[]> {
-    console.log('Made it to the service');
+    console.log('Made it to the service CourseSLOsInformationService');
     return this.http.get<CourseSLOs[]>("http://localhost:8080/courseSLOs");
   };
 

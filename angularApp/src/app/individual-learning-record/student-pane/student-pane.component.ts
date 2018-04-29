@@ -30,7 +30,9 @@ export class StudentPaneComponent implements OnInit {
     private studentService: StudentInfoForBioAndAdmissionsPlacementTabService,
     private fileStorageService: FileStorageService  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.studentObjectInput.student.file = new FileStorage(0,'','');
+  }
 
   onFileSelected(event) {
     this.selectedPhoto = <File>event.target.files[0];
@@ -61,16 +63,19 @@ export class StudentPaneComponent implements OnInit {
         };
       });
     }
+    else{
+      this.studentObjectInput.student.file = new FileStorage(0,'','');      
+    }
 
     this.studentObjectInput.student.id = this.studentObjectInput.studentId;
     console.log(this.studentObjectInput);
     this.studentService.updateStudent(this.studentObjectInput.student);
-    Swal({
-      type: 'success',
-      title: 'Student Updated!',
-      showConfirmButton: false,
-      timer: 1500
-    })
+    // Swal({
+    //   type: 'success',
+    //   title: 'Student Updated!',
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // })
   }
 
   private sleep(ms) {

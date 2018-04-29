@@ -37,6 +37,7 @@
 .mid-semester-learning-issues {
   display: flex;
   flex-direction: column;
+  justify-content: space-between 
 }
 
 .mid-semester-learning-issues-header {

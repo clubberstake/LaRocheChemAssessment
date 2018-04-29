@@ -43,10 +43,30 @@
               <input [(ngModel)]="courseReview.studentName"/>
             </td>
             <td>
-              <input [(ngModel)]="courseReview.midSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliOther" />
+              <input type="checkbox" [(ngModel)]="courseReview.mliOtherIssues" />          
+
+
             </td>
             <td>
-              <input [(ngModel)]="courseReview.endSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliCoursePace" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliComplacence" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliOther" />
+              <input type="checkbox" [(ngModel)]="courseReview.esliOtherIssues" />
             </td>
             <td>
               <textarea [(ngModel)]="courseReview.midSemesterExtentInstructor"></textarea>
@@ -69,10 +89,28 @@
               <input [(ngModel)]="review.student.studentName" />
             </td>
             <td>
-              <input [(ngModel)]="review.midSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="review.mliCoursePace" />
+              <input type="checkbox" [(ngModel)]="review.mliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="review.mliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="review.mliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="review.mliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="review.mliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="review.mliComplacence" />
+              <input type="checkbox" [(ngModel)]="review.mliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="review.mliOther" />
+              <input type="checkbox" [(ngModel)]="review.mliOtherIssues" />    
             </td>
             <td>
-              <input [(ngModel)]="review.endSemesterLearningIssues" />
+              <input type="checkbox" [(ngModel)]="review.esliCoursePace" />
+              <input type="checkbox" [(ngModel)]="review.esliLackOfMindset" />
+              <input type="checkbox" [(ngModel)]="review.esliLackOfCuriosity" />
+              <input type="checkbox" [(ngModel)]="review.esliLackOfEffortFocus" />
+              <input type="checkbox" [(ngModel)]="review.esliPoorTimeManagement" />
+              <input type="checkbox" [(ngModel)]="review.esliHealthIssues" />
+              <input type="checkbox" [(ngModel)]="review.esliComplacence" />
+              <input type="checkbox" [(ngModel)]="review.esliEmployementHours" />
+              <input type="checkbox" [(ngModel)]="review.esliOther" />
+              <input type="checkbox" [(ngModel)]="review.esliOtherIssues" />
             </td>
             <td>
               <textarea [(ngModel)]="review.midSemesterExtentInstructor"></textarea>
