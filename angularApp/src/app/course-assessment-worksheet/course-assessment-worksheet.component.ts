@@ -23,7 +23,7 @@ import { studentInfoForBioAndAdmissionsPlacementTabRequest } from "../individual
 export class CourseAssessmentWorksheetComponent implements OnInit {
   courseInformationObj: CourseInformationObject;
   reviews: SemesterReviewResponse[] = [];
-  student = new studentInfoForBioAndAdmissionsPlacementTabRequest(0, '', '', '', '', '', '', '', '', '', '');
+  student = new studentInfoForBioAndAdmissionsPlacementTabRequest(0, '', '', '', '', '', '', '', '', '', '','');
 
   constructor(
     public sloService: CourseSLOsInformationService,
@@ -47,16 +47,16 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
           if (!student) {
             console.log("Didnt find students");
             let student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
-              null,"Greg","Chemistry","Junior","Fall","B","No","Resident","No","No","");
+              null,"Greg","Chemistry","Junior","Fall","B","No","Resident","No","No","","");
             this.studentsService.addNewStudent(student);
             student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
-              null,"Keith","Chemistry","Senior","Summer","B","No","Commuter","No","No","");
+              null,"Keith","Chemistry","Senior","Summer","B","No","Commuter","No","No","","");
             this.studentsService.addNewStudent(student);
             student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
-              null,"Johnny","Chemistry","Sophomore","Spring","B","No","Resident","No","No","");
+              null,"Johnny","Chemistry","Sophomore","Spring","B","No","Resident","No","No","","");
             this.studentsService.addNewStudent(student);
             student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
-              null,"Aaron","Chemistry","Senior","Fall","B","No","Commuter","No","No","");
+              null,"Aaron","Chemistry","Senior","Fall","B","No","Commuter","No","No","","");
             this.studentsService.addNewStudent(student);
           } else {
             console.log("found student, no need to seed students");

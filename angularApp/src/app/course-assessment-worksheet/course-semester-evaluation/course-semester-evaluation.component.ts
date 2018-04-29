@@ -15,7 +15,7 @@ import { CourseSemesterReviewRequest } from '../../individual-learning-record/Co
 export class CourseSemesterEvaluationComponent implements OnInit {
 
   @Input() courseInformationObjInput: CourseInformationObject;
-  student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, "", "", "", "", "", "", "", "", "", "");
+  student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, "", "", "", "", "", "", "", "", "", "", "");
 
   constructor(private studentService: StudentInfoForBioAndAdmissionsPlacementTabService) { }
 

@@ -17,9 +17,10 @@ public class StudentInfoForBioAndAdmissionsPlacementTabResponse {
 	private String internationalStudent;
 	
 	private String time;
+	private String author;
 	
 	public StudentInfoForBioAndAdmissionsPlacementTabResponse(FileStorage file, String studentName, String studentMajor, String studentYear, String studentSemester,
-				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time) {
+				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time, String author) {
 		this.setFile(file);
 		this.studentName = studentName;
 		this.studentMajor = studentMajor;
@@ -31,6 +32,7 @@ public class StudentInfoForBioAndAdmissionsPlacementTabResponse {
 		this.studentHonors = studentHonors;
 		this.internationalStudent = internationalStudent;
 		this.time = time;
+		this.author = author;
 	}
 	
 	public String getStudentName() {
@@ -119,6 +121,14 @@ public class StudentInfoForBioAndAdmissionsPlacementTabResponse {
 
 	public void setFile(FileStorage file) {
 		this.file = file;
+	}
+	
+	public String getAuthor () {
+		return author;
+	}
+	
+	public void setAuthor (String author) {
+		this.author = author;
 	}
 	
 }

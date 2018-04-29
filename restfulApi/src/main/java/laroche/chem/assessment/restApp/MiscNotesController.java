@@ -77,9 +77,9 @@ public class MiscNotesController {
 		FileStorage file = fileStorageRepository.findOne((long) 1);
 		if(!students.iterator().hasNext()) {
 			String time = LocalDateTime.now().toString();
-			studentRepository.save(new Student(file, "John Nicholson", "Computer Science", "2018", "Spring", "A", "Cross Country", "Commuter", "No Honors", "No International", time));
-			studentRepository.save(new Student(file, "Robb Stark", "History", "2017", "Fall", "B", "Fencing", "Resident", "Honors", "Westeros", time));
-			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing", "Commuter", "Honors", "No International", time));
+			studentRepository.save(new Student(file, "John Nicholson", "Computer Science", "2018", "Spring", "A", "Cross Country", "Commuter", "No Honors", "No International", time, "boost"));
+			studentRepository.save(new Student(file, "Robb Stark", "History", "2017", "Fall", "B", "Fencing", "Resident", "Honors", "Westeros", time, "boost"));
+			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A", "Rock Climbing", "Commuter", "Honors", "No International", time, "boost"));
 			students = studentRepository.findAll();
 		}
 		

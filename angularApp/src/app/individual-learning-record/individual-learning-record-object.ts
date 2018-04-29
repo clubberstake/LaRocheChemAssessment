@@ -10,10 +10,10 @@ import { SafeUrl } from "@angular/platform-browser";
 
 export class IndividualLearningRecordObject {
     studentId: any;
-    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
+    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '', '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
-    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '');
+    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
     semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
     semesterReviewResponses: SemesterReviewResponse[] = [];

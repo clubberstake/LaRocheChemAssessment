@@ -14,6 +14,7 @@ public class StudentInfoForBioAndAdmissionsPlacementTabRequest {
 	private String studentHonors;
 	private String internationalStudent;
 	private String time;	
+	private String author;
 	
 	public String getStudentName() {
 		return studentName;
@@ -101,5 +102,14 @@ public class StudentInfoForBioAndAdmissionsPlacementTabRequest {
 
 	public void setFileId(long fileId) {
 		this.fileId = fileId;
+	}
+	
+	public String getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
+				
 	}
 }

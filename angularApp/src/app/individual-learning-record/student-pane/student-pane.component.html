@@ -116,6 +116,15 @@
           <input name="studentInternationalRadio" type="radio" [(ngModel)]="studentObjectInput.student.internationalStudent" value="No"> No
       </div>
       </div>
+
+    <div class="ilrStudentRow">
+      <div class="ilrStudentLabellastEdited">
+          Last Edited by: {{userObject.user.username}} <br>
+          @ {{studentObjectInput.student.time}}
+       </div>
+    <div>
+
+         
        <!-- <div ng-switch="studentsInput.internationalStudent">
           <div ng-switch-when="No">
              <p>No!</p>

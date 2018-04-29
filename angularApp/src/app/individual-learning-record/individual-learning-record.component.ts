@@ -38,7 +38,7 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   ngOnInit() {
     // auto-init to keep console clean
-    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'',''),'','','','','','','','','','',);
+    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'',''),'','','','','','','','','','','');
   }
 
   onSearchById(studentId: any) {
