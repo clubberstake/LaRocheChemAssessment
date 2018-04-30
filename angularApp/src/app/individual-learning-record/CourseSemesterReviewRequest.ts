@@ -1,5 +1,27 @@
 export class CourseSemesterReviewRequest {
-  constructor(public studentId: number, public classId: number, public studentName: string, public midSemesterLearningIssues: boolean[], public endSemesterLearningIssues: boolean[],
-                public midSemesterExtentInstructor: string, public endSemesterExtentInstructor: string,
-                public midSemesterInstructorRecommendations: string, public endSemesterInstructorRecommendations: string){}
+  constructor(
+	public   mliCoursePace :boolean,
+	public   mliLackOfMindset:boolean,	
+	public   mliLackOfInterestCuriousity:boolean,
+	public   mliLackOfEffortFocus:boolean,
+	public   mliPoorTimeManagement:boolean,
+	public   mliHealthIssues:boolean,
+	public   mliComplacence:boolean,
+	public   mliEmploymentHours:boolean,
+	public   mliOther:boolean,
+	public    mliOtherIssues :string,
+	public   esliCoursePace:boolean,
+	public   esliPoorTimeManagement:boolean,
+	public   esliHealthIssues:boolean,
+	public   esliComplacence:boolean,
+	public   esliEmploymentHours:boolean,
+	public   esliOther:boolean,
+	public    esliotherIssues :string,
+	public    midSemesterExtentInstructor:string,
+	public    endSemesterExtentInstructor:string,
+	public    midSemesterInstructorRecommendations:string,
+	public    endSemesterInstructorRecommendations:string,
+	public    studentName:string,
+	public     studentId:number,
+	public     classId:number){}
 }

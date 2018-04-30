@@ -15,21 +15,71 @@
       <div class="semester-evaluation-learning-issues">
           <label><strong>Learning Issues</strong></label>
           <div class="semester-evaluation-learning-issues-encasing">
+              
             <div class="mid-semester-learning-issues">
               <div class="mid-semester-learning-issues-header">
                 <label><strong>Mid</strong></label>
               </div>
-              <div *ngFor="let issue of studentObjectInput.learningIssues">
-                <input type="checkbox" [(ngModel)]="issue.midvalue" />
-              </div>
+                 
+                <div>            
+                  <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliCoursePace" /> 
+                  <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliCoursePace" />
+                  <label>Course Pace</label>
+                </div>
+                
+                
+                <div> 
+                  <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliLackOfMindset" />
+                  <label>Lack of Mindset</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliLackOfCuriosity" />
+                <label>Lack of Curiosity</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliLackOfEffortFocus" />
+                <label>Lack of Effort/Focus</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliPoorTimeManagement" />
+                <label>Poor time management</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliHealthIssues" />
+                <label>Health Issues</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliComplacence" />
+                <label>Complacence</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliEmployementHours" />
+                <label>Employment hours</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliOther" />
+                <label>Course Pace</label>
+                </div>
+                <div> 
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.mliOtherIssues" />
+                <label>Other</label> 
+                </div>
             </div>
             <div class="end-semester-learning-issues">
               <div class="end-semester-learning-issues-header">
                 <label><strong>End</strong></label>
-              </div>
-              <div *ngFor="let issue of studentObjectInput.learningIssues">
-                <input type="checkbox" [(ngModel)]="issue.endvalue" /> {{issue.name}}
-              </div>
+              </div>              
+  
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliLackOfMindset" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliLackOfCuriosity" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliLackOfEffortFocus" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliPoorTimeManagement" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliHealthIssues" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliComplacence" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliEmployementHours" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliOther" />
+                <input type="checkbox" [(ngModel)]="studentObjectInput.semesterReviewRequest.esliOtherIssues" /> 
+
             </div>
           </div>
       </div>

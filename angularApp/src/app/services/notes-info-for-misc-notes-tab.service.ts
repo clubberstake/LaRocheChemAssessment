@@ -7,7 +7,6 @@ import { NotesInfoForMiscNotesTab } from '../individual-learning-record/notesInf
 export class NotesInfoForMiscNotesTabService {
 
   constructor(private http: HttpClient) { }
-
   public getMiscNoteInfo(): Observable<NotesInfoForMiscNotesTab[]> {
     console.log('Made it to Misc Notes service');
     return this.http.get<NotesInfoForMiscNotesTab[]>("http://localhost:8080/notes/notesInfoForMiscNotesTab");

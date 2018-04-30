@@ -10,18 +10,68 @@ import { SafeUrl } from "@angular/platform-browser";
 
 export class IndividualLearningRecordObject {
     studentId: any;
-    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
+    studentClass: Student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '', '');
     classes: Classes = new Classes(0, 0, '', '', '', 0);
     miscNote: NotesInfoForMiscNotesTab = new NotesInfoForMiscNotesTab('', '', 0, '');
-    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '');
+    student: StudentInfoForBioAndAdmissionsPlacementTabResponse = new StudentInfoForBioAndAdmissionsPlacementTabResponse(null, '', '', '', '', '', '', '', '', '', '', '');
     miscNotes: NotesInfoForMiscNotesTab[] = [];
-    semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(this.studentClass, this.classes, null, null, '', '', '', '');
+    semesterReviewResponse: SemesterReviewResponse = new SemesterReviewResponse(
+      this.studentClass, this.classes,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      "",
+      false,  
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false, 
+      false, 
+      "",
+      "",
+      "",
+      "",
+      ""
+      );
     semesterReviewResponses: SemesterReviewResponse[] = [];
     courseNames: String[] = [];
     courseMap = new Map<any,String>();
 
 
-    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0, null, null, '', '', '', '');
+    semesterReviewRequest: SemesterReviewRequest = new SemesterReviewRequest(0, 0,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      "",
+      false,  
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false, 
+      false, 
+      "",
+      "",
+      "",
+      "",
+      "");
     semesterReviewRequests: SemesterReviewRequest[] = [];
 
     learningIssues = [new LearningIssues(false, false, "Course Pace"), new LearningIssues(false, false, "Poor Background"), new LearningIssues(false, false, "Lack of Mindset"),

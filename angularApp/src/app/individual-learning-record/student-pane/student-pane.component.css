@@ -11,6 +11,8 @@
     font-family: "Open Sans", sans-serif;
 }
 
+
+
 img {
   width: 200px;
   height: 200px;
@@ -27,6 +29,14 @@ img {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.ilrStudentLabellastEdited {
+    font-weight: normal;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-style: italic;
+    font-size: 12px;
 }
 
 .student-pane-pane {

@@ -20,7 +20,7 @@ import { userObject } from "../userObject";
   styleUrls: ["./individual-learning-record.component.css"]
 })
 export class IndividualLearningRecordComponent implements OnInit {
-  // ILR Object at the root level which will now hold a reference to student and student's miscNotes.
+  // ILR Object at the root level which will now hold a reference to all ILR information
   ilrStudentObject: IndividualLearningRecordObject = new IndividualLearningRecordObject();
   courseInformationObject: CourseInformationObject = new CourseInformationObject();
   @Input() userObject: userObject;
@@ -33,44 +33,56 @@ export class IndividualLearningRecordComponent implements OnInit {
     private notesService: NotesInfoForMiscNotesTabService,
     private semesterEvaluationService: SemesterEvaluationService,
     private semesterResponse: SemesterEvaluationService,
-    private courseInfoService: CourseInformationService,
+    private courseInfoService: CourseInformationService
   ) {}
 
   ngOnInit() {
     // auto-init to keep console clean
-    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'','', ''),'','','','','','','','','','',);
+    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'','', ''),'','','','','','', '','','','','',);
   }
 
   onSearchById(studentId: any) {
-
-    this.ilrStudentObject.student.file = new FileStorage(0,'','', '');
+    this.clearSemesterReviewData();
 
     this.studentsService
       .getStudentInfoById(studentId)
       .subscribe(
         (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
+          if (!student.file) {
+            student.file = new FileStorage(0, "", "", "");
+          }
           this.ilrStudentObject.student = student;
           console.log("Full Student Object ->", this.ilrStudentObject.student);
 
           this.courseInfoService
-          .getCourseInfo()
-          .subscribe((courses: CourseInfoForAssessment[]) => {
-            this.courseInfoForAssessment = courses;
-            for (let i in courses) {
-              this.ilrStudentObject.courseMap.set(
-                courses[i].courseId,
-                courses[i].courseName
-              );
-            }
-            console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
-            console.log(this.ilrStudentObject.courseMap.get(2));
-    
-            for (let index in this.ilrStudentObject.semesterReviewResponses) {
-              if (this.ilrStudentObject.courseMap.has(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId)) {
-                this.ilrStudentObject.courseNames.push(this.ilrStudentObject.courseMap.get(this.ilrStudentObject.semesterReviewResponses[index].classes.courseId));
+            .getCourseInfo()
+            .subscribe((courses: CourseInfoForAssessment[]) => {
+              this.courseInfoForAssessment = courses;
+              for (let i in courses) {
+                this.ilrStudentObject.courseMap.set(
+                  courses[i].courseId,
+                  courses[i].courseName
+                );
               }
-            }
-          });
+              console.log("LOOK HERE FOR ILR OBJECT COURSE MAP VALUE");
+              console.log(this.ilrStudentObject.courseMap.get(2));
+
+              for (let index in this.ilrStudentObject.semesterReviewResponses) {
+                if (
+                  this.ilrStudentObject.courseMap.has(
+                    this.ilrStudentObject.semesterReviewResponses[index].classes
+                      .courseId
+                  )
+                ) {
+                  this.ilrStudentObject.courseNames.push(
+                    this.ilrStudentObject.courseMap.get(
+                      this.ilrStudentObject.semesterReviewResponses[index]
+                        .classes.courseId
+                    )
+                  );
+                }
+              }
+            });
         }
       );
 
@@ -78,36 +90,48 @@ export class IndividualLearningRecordComponent implements OnInit {
       .getMiscNoteInfoByStudentId(studentId)
       .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
         this.ilrStudentObject.miscNotes = miscNotes;
-        console.log(this.ilrStudentObject.miscNotes);
-      });
-
-    this.notesService
-      .getMiscNoteInfoByStudentId(studentId)
-      .subscribe((miscNotes: NotesInfoForMiscNotesTab[]) => {
-        this.ilrStudentObject.miscNotes = miscNotes;
-        console.log(this.ilrStudentObject.miscNotes);
       });
 
     this.semesterEvaluationService
       .getSemesterEvaluationsByStudentId(studentId)
       .subscribe((semesterReviews: SemesterReviewRequest[]) => {
         this.ilrStudentObject.semesterReviewRequests = semesterReviews;
-        console.log(this.ilrStudentObject.semesterReviewRequests);
-
       });
 
     this.semesterEvaluationService
       .getSemesterEvaluationResponsesByStudentId(studentId)
       .subscribe((semesterResponses: SemesterReviewResponse[]) => {
         this.ilrStudentObject.semesterReviewResponses = semesterResponses;
-        console.log(this.ilrStudentObject.semesterReviewResponses);
-      });  
+      });
 
     this.ilrStudentObject.studentId = studentId;
-    console.log(this.ilrStudentObject.studentId);
   }
 
-  onSearchByName(studentName: any) {
-    console.log(studentName);
+  clearSemesterReviewData(){
+    this.ilrStudentObject.courseNames = [];
+    this.ilrStudentObject.semesterReviewRequest.mliCoursePace=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfMindset=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfCuriosity=false;
+    this.ilrStudentObject.semesterReviewRequest.mliLackOfEffortFocus=false;
+    this.ilrStudentObject.semesterReviewRequest.mliPoorTimeManagement=false;
+    this.ilrStudentObject.semesterReviewRequest.mliHealthIssues=false;
+    this.ilrStudentObject.semesterReviewRequest.mliComplacence=false;
+    this.ilrStudentObject.semesterReviewRequest.mliEmployementHours=false;
+    this.ilrStudentObject.semesterReviewRequest.mliOther=false;
+    this.ilrStudentObject.semesterReviewRequest.mliOtherIssues="";
+    this.ilrStudentObject.semesterReviewRequest.esliCoursePace=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfMindset=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfCuriosity=false;
+    this.ilrStudentObject.semesterReviewRequest.esliLackOfEffortFocus=false;
+    this.ilrStudentObject.semesterReviewRequest.esliPoorTimeManagement=false;
+    this.ilrStudentObject.semesterReviewRequest.esliHealthIssues=false;
+    this.ilrStudentObject.semesterReviewRequest.esliComplacence=false;
+    this.ilrStudentObject.semesterReviewRequest.esliEmployementHours=false;
+    this.ilrStudentObject.semesterReviewRequest.esliOther=false;
+    this.ilrStudentObject.semesterReviewRequest.esliOtherIssues="";
+    this.ilrStudentObject.semesterReviewRequest.midSemesterExtentInstructor="";
+    this.ilrStudentObject.semesterReviewRequest.endSemesterExtentInstructor="";
+    this.ilrStudentObject.semesterReviewRequest.midSemesterInstructorRecommendations="";
+    this.ilrStudentObject.semesterReviewRequest.endSemesterInstructorRecommendations="";
   }
 }

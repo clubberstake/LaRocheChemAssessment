@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserInfo().subscribe((users: UserInfo[]) => {
       this.users = users;
-    });
+    });  
   }
 
   logIn() {

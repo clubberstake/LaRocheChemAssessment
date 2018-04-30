@@ -47,7 +47,7 @@ public class StudentController {
 			return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFile(), student.getStudentName(),
 					student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
 					student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
-					student.getStudentHonors(), student.getInternationalStudent(), student.getTime());
+					student.getStudentHonors(), student.getInternationalStudent(), student.getTime(), student.getAuthor());
 		}
 		return null;
 	}
@@ -59,7 +59,7 @@ public class StudentController {
 		return new StudentInfoForBioAndAdmissionsPlacementTabResponse(student.getFile(), student.getStudentName(),
 				student.getStudentMajor(), student.getStudentYear(), student.getStudentSemester(),
 				student.getStudentMathGrade(), student.getStudentAthletics(), student.getStudentHousingStatus(),
-				student.getStudentHonors(), student.getInternationalStudent(), student.getTime());
+				student.getStudentHonors(), student.getInternationalStudent(), student.getTime(), student.getAuthor());
 	}
 
 	@PostMapping("/addStudent")
@@ -99,6 +99,7 @@ public class StudentController {
 			studentUpdate.setStudentHousingStatus(student.getStudentHousingStatus());
 			studentUpdate.setStudentHonors(student.getStudentHonors());
 			studentUpdate.setInternationalStudent(student.getInternationalStudent());
+			studentUpdate.setAuthor(student.getAuthor());
 			
 			studentRepository.save(studentUpdate);
 		} else {
@@ -120,7 +121,7 @@ public class StudentController {
 			String time = LocalDateTime.now().toString();
 			FileStorage file = fileStorageRepository.findOne((long) 1);
 			studentRepository.save(new Student(file, "Nathan Drake", "Archeology", "2016", "Spring", "A",
-					"Rock Climbing", "Commuter", "Honors", "No International", time));
+					"Rock Climbing", "Commuter", "Honors", "No International", time, "doritos@service.com"));
 			students = studentRepository.findAll();
 		}
 
@@ -131,7 +132,7 @@ public class StudentController {
 					student.getStudentName(), student.getStudentMajor(), student.getStudentYear(),
 					student.getStudentSemester(), student.getStudentMathGrade(), student.getStudentAthletics(),
 					student.getStudentHousingStatus(), student.getStudentHonors(), student.getInternationalStudent(),
-					student.getTime()));
+					student.getTime(), student.getAuthor()));
 		}
 
 		return studentData;

@@ -30,11 +30,12 @@ public class Student {
 	private String internationalStudent;
 	
 	private String time;
+	private String author;
 	
 	public Student() {}
 	
 	public Student(FileStorage file, String studentName, String studentMajor, String studentYear, String studentSemester,
-				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time) {
+				String studentMathGrade, String studentAthletics, String studentHousingStatus, String studentHonors, String internationalStudent, String time, String author) {
 		this.setFile(file);
 		this.studentName = studentName;
 		this.studentMajor = studentMajor;
@@ -46,6 +47,7 @@ public class Student {
 		this.studentHonors = studentHonors;
 		this.internationalStudent = internationalStudent;
 		this.time = time;
+		this.author = author;
 	}
 	
 	public long getId() {
@@ -142,6 +144,14 @@ public class Student {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+	
+	public String  getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor (String author) {
+		this.author = author;
 	}
 	
 }

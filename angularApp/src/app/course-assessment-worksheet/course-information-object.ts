@@ -40,10 +40,10 @@ export class CourseInformationObject {
     this.Cafs2Info = new Cafs2Info(null, 0, '', '', '', '', '', '', '', '');
     this.Cafs3Info = new Cafs3Info(null, 0, '', '', '', '', '', '', '');
     this.Cafs6Info = new Cafs6Info(null, 0, '', '', '', '', '', '', '');
-    this.student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '');
+    this.student = new Student(0, '', '', '', '', '', '', '', '', '', 0, '', '');
     this.classes = new Classes(0, this.CurrentClassInfo.courseId, '', '', '', 0);
     this.semesterReviewResponses = [];
-    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(0, 0, "", null, null, "", "", "", "");
+    this.courseSemesterReviewRequest = new CourseSemesterReviewRequest(false,false,false,false,false,false,false,false,false,"",false,false,false,false,false,false,"","","","","","",0,0);
     this.courseSemesterReviewRequests = [];
     this.addCourseSemesterReviewFieldVisible = false;
     this.classId = 0;
