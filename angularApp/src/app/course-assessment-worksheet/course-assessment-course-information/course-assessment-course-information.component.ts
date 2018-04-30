@@ -22,6 +22,8 @@ import { CourseSemesterEvaluationService } from "../../services/course-semester-
 import { SemesterReviewResponse } from "../../individual-learning-record/SemesterReviewResponse";
 import { SemesterEvaluationService } from "../../services/semester-evaluation.service";
 import { SemesterReviewRequest } from "../../individual-learning-record/SemesterReviewRequest";
+import { FileStorageService } from "../../services/file-storage.service";
+import { FileStorage } from "../../services/file-storage";
 
 @Component({
   selector: "app-course-assessment-course-information",
@@ -157,7 +159,8 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     private cafs3InformationService: CAFS3InformationService,
     private cafs6InformationService: CAFS6InformationService,
     private CourseSemesterEvaluationService: CourseSemesterEvaluationService,
-    private semesterEvaluationService: SemesterEvaluationService
+    private semesterEvaluationService: SemesterEvaluationService,
+    private fileStorageService: FileStorageService
   ) {}
 
   ngOnInit() {
@@ -241,23 +244,5 @@ export class CourseAssessmentCourseInformationComponent implements OnInit {
     document.defaultView, 0, 0, 0, 0, 0,
     false, false, false, false, 0, null);
     a.dispatchEvent(e);
-  }
-
-  setSyllabus() {
-    var fileToLoad = (<HTMLInputElement>document.getElementById("syllabus")).files[0];
-    console.log("FILE to Load: ", fileToLoad);
-    var fileReader = new FileReader();
-    var ready = false;
-    var me = this;
-    fileReader.onload = function(e) {
-      let target: any = e.target;
-      var contents = target.result;
-      alert(contents);
-      var newSyllabus = [me.courseInformationObjInput.CurrentClassInfo.syllabus, contents]
-      console.log(newSyllabus);
-      console.log(fileToLoad.name);
-      me.classInformationService.saveSyllabus(newSyllabus);
-    }
-    fileReader.readAsText(fileToLoad);
   }
 }

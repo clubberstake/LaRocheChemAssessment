@@ -26,7 +26,7 @@ let httpMock: HttpTestingController;  // Initializing my mock http
     [
       {
        id: 1,
-       file: new FileStorage(0, "", ""),
+       file: new FileStorage(0, "", "", ""),
        studentName: "",
        studentMajor: "",
        studentYear: "",
@@ -43,7 +43,7 @@ let httpMock: HttpTestingController;  // Initializing my mock http
     const dummyStudentInfo: StudentInfoForBioAndAdmissionsPlacementTabResponse = 
     { 
       id: 1,
-      file: new FileStorage(0, "", ""),
+      file: new FileStorage(0, "", "", ""),
       studentName: "",
       studentMajor: "",
       studentYear: "",

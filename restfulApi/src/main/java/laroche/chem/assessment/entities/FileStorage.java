@@ -14,6 +14,7 @@ public class FileStorage {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String fileName;
+	private String fileType;
 	
 	@Lob
 	@Column(columnDefinition = "TEXT")
@@ -41,6 +42,14 @@ public class FileStorage {
 
 	public void setFileContent(String file) {
 		this.fileContent = file;
+	}
+	
+	public String getFileType() {
+		return fileType;
+	}
+	
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
 	}
 
 }
