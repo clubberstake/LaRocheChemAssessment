@@ -131,21 +131,17 @@ export class CourseAssessmentNewCourseComponent implements OnInit {
     }
     this.newClass.semester = this.semester + "" + this.year;
     var fileToLoad = (<HTMLInputElement>document.getElementById("syllabusAdmin")).files[0];
-    console.log("FILE to Load: ", fileToLoad);
     if(fileToLoad != undefined)
     {
       var fileReader = new FileReader();
-    console.log("New class", this.newClass);
-
-    var fileStorage = new FileStorage(0, "", "");
-    if (fileReader && fileToLoad) {
-      fileReader.onload = function() {
-        fileStorage.fileContent = fileReader.result.toString();
+      var fileStorage = new FileStorage(0, "", "", "");
+      if (fileReader && fileToLoad) {
+        fileReader.onload = function() {
+          fileStorage.fileContent = fileReader.result.toString();
+          fileStorage.fileType = fileToLoad.type;
       };
     }
-
     fileReader.readAsText(fileToLoad);
-
     this.sleep(300).then(() => this.fileStorageService.addFileToStorage(fileStorage));
     this.sleep(8000).then(() => this.classService.addClassWithSyllabus(this.newClass));
     }

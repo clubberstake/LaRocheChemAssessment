@@ -45,7 +45,7 @@ export class StudentPaneComponent implements OnInit {
     this.studentObjectInput.student.time = this.month + "/" + this.time.getUTCDate() + "/" + this.time.getUTCFullYear();
     this.studentObjectInput.student.author = this.userObject.user.username;
     var fileReader = new FileReader();
-    var fileStorage = new FileStorage(0, "", "");
+    var fileStorage = new FileStorage(0, "", "", "");
     if (fileReader && this.selectedPhoto) {
       fileStorage.fileName = this.selectedPhoto.name;
       fileReader.onload = function() {
@@ -59,7 +59,8 @@ export class StudentPaneComponent implements OnInit {
             ? this.studentObjectInput.student.file.id
             : 0,
           fileContent: fileStorage.fileContent,
-          fileName: fileStorage.fileName
+          fileName: fileStorage.fileName,
+          fileType: fileStorage.fileType
         };
       });
     }

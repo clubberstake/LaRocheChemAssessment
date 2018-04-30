@@ -6,7 +6,7 @@ import { Classes } from '../course-assessment-worksheet/class';
 
 @Injectable()
 export class ClassInformationService {
-
+  readonly API_URL = "http://localhost:8080";
   constructor(private http: HttpClient) {
   }
 

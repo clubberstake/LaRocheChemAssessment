@@ -20,5 +20,7 @@
         <app-admin></app-admin>
     </tab>
     <tab tabTitle="Archive" *ngIf="userObject.user.permissions == 'teacher' || userObject.user.permissions == 'admin'">
+        <app-archive></app-archive>
     </tab>
 </tabs>
+

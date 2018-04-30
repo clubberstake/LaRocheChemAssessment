@@ -41,7 +41,7 @@ export class IndividualLearningRecordComponent implements OnInit {
 
 
     this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
-      new FileStorage(0, "", ""),
+      new FileStorage(0, "", "",""),
       "",
       "",
       "",
@@ -65,7 +65,7 @@ export class IndividualLearningRecordComponent implements OnInit {
       .subscribe(
         (student: StudentInfoForBioAndAdmissionsPlacementTabResponse) => {
           if (!student.file) {
-            student.file = new FileStorage(0, "", "");
+            student.file = new FileStorage(0, "", "", "");
           }
           this.ilrStudentObject.student = student;
           console.log("Full Student Object ->", this.ilrStudentObject.student);
