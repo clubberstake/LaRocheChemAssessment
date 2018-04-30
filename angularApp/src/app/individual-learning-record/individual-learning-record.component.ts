@@ -38,9 +38,8 @@ export class IndividualLearningRecordComponent implements OnInit {
 
   ngOnInit() {
     // auto-init to keep console clean
-<<<<<<< HEAD
-    this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(new FileStorage(0,'',''),'','','','','','','','','','','');
-=======
+
+
     this.ilrStudentObject.student = new StudentInfoForBioAndAdmissionsPlacementTabResponse(
       new FileStorage(0, "", ""),
       "",
@@ -52,9 +51,10 @@ export class IndividualLearningRecordComponent implements OnInit {
       "",
       "",
       "",
+      "",
       ""
     );
->>>>>>> 896127f974f09a4a48760ca234f85996e69f8102
+
   }
 
   onSearchById(studentId: any) {
