@@ -20,7 +20,7 @@ export class StudentPaneComponent implements OnInit {
   time = new Date(); // Initializing Time
   month: number; // Decalring the month type
   currentdate = this.time.getUTCMonth() + '/' + this.time.getUTCDate() + '/' + this.time.getUTCFullYear()
- 
+
   majors = ["Chemistry", "Biochemistry", "Other"];
   years = ["Sophomore", "Junior", "Senior"];
   semesters = ["Fall", "Spring", "Summer"];
@@ -31,7 +31,7 @@ export class StudentPaneComponent implements OnInit {
     private fileStorageService: FileStorageService  ) {}
 
   ngOnInit() {
-    this.studentObjectInput.student.file = new FileStorage(0,'','');
+    this.studentObjectInput.student.file = new FileStorage(0,'','','');
   }
 
   onFileSelected(event) {
@@ -65,18 +65,18 @@ export class StudentPaneComponent implements OnInit {
       });
     }
     else{
-      this.studentObjectInput.student.file = new FileStorage(0,'','');      
+      this.studentObjectInput.student.file = new FileStorage(0,'','','');
     }
 
     this.studentObjectInput.student.id = this.studentObjectInput.studentId;
     console.log(this.studentObjectInput);
     this.studentService.updateStudent(this.studentObjectInput.student);
-    // Swal({
-    //   type: 'success',
-    //   title: 'Student Updated!',
-    //   showConfirmButton: false,
-    //   timer: 1500
-    // })
+    Swal({
+      type: 'success',
+      title: 'Student Updated!',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   private sleep(ms) {
