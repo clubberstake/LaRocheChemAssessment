@@ -14,6 +14,7 @@ import { StudentInfoForBioAndAdmissionsPlacementTabService } from "../services/s
 import { StudentInfoForBioAndAdmissionsPlacementTabResponse } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabResponse";
 import { SemesterReviewResponse } from "../individual-learning-record/SemesterReviewResponse";
 import { studentInfoForBioAndAdmissionsPlacementTabRequest } from "../individual-learning-record/studentInfoForBioAndAdmissionsPlacementTabRequest";
+import swal from "sweetalert2";
 
 @Component({
   selector: "app-course-assessment-worksheet",
@@ -86,5 +87,12 @@ export class CourseAssessmentWorksheetComponent implements OnInit {
         this.semesterEvaluationService.addCourseSemesterReview(this.courseInformationObj.courseSemesterReviewRequests[index])
       }
     }
+    swal({
+      position: 'center',
+      type: 'success',
+      title: 'Course Assessment Form Updated',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }
