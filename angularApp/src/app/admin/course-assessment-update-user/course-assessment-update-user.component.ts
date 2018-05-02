@@ -33,14 +33,19 @@ export class CourseAssessmentUpdateUserComponent implements OnInit {
   passwordLengthFeedback: String = "";
 
    
-
-
-  updateUser() {
+  findUser()
+  {
     this.userService
       .getUserInfoByUsername(this.updateUsername)
       .subscribe((users: UserInfo[]) => {
         this.editUser = users[0];
+        console.log(this.editUser);
       });
+  }
+
+  updateUser() {
+    console.log(this.editUser);
+    this.userService.updateUser(this.editUser);
   }
 
   checkEmail(): void {

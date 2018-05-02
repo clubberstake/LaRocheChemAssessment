@@ -1,7 +1,7 @@
 <div class="updateUserContainer">
     <b>UPDATE USER</b>
   <div class="updateUserPane">
-    Update Username (Email):<input type="text" id="Updateusername" [(ngModel)]="updateUsername" (change)="checkEmail()" (change)="updateUser()">
+    Update Username (Email):<input type="text" id="Updateusername" [(ngModel)]="updateUsername" (change)="checkEmail()" (change)="findUser()">
     <font color="red">{{usernameFeedback}}</font><br>
     Update Password:<input type="password" id="updatePassword" [(ngModel)]="updatePassword" (change)="checkPasswordLength()">
     <font color="red">{{passwordLengthFeedback}}</font><br>
@@ -12,9 +12,9 @@
         Update Role:&nbsp;
         <br>
         Admin
-        <input #studentRadioBtn name="updateAdmin" value="admin" id="updateAdminRadioBtn" type="radio" [(ngModel)]="updateUser.permissions">
+        <input #studentRadioBtn name="updateAdmin" value="admin" id="updateAdminRadioBtn" type="radio" [(ngModel)]="editUser.permissions">
         Teacher
-        <input #teacherRadioBtn name="updateTeacher" value="teacher" id="updateTeacherRadioBtn" type="radio" [(ngModel)]="updateUser.permissions">
+        <input #teacherRadioBtn name="updateTeacher" value="teacher" id="updateTeacherRadioBtn" type="radio" [(ngModel)]="editUser.permissions">
     </div>
     
     <input type="submit" value="UPDATE" (click)="updateUser()">

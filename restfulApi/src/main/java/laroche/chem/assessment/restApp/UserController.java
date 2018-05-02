@@ -57,7 +57,7 @@ public class UserController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/userInfo/username={username}")
 	private List<Users> getUserInfoByUsername(@PathVariable String username) {
-		List<Users> user = userRepository.findByUsername(username);
+		List<Users> user = userRepository.findByUsername(username + ".edu");
 		System.out.println("USER: " + user + username);
 		if (user != null) {
 			System.out.println("did not work");
