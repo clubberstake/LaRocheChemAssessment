@@ -44,10 +44,6 @@
           <select name="studentMajorSel" required [(ngModel)]="studentObjectInput.student.studentMajor" #major="ngModel">
               <option *ngFor="let p of majors" [value]="p">{{p}}</option>
           </select>
-          <!-- <div *ngif="value of majors == Other">
-              <input name="studentAtleticsBox" type="text" [(ngModel)]="studentsInput.studentAthletics">
-          </div>
-          <input ng-show="value of p == Other" type="text">  -->
       </div>
     </div>
     <div class="ilrStudentRow">
@@ -118,7 +114,7 @@
     </div>
     <div class="ilrStudentRow">
       <div class="ilrStudentLabellastEdited">
-        Last Edited by: {{userObject.user.username}} on {{studentObjectInput.student.time}}
+        Last Edited by: {{userObject.user.username}} on {{currentdate}}
       </div>
     </div>
     <div class="ilrStudentRow">

@@ -19,7 +19,7 @@ export class StudentPaneComponent implements OnInit {
   @Input() userObject: userObject; // Initilizing User Object
   time = new Date(); // Initializing Time
   month: number; // Decalring the month type
-  currentdate = this.time.getUTCMonth() + '/' + this.time.getUTCDate() + '/' + this.time.getUTCFullYear()
+  currentdate: string;
 
   majors = ["Chemistry", "Biochemistry", "Other"];
   years = ["Sophomore", "Junior", "Senior"];
@@ -42,7 +42,7 @@ export class StudentPaneComponent implements OnInit {
 
   onUpdateStudent() {
     this.month = this.time.getUTCMonth() + 1;
-    this.studentObjectInput.student.time = this.month + "/" + this.time.getUTCDate() + "/" + this.time.getUTCFullYear();
+    this.currentdate = this.time.getUTCMonth() + '/' + this.time.getUTCDate() + '/' + this.time.getUTCFullYear()
     this.studentObjectInput.student.author = this.userObject.user.username;
     var fileReader = new FileReader();
     var fileStorage = new FileStorage(0, "", "", "");
