@@ -42,6 +42,7 @@ import { FileStorageService } from "./services/file-storage.service";
 import { CourseAssessmentNewUserComponent } from "./admin/course-assessment-new-user/course-assessment-new-user.component";
 import { ArchiveComponent } from './archive/archive.component';
 import { ArchiveCourseInformationComponent } from './archive/archive-course-information/archive-course-information.component';
+import { CourseAssessmentUpdateUserComponent } from './admin/course-assessment-update-user/course-assessment-update-user.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ArchiveCourseInformationComponent } from './archive/archive-course-info
     LoginComponent,
     CourseAssessmentNewUserComponent,
     ArchiveComponent,
-    ArchiveCourseInformationComponent
+    ArchiveCourseInformationComponent,
+    CourseAssessmentUpdateUserComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [

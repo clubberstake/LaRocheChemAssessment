@@ -19,4 +19,17 @@ export class UserService {
   public addNewUser(user: any) {
     return this.http.post<Response>('http://localhost:8080/addUser', user).subscribe(res => console.log(res));
   }
+
+  public getUserInfoByUsername(username: String): Observable<UserInfo[]> {
+    console.log(username);
+    return this.http.get<UserInfo[]>(this.API_URL + "/userInfo/username=" + username);
+  }
+
+  public updateUser(user: any) {
+    console.log("Made it to the User update service", user);
+    return this.http
+      .put<Response>("http://localhost:8080/updateUser", user)
+      .subscribe(res => console.log(res));
+
+  }
 }

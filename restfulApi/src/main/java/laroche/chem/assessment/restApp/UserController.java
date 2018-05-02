@@ -1,5 +1,7 @@
 package laroche.chem.assessment.restApp;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +40,31 @@ public class UserController {
  		userRepository.save(user);
 			return ResponseEntity.status(HttpStatus.CONFLICT).build(); 
 	}
-	
+
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PutMapping("/updateUser")
+	public ResponseEntity<Void> updateUser(@RequestBody Users user) {
+		System.out.println(user.getUsername());
+		userRepository.save(user);
+		try {
+			return ResponseEntity.created(new URI("/updated/" + user.getId())).build();
+		}
+		catch(URISyntaxException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping("/userInfo/username={username}")
+	private List<Users> getUserInfoByUsername(@PathVariable String username) {
+		List<Users> user = userRepository.findByUsername(username);
+		System.out.println("USER: " + user + username);
+		if (user != null) {
+			System.out.println("did not work");
+			return user;
+		}
+		return null;
+	}
 	private ArrayList<UserInfo> generateFakeData() {
 		
 		List<Users> users = userRepository.findAll();

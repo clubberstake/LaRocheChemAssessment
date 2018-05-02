@@ -1,0 +1,22 @@
+.updateUserPane {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: left;
+  }
+
+.updateUserContainer {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    border: 3px solid #000;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #DCDCDC;
+    font-family: "Open Sans", sans-serif;
+    text-align: left;
+}
+  
