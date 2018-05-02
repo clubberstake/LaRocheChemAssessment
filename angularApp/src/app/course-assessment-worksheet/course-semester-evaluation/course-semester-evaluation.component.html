@@ -1,6 +1,9 @@
 <div class="course-semester-evaluation">
   <div class="course-semester-evaluation-header">
     <h3>Course Semester Evaluation</h3>
+    <ul><li>1. Course Pace</li><li>2. Lack of mindset</li><li>3. Lack of curiosity</li> </ul> <br>
+    <ul><li>4. Lack of effort/focus</li> <li>5. Poor time management</li> <li>6. Health issues</li> </ul> <br>
+    <ul><li>7. Complacence</li> <li>8. Employement Hours</li> <li>9.Other</li> </ul>
     <div class="course-semester-evaluation-button">
       <button (click)="addSemesterReviewRow()">Add Semester Review</button>
     </div>
@@ -52,7 +55,7 @@
               <input type="checkbox" [(ngModel)]="courseReview.mliComplacence" />
               <input type="checkbox" [(ngModel)]="courseReview.mliEmployementHours" />
               <input type="checkbox" [(ngModel)]="courseReview.mliOther" />
-              <input type="checkbox" [(ngModel)]="courseReview.mliOtherIssues" />          
+              <!-- <input type="checkbox" [(ngModel)]="courseReview.mliOtherIssues" />           -->
 
 
             </td>
@@ -66,7 +69,7 @@
               <input type="checkbox" [(ngModel)]="courseReview.esliComplacence" />
               <input type="checkbox" [(ngModel)]="courseReview.esliEmployementHours" />
               <input type="checkbox" [(ngModel)]="courseReview.esliOther" />
-              <input type="checkbox" [(ngModel)]="courseReview.esliOtherIssues" />
+              <!-- <input type="checkbox" [(ngModel)]="courseReview.esliOtherIssues" /> -->
             </td>
             <td>
               <textarea [(ngModel)]="courseReview.midSemesterExtentInstructor"></textarea>
@@ -89,28 +92,28 @@
               <input [(ngModel)]="review.student.studentName" />
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="review.mliCoursePace" />
-              <input type="checkbox" [(ngModel)]="review.mliLackOfMindset" />
-              <input type="checkbox" [(ngModel)]="review.mliLackOfCuriosity" />
-              <input type="checkbox" [(ngModel)]="review.mliLackOfEffortFocus" />
-              <input type="checkbox" [(ngModel)]="review.mliPoorTimeManagement" />
-              <input type="checkbox" [(ngModel)]="review.mliHealthIssues" />
-              <input type="checkbox" [(ngModel)]="review.mliComplacence" />
-              <input type="checkbox" [(ngModel)]="review.mliEmployementHours" />
-              <input type="checkbox" [(ngModel)]="review.mliOther" />
-              <input type="checkbox" [(ngModel)]="review.mliOtherIssues" />    
+              <label>1</label><input type="checkbox" [(ngModel)]="review.mliCoursePace" />
+              <label>2</label><input type="checkbox" [(ngModel)]="review.mliLackOfMindset" />
+              <label>3</label><input type="checkbox" [(ngModel)]="review.mliLackOfCuriosity" />
+              <label>4</label><input type="checkbox" [(ngModel)]="review.mliLackOfEffortFocus" />
+              <label>5</label><input type="checkbox" [(ngModel)]="review.mliPoorTimeManagement" />
+              <label>6</label><input type="checkbox" [(ngModel)]="review.mliHealthIssues" />
+              <label>7</label><input type="checkbox" [(ngModel)]="review.mliComplacence" />
+              <label>8</label><input type="checkbox" [(ngModel)]="review.mliEmployementHours" />
+              <label>9</label><input type="checkbox" [(ngModel)]="review.mliOther" />
+              <label>10</label><input type="checkbox" [(ngModel)]="review.mliOtherIssues" />    
             </td>
             <td>
-              <input type="checkbox" [(ngModel)]="review.esliCoursePace" />
-              <input type="checkbox" [(ngModel)]="review.esliLackOfMindset" />
-              <input type="checkbox" [(ngModel)]="review.esliLackOfCuriosity" />
-              <input type="checkbox" [(ngModel)]="review.esliLackOfEffortFocus" />
-              <input type="checkbox" [(ngModel)]="review.esliPoorTimeManagement" />
-              <input type="checkbox" [(ngModel)]="review.esliHealthIssues" />
-              <input type="checkbox" [(ngModel)]="review.esliComplacence" />
-              <input type="checkbox" [(ngModel)]="review.esliEmployementHours" />
-              <input type="checkbox" [(ngModel)]="review.esliOther" />
-              <input type="checkbox" [(ngModel)]="review.esliOtherIssues" />
+              <label>1</label><input type="checkbox" [(ngModel)]="review.esliCoursePace" />
+              <label>2</label><input type="checkbox" [(ngModel)]="review.esliLackOfMindset" />
+              <label>3</label><input type="checkbox" [(ngModel)]="review.esliLackOfCuriosity" />
+              <label>4</label><input type="checkbox" [(ngModel)]="review.esliLackOfEffortFocus" />
+              <label>5</label><input type="checkbox" [(ngModel)]="review.esliPoorTimeManagement" />
+              <label>6</label><input type="checkbox" [(ngModel)]="review.esliHealthIssues" />
+              <label>7</label><input type="checkbox" [(ngModel)]="review.esliComplacence" />
+              <label>8</label><input type="checkbox" [(ngModel)]="review.esliEmployementHours" />
+              <label>9</label><input type="checkbox" [(ngModel)]="review.esliOther" />
+              <label>10</label><input type="checkbox" [(ngModel)]="review.esliOtherIssues" />
             </td>
             <td>
               <textarea [(ngModel)]="review.midSemesterExtentInstructor"></textarea>
