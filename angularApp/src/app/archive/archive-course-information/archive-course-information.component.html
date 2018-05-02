@@ -1,0 +1,30 @@
+<div class="courseInfoForArchive">
+    Enter the semester you would like to view course assessment forms for (SP20XX, SU20XX, FA20XX):
+    <input id="semesterBox" [(ngModel)]="pastSemester" (change)="setDropDown()"> <font color="red">{{pastSemesterError}}</font>
+  <div class="courseInfoForArchiveContainer">
+    <div>
+      <span class="courseInfoForArchiveLabel">Course # / Sec:<br></span>
+      <select class="courseInfoForArchiveSelector" #selectElem (change)="setcourseAndSection(selectElem.value)">
+          <option selected="selected">COURSE ID/SEC</option>
+          <option class="courseInfoForArchiveSelector" *ngFor="let courseAndSection of courseAndSections" value={{courseAndSection.classId}}>
+          {{courseAndSection.courseID}} / {{courseAndSection.section}}
+        </option>
+      </select>
+    </div>
+    <div class="courseInfoForArchiveRow">
+      <span class="courseInfoForArchiveLabel">Course Title:<br></span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.courseTitle}}</span>
+    </div>
+    <div>
+      <span class="courseInfoForArchiveLabel">Semester:<br></span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.semester}}</span>
+    </div>
+    <div class="courseInfoForArchiveRow">
+      <span class="courseInfoForArchiveLabel">Instructor:<br></span>
+      <span>{{courseInformationObjInput.CurrentClassInfo.instructorName}}</span>
+    </div>
+    <div *ngIf="syllabusFound">
+      <font color="blue" (click)="downloadSyllabus()">Download Syllabus </font>
+    </div>
+  </div>
+</div>

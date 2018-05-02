@@ -28,9 +28,10 @@ fdescribe("When creating the Class Service", () => {
   it("should return two Class Info blocks (HttpClient called once)", () => {
       const samplePosts: ClassInfo[] = [
         {
+          classId: 1,
           courseId: 1,
           courseID: "",
-          syllabus: [],
+          syllabus: null,
           section: "",
           semester: "",
           courseTitle: "",
@@ -38,9 +39,10 @@ fdescribe("When creating the Class Service", () => {
           instructorName: ""
         },
         {
+          classId: 2,
           courseId: 2,
           courseID: "",
-          syllabus: [],
+          syllabus: null,
           section: "",
           semester: "",
           courseTitle: "",

@@ -41,6 +41,7 @@ import { CourseSemesterEvaluationService } from "./services/course-semester-eval
 import { FileStorageService } from "./services/file-storage.service";
 import { CourseAssessmentNewUserComponent } from "./admin/course-assessment-new-user/course-assessment-new-user.component";
 import { ArchiveComponent } from './archive/archive.component';
+import { ArchiveCourseInformationComponent } from './archive/archive-course-information/archive-course-information.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ArchiveComponent } from './archive/archive.component';
     CourseSemesterEvaluationComponent,
     LoginComponent,
     CourseAssessmentNewUserComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    ArchiveCourseInformationComponent
   ],
   imports: [BrowserModule, HttpClientModule, HttpModule, FormsModule],
   providers: [

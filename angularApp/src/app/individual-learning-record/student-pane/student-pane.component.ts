@@ -31,7 +31,7 @@ export class StudentPaneComponent implements OnInit {
     private fileStorageService: FileStorageService  ) {}
 
   ngOnInit() {
-    this.studentObjectInput.student.file = new FileStorage(0,'','');
+    this.studentObjectInput.student.file = new FileStorage(0,'','', '');
   }
 
   onFileSelected(event) {
@@ -65,7 +65,7 @@ export class StudentPaneComponent implements OnInit {
       });
     }
     else{
-      this.studentObjectInput.student.file = new FileStorage(0,'','');      
+      this.studentObjectInput.student.file = new FileStorage(0,'','', '');      
     }
 
     this.studentObjectInput.student.id = this.studentObjectInput.studentId;
