@@ -94,8 +94,6 @@ public class ClassController {
 		
 		List<Classes> classes = classRepository.findAll();
 		if (!classes.iterator().hasNext()) {
-			classRepository.save(new Classes(1, null, "SP2017", "01", 1));
-			classRepository.save(new Classes(1, null, "FA2016", "01", 1));
 			classRepository.save(new Classes(3, null, "SP2017", "01", 1));
 			classRepository.save(new Classes(2, null, "SP2017", "01", 2));
 			classRepository.save(new Classes(4, null, "SP2017", "01", 4));
