@@ -11,7 +11,7 @@ let httpMock: HttpTestingController;  // Initializing my mock http
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],  // Importing the testing module
-      providers: [StudentInfoForBioAndAdmissionsPlacementTabService] // Importing the Service 
+      providers: [StudentInfoForBioAndAdmissionsPlacementTabService] // Importing the Service
     });
     service = TestBed.get(StudentInfoForBioAndAdmissionsPlacementTabService);  // Instantiating the service and http mock
     httpMock = TestBed.get(HttpTestingController);
@@ -22,7 +22,7 @@ let httpMock: HttpTestingController;  // Initializing my mock http
   })
 
   it('should return a proper student Information ', inject([StudentInfoForBioAndAdmissionsPlacementTabService], (service: StudentInfoForBioAndAdmissionsPlacementTabService) => {
-    const dummyStudentInfos: StudentInfoForBioAndAdmissionsPlacementTabResponse[]  = 
+    const dummyStudentInfos: StudentInfoForBioAndAdmissionsPlacementTabResponse[]  =
     [
       {
        id: 1,
@@ -37,11 +37,12 @@ let httpMock: HttpTestingController;  // Initializing my mock http
        studentHonors: "",
        internationalStudent: "",
        time: "",
+       author: ""
       }
     ];
 
-    const dummyStudentInfo: StudentInfoForBioAndAdmissionsPlacementTabResponse = 
-    { 
+    const dummyStudentInfo: StudentInfoForBioAndAdmissionsPlacementTabResponse =
+    {
       id: 1,
       file: new FileStorage(0, "", "", ""),
       studentName: "",
@@ -54,6 +55,7 @@ let httpMock: HttpTestingController;  // Initializing my mock http
       studentHonors: "",
       internationalStudent: "",
       time: "",
+      author: ""
     }
 
 
